@@ -117,7 +117,7 @@
                         <div class="col-12">
                             <button class="btn btn-primary"><i class="fas fa-search"></i> Pesquisar</button>
                             <button class="btn btn-warning"><i class="fas fa-file-excel"></i> Excel</button>
-                            <button class="btn btn-success float-right"><i class="fas fa-plus-square"></i> Novo aparelho</button>
+                            <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-plus-square"></i> Novo aparelho</button>
                         </div>
                     </div>
                 </form>
@@ -158,6 +158,76 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-success" id="exampleModalLabel"><i class="fas fa-plus-square"></i> Novo aparelho</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12">
+                                <form>
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="formGroupExampleInput" class="form-label">Marca</label>
+                                            <select class="form-control form-control-sm">
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
+                                        </div>
+                                        <div class="col">
+                                            <label for="formGroupExampleInput" class="form-label">Modelo</label>
+                                            <select class="form-control form-control-sm">
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col">
+                                            <label for="formGroupExampleInput" class="form-label">IMEI</label>
+                                            <input type="email" class="form-control form-control-sm" id="exampleInputEmail1" placeholder="Digite aqui">
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="formGroupExampleInput" class="form-label">Estado</label>
+                                            <select class="form-control form-control-sm">
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-6">
+                                            <label for="formGroupExampleInput" class="form-label">Nota fiscal</label>
+                                            <input type="email" class="form-control form-control-sm" id="exampleInputEmail1" placeholder="Digite aqui">
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="formGroupExampleInput" class="form-label">Valor R$</label>
+                                            <input type="email" class="form-control form-control-sm" id="exampleInputEmail1" placeholder="Digite aqui">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-window-close"></i> Cancelar</button>
+                    <button type="button" class="btn btn-success" id="btnSalvarAparelho"><i class="fas fa-save"></i> Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="<?= base_url('assets/js/jquery.min.js'); ?>"></script>
     <script src="<?= base_url('assets/js/popper.min.js'); ?>"></script>
     <script src="<?= base_url('assets/js/bootstrap.min.js'); ?>"></script>
@@ -217,6 +287,12 @@
             buttonClass: 'form-control form-control-sm'
         });
         $('#example-getting-started5').multiselect('selectAll', false);
+
+        $('#btnSalvarAparelho').click(function(event) {
+            $(this)
+                .html('<div class="spinner-border spinner-border-sm text-light" role="status"></div> Salvando...')
+                .prop('disabled', true)
+        })
     </script>
 </body>
 
