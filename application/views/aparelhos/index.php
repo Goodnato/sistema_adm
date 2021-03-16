@@ -53,13 +53,17 @@
     </nav>
     <div class="container-fluid">
         <div class="row justify-content-center mt-5">
-            <div class="col-6">
+            <div class="col-6 p-3" style="background-color: #FAFBFC;">
                 <form>
+                    <div class="row">
+                        <div class="col-12">
+                            <h1 class="text-center">Aparelhos</h1>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col">
                             <label for="formGroupExampleInput" class="form-label">Marca</label>
-                            <select class="custom-select">
-                                <option selected>TODOS</option>
+                            <select id="example-getting-started5" multiple="multiple">
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
                                 <option value="3">Three</option>
@@ -67,8 +71,7 @@
                         </div>
                         <div class="col">
                             <label for="formGroupExampleInput" class="form-label">Modelo</label>
-                            <select class="custom-select">
-                                <option selected>TODOS</option>
+                            <select id="example-getting-started4" multiple="multiple">
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
                                 <option value="3">Three</option>
@@ -77,13 +80,12 @@
                     </div>
                     <div class="row mt-2">
                         <div class="col">
-                            <label for="formGroupExampleInput" class="form-label">Descriçao, IMEI</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <label for="formGroupExampleInput" class="form-label">IMEI</label>
+                            <input type="email" class="form-control form-control-sm" id="exampleInputEmail1" placeholder="Digite aqui">
                         </div>
                         <div class="col">
                             <label for="formGroupExampleInput" class="form-label">Área</label>
-                            <select class="custom-select">
-                                <option selected>TODOS</option>
+                            <select id="example-getting-started3" multiple="multiple">
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
                                 <option value="3">Three</option>
@@ -93,8 +95,7 @@
                     <div class="row mt-2">
                         <div class="col-6">
                             <label for="formGroupExampleInput" class="form-label">Estado</label>
-                            <select class="custom-select">
-                                <option selected>TODOS</option>
+                            <select id="example-getting-started2" multiple="multiple">
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
                                 <option value="3">Three</option>
@@ -102,7 +103,6 @@
                         </div>
                         <div class="col-6">
                             <label for="formGroupExampleInput" class="form-label">Status</label><br>
-                            <!-- Build your select: -->
                             <select id="example-getting-started" multiple="multiple">
                                 <option value="cheese">Cheese</option>
                                 <option value="tomatoes">Tomatoes</option>
@@ -116,6 +116,7 @@
                     <div class="row mt-2">
                         <div class="col-12">
                             <button class="btn btn-primary"><i class="fas fa-search"></i> Pesquisar</button>
+                            <button class="btn btn-warning"><i class="fas fa-file-excel"></i> Excel</button>
                             <button class="btn btn-success float-right"><i class="fas fa-plus-square"></i> Novo aparelho</button>
                         </div>
                     </div>
@@ -162,17 +163,60 @@
     <script src="<?= base_url('assets/js/bootstrap.min.js'); ?>"></script>
     <script src="<?= base_url('assets/js/bootstrap-multiselect.min.js'); ?>"></script>
     <script>
-        $(document).ready(function() {
-            $('#example-getting-started').multiselect({
-                buttonWidth: '100%',
-                includeSelectAllOption: true,
-                selectAllText: 'TODOS',
-                nonSelectedText: 'SELECIONE UMA OPÇÃO',
-                allSelectedText: 'TODOS SELECIONADOS',
-                nSelectedText: 'SELECINADO(S)'
-            });
-            $('#example-getting-started').multiselect('selectAll', false);
+        $('#example-getting-started').multiselect({
+            buttonWidth: '100%',
+            includeSelectAllOption: true,
+            selectAllText: 'TODOS',
+            nonSelectedText: 'SELECIONE UMA OPÇÃO',
+            allSelectedText: 'TODOS',
+            nSelectedText: 'SELECIONADO(S)',
+            buttonClass: 'form-control form-control-sm'
         });
+        $('#example-getting-started').multiselect('selectAll', false);
+
+        $('#example-getting-started2').multiselect({
+            buttonWidth: '100%',
+            includeSelectAllOption: true,
+            selectAllText: 'TODOS',
+            nonSelectedText: 'SELECIONE UMA OPÇÃO',
+            allSelectedText: 'TODOS',
+            nSelectedText: 'SELECIONADO(S)',
+            buttonClass: 'form-control form-control-sm'
+        });
+        $('#example-getting-started2').multiselect('selectAll', false);
+
+        $('#example-getting-started3').multiselect({
+            buttonWidth: '100%',
+            includeSelectAllOption: true,
+            selectAllText: 'TODOS',
+            nonSelectedText: 'SELECIONE UMA OPÇÃO',
+            allSelectedText: 'TODOS',
+            nSelectedText: 'SELECIONADO(S)',
+            buttonClass: 'form-control form-control-sm'
+        });
+        $('#example-getting-started3').multiselect('selectAll', false);
+
+        $('#example-getting-started4').multiselect({
+            buttonWidth: '100%',
+            includeSelectAllOption: true,
+            selectAllText: 'TODOS',
+            nonSelectedText: 'SELECIONE UMA OPÇÃO',
+            allSelectedText: 'TODOS',
+            nSelectedText: 'SELECIONADO(S)',
+            buttonClass: 'form-control form-control-sm'
+        });
+        $('#example-getting-started4').multiselect('selectAll', false);
+
+        $('#example-getting-started5').multiselect({
+            buttonWidth: '100%',
+            includeSelectAllOption: true,
+            selectAllText: 'TODOS',
+            nonSelectedText: 'SELECIONE UMA OPÇÃO',
+            allSelectedText: 'TODOS',
+            nSelectedText: 'SELECIONADO(S)',
+            buttonClass: 'form-control form-control-sm'
+        });
+        $('#example-getting-started5').multiselect('selectAll', false);
     </script>
 </body>
 
