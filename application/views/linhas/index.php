@@ -53,11 +53,16 @@
             </div>
         </div>
     </nav>
-    
+    <!-- Painel de filtros de linhas -->
     <div class="container-fluid">
                 <div class="row justify-content-center mt-5">
-                    <div class="col-6">
+                    <div class="col-6 p-3" style="background-color: #FAFBFC;">
                         <form>
+                            <div class="row">
+                                <div class="col-12">
+                                    <h1 class="text-center">Linhas</h1>
+                                </div>
+                            </div>
                             <div class="row mt-2">
                                 <div class="col">
                                     <label for="formGroupExampleInput" class="form-label">Número da Linha</label>
@@ -94,12 +99,15 @@
                             <div class="row mt-2">
                                 <div class="col-12">
                                     <button class="btn btn-primary"><i class="fas fa-search"></i> Pesquisar</button>
-                                    <button class="btn btn-success float-right"><i class="fas fa-plus-square"></i> Nova Linha</button>
+                                    <button class="btn btn-warning"><i class="fas fa-file-excel"></i> Excel</button>
+                                    <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-plus-square"></i> Nova Linha</button>
+                                    <!-- botão do modal botão do modal /// ids do modal => data-toggle="modal" data-target="#exampleModal" -->
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
+                <!-- tabela -->
                 <div class="row mt-5">
                     <div class="table-responsive">
                         <table class="table table-striped" style="min-width: 1200px;">
@@ -134,25 +142,145 @@
                         </table>
                      </div>
                 </div>
-
     </div>
+
+    <!-- modal cadastrar linhas-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-success" id="exampleModalLabel"><i class="fas fa-plus-square"></i> Nova Linha</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12">
+                                <form>
+                                    <div class="row mt-2">
+                                        <div class="col-6">
+                                            <label for="formGroupExampleInput" class="form-label">Número da Linha</label>
+                                            <input type="email" class="form-control form-control-sm" id="exampleInputEmail1" placeholder="Digite aqui">
+                                        </div>
+                                        <div class="col-6">
+                                        <label for="formGroupExampleInput" class="form-label">Código do Chip</label>
+                                            <input type="email" class="form-control form-control-sm" id="exampleInputEmail1" placeholder="Digite aqui">
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
+                                        <div class="col-6">
+                                            <label for="formGroupExampleInput" class="form-label">Categoria</label>
+                                            <select class="form-control form-control-sm">
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="formGroupExampleInput" class="form-label">Status</label>
+                                            <select class="form-control form-control-sm">
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mt-2">
+                                        <div class="col-6">
+                                            <label for="formGroupExampleInput" class="form-label">PIN-PUK1</label>
+                                            <input type="email" class="form-control form-control-sm" id="exampleInputEmail1" placeholder="Digite aqui">
+                                        </div>
+                                        <div class="col-6">
+                                        <label for="formGroupExampleInput" class="form-label">PIN-PUK2</label>
+                                            <input type="email" class="form-control form-control-sm" id="exampleInputEmail1" placeholder="Digite aqui">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-window-close"></i> Cancelar</button>
+                    <button type="button" class="btn btn-success" id="btnSalvarLinha"><i class="fas fa-save"></i> Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="<?= base_url('assets/js/jquery.min.js'); ?>"></script>
     <script src="<?= base_url('assets/js/popper.min.js'); ?>"></script>
     <script src="<?= base_url('assets/js/bootstrap.min.js'); ?>"></script>
     <script src="<?= base_url('assets/js/bootstrap-multiselect.min.js'); ?>"></script>
+    
+    <!-- javascript do multiselect, definição de padrões e traduções-->
     <script>
-        $(document).ready(function() {
-            $('#example-getting-started').multiselect({
-                buttonWidth: '100%',
-                includeSelectAllOption: true,
-                selectAllText: 'TODOS',
-                nonSelectedText: 'SELECIONE UMA OPÇÃO',
-                allSelectedText: 'TODOS SELECIONADOS',
-                nSelectedText: 'SELECINADO(S)'
-            });
-            $('#example-getting-started').multiselect('selectAll', false);
+        $('#example-getting-started').multiselect({
+            buttonWidth: '100%',
+            includeSelectAllOption: true,
+            selectAllText: 'TODOS',
+            nonSelectedText: 'SELECIONE UMA OPÇÃO',
+            allSelectedText: 'TODOS',
+            nSelectedText: 'SELECIONADO(S)',
+            buttonClass: 'form-control form-control-sm'
         });
+        $('#example-getting-started').multiselect('selectAll', false);
+
+        $('#example-getting-started2').multiselect({
+            buttonWidth: '100%',
+            includeSelectAllOption: true,
+            selectAllText: 'TODOS',
+            nonSelectedText: 'SELECIONE UMA OPÇÃO',
+            allSelectedText: 'TODOS',
+            nSelectedText: 'SELECIONADO(S)',
+            buttonClass: 'form-control form-control-sm'
+        });
+        $('#example-getting-started2').multiselect('selectAll', false);
+
+        $('#example-getting-started3').multiselect({
+            buttonWidth: '100%',
+            includeSelectAllOption: true,
+            selectAllText: 'TODOS',
+            nonSelectedText: 'SELECIONE UMA OPÇÃO',
+            allSelectedText: 'TODOS',
+            nSelectedText: 'SELECIONADO(S)',
+            buttonClass: 'form-control form-control-sm'
+        });
+        $('#example-getting-started3').multiselect('selectAll', false);
+
+        $('#example-getting-started4').multiselect({
+            buttonWidth: '100%',
+            includeSelectAllOption: true,
+            selectAllText: 'TODOS',
+            nonSelectedText: 'SELECIONE UMA OPÇÃO',
+            allSelectedText: 'TODOS',
+            nSelectedText: 'SELECIONADO(S)',
+            buttonClass: 'form-control form-control-sm'
+        });
+        $('#example-getting-started4').multiselect('selectAll', false);
+
+        $('#example-getting-started5').multiselect({
+            buttonWidth: '100%',
+            includeSelectAllOption: true,
+            selectAllText: 'TODOS',
+            nonSelectedText: 'SELECIONE UMA OPÇÃO',
+            allSelectedText: 'TODOS',
+            nSelectedText: 'SELECIONADO(S)',
+            buttonClass: 'form-control form-control-sm'
+        });
+        $('#example-getting-started5').multiselect('selectAll', false);
+
+        //codigo abaixo de jquery e para manipular elementos, neste caso o efeito de carregando do botão salvar
+        $('#btnSalvarLinha').click(function(event) {
+            $(this)
+                .html('<div class="spinner-border spinner-border-sm text-light" role="status"></div> Salvando...')
+                .prop('disabled', true)
+        })
     </script>
+
 </body>
 
 </html>
