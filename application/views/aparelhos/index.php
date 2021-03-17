@@ -232,6 +232,7 @@
     <script src="<?= base_url('assets/js/popper.min.js'); ?>"></script>
     <script src="<?= base_url('assets/js/bootstrap.min.js'); ?>"></script>
     <script src="<?= base_url('assets/js/bootstrap-multiselect.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/js/alertsweet2.min.js'); ?>"></script>
     <script>
         $('#example-getting-started').multiselect({
             buttonWidth: '100%',
@@ -292,6 +293,23 @@
             $(this)
                 .html('<div class="spinner-border spinner-border-sm text-light" role="status"></div> Salvando...')
                 .prop('disabled', true)
+
+            setTimeout(() => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Aparelho salvo com sucesso!',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    heightAuto: false
+                }).then((result) => {
+                    $('#exampleModal').modal('hide')
+
+                    $('#btnSalvarAparelho')
+                        .html('<i class="fas fa-save"></i> Salvar')
+                        .prop('disabled', false)
+                })
+            }, 1000)
         })
     </script>
 </body>
