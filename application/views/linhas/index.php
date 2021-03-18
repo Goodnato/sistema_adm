@@ -69,30 +69,29 @@
                                     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                                 </div>
                                 <div class="col">
-                                    <label for="formGroupExampleInput" class="form-label">Área</label>
-                                    <select class="custom-select">
-                                        <option selected>TODOS</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                    </select>
+                                    <label for="formGroupExampleInput" class="form-label">Código do Chip</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                                 </div>
                             </div>
                             <div class="row mt-2">
                                 <div class="col-6">
-                                    <label for="formGroupExampleInput" class="form-label">Número do Chip</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    <label for="formGroupExampleInput" class="form-label">Categoria</label><br>
+                                    <!-- Build your select: -->
+                                    <select id="example-getting-started" multiple="multiple">
+                                        <option value="cheese">Categoria I </option>
+                                        <option value="tomatoes">Categoria II</option>
+                                        <option value="mozarella">Categoria III</option>
+                                        <option value="mushrooms">Categoria IV</option>
+                                        <option value="pepperoni">Categoria V</option>
+                                    </select>
                                 </div>
+
                                 <div class="col-6">
                                     <label for="formGroupExampleInput" class="form-label">Status</label><br>
                                     <!-- Build your select: -->
-                                    <select id="example-getting-started" multiple="multiple">
-                                        <option value="cheese">Cheese</option>
-                                        <option value="tomatoes">Tomatoes</option>
-                                        <option value="mozarella">Mozzarella</option>
-                                        <option value="mushrooms">Mushrooms</option>
-                                        <option value="pepperoni">Pepperoni</option>
-                                        <option value="onions">Onions</option>
+                                    <select id="example-getting-started2" multiple="multiple">
+                                        <option value="cheese">Em uso</option>
+                                        <option value="tomatoes">Disponível</option>
                                     </select>
                                 </div>
                             </div>
@@ -162,29 +161,28 @@
                                     <div class="row mt-2">
                                         <div class="col-6">
                                             <label for="formGroupExampleInput" class="form-label">Número da Linha</label>
-                                            <input type="email" class="form-control form-control-sm" id="exampleInputEmail1" placeholder="Digite aqui">
+                                            <input type="number" class="form-control form-control-sm" id="exampleInputEmail1" placeholder="Digite aqui">
                                         </div>
                                         <div class="col-6">
-                                        <label for="formGroupExampleInput" class="form-label">Código do Chip</label>
-                                            <input type="email" class="form-control form-control-sm" id="exampleInputEmail1" placeholder="Digite aqui">
+                                            <label for="formGroupExampleInput" class="form-label">Código do Chip</label>
+                                            <input type="number" class="form-control form-control-sm" id="exampleInputEmail1" placeholder="Digite aqui">
                                         </div>
                                     </div>
                                     <div class="row mt-2">
                                         <div class="col-6">
                                             <label for="formGroupExampleInput" class="form-label">Categoria</label>
                                             <select class="form-control form-control-sm">
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
+                                                <option value="1">Selecione aqui </option>
+                                                <option value="1">Categoria I </option>
+                                                <option value="2">Categoria II</option>
+                                                <option value="3">Categoria III</option>
+                                                <option value="3">Categoria IV</option>
+                                                <option value="3">Categoria V</option>
                                             </select>
                                         </div>
                                         <div class="col-6">
-                                            <label for="formGroupExampleInput" class="form-label">Status</label>
-                                            <select class="form-control form-control-sm">
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </select>
+                                            <label for="formGroupExampleInput" class="form-label">Operadora</label>
+                                            <input type="email" class="form-control form-control-sm" id="exampleInputEmail1" placeholder="Digite aqui">
                                         </div>
                                     </div>
 
@@ -205,16 +203,17 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-window-close"></i> Cancelar</button>
-                    <button type="button" class="btn btn-success" id="btnSalvarLinha"><i class="fas fa-save"></i> Salvar</button>
+                    <button type="button" class="btn btn-success" id="btnSalvarLinha"><i class="fas fa-save"></i> Cadastrar </button>
                 </div>
             </div>
         </div>
     </div>
 
     <script src="<?= base_url('assets/js/jquery.min.js'); ?>"></script>
-    <script src="<?= base_url('assets/js/popper.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/js/popper.min.js'); ?>"></script> <!-- multi-select -->
     <script src="<?= base_url('assets/js/bootstrap.min.js'); ?>"></script>
     <script src="<?= base_url('assets/js/bootstrap-multiselect.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/js/alertsweet2.min.js'); ?>"></script> <!--libraries alertsweet2 para exibir telas de mensagens/notificações -->
     
     <!-- javascript do multiselect, definição de padrões e traduções-->
     <script>
@@ -240,45 +239,30 @@
         });
         $('#example-getting-started2').multiselect('selectAll', false);
 
-        $('#example-getting-started3').multiselect({
-            buttonWidth: '100%',
-            includeSelectAllOption: true,
-            selectAllText: 'TODOS',
-            nonSelectedText: 'SELECIONE UMA OPÇÃO',
-            allSelectedText: 'TODOS',
-            nSelectedText: 'SELECIONADO(S)',
-            buttonClass: 'form-control form-control-sm'
-        });
-        $('#example-getting-started3').multiselect('selectAll', false);
-
-        $('#example-getting-started4').multiselect({
-            buttonWidth: '100%',
-            includeSelectAllOption: true,
-            selectAllText: 'TODOS',
-            nonSelectedText: 'SELECIONE UMA OPÇÃO',
-            allSelectedText: 'TODOS',
-            nSelectedText: 'SELECIONADO(S)',
-            buttonClass: 'form-control form-control-sm'
-        });
-        $('#example-getting-started4').multiselect('selectAll', false);
-
-        $('#example-getting-started5').multiselect({
-            buttonWidth: '100%',
-            includeSelectAllOption: true,
-            selectAllText: 'TODOS',
-            nonSelectedText: 'SELECIONE UMA OPÇÃO',
-            allSelectedText: 'TODOS',
-            nSelectedText: 'SELECIONADO(S)',
-            buttonClass: 'form-control form-control-sm'
-        });
-        $('#example-getting-started5').multiselect('selectAll', false);
-
         //codigo abaixo de jquery e para manipular elementos, neste caso o efeito de carregando do botão salvar
         $('#btnSalvarLinha').click(function(event) {
             $(this)
                 .html('<div class="spinner-border spinner-border-sm text-light" role="status"></div> Salvando...')
                 .prop('disabled', true)
+
+            setTimeout(() => {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Linha cadastrada com sucesso!',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    heightAuto: false
+                }).then((result) => {
+                    $('#exampleModal').modal('hide')
+
+                    $('#btnSalvarLinha')
+                        .html('<i class="fas fa-save"></i> Salvar')
+                        .prop('disabled', false)
+                })
+            }, 1000)
         })
+
     </script>
 
 </body>
