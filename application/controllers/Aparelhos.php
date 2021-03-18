@@ -10,6 +10,8 @@ class Aparelhos extends CI_Controller
 
         $this->load->model('Aparelhos_model');
         $this->load->model('Marcas_model');
+        $this->load->model('Modelos_model');
+        $this->load->model('Status_condicoes_model');
     }
 
     public function index()
@@ -24,7 +26,9 @@ class Aparelhos extends CI_Controller
         $carregaView = [
             'caminhoCss' => 'assets/css/aparelhos.css',
             'caminhoJs' => 'assets/js/aparelhos.js',
-            'listaMarcas' => $this->Marcas_model->consultaTodasMarcas()
+            'listaMarcas' => $this->Marcas_model->consultaTodasMarcas(),
+            'listaModelos' => $this->Modelos_model->consultaTodosModelos(),
+            'listaStatusCondicoes' => $this->Status_condicoes_model->consultaTodosStatus(),
         ];
 
         return $carregaView;

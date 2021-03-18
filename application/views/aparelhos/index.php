@@ -17,18 +17,18 @@
                         </select>
                     </div>
                     <div class="col">
-                        <label for="formGroupExampleInput" class="form-label">Modelo</label>
-                        <select id="example-getting-started4" multiple="multiple">
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                        <label for="pesquisaModelo" class="form-label">Modelo</label>
+                        <select id="pesquisaModelo" multiple="multiple">
+                            <?php foreach ($listaModelos as $modelo) { ?>
+                                <option value="<?= $modelo['id'] ?>"><?= $modelo['nome'] ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                 </div>
                 <div class="row mt-2">
                     <div class="col">
-                        <label for="formGroupExampleInput" class="form-label">IMEI</label>
-                        <input type="email" class="form-control form-control-sm" id="exampleInputEmail1" placeholder="Digite aqui">
+                        <label for="pesquisaImei" class="form-label">IMEI</label>
+                        <input type="text" class="form-control form-control-sm" id="pesquisaImei" placeholder="Digite aqui">
                     </div>
                     <div class="col">
                         <label for="formGroupExampleInput" class="form-label">Área</label>
@@ -41,11 +41,11 @@
                 </div>
                 <div class="row mt-2">
                     <div class="col-6">
-                        <label for="formGroupExampleInput" class="form-label">Estado</label>
-                        <select id="example-getting-started2" multiple="multiple">
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                        <label for="statusCondicoes" class="form-label">Condições aparelho</label>
+                        <select id="statusCondicoes" multiple="multiple">
+                            <?php foreach ($listaStatusCondicoes as $status) { ?>
+                                <option value="<?= $status['id'] ?>"><?= $status['nome'] ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                     <div class="col-6">

@@ -9,7 +9,7 @@ $('#pesquisaMarca').multiselect({
 });
 $('#pesquisaMarca').multiselect('selectAll', false);
 
-$('#example-getting-started2').multiselect({
+$('#pesquisaModelo').multiselect({
     buttonWidth: '100%',
     includeSelectAllOption: true,
     selectAllText: 'TODOS',
@@ -18,9 +18,9 @@ $('#example-getting-started2').multiselect({
     nSelectedText: 'SELECIONADO(S)',
     buttonClass: 'form-control form-control-sm'
 });
-$('#example-getting-started2').multiselect('selectAll', false);
+$('#pesquisaModelo').multiselect('selectAll', false);
 
-$('#example-getting-started3').multiselect({
+$('#statusCondicoes').multiselect({
     buttonWidth: '100%',
     includeSelectAllOption: true,
     selectAllText: 'TODOS',
@@ -29,7 +29,7 @@ $('#example-getting-started3').multiselect({
     nSelectedText: 'SELECIONADO(S)',
     buttonClass: 'form-control form-control-sm'
 });
-$('#example-getting-started3').multiselect('selectAll', false);
+$('#statusCondicoes').multiselect('selectAll', false);
 
 $('#example-getting-started4').multiselect({
     buttonWidth: '100%',
