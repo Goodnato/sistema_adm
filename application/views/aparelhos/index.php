@@ -9,11 +9,11 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <label for="formGroupExampleInput" class="form-label">Marca</label>
-                        <select id="example-getting-started5" multiple="multiple">
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                        <label for="pesquisaMarca" class="form-label">Marca</label>
+                        <select id="pesquisaMarca" multiple="multiple">
+                            <?php foreach ($listaMarcas as $marca) { ?>
+                                <option value="<?= $marca['id'] ?>"><?= $marca['nome'] ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                     <div class="col">
