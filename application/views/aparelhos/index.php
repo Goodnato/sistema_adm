@@ -175,12 +175,8 @@
                                 <form>
                                     <div class="row">
                                         <div class="col">
-                                            <label for="formGroupExampleInput" class="form-label">Marca</label>
-                                            <select class="form-control form-control-sm">
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
-                                            </select>
+                                            <label for="formGroupExampleInput" class="form-label">IMEI</label>
+                                            <input type="email" class="form-control form-control-sm" id="exampleInputEmail1" placeholder="Digite aqui">
                                         </div>
                                         <div class="col">
                                             <label for="formGroupExampleInput" class="form-label">Modelo</label>
@@ -193,15 +189,19 @@
                                     </div>
                                     <div class="row mt-2">
                                         <div class="col">
-                                            <label for="formGroupExampleInput" class="form-label">IMEI</label>
-                                            <input type="email" class="form-control form-control-sm" id="exampleInputEmail1" placeholder="Digite aqui">
-                                        </div>
-                                        <div class="col-6">
-                                            <label for="formGroupExampleInput" class="form-label">Estado</label>
+                                            <label for="formGroupExampleInput" class="form-label">Marca</label>
                                             <select class="form-control form-control-sm">
                                                 <option value="1">One</option>
                                                 <option value="2">Two</option>
                                                 <option value="3">Three</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="formGroupExampleInput" class="form-label">Estado</label>
+                                            <select class="form-control form-control-sm">
+                                                <option value="1">Selecione aqui</option>
+                                                <option value="1">Novo</option>
+                                                <option value="2">Usado</option>
                                             </select>
                                         </div>
                                     </div>
@@ -210,6 +210,12 @@
                                             <label for="formGroupExampleInput" class="form-label">Nota fiscal</label>
                                             <input type="email" class="form-control form-control-sm" id="exampleInputEmail1" placeholder="Digite aqui">
                                         </div>
+                                        <div class="col-6">
+                                            <label for="formGroupExampleInput" class="form-label">Data Nota</label>
+                                            <input type="email" class="form-control form-control-sm" id="exampleInputEmail1" placeholder="Digite aqui">
+                                        </div>
+                                    </div>
+                                    <div class="row mt-2">
                                         <div class="col-6">
                                             <label for="formGroupExampleInput" class="form-label">Valor R$</label>
                                             <input type="email" class="form-control form-control-sm" id="exampleInputEmail1" placeholder="Digite aqui">
