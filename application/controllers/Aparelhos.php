@@ -11,7 +11,7 @@ class Aparelhos extends CI_Controller
         $this->load->model('Aparelhos_model');
         $this->load->model('Marcas_model');
         $this->load->model('Modelos_model');
-        $this->load->model('Status_condicoes_model');
+        $this->load->model('Status_condicoes_aparelhos_model');
     }
 
     public function index()
@@ -28,7 +28,7 @@ class Aparelhos extends CI_Controller
             'caminhoJs' => 'assets/js/aparelhos.js',
             'listaMarcas' => $this->Marcas_model->consultaTodasMarcasAtivas(),
             'listaModelos' => $this->Modelos_model->consultaTodosModelosAtivos(),
-            'listaStatusCondicoes' => $this->Status_condicoes_model->consultaTodosStatusAtivos(),
+            'listaStatusCondicoes' => $this->Status_condicoes_aparelhos_model->consultaTodosStatusAtivos(),
         ];
 
         return $carregaView;
