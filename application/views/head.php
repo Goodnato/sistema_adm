@@ -28,6 +28,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Linhas <span class="sr-only">(current)</span></a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Distribuições <span class="sr-only">(current)</span></a>
+                    </li>
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">

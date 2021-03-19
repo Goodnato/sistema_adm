@@ -32,7 +32,7 @@
                     </div>
                     <div class="col">
                         <label for="formGroupExampleInput" class="form-label">Área</label>
-                        <select id="example-getting-started3" multiple="multiple">
+                        <select id="example-getting-started4" multiple="multiple">
                             <option value="1">One</option>
                             <option value="2">Two</option>
                             <option value="3">Three</option>
@@ -50,7 +50,7 @@
                     </div>
                     <div class="col-6">
                         <label for="formGroupExampleInput" class="form-label">Status</label><br>
-                        <select id="example-getting-started" multiple="multiple">
+                        <select id="example-getting-started5" multiple="multiple">
                             <option value="cheese">Cheese</option>
                             <option value="tomatoes">Tomatoes</option>
                             <option value="mozarella">Mozzarella</option>
