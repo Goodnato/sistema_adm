@@ -19,9 +19,10 @@ CREATE TABLE IF NOT EXISTS `aparelhos` (
   `id_marca` int(11) NOT NULL,
   `imei1` varchar(200) NOT NULL,
   `id_status_condicao` int(11) NOT NULL,
+  `id_status_disponibilidade` int(11) NOT NULL DEFAULT 1,
   `status` int(11) NOT NULL DEFAULT 1,
-  `nota_fiscal` varchar(50) NOT NULL,
-  `data_nota` date NOT NULL,
+  `nota_fiscal` varchar(50) DEFAULT NULL,
+  `data_nota` date DEFAULT NULL,
   `valor` double(6,2) NOT NULL,
   `valor_depreciado` double(6,2) DEFAULT NULL,
   `data_registro` datetime NOT NULL DEFAULT current_timestamp(),
@@ -34,9 +35,11 @@ CREATE TABLE IF NOT EXISTS `aparelhos` (
   KEY `FK_aparelhos_usuario_2` (`id_usuario_at`),
   KEY `FK_aparelhos_marcas` (`id_marca`),
   KEY `FK_aparelhos_status_condicoes` (`id_status_condicao`),
+  KEY `FK_aparelhos_status_disponibilidade_aparelhos` (`id_status_disponibilidade`),
   CONSTRAINT `FK_aparelhos_marcas` FOREIGN KEY (`id_marca`) REFERENCES `marcas` (`id`),
   CONSTRAINT `FK_aparelhos_modelos` FOREIGN KEY (`id_modelo`) REFERENCES `modelos` (`id`),
-  CONSTRAINT `FK_aparelhos_status_condicoes` FOREIGN KEY (`id_status_condicao`) REFERENCES `status_condicoes` (`id`),
+  CONSTRAINT `FK_aparelhos_status_condicoes` FOREIGN KEY (`id_status_condicao`) REFERENCES `status_condicoes_aparelhos` (`id`),
+  CONSTRAINT `FK_aparelhos_status_disponibilidade_aparelhos` FOREIGN KEY (`id_status_disponibilidade`) REFERENCES `status_disponibilidades_aparelhos` (`id`),
   CONSTRAINT `FK_aparelhos_usuario` FOREIGN KEY (`id_usuario_registro`) REFERENCES `usuarios` (`id`),
   CONSTRAINT `FK_aparelhos_usuario_2` FOREIGN KEY (`id_usuario_at`) REFERENCES `usuarios` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -2912,8 +2915,8 @@ INSERT INTO `operadoras` (`id`, `nome`, `status`, `data_registro`, `data_at`, `i
 	(1, 'CLARO', 1, '2021-03-19 10:12:22', '2021-03-19 10:12:59', 1, NULL);
 /*!40000 ALTER TABLE `operadoras` ENABLE KEYS */;
 
--- Copiando estrutura para tabela sistema_adm.status_condicoes
-CREATE TABLE IF NOT EXISTS `status_condicoes` (
+-- Copiando estrutura para tabela sistema_adm.status_condicoes_aparelhos
+CREATE TABLE IF NOT EXISTS `status_condicoes_aparelhos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
   `status` tinyint(4) NOT NULL DEFAULT 1,
@@ -2928,13 +2931,37 @@ CREATE TABLE IF NOT EXISTS `status_condicoes` (
   CONSTRAINT `FK_status_condicoes_usuarios_2` FOREIGN KEY (`id_usuario_at`) REFERENCES `usuarios` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela sistema_adm.status_condicoes: ~3 rows (aproximadamente)
-/*!40000 ALTER TABLE `status_condicoes` DISABLE KEYS */;
-INSERT INTO `status_condicoes` (`id`, `nome`, `status`, `data_registro`, `data_at`, `id_usuario_registro`, `id_usuario_at`) VALUES
+-- Copiando dados para a tabela sistema_adm.status_condicoes_aparelhos: ~3 rows (aproximadamente)
+/*!40000 ALTER TABLE `status_condicoes_aparelhos` DISABLE KEYS */;
+INSERT INTO `status_condicoes_aparelhos` (`id`, `nome`, `status`, `data_registro`, `data_at`, `id_usuario_registro`, `id_usuario_at`) VALUES
 	(2, 'NOVO', 1, '2021-03-19 10:11:30', NULL, 1, NULL),
 	(3, 'USADO', 1, '2021-03-19 10:11:37', NULL, 1, NULL),
 	(4, 'DESCARTADO', 1, '2021-03-19 10:11:44', NULL, 1, NULL);
-/*!40000 ALTER TABLE `status_condicoes` ENABLE KEYS */;
+/*!40000 ALTER TABLE `status_condicoes_aparelhos` ENABLE KEYS */;
+
+-- Copiando estrutura para tabela sistema_adm.status_disponibilidades_aparelhos
+CREATE TABLE IF NOT EXISTS `status_disponibilidades_aparelhos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(100) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 1,
+  `data_registro` datetime NOT NULL DEFAULT current_timestamp(),
+  `data_at` datetime DEFAULT NULL ON UPDATE current_timestamp(),
+  `id_usuario_registro` int(11) NOT NULL,
+  `id_usuario_at` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  KEY `FK_status_condicoes_usuarios` (`id_usuario_registro`) USING BTREE,
+  KEY `FK_status_condicoes_usuarios_2` (`id_usuario_at`) USING BTREE,
+  CONSTRAINT `status_disponibilidades_aparelhos_ibfk_1` FOREIGN KEY (`id_usuario_registro`) REFERENCES `usuarios` (`id`),
+  CONSTRAINT `status_disponibilidades_aparelhos_ibfk_2` FOREIGN KEY (`id_usuario_at`) REFERENCES `usuarios` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+
+-- Copiando dados para a tabela sistema_adm.status_disponibilidades_aparelhos: ~3 rows (aproximadamente)
+/*!40000 ALTER TABLE `status_disponibilidades_aparelhos` DISABLE KEYS */;
+INSERT INTO `status_disponibilidades_aparelhos` (`id`, `nome`, `status`, `data_registro`, `data_at`, `id_usuario_registro`, `id_usuario_at`) VALUES
+	(2, 'EM USO', 1, '2021-03-19 10:11:30', '2021-03-19 20:08:02', 1, NULL),
+	(3, 'DISPONÍVEL', 1, '2021-03-19 10:11:37', '2021-03-19 20:08:06', 1, NULL),
+	(5, 'MANUTENÇÃO', 1, '2021-03-19 20:22:04', '2021-03-19 20:24:36', 1, NULL);
+/*!40000 ALTER TABLE `status_disponibilidades_aparelhos` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela sistema_adm.status_distribuicoes
 CREATE TABLE IF NOT EXISTS `status_distribuicoes` (
@@ -2970,7 +2997,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
 INSERT INTO `usuarios` (`id`, `nome`, `login`, `senha`, `email`, `nivel_acesso`) VALUES
 	(1, 'CLEYTON NEVES', 'N6169286', '1234', 'cleyton.neves@claro.com.br', 'ADMIN'),
-	(2, 'RENATO ALVES', 'goodnato', '1234', 'goodnato@gmail.com', 'ADMIN');
+	(2, 'RENATO NASCIMENTO', 'GOODNATO', '1234', 'goodnato@gmail.com', 'ADMIN');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
