@@ -31,32 +31,37 @@
                         <input type="text" class="form-control form-control-sm" id="pesquisaImei" placeholder="Digite aqui">
                     </div>
                     <div class="col">
-                        <label for="formGroupExampleInput" class="form-label">Área</label>
-                        <select id="example-getting-started4" multiple="multiple">
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                        <label for="pesquisaCadastradoPor" class="form-label">Cadastrado por</label>
+                        <select id="pesquisaCadastradoPor" multiple="multiple">
+                            <?php foreach ($listaUsuariosCadastroAparelho as $cadastradoPor) { ?>
+                                <option value="<?= $cadastradoPor['id'] ?>"><?= $cadastradoPor['nome'] ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                 </div>
                 <div class="row mt-2">
-                    <div class="col-6">
-                        <label for="statusCondicoes" class="form-label">Condições aparelho</label>
-                        <select id="statusCondicoes" multiple="multiple">
+                    <div class="col-4">
+                        <label for="pesquisaStatusCondicoes" class="form-label">Condições aparelho</label>
+                        <select id="pesquisaStatusCondicoes" multiple="multiple">
                             <?php foreach ($listaStatusCondicoes as $status) { ?>
                                 <option value="<?= $status['id'] ?>"><?= $status['nome'] ?></option>
                             <?php } ?>
                         </select>
                     </div>
-                    <div class="col-6">
-                        <label for="formGroupExampleInput" class="form-label">Status</label><br>
-                        <select id="example-getting-started5" multiple="multiple">
-                            <option value="cheese">Cheese</option>
-                            <option value="tomatoes">Tomatoes</option>
-                            <option value="mozarella">Mozzarella</option>
-                            <option value="mushrooms">Mushrooms</option>
-                            <option value="pepperoni">Pepperoni</option>
-                            <option value="onions">Onions</option>
+                    <div class="col-4">
+                        <label for="pesquisaDisponibilidade" class="form-label">Disponibilidade</label><br>
+                        <select id="pesquisaDisponibilidade" multiple="multiple">
+                            <?php foreach ($listaStatusDisponibilidades as $status) { ?>
+                                <option value="<?= $status['id'] ?>"><?= $status['nome'] ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <label for="pesquisaStatus" class="form-label">Status</label><br>
+                        <select id="pesquisaStatus" multiple="multiple">
+                            <?php foreach (ARRAY_STATUS as $idStatus => $status) { ?>
+                                <option value="<?= $idStatus ?>"><?= $status ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                 </div>

@@ -20,7 +20,7 @@ $('#pesquisaModelo').multiselect({
 });
 $('#pesquisaModelo').multiselect('selectAll', false);
 
-$('#statusCondicoes').multiselect({
+$('#pesquisaCadastradoPor').multiselect({
     buttonWidth: '100%',
     includeSelectAllOption: true,
     selectAllText: 'TODOS',
@@ -29,9 +29,9 @@ $('#statusCondicoes').multiselect({
     nSelectedText: 'SELECIONADO(S)',
     buttonClass: 'form-control form-control-sm'
 });
-$('#statusCondicoes').multiselect('selectAll', false);
+$('#pesquisaCadastradoPor').multiselect('selectAll', false);
 
-$('#example-getting-started4').multiselect({
+$('#pesquisaStatusCondicoes').multiselect({
     buttonWidth: '100%',
     includeSelectAllOption: true,
     selectAllText: 'TODOS',
@@ -40,9 +40,9 @@ $('#example-getting-started4').multiselect({
     nSelectedText: 'SELECIONADO(S)',
     buttonClass: 'form-control form-control-sm'
 });
-$('#example-getting-started4').multiselect('selectAll', false);
+$('#pesquisaStatusCondicoes').multiselect('selectAll', false);
 
-$('#example-getting-started5').multiselect({
+$('#pesquisaDisponibilidade').multiselect({
     buttonWidth: '100%',
     includeSelectAllOption: true,
     selectAllText: 'TODOS',
@@ -51,7 +51,18 @@ $('#example-getting-started5').multiselect({
     nSelectedText: 'SELECIONADO(S)',
     buttonClass: 'form-control form-control-sm'
 });
-$('#example-getting-started5').multiselect('selectAll', false);
+$('#pesquisaDisponibilidade').multiselect('selectAll', false);
+
+$('#pesquisaStatus').multiselect({
+    buttonWidth: '100%',
+    includeSelectAllOption: true,
+    selectAllText: 'TODOS',
+    nonSelectedText: 'SELECIONE UMA OPÇÃO',
+    allSelectedText: 'TODOS',
+    nSelectedText: 'SELECIONADO(S)',
+    buttonClass: 'form-control form-control-sm'
+});
+$('#pesquisaStatus').multiselect('selectAll', false);
 
 $('#btnSalvarAparelho').click(function(event) {
     $(this)
