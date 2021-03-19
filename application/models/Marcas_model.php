@@ -4,10 +4,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Marcas_model extends CI_Model
 {
-    public function consultaTodasMarcas()
+    public function consultaTodasMarcasAtivas()
     { 
 
-    	$sql = "SELECT id, nome FROM marcas WHERE status = 1"; 
+    	$sql = "SELECT id, nome FROM marcas WHERE status = " . STATUS_ATIVO; 
 
     	$query = $this->db->query($sql);
     	

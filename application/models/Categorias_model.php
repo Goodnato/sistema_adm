@@ -4,10 +4,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Categorias_model extends CI_Model
 {
-    public function consultaTodasCategorias()
+    public function consultaTodasCategoriasAtivas()
     { 
 
-    	$sql = "SELECT id, nome FROM categorias WHERE status = 1"; 
+    	$sql = "SELECT id, nome FROM categorias WHERE status = " . STATUS_ATIVO; 
 
     	$query = $this->db->query($sql);
     	

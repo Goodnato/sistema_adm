@@ -4,10 +4,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Modelos_model extends CI_Model
 {
-    public function consultaTodosModelos()
+    public function consultaTodosModelosAtivos()
     { 
 
-    	$sql = "SELECT id, nome FROM modelos WHERE status = 1"; 
+    	$sql = "SELECT id, nome FROM modelos WHERE status = " . STATUS_ATIVO; 
 
     	$query = $this->db->query($sql);
     	
