@@ -6,9 +6,9 @@ class Status_disponibilidades_aparelhos_model extends CI_Model
 {
     private $tabela = 'status_disponibilidades_aparelhos';
 
-    public function consultaTodosStatusAtivos()
+    public function consultaTodosStatus()
     {
-    	$sql = "SELECT id, nome FROM {$this->tabela} WHERE status = " . STATUS_ATIVO; 
+    	$sql = "SELECT id, nome FROM {$this->tabela}"; 
 
     	$query = $this->db->query($sql);
     	

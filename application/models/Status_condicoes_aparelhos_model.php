@@ -6,9 +6,9 @@ class Status_condicoes_aparelhos_model extends CI_Model
 {
     private $tabela = 'status_condicoes_aparelhos';
 
-    public function consultaTodosStatusAtivos()
+    public function consultaTodosStatus()
     {
-    	$sql = "SELECT id, nome FROM {$this->tabela} WHERE status = " . STATUS_ATIVO; 
+    	$sql = "SELECT id, nome FROM {$this->tabela}"; 
 
     	$query = $this->db->query($sql);
     	

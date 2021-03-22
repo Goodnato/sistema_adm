@@ -6,7 +6,7 @@ class Aparelhos_model extends CI_Model
 {
     private $tabela = 'aparelhos';
 
-    public function consultaUsuariosCadastroAparelho()
+    public function consultaTodosUsuariosCadastroAparelho()
     { 
     	$sql = "SELECT 
                     ap.id, 
