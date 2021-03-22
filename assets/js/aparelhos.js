@@ -1,6 +1,8 @@
 $('#pesquisaMarca').multiselect({
     buttonWidth: '100%',
     includeSelectAllOption: true,
+    enableFiltering: true,
+    filterPlaceholder: 'Procurar',
     selectAllText: 'TODOS',
     nonSelectedText: 'SELECIONE UMA OPÇÃO',
     allSelectedText: 'TODOS',
@@ -12,6 +14,8 @@ $('#pesquisaMarca').multiselect('selectAll', false);
 $('#pesquisaModelo').multiselect({
     buttonWidth: '100%',
     includeSelectAllOption: true,
+    enableFiltering: true,
+    filterPlaceholder: 'Procurar',
     selectAllText: 'TODOS',
     nonSelectedText: 'SELECIONE UMA OPÇÃO',
     allSelectedText: 'TODOS',
@@ -23,6 +27,8 @@ $('#pesquisaModelo').multiselect('selectAll', false);
 $('#pesquisaCadastradoPor').multiselect({
     buttonWidth: '100%',
     includeSelectAllOption: true,
+    enableFiltering: true,
+    filterPlaceholder: 'Procurar',
     selectAllText: 'TODOS',
     nonSelectedText: 'SELECIONE UMA OPÇÃO',
     allSelectedText: 'TODOS',
@@ -64,7 +70,68 @@ $('#pesquisaStatus').multiselect({
 });
 $('#pesquisaStatus').multiselect('selectAll', false);
 
-$('#btnSalvarAparelho').click(function(event) {
+$('#cadastroModelo').multiselect({
+    buttonWidth: '100%',
+    enableFiltering: true,
+    filterPlaceholder: 'Procurar',
+    selectAllText: 'TODOS',
+    nonSelectedText: 'SELECIONE UMA OPÇÃO',
+    allSelectedText: 'TODOS',
+    nSelectedText: 'SELECIONADO(S)',
+    buttonClass: 'form-control form-control-sm'
+});
+
+$('#cadastroMarca').multiselect({
+    buttonWidth: '100%',
+    enableFiltering: true,
+    filterPlaceholder: 'Procurar',
+    selectAllText: 'TODOS',
+    nonSelectedText: 'SELECIONE UMA OPÇÃO',
+    allSelectedText: 'TODOS',
+    nSelectedText: 'SELECIONADO(S)',
+    buttonClass: 'form-control form-control-sm'
+});
+
+$('#cadastroCondicao').multiselect({
+    buttonWidth: '100%',
+    selectAllText: 'TODOS',
+    nonSelectedText: 'SELECIONE UMA OPÇÃO',
+    allSelectedText: 'TODOS',
+    nSelectedText: 'SELECIONADO(S)',
+    buttonClass: 'form-control form-control-sm'
+});
+
+$("#cadastroValor").maskMoney({ 
+    prefix: 'R$ ', 
+    allowNegative: false, 
+    thousands: '.', 
+    decimal: ','
+});
+
+$("#cadastroModelo").change(function(e){
+    let idModelo = $(this).val()
+
+    $.ajax({
+        url: base_url("Aparelhos/consultaMarcaPeloModelo"),
+        dataType: "json",
+        type: "Post",
+        data: { idModelo: idModelo }
+    }).done(function(response){
+        if(response.status){
+            $('#cadastroMarca').val(response.mensagem[0].id)
+            $('#cadastroMarca').multiselect("refresh")
+            
+            return true;
+        }
+
+        alert(response.mensagem)
+    }).fail(function(response){
+        alert("Ocorreu um erro ao pesquisar os modelos. Contate o administrador do sistema")
+        console.log(response)
+    })
+})
+
+$('#btnSalvarAparelho').click(function (event) {
     $(this)
         .html('<div class="spinner-border spinner-border-sm text-light" role="status"></div> Salvando...')
         .prop('disabled', true)

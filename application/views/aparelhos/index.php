@@ -28,7 +28,7 @@
                 <div class="row mt-2">
                     <div class="col">
                         <label for="pesquisaImei" class="form-label">IMEI</label>
-                        <input type="text" class="form-control form-control-sm" id="pesquisaImei" placeholder="Digite aqui">
+                        <input type="text" class="form-control form-control-sm" id="pesquisaImei" placeholder="DIGITE AQUI">
                     </div>
                     <div class="col">
                         <label for="pesquisaCadastradoPor" class="form-label">Cadastrado por</label>
@@ -69,7 +69,7 @@
                     <div class="col-12">
                         <button class="btn btn-primary"><i class="fas fa-search"></i> Pesquisar</button>
                         <button class="btn btn-warning"><i class="fas fa-file-excel"></i> Excel</button>
-                        <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-plus-square"></i> Novo aparelho</button>
+                        <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#modalNovoAparelho"><i class="fas fa-plus-square"></i> Novo aparelho</button>
                     </div>
                 </div>
             </form>
@@ -111,7 +111,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalNovoAparelho" tabindex="-1">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -127,50 +127,52 @@
                             <form>
                                 <div class="row">
                                     <div class="col">
-                                        <label for="formGroupExampleInput" class="form-label">IMEI</label>
-                                        <input type="email" class="form-control form-control-sm" id="exampleInputEmail1" placeholder="Digite aqui">
+                                        <label for="cadastroImei" class="form-label">IMEI*</label>
+                                        <input type="text" class="form-control form-control-sm" id="cadastroImei" placeholder="DIGITE AQUI">
                                     </div>
                                     <div class="col">
-                                        <label for="formGroupExampleInput" class="form-label">Modelo</label>
-                                        <select class="form-control form-control-sm">
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
+                                        <label for="cadastroModelo" class="form-label">Modelo*</label>
+                                        <select class="form-control form-control-sm" id="cadastroModelo">
+                                            <option value>SELECIONE</option>
+                                            <?php foreach ($listaModelosAtivos as $modelo) { ?>
+                                                <option value="<?= $modelo['id'] ?>"><?= $modelo['nome'] ?></option>
+                                            <?php } ?>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="row mt-2">
                                     <div class="col">
-                                        <label for="formGroupExampleInput" class="form-label">Marca</label>
-                                        <select class="form-control form-control-sm">
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
+                                        <label for="cadastroMarca" class="form-label">Marca*</label>
+                                        <select class="form-control form-control-sm" id="cadastroMarca">
+                                            <option value>SELECIONE</option>
+                                            <?php foreach ($listaMarcas as $marca) { ?>
+                                                <option value="<?= $marca['id'] ?>"><?= $marca['nome'] ?></option>
+                                            <?php } ?>
                                         </select>
                                     </div>
-                                    <div class="col-6">
-                                        <label for="formGroupExampleInput" class="form-label">Estado</label>
-                                        <select class="form-control form-control-sm">
-                                            <option value="1">Selecione aqui</option>
-                                            <option value="1">Novo</option>
-                                            <option value="2">Usado</option>
+                                    <div class="col">
+                                        <label for="cadastroCondicao" class="form-label">Condição aparelho*</label>
+                                        <select class="form-control form-control-sm" id="cadastroCondicao">
+                                            <?php foreach ($listaStatusCondicoes as $status) { ?>
+                                                <option value="<?= $status['id'] ?>"><?= $status['nome'] ?></option>
+                                            <?php } ?>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="row mt-2">
                                     <div class="col-6">
-                                        <label for="formGroupExampleInput" class="form-label">Nota fiscal</label>
-                                        <input type="email" class="form-control form-control-sm" id="exampleInputEmail1" placeholder="Digite aqui">
+                                        <label for="cadastroCondicao" class="form-label">Nota fiscal</label>
+                                        <input type="text" class="form-control form-control-sm" id="cadastroCondicao" placeholder="DIGITE AQUI">
                                     </div>
                                     <div class="col-6">
-                                        <label for="formGroupExampleInput" class="form-label">Data Nota</label>
-                                        <input type="email" class="form-control form-control-sm" id="exampleInputEmail1" placeholder="Digite aqui">
+                                        <label for="cadastroNovaFiscal" class="form-label">Data Nota</label>
+                                        <input type="date" class="form-control form-control-sm" id="cadastroNovaFiscal" placeholder="0,00">
                                     </div>
                                 </div>
                                 <div class="row mt-2">
                                     <div class="col-6">
-                                        <label for="formGroupExampleInput" class="form-label">Valor R$</label>
-                                        <input type="email" class="form-control form-control-sm" id="exampleInputEmail1" placeholder="Digite aqui">
+                                        <label for="cadastroValor" class="form-label">Valor R$</label>
+                                        <input type="text" class="form-control form-control-sm" id="cadastroValor" placeholder="0,00">
                                     </div>
                                 </div>
                             </form>
