@@ -145,7 +145,7 @@
                                         <label for="cadastroMarca" class="form-label">Marca*</label>
                                         <select class="form-control form-control-sm" id="cadastroMarca">
                                             <option value>SELECIONE</option>
-                                            <?php foreach ($listaMarcas as $marca) { ?>
+                                            <?php foreach ($listaMarcasAtivas as $marca) { ?>
                                                 <option value="<?= $marca['id'] ?>"><?= $marca['nome'] ?></option>
                                             <?php } ?>
                                         </select>

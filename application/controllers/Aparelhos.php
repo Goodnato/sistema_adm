@@ -27,7 +27,8 @@ class Aparelhos extends CI_Controller
         $carregaView = [
             'caminhoCss' => 'assets/css/aparelhos.css',
             'caminhoJs' => 'assets/js/aparelhos.js',
-            'listaMarcas' => $this->Marcas_model->consultaTodasMarcasAtivas(),
+            'listaMarcas' => $this->Marcas_model->consultaTodasMarcas(),
+            'listaMarcasAtivas' => $this->Marcas_model->consultaTodasMarcasPorStatus(STATUS_ATIVO),
             'listaModelos' => $this->Modelos_model->consultaTodosModelos(),
             'listaModelosAtivos' => $this->Modelos_model->consultaTodosModelosPorStatus(STATUS_ATIVO),
             'listaStatusCondicoes' => $this->Status_condicoes_aparelhos_model->consultaTodosStatusAtivos(),
