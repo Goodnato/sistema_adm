@@ -2851,7 +2851,7 @@ CREATE TABLE IF NOT EXISTS `marcas` (
   CONSTRAINT `marcas_ibfk_2` FOREIGN KEY (`id_usuario_at`) REFERENCES `usuarios` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
--- Copiando dados para a tabela sistema_adm.marcas: ~4 rows (aproximadamente)
+-- Copiando dados para a tabela sistema_adm.marcas: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `marcas` DISABLE KEYS */;
 INSERT INTO `marcas` (`id`, `nome`, `status`, `data_registro`, `data_at`, `id_usuario_registro`, `id_usuario_at`) VALUES
 	(13, 'LG', 1, '2021-03-19 10:03:45', NULL, 1, NULL),
@@ -2955,7 +2955,7 @@ CREATE TABLE IF NOT EXISTS `status_disponibilidades_aparelhos` (
   CONSTRAINT `status_disponibilidades_aparelhos_ibfk_2` FOREIGN KEY (`id_usuario_at`) REFERENCES `usuarios` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
--- Copiando dados para a tabela sistema_adm.status_disponibilidades_aparelhos: ~3 rows (aproximadamente)
+-- Copiando dados para a tabela sistema_adm.status_disponibilidades_aparelhos: ~2 rows (aproximadamente)
 /*!40000 ALTER TABLE `status_disponibilidades_aparelhos` DISABLE KEYS */;
 INSERT INTO `status_disponibilidades_aparelhos` (`id`, `nome`, `status`, `data_registro`, `data_at`, `id_usuario_registro`, `id_usuario_at`) VALUES
 	(2, 'EM USO', 1, '2021-03-19 10:11:30', '2021-03-19 20:08:02', 1, NULL),
