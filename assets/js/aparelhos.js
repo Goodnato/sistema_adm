@@ -123,8 +123,6 @@ $("#cadastroModelo").change(function(e){
             
             return true;
         }
-
-        alert(response.mensagem)
     }).fail(function(response){
         alert("Ocorreu um erro ao pesquisar os modelos. Contate o administrador do sistema")
         console.log(response)
