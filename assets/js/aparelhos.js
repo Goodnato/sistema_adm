@@ -92,7 +92,7 @@ $('#cadastroMarca').multiselect({
     buttonClass: 'form-control form-control-sm'
 });
 
-$('#cadastroCondicao').multiselect({
+$('#cadastroCondicaoAparelho').multiselect({
     buttonWidth: '100%',
     selectAllText: 'TODOS',
     nonSelectedText: 'SELECIONE UMA OPÇÃO',
@@ -101,7 +101,7 @@ $('#cadastroCondicao').multiselect({
     buttonClass: 'form-control form-control-sm'
 });
 
-$("#cadastroValor").maskMoney({ 
+$("#cadastroValorNotaFiscal").maskMoney({ 
     prefix: 'R$ ', 
     allowNegative: false, 
     thousands: '.', 
@@ -118,8 +118,7 @@ $("#cadastroModelo").change(function(e){
         data: { idModelo: idModelo }
     }).done(function(response){
         if(response.status){
-            $('#cadastroMarca').val(response.mensagem[0].id)
-            $('#cadastroMarca').multiselect("refresh")
+            $('#cadastroMarca').val(response.mensagem[0].id).multiselect("refresh")
             
             return true;
         }
@@ -143,7 +142,9 @@ $('#btnSalvarAparelho').click(function (event) {
             timer: 1500,
             heightAuto: false
         }).then((result) => {
-            $('#exampleModal').modal('hide')
+            //$('#exampleModal').modal('hide')
+
+            limpaFormularioCadastro()
 
             $('#btnSalvarAparelho')
                 .html('<i class="fas fa-save"></i> Salvar')
@@ -151,3 +152,13 @@ $('#btnSalvarAparelho').click(function (event) {
         })
     }, 1000)
 })
+
+function limpaFormularioCadastro() {
+    $('#cadastroImei').val('')
+    $("#cadastroModelo").val($("#cadastroModelo option:first").val()).multiselect('refresh');
+    $("#cadastroMarca").val($("#cadastroMarca option:first").val()).multiselect('refresh');
+    $("#cadastroCondicaoAparelho").val($("#cadastroCondicaoAparelho option:first").val()).multiselect('refresh');
+    $('#cadastroNotaFiscal').val('')
+    $('#cadastroDataNotaFiscal').val('')
+    $('#cadastroValorNotaFiscal').val('')
+}

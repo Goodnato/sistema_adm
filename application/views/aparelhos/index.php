@@ -127,6 +127,13 @@
                             <form>
                                 <div class="row">
                                     <div class="col">
+                                        <div id="cadastroAlert" class="alert alert-danger d-none" role="alert">
+                                            <div id="cadastroMensagem"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
                                         <label for="cadastroImei" class="form-label">IMEI*</label>
                                         <input type="text" class="form-control form-control-sm" id="cadastroImei" placeholder="DIGITE AQUI">
                                     </div>
@@ -151,8 +158,8 @@
                                         </select>
                                     </div>
                                     <div class="col">
-                                        <label for="cadastroCondicao" class="form-label">Condição aparelho*</label>
-                                        <select class="form-control form-control-sm" id="cadastroCondicao">
+                                        <label for="cadastroCondicaoAparelho" class="form-label">Condição aparelho*</label>
+                                        <select class="form-control form-control-sm" id="cadastroCondicaoAparelho">
                                             <?php foreach ($listaStatusCondicoes as $status) { ?>
                                                 <option value="<?= $status['id'] ?>"><?= $status['nome'] ?></option>
                                             <?php } ?>
@@ -161,18 +168,18 @@
                                 </div>
                                 <div class="row mt-2">
                                     <div class="col-6">
-                                        <label for="cadastroCondicao" class="form-label">Nota fiscal</label>
-                                        <input type="text" class="form-control form-control-sm" id="cadastroCondicao" placeholder="DIGITE AQUI">
+                                        <label for="cadastroNotaFiscal" class="form-label">Nota fiscal</label>
+                                        <input type="text" class="form-control form-control-sm" id="cadastroNotaFiscal" placeholder="DIGITE AQUI">
                                     </div>
                                     <div class="col-6">
-                                        <label for="cadastroNovaFiscal" class="form-label">Data Nota</label>
-                                        <input type="date" class="form-control form-control-sm" id="cadastroNovaFiscal" placeholder="0,00">
+                                        <label for="cadastroDataNotaFiscal" class="form-label">Data nota fiscal</label>
+                                        <input type="date" class="form-control form-control-sm" id="cadastroDataNotaFiscal" placeholder="0,00">
                                     </div>
                                 </div>
                                 <div class="row mt-2">
                                     <div class="col-6">
-                                        <label for="cadastroValor" class="form-label">Valor R$</label>
-                                        <input type="text" class="form-control form-control-sm" id="cadastroValor" placeholder="0,00">
+                                        <label for="cadastroValorNotaFiscal" class="form-label">Valor nota fiscal R$</label>
+                                        <input type="text" class="form-control form-control-sm" id="cadastroValorNotaFiscal" placeholder="0,00">
                                     </div>
                                 </div>
                             </form>
