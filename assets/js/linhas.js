@@ -10,16 +10,16 @@ $('#pesquisaCategoria').multiselect({
 });
 $('#pesquisaCategoria').multiselect('selectAll', false);
 
-$('#example-getting-started2').multiselect({
+$('#cadastroMarca').multiselect({
     buttonWidth: '100%',
-    includeSelectAllOption: true,
+    enableFiltering: true,
+    filterPlaceholder: 'Procurar',
     selectAllText: 'TODOS',
     nonSelectedText: 'SELECIONE UMA OPÇÃO',
     allSelectedText: 'TODOS',
     nSelectedText: 'SELECIONADO(S)',
     buttonClass: 'form-control form-control-sm'
 });
-$('#example-getting-started2').multiselect('selectAll', false);
 
 //codigo abaixo de jquery e para manipular elementos, neste caso o efeito de carregando do botão salvar
 $('#btnSalvarLinha').click(function(event) {
@@ -36,7 +36,9 @@ $('#btnSalvarLinha').click(function(event) {
             timer: 1500,
             heightAuto: false
         }).then((result) => {
-            $('#exampleModal').modal('hide')
+            //$('#exampleModal').modal('hide')
+
+            limpaFormularioCadastroLinha()
 
             $('#btnSalvarLinha')
                 .html('<i class="fas fa-save"></i> Salvar')
@@ -44,4 +46,13 @@ $('#btnSalvarLinha').click(function(event) {
         })
     }, 1000)
 })
+
+function limpaFormularioCadastroLinha() {
+    $('#cadastroNumero').val('')
+    $('#cadastroCodigoChip').val('')
+    $("#cadastroCategoria").val($("#cadastroCategoria option:first").val()).multiselect('refresh');
+    $('#cadastroOperadora').val('')
+    $('#cadastroPinPuk1').val('')
+    $('#cadastroPinPuk2').val('')
+}
 
