@@ -22,7 +22,8 @@ class Linhas extends CI_Controller
         $carregaView = [
             'caminhoCss' => 'assets/css/linhas.css',
             'caminhoJs' => 'assets/js/linhas.js',
-            'listaCategorias' => $this->Categorias_model->consultaTodasCategoriasAtivas(),
+            'listaCategorias' => $this->Categorias_model->consultaTodasCategorias(),
+            'listaCategoriasAtivas' => $this->Categorias_model->consultaTodasCategoriasPorStatus(STATUS_ATIVO)
         ];
 
         return $carregaView;
