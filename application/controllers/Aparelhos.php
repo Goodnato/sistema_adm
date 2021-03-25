@@ -44,10 +44,6 @@ class Aparelhos extends CI_Controller
         $idModelo = (int) $this->input->post('idModelo');
 
         if($idModelo <= 0){
-            echo json_encode([
-                'status' => false, 
-                'mensagem' => 'Modelo inválido'
-            ]);
 
             return false;
         }
@@ -55,17 +51,19 @@ class Aparelhos extends CI_Controller
         $marca = $this->Modelos_model->consultaMarcaPorStatusPorModelo(STATUS_ATIVO, $idModelo);
 
         if(count($marca) == 0){
-            echo json_encode([
-                'status' => false, 
-                'mensagem' => 'Modelo não encontrado'
-            ]);
 
             return false;
         }
 
         echo json_encode([
             'status' => true,
-            'mensagem' => $marca
+            'marca' => $marca
         ]);
+    }
+
+    public function salvarAparelho()
+    {
+        echo '<pre>';
+        var_dump($_POST);
     }
 }

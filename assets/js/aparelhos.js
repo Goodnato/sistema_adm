@@ -81,17 +81,6 @@ $('#cadastroModelo').multiselect({
     buttonClass: 'form-control form-control-sm'
 });
 
-$('#cadastroMarca').multiselect({
-    buttonWidth: '100%',
-    enableFiltering: true,
-    filterPlaceholder: 'Procurar',
-    selectAllText: 'TODOS',
-    nonSelectedText: 'SELECIONE UMA OPÇÃO',
-    allSelectedText: 'TODOS',
-    nSelectedText: 'SELECIONADO(S)',
-    buttonClass: 'form-control form-control-sm'
-});
-
 $('#cadastroCondicaoAparelho').multiselect({
     buttonWidth: '100%',
     selectAllText: 'TODOS',
@@ -101,14 +90,14 @@ $('#cadastroCondicaoAparelho').multiselect({
     buttonClass: 'form-control form-control-sm'
 });
 
-$("#cadastroValorNotaFiscal").maskMoney({ 
-    prefix: 'R$ ', 
-    allowNegative: false, 
-    thousands: '.', 
+$("#cadastroValorNotaFiscal").maskMoney({
+    prefix: 'R$ ',
+    allowNegative: false,
+    thousands: '.',
     decimal: ','
 });
 
-$("#cadastroModelo").change(function(e){
+$("#cadastroModelo").change(function (e) {
     let idModelo = $(this).val()
 
     $.ajax({
@@ -116,13 +105,14 @@ $("#cadastroModelo").change(function(e){
         dataType: "json",
         type: "Post",
         data: { idModelo: idModelo }
-    }).done(function(response){
-        if(response.status){
-            $('#cadastroMarca').val(response.mensagem[0].id).multiselect("refresh")
-            
+    }).done(function (response) {
+        if (response.status) {
+            $('#cadastroMarcaTexto').val(response.marca[0].nome)
+            $('#cadastroMarca').val(response.marca[0].id)
+
             return true;
         }
-    }).fail(function(response){
+    }).fail(function (response) {
         alert("Ocorreu um erro ao pesquisar os modelos. Contate o administrador do sistema")
         console.log(response)
     })
@@ -156,8 +146,9 @@ $('#btnSalvarAparelho').click(function (event) {
 function limpaFormularioCadastro() {
     $('#cadastroImei').val('')
     $("#cadastroModelo").val($("#cadastroModelo option:first").val()).multiselect('refresh');
-    $("#cadastroMarca").val($("#cadastroMarca option:first").val()).multiselect('refresh');
     $("#cadastroCondicaoAparelho").val($("#cadastroCondicaoAparelho option:first").val()).multiselect('refresh');
+    $('#cadastroMarcaTexto').val('SELECIONE UM MODELO')
+    $('#cadastroMarca').val('')
     $('#cadastroNotaFiscal').val('')
     $('#cadastroDataNotaFiscal').val('')
     $('#cadastroValorNotaFiscal').val('')

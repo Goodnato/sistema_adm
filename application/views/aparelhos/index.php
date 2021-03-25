@@ -149,13 +149,9 @@
                                 </div>
                                 <div class="row mt-2">
                                     <div class="col">
-                                        <label for="cadastroMarca" class="form-label">Marca*</label>
-                                        <select class="form-control form-control-sm" id="cadastroMarca" disabled>
-                                            <option value>SELECIONE UM MODELO</option>
-                                            <?php foreach ($listaMarcasAtivas as $marca) { ?>
-                                                <option value="<?= $marca['id'] ?>"><?= $marca['nome'] ?></option>
-                                            <?php } ?>
-                                        </select>
+                                        <label for="cadastroMarcaTexto" class="form-label">Marca*</label>
+                                        <input type="text" class="form-control form-control-sm text-center" id="cadastroMarcaTexto" value="SELECIONE UM MODELO" disabled>
+                                        <input type="hidden" value="" id="cadastroMarca">
                                     </div>
                                     <div class="col">
                                         <label for="cadastroCondicaoAparelho" class="form-label">Condição aparelho*</label>
