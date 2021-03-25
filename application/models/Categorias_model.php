@@ -6,12 +6,26 @@ class Categorias_model extends CI_Model
 {
     private $tabela = 'categorias';
 
-    public function consultaTodasCategoriasAtivas()
+    public function consultaTodasCategorias()
     { 
-    	$sql = "SELECT id, nome FROM {$this->tabela} WHERE status = " . STATUS_ATIVO; 
+    	$sql = "SELECT id, nome FROM {$this->tabela}"; 
 
     	$query = $this->db->query($sql);
     	
         return $query->result_array();
     }
+
+
+    public function consultaTodasCategoriasPorStatus($status)
+    { 
+    	$sql = "SELECT id, nome FROM {$this->tabela} WHERE status = $status"; 
+
+    	$query = $this->db->query($sql);
+    	
+        return $query->result_array();
+    }
+
+
+
+
 }
