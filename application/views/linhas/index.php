@@ -10,12 +10,12 @@
                             </div>
                             <div class="row mt-2">
                                 <div class="col">
-                                    <label for="formGroupExampleInput" class="form-label">Número da Linha</label>
-                                    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    <label for="pesquisaNumero" class="form-label">Número da Linha</label>
+                                    <input type="text" class="form-control" id="pesquisaNumero" placeholder="DIGITE AQUI">
                                 </div>
                                 <div class="col">
-                                    <label for="formGroupExampleInput" class="form-label">Código do Chip</label>
-                                    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    <label for="pesquisaCodigoChip" class="form-label">Código do Chip</label>
+                                    <input type="text" class="form-control" id="pesquisaCodigoChip" placeholder="DIGITE AQUI">
                                 </div>
                             </div>
                             <div class="row mt-2">
@@ -102,40 +102,38 @@
                                 <form>
                                     <div class="row mt-2">
                                         <div class="col-6">
-                                            <label for="formGroupExampleInput" class="form-label">Número da Linha</label>
-                                            <input type="number" class="form-control form-control-sm" id="exampleInputEmail1" placeholder="Digite aqui">
+                                            <label for="cadastroNumero" class="form-label">Número da Linha</label>
+                                            <input type="text" class="form-control form-control-sm" id="cadastroNumero" placeholder="DIGITE AQUI">
                                         </div>
                                         <div class="col-6">
-                                            <label for="formGroupExampleInput" class="form-label">Código do Chip</label>
-                                            <input type="number" class="form-control form-control-sm" id="exampleInputEmail1" placeholder="Digite aqui">
+                                            <label for="cadastroCodigoChip" class="form-label">Código do Chip</label>
+                                            <input type="text" class="form-control form-control-sm" id="cadastroCodigoChip" placeholder="DIGITE AQUI">
                                         </div>
                                     </div>
                                     <div class="row mt-2">
                                         <div class="col-6">
-                                            <label for="formGroupExampleInput" class="form-label">Categoria</label>
-                                            <select class="form-control form-control-sm">
-                                                <option value="1">Selecione aqui </option>
-                                                <option value="1">Categoria I </option>
-                                                <option value="2">Categoria II</option>
-                                                <option value="3">Categoria III</option>
-                                                <option value="3">Categoria IV</option>
-                                                <option value="3">Categoria V</option>
+                                            <label for="cadastroCategoria" class="form-label">Categoria</label>
+                                            <select class="form-control form-control-sm" id="cadastroCategoria">
+                                                <option value>SELECIONE</option>
+                                                <?php foreach ($listaCategoriasAtivas as $categoria) { ?>
+                                                    <option value="<?= $categoria['id'] ?>"><?= $categoria['nome'] ?></option>
+                                                <?php } ?>
                                             </select>
                                         </div>
                                         <div class="col-6">
-                                            <label for="formGroupExampleInput" class="form-label">Operadora</label>
-                                            <input type="email" class="form-control form-control-sm" id="exampleInputEmail1" placeholder="Digite aqui">
+                                            <label for="cadastroOperadora" class="form-label">Operadora</label>
+                                            <input type="text" class="form-control form-control-sm" id="cadastroOperadora" value="CLARO" disabled>
                                         </div>
                                     </div>
 
                                     <div class="row mt-2">
                                         <div class="col-6">
-                                            <label for="formGroupExampleInput" class="form-label">PIN-PUK1</label>
-                                            <input type="email" class="form-control form-control-sm" id="exampleInputEmail1" placeholder="Digite aqui">
+                                            <label for="cadastroPinPuk2" class="form-label">PIN-PUK1</label>
+                                            <input type="text" class="form-control form-control-sm" id="cadastroPinPuk1" placeholder="DIGITE AQUI">
                                         </div>
                                         <div class="col-6">
                                         <label for="formGroupExampleInput" class="form-label">PIN-PUK2</label>
-                                            <input type="email" class="form-control form-control-sm" id="exampleInputEmail1" placeholder="Digite aqui">
+                                            <input type="text" class="form-control form-control-sm" id="cadastroPinPuk2" placeholder="DIGITE AQUI">
                                         </div>
                                     </div>
                                 </form>
