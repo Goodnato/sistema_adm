@@ -135,7 +135,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <label for="cadastroImei" class="form-label">IMEI*</label>
-                                        <input type="text" class="form-control form-control-sm" id="cadastroImei" placeholder="DIGITE AQUI">
+                                        <input type="number" name="imei" class="form-control form-control-sm" id="cadastroImei" placeholder="DIGITE AQUI">
                                     </div>
                                     <div class="col">
                                         <label for="cadastroModelo" class="form-label">Modelo*</label>
@@ -149,9 +149,8 @@
                                 </div>
                                 <div class="row mt-2">
                                     <div class="col">
-                                        <label for="cadastroMarcaTexto" class="form-label">Marca*</label>
-                                        <input type="text" class="form-control form-control-sm text-center" id="cadastroMarcaTexto" value="SELECIONE UM MODELO" disabled>
-                                        <input type="hidden" value="" id="cadastroMarca">
+                                        <label for="cadastroMarca" class="form-label">Marca*</label>
+                                        <input type="text" class="form-control form-control-sm text-center" id="cadastroMarca" value="SELECIONE UM MODELO" disabled>
                                     </div>
                                     <div class="col">
                                         <label for="cadastroCondicaoAparelho" class="form-label">Condição aparelho*</label>
@@ -165,7 +164,7 @@
                                 <div class="row mt-2">
                                     <div class="col-6">
                                         <label for="cadastroNotaFiscal" class="form-label">Nota fiscal</label>
-                                        <input type="text" class="form-control form-control-sm" id="cadastroNotaFiscal" placeholder="DIGITE AQUI">
+                                        <input type="number" class="form-control form-control-sm" id="cadastroNotaFiscal" placeholder="DIGITE AQUI">
                                     </div>
                                     <div class="col-6">
                                         <label for="cadastroDataNotaFiscal" class="form-label">Data nota fiscal</label>

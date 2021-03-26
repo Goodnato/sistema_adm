@@ -23,7 +23,7 @@ class Aparelhos extends CI_Controller
     }
 
     private function carregaView()
-    {        
+    {
         $carregaView = [
             'caminhoCss' => 'assets/css/aparelhos.css',
             'caminhoJs' => 'assets/js/aparelhos.js',
@@ -43,14 +43,14 @@ class Aparelhos extends CI_Controller
     {
         $idModelo = (int) $this->input->post('idModelo');
 
-        if($idModelo <= 0){
+        if ($idModelo <= 0) {
 
             return false;
         }
 
         $marca = $this->Modelos_model->consultaMarcaPorStatusPorModelo(STATUS_ATIVO, $idModelo);
 
-        if(count($marca) == 0){
+        if (count($marca) == 0) {
 
             return false;
         }
@@ -63,7 +63,15 @@ class Aparelhos extends CI_Controller
 
     public function salvarAparelho()
     {
-        echo '<pre>';
-        var_dump($_POST);
+        $this->form_validation->set_rules("imei", "<b>Imei</b>", "trim|required|integer|is_unique[aparelhos.imei1]|exact_length[15]");
+        $this->form_validation->set_rules("idModelo", "<b>Modelo</b>", "trim|required|integer|combines[modelos.id]");
+        $this->form_validation->set_rules("idCondicaoAparelho", "<b>Condição aparelho</b>", "trim|required|integer|combines[status_condicoes_aparelhos.id]");
+        $this->form_validation->set_rules("notaFiscal", "<b>Nota fiscal</b>", "trim|integer");
+
+        if (!$this->form_validation->run()) {
+            print_r(validation_errors());exit;
+        } else{
+            echo 2;exit;
+        }
     }
 }

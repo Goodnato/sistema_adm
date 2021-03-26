@@ -107,8 +107,7 @@ $("#cadastroModelo").change(function (e) {
         data: { idModelo: idModelo }
     }).done(function (response) {
         if (response.status) {
-            $('#cadastroMarcaTexto').val(response.marca[0].nome)
-            $('#cadastroMarca').val(response.marca[0].id)
+            $('#cadastroMarca').val(response.marca[0].nome)
 
             return true;
         }
@@ -122,6 +121,23 @@ $('#btnSalvarAparelho').click(function (event) {
     $(this)
         .html('<div class="spinner-border spinner-border-sm text-light" role="status"></div> Salvando...')
         .prop('disabled', true)
+
+    $.ajax({
+        url: base_url("Aparelhos/salvarAparelho"),
+        dataType: "json",
+        type: "Post",
+        data: { 
+            imei: $('#cadastroImei').val(), 
+            idModelo: $('#cadastroModelo').val(),
+            idCondicaoAparelho: $('#cadastroCondicaoAparelho').val(),
+            notaFiscal: $('#cadastroNotaFiscal').val(),
+            dataNotaFiscal: $('#cadastroDataNotaFiscal').val(),
+        }
+    }).done(function (response) {
+    }).fail(function (response) {
+        alert("Ocorreu um erro ao pesquisar os modelos. Contate o administrador do sistema")
+        console.log(response)
+    })
 
     setTimeout(() => {
         Swal.fire({
@@ -147,8 +163,7 @@ function limpaFormularioCadastro() {
     $('#cadastroImei').val('')
     $("#cadastroModelo").val($("#cadastroModelo option:first").val()).multiselect('refresh');
     $("#cadastroCondicaoAparelho").val($("#cadastroCondicaoAparelho option:first").val()).multiselect('refresh');
-    $('#cadastroMarcaTexto').val('SELECIONE UM MODELO')
-    $('#cadastroMarca').val('')
+    $('#cadastroMarca').val('SELECIONE UM MODELO')
     $('#cadastroNotaFiscal').val('')
     $('#cadastroDataNotaFiscal').val('')
     $('#cadastroValorNotaFiscal').val('')
