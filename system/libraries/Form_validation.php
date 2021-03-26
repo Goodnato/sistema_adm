@@ -1127,7 +1127,7 @@ class CI_Form_validation {
 	{
 		sscanf($field, '%[^.].%[^.]', $table, $field);
 		return isset($this->CI->db)
-			? ($this->CI->db->limit(1)->get_where($table, array($field => $str))->num_rows() === 1)
+			? ($this->CI->db->limit(1)->get_where($table, array($field => $str, 'status' => STATUS_ATIVO))->num_rows() === 1)
 			: FALSE;
 	}
 
