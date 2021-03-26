@@ -29,9 +29,9 @@
                                 </div>
 
                                 <div class="col-6">
-                                    <label for="formGroupExampleInput" class="form-label">Status</label><br>
+                                    <label for="pesquisaStatus" class="form-label">Status</label><br>
                                     <!-- Build your select: -->
-                                    <select id="example-getting-started2" multiple="multiple">
+                                    <select id="pesquisaStatus" multiple="multiple">
                                         <option value="cheese">Em uso</option>
                                         <option value="tomatoes">Disponível</option>
                                     </select>

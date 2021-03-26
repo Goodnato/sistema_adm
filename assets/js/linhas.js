@@ -10,16 +10,29 @@ $('#pesquisaCategoria').multiselect({
 });
 $('#pesquisaCategoria').multiselect('selectAll', false);
 
-$('#cadastroMarca').multiselect({
+$('#pesquisaStatus').multiselect({
     buttonWidth: '100%',
-    enableFiltering: true,
-    filterPlaceholder: 'Procurar',
+    includeSelectAllOption: true,
     selectAllText: 'TODOS',
     nonSelectedText: 'SELECIONE UMA OPÇÃO',
     allSelectedText: 'TODOS',
     nSelectedText: 'SELECIONADO(S)',
     buttonClass: 'form-control form-control-sm'
 });
+$('#pesquisaStatus').multiselect('selectAll', false);
+
+
+$('#cadastroCategoria').multiselect({
+    buttonWidth: '100%',
+    includeSelectAllOption: true,
+    selectAllText: 'TODOS',
+    nonSelectedText: 'SELECIONE UMA OPÇÃO',
+    allSelectedText: 'TODOS',
+    nSelectedText: 'SELECIONADO(S)',
+    buttonClass: 'form-control form-control-sm'
+});
+$('#cadastroCategoria').multiselect('selectAll', false);
+
 
 //codigo abaixo de jquery e para manipular elementos, neste caso o efeito de carregando do botão salvar
 $('#btnSalvarLinha').click(function(event) {
