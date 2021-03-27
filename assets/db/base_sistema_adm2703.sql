@@ -12,6 +12,8 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+use sistema_adm;
+
 -- Copiando estrutura para tabela sistema_adm.aparelhos
 CREATE TABLE IF NOT EXISTS `aparelhos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
