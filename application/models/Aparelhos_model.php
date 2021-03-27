@@ -8,8 +8,8 @@ class Aparelhos_model extends CI_Model
 
     public function consultaTodosUsuariosCadastroAparelho()
     { 
-    	$sql = "SELECT 
-                    ap.id, 
+    	$sql = "SELECT DISTINCT
+                    us.id, 
                     us.nome 
                 FROM {$this->tabela} AS ap 
                 INNER JOIN usuarios AS us ON us.id = ap.id_usuario_registro";
