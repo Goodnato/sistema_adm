@@ -1,6 +1,6 @@
 -- --------------------------------------------------------
 -- Servidor:                     127.0.0.1
--- Versão do servidor:           10.4.17-MariaDB - mariadb.org binary distribution
+-- Versão do servidor:           10.4.18-MariaDB - mariadb.org binary distribution
 -- OS do Servidor:               Win64
 -- HeidiSQL Versão:              11.2.0.6213
 -- --------------------------------------------------------
@@ -12,15 +12,13 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-use sistema_adm;
-
 -- Copiando estrutura para tabela sistema_adm.aparelhos
 CREATE TABLE IF NOT EXISTS `aparelhos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_modelo` int(11) NOT NULL,
   `id_marca` int(11) NOT NULL,
   `imei1` varchar(200) NOT NULL,
-  `id_status_condicao` int(11) NOT NULL,
+  `id_status_condicao_aparelho` int(11) NOT NULL,
   `id_status_disponibilidade` int(11) NOT NULL DEFAULT 1,
   `status` int(11) NOT NULL DEFAULT 1,
   `nota_fiscal` varchar(50) DEFAULT NULL,
@@ -32,15 +30,16 @@ CREATE TABLE IF NOT EXISTS `aparelhos` (
   `id_usuario_registro` int(11) NOT NULL,
   `id_usuario_at` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `imei1` (`imei1`),
   KEY `FK_aparelhos_modelos` (`id_modelo`),
   KEY `FK_aparelhos_usuario` (`id_usuario_registro`),
   KEY `FK_aparelhos_usuario_2` (`id_usuario_at`),
   KEY `FK_aparelhos_marcas` (`id_marca`),
-  KEY `FK_aparelhos_status_condicoes` (`id_status_condicao`),
   KEY `FK_aparelhos_status_disponibilidade_aparelhos` (`id_status_disponibilidade`),
+  KEY `FK_aparelhos_status_condicoes` (`id_status_condicao_aparelho`) USING BTREE,
   CONSTRAINT `FK_aparelhos_marcas` FOREIGN KEY (`id_marca`) REFERENCES `marcas` (`id`),
   CONSTRAINT `FK_aparelhos_modelos` FOREIGN KEY (`id_modelo`) REFERENCES `modelos` (`id`),
-  CONSTRAINT `FK_aparelhos_status_condicoes` FOREIGN KEY (`id_status_condicao`) REFERENCES `status_condicoes_aparelhos` (`id`),
+  CONSTRAINT `FK_aparelhos_status_condicoes_aparelhos` FOREIGN KEY (`id_status_condicao_aparelho`) REFERENCES `status_condicoes_aparelhos` (`id`),
   CONSTRAINT `FK_aparelhos_status_disponibilidade_aparelhos` FOREIGN KEY (`id_status_disponibilidade`) REFERENCES `status_disponibilidades_aparelhos` (`id`),
   CONSTRAINT `FK_aparelhos_usuario` FOREIGN KEY (`id_usuario_registro`) REFERENCES `usuarios` (`id`),
   CONSTRAINT `FK_aparelhos_usuario_2` FOREIGN KEY (`id_usuario_at`) REFERENCES `usuarios` (`id`)
@@ -64,9 +63,9 @@ CREATE TABLE IF NOT EXISTS `categorias` (
   KEY `FK__usuarios_2` (`id_usuario_at`),
   CONSTRAINT `FK__usuarios` FOREIGN KEY (`id_usuario_registro`) REFERENCES `usuarios` (`id`),
   CONSTRAINT `FK__usuarios_2` FOREIGN KEY (`id_usuario_at`) REFERENCES `usuarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela sistema_adm.categorias: ~5 rows (aproximadamente)
+-- Copiando dados para a tabela sistema_adm.categorias: ~6 rows (aproximadamente)
 /*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
 INSERT INTO `categorias` (`id`, `nome`, `status`, `data_registro`, `data_at`, `id_usuario_registro`, `id_usuario_at`) VALUES
 	(1, 'CATEGORIA I', 1, '2021-03-19 11:41:09', '2021-03-19 13:38:03', 1, NULL),
@@ -203,7 +202,7 @@ CREATE TABLE IF NOT EXISTS `colaboradores_import` (
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela sistema_adm.colaboradores_import: ~2.569 rows (aproximadamente)
+-- Copiando dados para a tabela sistema_adm.colaboradores_import: ~2.558 rows (aproximadamente)
 /*!40000 ALTER TABLE `colaboradores_import` DISABLE KEYS */;
 INSERT INTO `colaboradores_import` (`id`, `nome`, `id_centro_custo`, `cargo`, `email`, `gestor`, `situacao`, `empresa`, `cidade`, `matricula_coordenador`) VALUES
 	(1147, 'ALESSANDRO SOARES KNOELLER', '10MZBR6C42', 'ESP PROCESSOS FINANCEIROS', 'alessandro.knoeller@claro.com.br', 'RENATO BARRANCO MATHIAS', 'AFASTADO', 'CLARO-CL CORPORATE SP (CNPJ 0001-47)', 'SAO PAULO', 29263),
@@ -2823,6 +2822,7 @@ CREATE TABLE IF NOT EXISTS `linhas` (
   `id_usuario_registro` int(11) NOT NULL,
   `id_usuario_at` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `numero_linha` (`numero_linha`),
   KEY `FK_linhas_operadoras` (`id_operadora`),
   KEY `FK_linhas_usuarios` (`id_usuario_registro`),
   KEY `FK_linhas_usuarios_2` (`id_usuario_at`),
@@ -2853,7 +2853,7 @@ CREATE TABLE IF NOT EXISTS `marcas` (
   CONSTRAINT `marcas_ibfk_2` FOREIGN KEY (`id_usuario_at`) REFERENCES `usuarios` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
--- Copiando dados para a tabela sistema_adm.marcas: ~3 rows (aproximadamente)
+-- Copiando dados para a tabela sistema_adm.marcas: ~4 rows (aproximadamente)
 /*!40000 ALTER TABLE `marcas` DISABLE KEYS */;
 INSERT INTO `marcas` (`id`, `nome`, `status`, `data_registro`, `data_at`, `id_usuario_registro`, `id_usuario_at`) VALUES
 	(13, 'LG', 1, '2021-03-19 10:03:45', NULL, 1, NULL),
@@ -2957,7 +2957,7 @@ CREATE TABLE IF NOT EXISTS `status_disponibilidades_aparelhos` (
   CONSTRAINT `status_disponibilidades_aparelhos_ibfk_2` FOREIGN KEY (`id_usuario_at`) REFERENCES `usuarios` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
--- Copiando dados para a tabela sistema_adm.status_disponibilidades_aparelhos: ~2 rows (aproximadamente)
+-- Copiando dados para a tabela sistema_adm.status_disponibilidades_aparelhos: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `status_disponibilidades_aparelhos` DISABLE KEYS */;
 INSERT INTO `status_disponibilidades_aparelhos` (`id`, `nome`, `status`, `data_registro`, `data_at`, `id_usuario_registro`, `id_usuario_at`) VALUES
 	(2, 'EM USO', 1, '2021-03-19 10:11:30', '2021-03-19 20:08:02', 1, NULL),
