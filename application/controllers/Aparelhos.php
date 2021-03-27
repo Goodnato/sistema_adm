@@ -44,13 +44,19 @@ class Aparelhos extends CI_Controller
         $idModelo = (int) $this->input->post('idModelo');
 
         if ($idModelo <= 0) {
+            echo json_encode([
+                'status' => false
+            ]);
 
             return false;
         }
 
-        $marca = $this->Modelos_model->consultaMarcaPorStatusPorModelo(STATUS_ATIVO, $idModelo);
+        $marca = $this->Modelos_model->consultaMarcaPorModeloPorStatus($idModelo);
 
         if (count($marca) == 0) {
+            echo json_encode([
+                'status' => false
+            ]);
 
             return false;
         }
@@ -65,13 +71,33 @@ class Aparelhos extends CI_Controller
     {
         $this->form_validation->set_rules("imei", "<b>Imei</b>", "trim|required|integer|is_unique[aparelhos.imei1]|exact_length[15]");
         $this->form_validation->set_rules("idModelo", "<b>Modelo</b>", "trim|required|integer|combines[modelos.id]");
-        $this->form_validation->set_rules("idCondicaoAparelho", "<b>Condição aparelho</b>", "trim|required|integer|combines[status_condicoes_aparelhos.id]");
-        $this->form_validation->set_rules("notaFiscal", "<b>Nota fiscal</b>", "trim|integer");
+        $this->form_validation->set_rules("idStatusCondicaoAparelho", "<b>Condição aparelho</b>", "trim|required|integer|combines[status_condicoes_aparelhos.id]");
+        $this->form_validation->set_rules("notaFiscal", "<b>Nota fiscal</b>", "trim|integer|max_length[50]");
+        $this->form_validation->set_rules("dataNotaFiscal", "<b>Data nota fiscal</b>", "trim|valid_date[Y-m-d]");
+        $this->form_validation->set_rules("valorNotaFiscal", "<b>Valor nota fiscal</b>", "trim|decimal");
 
         if (!$this->form_validation->run()) {
-            print_r(validation_errors());exit;
-        } else{
-            echo 2;exit;
+            echo json_encode([
+                'status' => false,
+                'mensagem' => validation_errors()
+            ]);
+            
+            return false;
         }
+
+        $this->Aparelhos_model->salvarAparelho([
+            'id_modelo' => $this->input->post('idModelo'),
+            'id_marca' => $this->Modelos_model->consultaMarcaPorModeloPorStatus($this->input->post('idModelo'))['id'],
+            'imei1' => $this->input->post('imei'),
+            'id_status_condicao_aparelho' => $this->input->post('idStatusCondicaoAparelho'),
+            'nota_fiscal' => $this->input->post('notaFiscal'),
+            'data_nota' => $this->input->post('dataNotaFiscal'),
+            'valor' => $this->input->post('valorNotaFiscal'),
+            'id_usuario_registro' => 1
+        ]);
+
+        echo json_encode([
+            'status' => true
+        ]);
     }
 }

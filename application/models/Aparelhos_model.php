@@ -18,4 +18,9 @@ class Aparelhos_model extends CI_Model
     	
         return $query->result_array();
     }
+
+    public function salvarAparelho($dadosAparelho)
+    {
+        $this->db->insert($this->tabela, $dadosAparelho);
+    }
 }

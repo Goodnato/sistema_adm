@@ -6,9 +6,10 @@
 <script src="<?= base_url('assets/js/maskMoney.min.js'); ?>"></script>
 <script>
     function base_url(destino) {
-        return "<?php echo base_url(); ?>" + destino;
+        return "<?= base_url(); ?>" + destino;
     }
 </script>
+<script src="<?= base_url('assets/js/app.js'); ?>"></script>
 <script src="<?= base_url($caminhoJs); ?>"></script>
 </body>
 

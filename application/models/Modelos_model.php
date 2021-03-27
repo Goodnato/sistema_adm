@@ -24,7 +24,7 @@ class Modelos_model extends CI_Model
         return $query->result_array();
     }
 
-    public function consultaMarcaPorStatusPorModelo($status, $idModelo)
+    public function consultaMarcaPorModeloPorStatus($idModelo, $status = STATUS_ATIVO)
     {
         $sql = "SELECT 
                     mc.id, 
@@ -37,6 +37,6 @@ class Modelos_model extends CI_Model
 
     	$query = $this->db->query($sql);
     	
-        return $query->result_array();
+        return count($query->result_array()) == 0 ? [] : $query->result_array()[0];
     }
 }

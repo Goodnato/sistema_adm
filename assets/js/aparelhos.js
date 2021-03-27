@@ -81,7 +81,7 @@ $('#cadastroModelo').multiselect({
     buttonClass: 'form-control form-control-sm'
 });
 
-$('#cadastroCondicaoAparelho').multiselect({
+$('#cadastroStatusCondicaoAparelho').multiselect({
     buttonWidth: '100%',
     selectAllText: 'TODOS',
     nonSelectedText: 'SELECIONE UMA OPÇÃO',
@@ -107,10 +107,12 @@ $("#cadastroModelo").change(function (e) {
         data: { idModelo: idModelo }
     }).done(function (response) {
         if (response.status) {
-            $('#cadastroMarca').val(response.marca[0].nome)
+            $('#cadastroMarca').val(response.marca.nome)
 
             return true;
         }
+
+        $('#cadastroMarca').val('SELECIONE UM MODELO')
     }).fail(function (response) {
         alert("Ocorreu um erro ao pesquisar os modelos. Contate o administrador do sistema")
         console.log(response)
@@ -121,6 +123,9 @@ $('#btnSalvarAparelho').click(function (event) {
     $(this)
         .html('<div class="spinner-border spinner-border-sm text-light" role="status"></div> Salvando...')
         .prop('disabled', true)
+    
+    $('#cadastroAlert').addClass('d-none')
+    $('#cadastroMensagem').html('')
 
     $.ajax({
         url: base_url("Aparelhos/salvarAparelho"),
@@ -129,17 +134,23 @@ $('#btnSalvarAparelho').click(function (event) {
         data: { 
             imei: $('#cadastroImei').val(), 
             idModelo: $('#cadastroModelo').val(),
-            idCondicaoAparelho: $('#cadastroCondicaoAparelho').val(),
+            idStatusCondicaoAparelho: $('#cadastroStatusCondicaoAparelho').val(),
             notaFiscal: $('#cadastroNotaFiscal').val(),
             dataNotaFiscal: $('#cadastroDataNotaFiscal').val(),
+            valorNotaFiscal: formataDecimal($('#cadastroValorNotaFiscal').val()),
         }
     }).done(function (response) {
-    }).fail(function (response) {
-        alert("Ocorreu um erro ao pesquisar os modelos. Contate o administrador do sistema")
-        console.log(response)
-    })
+        if(!response.status){
+            $('#cadastroMensagem').html(response.mensagem)
+            $('#cadastroAlert').removeClass('d-none')
 
-    setTimeout(() => {
+            $('#btnSalvarAparelho')
+                .html('<i class="fas fa-save"></i> Salvar')
+                .prop('disabled', false)
+
+            return false
+        }
+
         Swal.fire({
             position: 'center',
             icon: 'success',
@@ -148,7 +159,7 @@ $('#btnSalvarAparelho').click(function (event) {
             timer: 1500,
             heightAuto: false
         }).then((result) => {
-            //$('#exampleModal').modal('hide')
+            $('#modalNovoAparelho').modal('hide')
 
             limpaFormularioCadastro()
 
@@ -156,13 +167,19 @@ $('#btnSalvarAparelho').click(function (event) {
                 .html('<i class="fas fa-save"></i> Salvar')
                 .prop('disabled', false)
         })
-    }, 1000)
+    }).fail(function (response) {
+        alert("Ocorreu um erro ao pesquisar os modelos. Contate o administrador do sistema")
+        console.log(response)
+        $('#btnSalvarAparelho')
+            .html('<i class="fas fa-save"></i> Salvar')
+            .prop('disabled', false)
+    })
 })
 
 function limpaFormularioCadastro() {
     $('#cadastroImei').val('')
     $("#cadastroModelo").val($("#cadastroModelo option:first").val()).multiselect('refresh');
-    $("#cadastroCondicaoAparelho").val($("#cadastroCondicaoAparelho option:first").val()).multiselect('refresh');
+    $("#cadastroStatusCondicaoAparelho").val($("#cadastroStatusCondicaoAparelho option:first").val()).multiselect('refresh');
     $('#cadastroMarca').val('SELECIONE UM MODELO')
     $('#cadastroNotaFiscal').val('')
     $('#cadastroDataNotaFiscal').val('')

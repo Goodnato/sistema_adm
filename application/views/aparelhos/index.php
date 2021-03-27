@@ -153,8 +153,8 @@
                                         <input type="text" class="form-control form-control-sm text-center" id="cadastroMarca" value="SELECIONE UM MODELO" disabled>
                                     </div>
                                     <div class="col">
-                                        <label for="cadastroCondicaoAparelho" class="form-label">Condição aparelho*</label>
-                                        <select class="form-control form-control-sm" id="cadastroCondicaoAparelho">
+                                        <label for="cadastroStatusCondicaoAparelho" class="form-label">Condição aparelho*</label>
+                                        <select class="form-control form-control-sm" id="cadastroStatusCondicaoAparelho">
                                             <?php foreach ($listaStatusCondicoes as $status) { ?>
                                                 <option value="<?= $status['id'] ?>"><?= $status['nome'] ?></option>
                                             <?php } ?>
