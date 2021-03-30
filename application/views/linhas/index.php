@@ -86,7 +86,7 @@
     </div>
 
     <!-- modal cadastrar linhas-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modalNovaLinha" tabindex="-1">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -100,6 +100,13 @@
                         <div class="row">
                             <div class="col-12">
                                 <form>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div id="cadastroAlert" class="alert alert-danger d-none" role="alert">
+                                                <div id="cadastroMensagem"></div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="row mt-2">
                                         <div class="col-6">
                                             <label for="cadastroNumero" class="form-label">Número da Linha</label>
