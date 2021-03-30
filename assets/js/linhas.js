@@ -39,32 +39,58 @@ $('#btnSalvarLinha').click(function(event) {
     $(this)
         .html('<div class="spinner-border spinner-border-sm text-light" role="status"></div> Salvando...')
         .prop('disabled', true)
+    //faz exibir d-none seção de mensagens. d-nome é pra ocultar a seção
+    $('#cadastroAlert').addClass('d-none')
+    $('#cadastroMensagem').html('')
 
-    setTimeout(() => {
-        Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Linha cadastrada com sucesso!',
-            showConfirmButton: false,
-            timer: 1500,
-            heightAuto: false
-        }).then((result) => {
-            //$('#exampleModal').modal('hide')
+    $.ajax({
+        url: base_url("Linhas/salvarLinha"),
+        dataType: "json",
+        type: "Post",
+        data: { 
+            numeroLinha: $('#cadastroNumero').val(), 
+            codigoChip: $('#cadastroCodigoChip').val(),
+            idcategoria: $('#cadastroCategoria').val(),
+            operadora: $('#cadastroOperadora').val(),
+            pinPuk1: $('#cadastroPinPuk1').val(),
+            vpinPuk2: formataDecimal($('#cadastroPinPuk2').val()),
+        }
+    }).done(function (response) {
+        if(!response.status){
+            $('#cadastroMensagem').html(response.mensagem) //prepara a mensagem de erro
+            $('#cadastroAlert').removeClass('d-none') //remove class d-nome para exibir a seção
 
-            limpaFormularioCadastroLinha()
-
-            $('#btnSalvarLinha')
-                .html('<i class="fas fa-save"></i> Salvar')
+            $('#btnSalvarAparelho')
+                .html('<i class="fas fa-save"></i> Salvar') // quando exibe o erro o botão volta o texto salvar
                 .prop('disabled', false)
-        })
-    }, 1000)
+
+            return false
+        }
+
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Linha cadastrada com sucesso!',
+                showConfirmButton: false,
+                timer: 1500,
+                heightAuto: false
+            }).then((result) => {
+                $('#modalNovaLinha').modal('hide')
+
+                limpaFormularioCadastroLinha()
+
+                $('#btnSalvarLinha')
+                    .html('<i class="fas fa-save"></i> Salvar')
+                    .prop('disabled', false)
+            })
+        
 })
 
 function limpaFormularioCadastroLinha() {
     $('#cadastroNumero').val('')
     $('#cadastroCodigoChip').val('')
     $("#cadastroCategoria").val($("#cadastroCategoria option:first").val()).multiselect('refresh');
-    $('#cadastroOperadora').val('')
+    $('#cadastroOperadora').val('CLARO')
     $('#cadastroPinPuk1').val('')
     $('#cadastroPinPuk2').val('')
 }
