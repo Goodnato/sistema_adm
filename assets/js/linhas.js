@@ -42,7 +42,7 @@ $('#btnSalvarLinha').click(function(event) {
     //faz exibir d-none seção de mensagens. d-nome é pra ocultar a seção
     $('#cadastroAlert').addClass('d-none')
     $('#cadastroMensagem').html('')
-
+    //ajax para pegar os dados do formulário no modal pelo metodo post 
     $.ajax({
         url: base_url("Linhas/salvarLinha"),
         dataType: "json",
@@ -50,17 +50,17 @@ $('#btnSalvarLinha').click(function(event) {
         data: { 
             numeroLinha: $('#cadastroNumero').val(), 
             codigoChip: $('#cadastroCodigoChip').val(),
-            idcategoria: $('#cadastroCategoria').val(),
+            idCategoria: $('#cadastroCategoria').val(),
             operadora: $('#cadastroOperadora').val(),
             pinPuk1: $('#cadastroPinPuk1').val(),
-            vpinPuk2: formataDecimal($('#cadastroPinPuk2').val()),
+            pinPuk2: formataDecimal($('#cadastroPinPuk2').val()),
         }
     }).done(function (response) {
         if(!response.status){
             $('#cadastroMensagem').html(response.mensagem) //prepara a mensagem de erro
             $('#cadastroAlert').removeClass('d-none') //remove class d-nome para exibir a seção
 
-            $('#btnSalvarAparelho')
+            $('#btnSalvarLinha')
                 .html('<i class="fas fa-save"></i> Salvar') // quando exibe o erro o botão volta o texto salvar
                 .prop('disabled', false)
 
@@ -83,7 +83,7 @@ $('#btnSalvarLinha').click(function(event) {
                     .html('<i class="fas fa-save"></i> Salvar')
                     .prop('disabled', false)
             })
-        
+    })   
 })
 
 function limpaFormularioCadastroLinha() {
