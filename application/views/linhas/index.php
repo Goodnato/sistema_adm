@@ -41,7 +41,7 @@
                                 <div class="col-12">
                                     <button class="btn btn-primary"><i class="fas fa-search"></i> Pesquisar</button>
                                     <button class="btn btn-warning"><i class="fas fa-file-excel"></i> Excel</button>
-                                    <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-plus-square"></i> Nova Linha</button>
+                                    <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#modalNovaLinha"><i class="fas fa-plus-square"></i> Nova Linha</button>
                                     <!-- botão do modal botão do modal /// ids do modal => data-toggle="modal" data-target="#exampleModal" -->
                                 </div>
                             </div>
