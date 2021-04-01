@@ -100,4 +100,46 @@ class Aparelhos extends CI_Controller
             'status' => true
         ]);
     }
+
+    public function listaAparelhos()
+    {
+        $numeroPorPagina = $_POST['length'];
+        $inicioLimite = $_POST['start'];
+        $finalLimite = $inicioLimite + $numeroPorPagina;
+        $draw = $_POST['draw'];
+        $indiceColuna = $_POST['order'][0]['column'];
+        $ordenar = [
+            'coluna' => $_POST['columns'][$indiceColuna]['data'],
+            'direcao' => $_POST['order'][0]['dir']
+        ];
+        $procurarSql = $this->montaCondicaoListaAparelhos();
+
+        $listaAparelhos = $this->Aparelhos_model->listaAparelhos($procurarSql, $ordenar, $inicioLimite, $finalLimite);
+
+        $teste = [
+            "draw" => $draw,
+            "recordsTotal" => $this->Aparelhos_model->totalRegistroAparelhos(),
+            "recordsFiltered" => $this->Aparelhos_model->totalRegistroAparelhosFiltrados($procurarSql),
+            "data" => $listaAparelhos
+        ];
+        echo json_encode($teste);
+    }
+
+    private function montaCondicaoListaAparelhos()
+    {
+        $procurarValor = $_POST['search']['value'];
+
+        $procurarSql = " ";
+        if(!empty($procurarValor)){
+            $procurarSql = " AND (
+                mc.nome LIKE '%".$procurarValor."%' OR 
+                md.nome LIKE '%".$procurarValor."%' OR 
+                ap.imei1 LIKE '%".$procurarValor."%' OR 
+                us.nome LIKE '%".$procurarValor."%' OR 
+                sc.nome LIKE '%".$procurarValor."%'
+            )";
+        }
+
+        return $procurarSql;
+    }
 }

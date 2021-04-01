@@ -75,36 +75,26 @@
             </form>
         </div>
     </div>
-    <div class="row mt-5">
+    <div class="row mt-5 px-2">
         <div class="table-responsive">
-            <table class="table table-striped" style="min-width: 1200px;">
+            <table class="table table-striped table-bordered table-sm" id="tabelaAparelhos">
                 <thead class="table-dark">
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col">Imei</th>
+                        <th scope="col">Marca</th>
+                        <th scope="col">Modelo</th>
+                        <th scope="col">Condição</th>
+                        <th scope="col">Nota fiscal</th>
+                        <th scope="col">Data nota fiscal</th>
+                        <th scope="col">Valor</th>
+                        <th scope="col">Valor depreciado</th>
+                        <th scope="col">Cadastrado por</th>
+                        <th scope="col">Data registro</th>
+                        <th scope="col">Status</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
                 </tbody>
             </table>
         </div>

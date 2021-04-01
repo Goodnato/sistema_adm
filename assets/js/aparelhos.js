@@ -123,7 +123,7 @@ $('#btnSalvarAparelho').click(function (event) {
     $(this)
         .html('<div class="spinner-border spinner-border-sm text-light" role="status"></div> Salvando...')
         .prop('disabled', true)
-    
+
     $('#cadastroAlert').addClass('d-none')
     $('#cadastroMensagem').html('')
 
@@ -131,8 +131,8 @@ $('#btnSalvarAparelho').click(function (event) {
         url: base_url("Aparelhos/salvarAparelho"),
         dataType: "json",
         type: "Post",
-        data: { 
-            imei: $('#cadastroImei').val(), 
+        data: {
+            imei: $('#cadastroImei').val(),
             idModelo: $('#cadastroModelo').val(),
             idStatusCondicaoAparelho: $('#cadastroStatusCondicaoAparelho').val(),
             notaFiscal: $('#cadastroNotaFiscal').val(),
@@ -140,7 +140,7 @@ $('#btnSalvarAparelho').click(function (event) {
             valorNotaFiscal: formataDecimal($('#cadastroValorNotaFiscal').val()),
         }
     }).done(function (response) {
-        if(!response.status){
+        if (!response.status) {
             $('#cadastroMensagem').html(response.mensagem)
             $('#cadastroAlert').removeClass('d-none')
 
@@ -185,3 +185,29 @@ function limpaFormularioCadastro() {
     $('#cadastroDataNotaFiscal').val('')
     $('#cadastroValorNotaFiscal').val('')
 }
+
+var tabelaAparelhos = $("#tabelaAparelhos").dataTable({
+    "processing": true,
+    "serverSide": true,
+    "ajax": {
+        "type": "post",
+        "url": base_url("Aparelhos/listaAparelhos")
+    },
+    "columns": [
+        { "data": "id_aparelho" },
+        { "data": "imei1" },
+        { "data": "nome_marca" },
+        { "data": "nome_modelo" },
+        { "data": "status_condicao" },
+        { "data": "nota_fiscal" },
+        { "data": "data_nota" },
+        { "data": "valor" },
+        { "data": "valor_depreciado" },
+        { "data": "registro_usuario" },
+        { "data": "data_registro" },
+        { "data": "status" },
+    ],
+    "language": {
+        "url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/Portuguese.json"
+    }
+});
