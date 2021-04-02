@@ -33,6 +33,17 @@ $('#cadastroCategoria').multiselect({
 });
 $('#cadastroCategoria').multiselect('selectAll', false);
 
+$('#cadastroOperadora').multiselect({
+    buttonWidth: '100%',
+    includeSelectAllOption: true,
+    selectAllText: 'TODOS',
+    nonSelectedText: 'SELECIONE UMA OPÇÃO',
+    allSelectedText: 'TODOS',
+    nSelectedText: 'SELECIONADO(S)',
+    buttonClass: 'form-control form-control-sm'
+});
+$('#cadastroOperadora').multiselect('selectAll', false);
+
 
 //codigo abaixo de jquery e para manipular elementos, neste caso o efeito de carregando do botão salvar
 $('#btnSalvarLinha').click(function(event) {
@@ -51,7 +62,7 @@ $('#btnSalvarLinha').click(function(event) {
             numeroLinha: $('#cadastroNumero').val(), 
             codigoChip: $('#cadastroCodigoChip').val(),
             idCategoria: $('#cadastroCategoria').val(),
-            operadora: $('#cadastroOperadora').val(),
+            idOperadora: $('#cadastroOperadora').val(),
             pinPuk1: $('#cadastroPinPuk1').val(),
             pinPuk2: formataDecimal($('#cadastroPinPuk2').val()),
         }
@@ -90,7 +101,7 @@ function limpaFormularioCadastroLinha() {
     $('#cadastroNumero').val('')
     $('#cadastroCodigoChip').val('')
     $("#cadastroCategoria").val($("#cadastroCategoria option:first").val()).multiselect('refresh');
-    $('#cadastroOperadora').val('CLARO')
+    $("#cadastroOperadora").val($("#cadastroOperadora option:first").val()).multiselect('refresh');
     $('#cadastroPinPuk1').val('')
     $('#cadastroPinPuk2').val('')
 }
