@@ -128,8 +128,13 @@
                                             </select>
                                         </div>
                                         <div class="col-6">
-                                            <label for="cadastroOperadora" class="form-label">Operadora</label>
-                                            <input type="text" class="form-control form-control-sm" id="cadastroOperadora" value="CLARO" disabled>
+                                            <label for="cadastroOperadora" class="form-label">Operadoras</label>
+                                            <select class="form-control form-control-sm" id="cadastroOperadora">
+                                                <option value>SELECIONE</option>
+                                                <?php foreach ($listaOperadorasAtivas as $operadora) { ?>
+                                                    <option value="<?= $operadora['id'] ?>"><?= $operadora['nome'] ?></option>
+                                                <?php } ?>
+                                            </select>
                                         </div>
                                     </div>
 
