@@ -2,9 +2,9 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Status_disponibilidades_aparelhos_model extends CI_Model
+class Status_disponibilidades_model extends CI_Model
 {
-    private $tabela = 'status_disponibilidades_aparelhos';
+    private $tabela = 'status_disponibilidades';
 
     public function consultaTodosStatus()
     {

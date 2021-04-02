@@ -12,7 +12,7 @@ class Aparelhos extends CI_Controller
         $this->load->model('Marcas_model');
         $this->load->model('Modelos_model');
         $this->load->model('Status_condicoes_aparelhos_model');
-        $this->load->model('Status_disponibilidades_aparelhos_model');
+        $this->load->model('Status_disponibilidades_model');
     }
 
     public function index()
@@ -32,7 +32,7 @@ class Aparelhos extends CI_Controller
             'listaModelos' => $this->Modelos_model->consultaTodosModelos(),
             'listaModelosAtivos' => $this->Modelos_model->consultaTodosModelosPorStatus(STATUS_ATIVO),
             'listaStatusCondicoes' => $this->Status_condicoes_aparelhos_model->consultaTodosStatus(),
-            'listaStatusDisponibilidades' => $this->Status_disponibilidades_aparelhos_model->consultaTodosStatus(),
+            'listaStatusDisponibilidades' => $this->Status_disponibilidades_model->consultaTodosStatus(),
             'listaUsuariosCadastroAparelho' => $this->Aparelhos_model->consultaTodosUsuariosCadastroAparelho()
         ];
 
