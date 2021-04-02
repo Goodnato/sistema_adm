@@ -10,7 +10,7 @@ $('#pesquisaCategoria').multiselect({
 });
 $('#pesquisaCategoria').multiselect('selectAll', false);
 
-$('#pesquisaStatus').multiselect({
+$('#pesquisaCadastradoPor').multiselect({
     buttonWidth: '100%',
     includeSelectAllOption: true,
     selectAllText: 'TODOS',
@@ -19,7 +19,29 @@ $('#pesquisaStatus').multiselect({
     nSelectedText: 'SELECIONADO(S)',
     buttonClass: 'form-control form-control-sm'
 });
-$('#pesquisaStatus').multiselect('selectAll', false);
+$('#pesquisaCadastradoPor').multiselect('selectAll', false);
+
+$('#pesquisaDisponibilidade').multiselect({
+    buttonWidth: '100%',
+    includeSelectAllOption: true,
+    selectAllText: 'TODOS',
+    nonSelectedText: 'SELECIONE UMA OPÇÃO',
+    allSelectedText: 'TODOS',
+    nSelectedText: 'SELECIONADO(S)',
+    buttonClass: 'form-control form-control-sm'
+});
+$('#pesquisaDisponibilidade').multiselect('selectAll', false);
+
+$('#pesquisaStatusLinha').multiselect({
+    buttonWidth: '100%',
+    includeSelectAllOption: true,
+    selectAllText: 'TODOS',
+    nonSelectedText: 'SELECIONE UMA OPÇÃO',
+    allSelectedText: 'TODOS',
+    nSelectedText: 'SELECIONADO(S)',
+    buttonClass: 'form-control form-control-sm'
+});
+$('#pesquisaStatusLinha').multiselect('selectAll', false);
 
 
 $('#cadastroCategoria').multiselect({

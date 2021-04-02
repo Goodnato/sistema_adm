@@ -10,6 +10,8 @@ class Linhas extends CI_Controller
         $this->load->model('Linhas_model');
         $this->load->model('Categorias_model');
         $this->load->model('Operadoras_model');
+        $this->load->model('Status_condicoes_aparelhos_model');
+        $this->load->model('Status_disponibilidades_aparelhos_model');
     }
 
     public function index()
@@ -27,7 +29,10 @@ class Linhas extends CI_Controller
             'listaCategorias' => $this->Categorias_model->consultaTodasCategorias(),
             'listaCategoriasAtivas' => $this->Categorias_model->consultaTodasCategoriasPorStatus(STATUS_ATIVO),
             'listaOperadoras' => $this->Operadoras_model->consultaTodasOperadoras(),
-            'listaOperadorasAtivas' => $this->Operadoras_model->consultaTodasOperadorasPorStatus(STATUS_ATIVO)
+            'listaOperadorasAtivas' => $this->Operadoras_model->consultaTodasOperadorasPorStatus(STATUS_ATIVO),
+            'listaStatusCondicoes' => $this->Status_condicoes_aparelhos_model->consultaTodosStatus(),
+            'listaStatusDisponibilidades' => $this->Status_disponibilidades_aparelhos_model->consultaTodosStatus(),
+            'listaUsuariosCadastroLinha' => $this->Linhas_model->consultaTodosUsuariosCadastroLinha()
         ];
 
         return $carregaView;

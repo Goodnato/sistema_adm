@@ -27,13 +27,30 @@
                                             <?php } ?>
                                         </select>
                                 </div>
-
                                 <div class="col-6">
-                                    <label for="pesquisaStatus" class="form-label">Status</label><br>
-                                    <!-- Build your select: -->
-                                    <select id="pesquisaStatus" multiple="multiple">
-                                        <option value="cheese">Em uso</option>
-                                        <option value="tomatoes">Disponível</option>
+                                    <label for="pesquisaCadastradoPor" class="form-label">Cadastrado por</label><br>
+                                    <select id="pesquisaCadastradoPor" multiple="multiple">
+                                        <?php foreach ($listaUsuariosCadastroLinha as $cadastradoPor) { ?>
+                                            <option value="<?= $cadastradoPor['id'] ?>"><?= $cadastradoPor['nome'] ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-6">
+                                    <label for="pesquisaDisponibilidade" class="form-label">Disponibilidade</label><br>
+                                    <select id="pesquisaDisponibilidade" multiple="multiple">
+                                        <?php foreach ($listaStatusDisponibilidades as $status) { ?>
+                                            <option value="<?= $status['id'] ?>"><?= $status['nome'] ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                                <div class="col-6">
+                                    <label for="pesquisaStatusLinha" class="form-label">Status</label><br>
+                                    <select id="pesquisaStatusLinha" multiple="multiple">
+                                        <?php foreach (ARRAY_STATUS as $idStatus => $status) { ?>
+                                            <option value="<?= $idStatus ?>"><?= $status ?></option>
+                                        <?php } ?>
                                     </select>
                                 </div>
                             </div>
