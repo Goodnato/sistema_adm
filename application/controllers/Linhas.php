@@ -38,7 +38,8 @@ class Linhas extends CI_Controller
         return $carregaView;
     }
 
-    public function salvarLinha(){
+    public function salvarLinha()
+    {
         $this->form_validation->set_rules("numeroLinha", "<b>Número da Linha</b>", "trim|required|integer|is_unique[linhas.numero_linha]|exact_length[11]");
         $this->form_validation->set_rules("codigoChip", "<b>Código do Chip</b>", "trim|required|integer|is_unique[linhas.codigo_chip]|exact_length[15]");
         $this->form_validation->set_rules("idCategoria", "<b>Categoria</b>", "trim|required|integer|combines[categorias.id]");
@@ -70,6 +71,47 @@ class Linhas extends CI_Controller
         ]);
 
         
+    }
+
+    public function listaLinhas()
+    {
+        $numeroPorPagina = $_POST['length'];
+        $inicioLimite = $_POST['start'];
+        $finalLimite = $inicioLimite + $numeroPorPagina;
+        $draw = $_POST['draw'];
+        $indiceColuna = $_POST['order'][0]['column'];
+        $ordenar = [
+            'coluna' => $_POST['columns'][$indiceColuna]['data'],
+            'direcao' => $_POST['order'][0]['dir']
+        ];
+        $procurarSql = $this->montaCondicaoListaLinhas();
+
+        $listaAparelhos = $this->Linhas_model->listaLinhas($procurarSql, $ordenar, $inicioLimite, $finalLimite);
+
+        $teste = [
+            "draw" => $draw,
+            "recordsTotal" => $this->Linhas_model->totalRegistroLinhas(),
+            "recordsFiltered" => $this->Linhas_model->totalRegistroLinhasFiltradas($procurarSql),
+            "data" => $listaAparelhos
+        ];
+        echo json_encode($teste);
+    }
+    
+    private function montaCondicaoListaLinhas()
+    {
+        $procurarValor = $_POST['search']['value'];
+
+        $procurarSql = " ";
+        if(!empty($procurarValor)){
+            $procurarSql = " AND (
+                li.numero_linha LIKE '%".$procurarValor."%' OR 
+                li.codigo_chip LIKE '%".$procurarValor."%' OR 
+                cg.nome LIKE '%".$procurarValor."%' OR 
+                us.nome LIKE '%".$procurarValor."%' OR 
+            )";
+        }
+
+        return $procurarSql;
     }
 
 

@@ -1,4 +1,4 @@
-//javascript do multiselect, definição de padrões e traduções
+//javascript do multiselect, definição de padrões e traduções tela pesquisa
 $('#pesquisaCategoria').multiselect({
     buttonWidth: '100%',
     includeSelectAllOption: true,
@@ -43,7 +43,7 @@ $('#pesquisaStatusLinha').multiselect({
 });
 $('#pesquisaStatusLinha').multiselect('selectAll', false);
 
-
+//javascript do multiselect, definição de padrões e traduções tela cadastro
 $('#cadastroCategoria').multiselect({
     buttonWidth: '100%',
     includeSelectAllOption: true,
@@ -67,10 +67,10 @@ $('#cadastroOperadora').multiselect({
 $('#cadastroOperadora').multiselect('selectAll', false);
 
 
-//codigo abaixo de jquery e para manipular elementos, neste caso o efeito de carregando do botão salvar
+//codigo abaixo de jquery para o botão salvar do modal cadastro efeitos, acionar metodos de Salvar linha
 $('#btnSalvarLinha').click(function(event) {
-    $(this)
-        .html('<div class="spinner-border spinner-border-sm text-light" role="status"></div> Salvando...')
+    $(this) 
+        .html('<div class="spinner-border spinner-border-sm text-light" role="status"></div> Salvando...') // para manipular elementos, neste caso o efeito de carregando do botão salvar
         .prop('disabled', true)
     //faz exibir d-none seção de mensagens. d-nome é pra ocultar a seção
     $('#cadastroAlert').addClass('d-none')
@@ -119,6 +119,7 @@ $('#btnSalvarLinha').click(function(event) {
     })   
 })
 
+//limpa o formulário do modal de cadastro
 function limpaFormularioCadastroLinha() {
     $('#cadastroNumero').val('')
     $('#cadastroCodigoChip').val('')
@@ -127,4 +128,29 @@ function limpaFormularioCadastroLinha() {
     $('#cadastroPinPuk1').val('')
     $('#cadastroPinPuk2').val('')
 }
+
+//javascript da tabela que aciona o metodo Lista Linhas
+var tabelaAparelhos = $("#tabelaLinhas").dataTable({
+    "processing": true,
+    "serverSide": true,
+    "ajax": {
+        "type": "post",
+        "url": base_url("Linhas/listaLinhas")
+    },
+    "columns": [
+        { "data": "id_linha" },
+        { "data": "numero_linha" },
+        { "data": "codigo_chip" },
+        { "data": "nome_categoria" },
+        { "data": "nome_operadora" },
+        { "data": "pinpuk1" },
+        { "data": "pinpuk1" },
+        { "data": "registro_usuario" },
+        { "data": "data_registro" },
+        { "data": "status" },
+    ],
+    "language": {
+        "url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/Portuguese.json"
+    }
+});
 

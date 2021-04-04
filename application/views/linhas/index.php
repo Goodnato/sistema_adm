@@ -65,40 +65,29 @@
                         </form>
                     </div>
                 </div>
+
                 <!-- tabela -->
-                <div class="row mt-5">
-                    <div class="table-responsive">
-                        <table class="table table-striped" style="min-width: 1200px;">
-                            <thead class="table-dark">
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">First</th>
-                                    <th scope="col">Last</th>
-                                    <th scope="col">Handle</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                     </div>
+                <div class="row mt-5 px-2">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-sm" id="tabelaLinhas">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Número da Linha</th>
+                                <th scope="col">Código do Chip</th>
+                                <th scope="col">Categoria</th>
+                                <th scope="col">Operadoras</th>
+                                <th scope="col">PIN-PUK1</th>
+                                <th scope="col">PIN-PUK2</th>
+                                <th scope="col">Cadastrado por</th>
+                                <th scope="col">Data registro</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
                 </div>
     </div>
 
