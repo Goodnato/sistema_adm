@@ -33,8 +33,8 @@ class Linhas_model extends CI_Model
                     li.pin_puk1,
                     li.pin_puk2,
                     us.nome AS registro_usuario,
-                    ap.data_registro,
-                    ap.status
+                    li.data_registro,
+                    li.status
                 FROM
                     {$this->tabela} li
                 INNER JOIN categorias cg ON cg.id = li.id_categoria
