@@ -186,28 +186,47 @@ function limpaFormularioCadastro() {
     $('#cadastroValorNotaFiscal').val('')
 }
 
-var tabelaAparelhos = $("#tabelaAparelhos").dataTable({
-    "processing": true,
-    "serverSide": true,
-    "ajax": {
-        "type": "post",
-        "url": base_url("Aparelhos/listaAparelhos")
+const tabelaAparelhos = $("#tabelaAparelhos").DataTable({
+    processing: true,
+    serverSide: true,
+    ajax: {
+        type: "post",
+        url: base_url("Aparelhos/listaAparelhos"),
+        dataType: "json",
+        data: function (d) {
+            d.idMarca = $("#pesquisaMarca").val()
+            d.idModelo = $("#pesquisaModelo").val()
+            d.imei = $("#pesquisaImei").val()
+            d.idUsuarioRegistro = $("#pesquisaCadastradoPor").val()
+            d.idStatusCondicaoAparelho = $("#pesquisaStatusCondicoes").val()
+            d.idDisponibilidade = $("#pesquisaDisponibilidade").val()
+            d.status = $("#pesquisaStatus").val()
+        }
     },
-    "columns": [
-        { "data": "id_aparelho" },
-        { "data": "imei1" },
-        { "data": "nome_marca" },
-        { "data": "nome_modelo" },
-        { "data": "status_condicao" },
-        { "data": "nota_fiscal" },
-        { "data": "data_nota" },
-        { "data": "valor" },
-        { "data": "valor_depreciado" },
-        { "data": "registro_usuario" },
-        { "data": "data_registro" },
-        { "data": "status" },
+    columns: [
+        { data: "id_aparelho" },
+        { data: "imei1" },
+        { data: "nome_marca" },
+        { data: "nome_modelo" },
+        { data: "status_condicao" },
+        { data: "nota_fiscal" },
+        { data: "data_nota" },
+        { data: "valor" },
+        { data: "valor_depreciado" },
+        { data: "registro_usuario" },
+        { data: "data_registro" },
+        { data: "status" },
     ],
-    "language": {
-        "url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/Portuguese.json"
+    columnDefs: [
+        { targets: [10], orderable: false }
+    ],
+    language: {
+        url: "//cdn.datatables.net/plug-ins/1.10.24/i18n/Portuguese.json"
     }
 });
+
+$("#btnPesquisarFiltros").click(function (event){
+    event.preventDefault()
+
+    tabelaAparelhos.ajax.reload();
+})

@@ -69,7 +69,7 @@ class Aparelhos extends CI_Controller
 
     public function salvarAparelho()
     {
-        $this->form_validation->set_rules("imei", "<b>Imei</b>", "trim|required|integer|is_unique[aparelhos.imei1]|exact_length[15]");
+        $this->form_validation->set_rules("imei", "<b>Imei</b>", "trim|required|greater_than[0]|is_unique[aparelhos.imei1]|exact_length[15]");
         $this->form_validation->set_rules("idModelo", "<b>Modelo</b>", "trim|required|integer|combines[modelos.id]");
         $this->form_validation->set_rules("idStatusCondicaoAparelho", "<b>Condição aparelho</b>", "trim|required|integer|combines[status_condicoes_aparelhos.id]");
         $this->form_validation->set_rules("notaFiscal", "<b>Nota fiscal</b>", "trim|integer|max_length[50]");
@@ -81,7 +81,7 @@ class Aparelhos extends CI_Controller
                 'status' => false,
                 'mensagem' => validation_errors()
             ]);
-            
+
             return false;
         }
 
@@ -112,9 +112,10 @@ class Aparelhos extends CI_Controller
             'coluna' => $_POST['columns'][$indiceColuna]['data'],
             'direcao' => $_POST['order'][0]['dir']
         ];
-        $procurarSql = $this->montaCondicaoListaAparelhos();
+        $procurarSql = $this->montaCondicaoListaAparelhosProcurar();
+        $filtrosSql = $this->montaCondicaoListaAparelhosFiltros();
 
-        $listaAparelhos = $this->Aparelhos_model->listaAparelhos($procurarSql, $ordenar, $inicioLimite, $finalLimite);
+        $listaAparelhos = $this->Aparelhos_model->listaAparelhos(($procurarSql . $filtrosSql), $ordenar, $inicioLimite, $finalLimite);
 
         $teste = [
             "draw" => $draw,
@@ -125,21 +126,56 @@ class Aparelhos extends CI_Controller
         echo json_encode($teste);
     }
 
-    private function montaCondicaoListaAparelhos()
+    private function montaCondicaoListaAparelhosProcurar()
     {
         $procurarValor = $_POST['search']['value'];
 
         $procurarSql = " ";
-        if(!empty($procurarValor)){
+        if (!empty($procurarValor)) {
             $procurarSql = " AND (
-                mc.nome LIKE '%".$procurarValor."%' OR 
-                md.nome LIKE '%".$procurarValor."%' OR 
-                ap.imei1 LIKE '%".$procurarValor."%' OR 
-                us.nome LIKE '%".$procurarValor."%' OR 
-                sc.nome LIKE '%".$procurarValor."%'
+                mc.nome LIKE '%" . $procurarValor . "%' OR 
+                md.nome LIKE '%" . $procurarValor . "%' OR 
+                ap.imei1 LIKE '%" . $procurarValor . "%' OR 
+                us.nome LIKE '%" . $procurarValor . "%' OR 
+                sc.nome LIKE '%" . $procurarValor . "%'
             )";
         }
 
         return $procurarSql;
+    }
+
+    private function montaCondicaoListaAparelhosFiltros()
+    {
+        $filtrosSql = " ";
+
+        if (is_array($_POST['idMarca']) && count($_POST['idMarca']) > 0) {
+            $filtrosSql .= "AND mc.id IN(" . implode(", ", $_POST['idMarca']) . ") ";
+        }
+
+        if (is_array($_POST['idModelo']) && count($_POST['idModelo']) > 0) {
+            $filtrosSql .= "AND md.id IN(" . implode(", ", $_POST['idModelo']) . ") ";
+        }
+
+        if (!empty($_POST['imei'])) {
+            $filtrosSql .= "AND ap.imei1 = '" . $_POST['imei'] . "'";
+        }
+
+        if (is_array($_POST['idUsuarioRegistro']) && count($_POST['idUsuarioRegistro']) > 0) {
+            $filtrosSql .= "AND us.id IN(" . implode(", ", $_POST['idUsuarioRegistro']) . ") ";
+        }
+
+        if (is_array($_POST['idStatusCondicaoAparelho']) && count($_POST['idStatusCondicaoAparelho']) > 0) {
+            $filtrosSql .= "AND sc.id IN(" . implode(", ", $_POST['idStatusCondicaoAparelho']) . ") ";
+        }
+
+        /*if (is_array($_POST['idDisponibilidade']) && count($_POST['idDisponibilidade']) > 0) {
+            $filtrosSql .= "AND md.id IN(" . implode(", ", $_POST['idDisponibilidade']) . ") ";
+        }*/
+
+        if (is_array($_POST['status']) && count($_POST['status']) > 0) {
+            $filtrosSql .= "AND ap.status IN(" . implode(", ", $_POST['status']) . ") ";
+        }
+
+        return $filtrosSql;
     }
 }

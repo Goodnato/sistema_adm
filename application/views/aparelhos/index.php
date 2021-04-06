@@ -28,7 +28,7 @@
                 <div class="row mt-2">
                     <div class="col">
                         <label for="pesquisaImei" class="form-label">IMEI</label>
-                        <input type="text" class="form-control form-control-sm" id="pesquisaImei" placeholder="DIGITE AQUI">
+                        <input type="number" class="form-control form-control-sm" id="pesquisaImei" placeholder="DIGITE AQUI">
                     </div>
                     <div class="col">
                         <label for="pesquisaCadastradoPor" class="form-label">Cadastrado por</label>
@@ -67,7 +67,7 @@
                 </div>
                 <div class="row mt-2">
                     <div class="col-12">
-                        <button class="btn btn-primary"><i class="fas fa-search"></i> Pesquisar</button>
+                        <button class="btn btn-primary" id="btnPesquisarFiltros"><i class="fas fa-search"></i> Pesquisar</button>
                         <button class="btn btn-warning"><i class="fas fa-file-excel"></i> Excel</button>
                         <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#modalNovoAparelho"><i class="fas fa-plus-square"></i> Novo aparelho</button>
                     </div>
@@ -87,7 +87,7 @@
                         <th scope="col">Condição</th>
                         <th scope="col">Nota fiscal</th>
                         <th scope="col">Data nota fiscal</th>
-                        <th scope="col">Valor</th>
+                        <th scope="col">Valor R$</th>
                         <th scope="col">Valor depreciado</th>
                         <th scope="col">Cadastrado por</th>
                         <th scope="col">Data registro</th>
