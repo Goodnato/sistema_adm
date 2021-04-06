@@ -130,7 +130,7 @@ function limpaFormularioCadastroLinha() {
 }
 
 //javascript da tabela que aciona o metodo Lista Linhas
-var tabelaAparelhos = $("#tabelaLinhas").dataTable({
+var tabelaLinhas = $("#tabelaLinhas").dataTable({
     "processing": true,
     "serverSide": true,
     "ajax": {

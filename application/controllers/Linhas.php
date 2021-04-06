@@ -87,17 +87,18 @@ class Linhas extends CI_Controller
         $procurarSql = $this->montaCondicaoListaLinhas();
 
         $listaAparelhos = $this->Linhas_model->listaLinhas($procurarSql, $ordenar, $inicioLimite, $finalLimite);
-
+        //organizar o array para fazer json_encode e popular a tabela
         $teste = [
             "draw" => $draw,
             "recordsTotal" => $this->Linhas_model->totalRegistroLinhas(),
             "recordsFiltered" => $this->Linhas_model->totalRegistroLinhasFiltradas($procurarSql),
             "data" => $listaAparelhos
         ];
+        //fornece a variavel que popula a tabela com os dados
         echo json_encode($teste);
     }
     
-    private function montaCondicaoListaLinhas()
+    private function montaCondicaoListaLinhas() //criar os critérios para a consulta ao banco, gera  a variavel $procurarSql
     {
         $procurarValor = $_POST['search']['value'];
 

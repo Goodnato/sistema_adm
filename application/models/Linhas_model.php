@@ -59,9 +59,10 @@ class Linhas_model extends CI_Model
                 INNER JOIN operadoras op ON op.id = li.id_operadora
                 INNER JOIN usuarios us ON us.id = li.id_usuario_registro
                 WHERE
-                    1 = 1
+                    1 = 1 
                     $procurarSql";
-
+                    
+        //1 = constante STATUS_ATIVO
         $resultado = $this->db->query($sql)->result_array();
 
         return count($resultado) == 0 ? 0 : $resultado[0]['total'];
