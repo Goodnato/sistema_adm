@@ -66,6 +66,12 @@ $('#cadastroOperadora').multiselect({
 });
 $('#cadastroOperadora').multiselect('selectAll', false);
 
+//mascara dos campos telefone pinpunk - biblioteca mask jquery
+$('#pesquisaNumero').mask("(00)00000-0000");
+$('#cadastroNumero').mask("(00)00000-0000");
+$('#cadastroPinPuk1').mask("0000-00000000");
+$('#cadastroPinPuk2').mask("0000-00000000");
+
 
 //codigo abaixo de jquery para o botão salvar do modal cadastro efeitos, acionar metodos de Salvar linha
 $('#btnSalvarLinha').click(function(event) {

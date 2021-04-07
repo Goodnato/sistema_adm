@@ -146,11 +146,11 @@
 
                                     <div class="row mt-2">
                                         <div class="col-6">
-                                            <label for="cadastroPinPuk2" class="form-label">PIN-PUK1</label>
+                                            <label for="cadastroPinPuk1" class="form-label">PIN-PUK1</label>
                                             <input type="text" class="form-control form-control-sm" id="cadastroPinPuk1" placeholder="DIGITE AQUI">
                                         </div>
                                         <div class="col-6">
-                                        <label for="formGroupExampleInput" class="form-label">PIN-PUK2</label>
+                                        <label for="cadastroPinPuk2" class="form-label">PIN-PUK2</label>
                                             <input type="text" class="form-control form-control-sm" id="cadastroPinPuk2" placeholder="DIGITE AQUI">
                                         </div>
                                     </div>
