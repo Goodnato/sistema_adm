@@ -92,7 +92,7 @@ $('#btnSalvarLinha').click(function(event) {
             idCategoria: $('#cadastroCategoria').val(),
             idOperadora: $('#cadastroOperadora').val(),
             pinPuk1: $('#cadastroPinPuk1').val(),
-            pinPuk2: formataDecimal($('#cadastroPinPuk2').val()),
+            pinPuk2: $('#cadastroPinPuk2').val(),
         }
     }).done(function (response) {
         if(!response.status){
