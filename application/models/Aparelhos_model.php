@@ -31,12 +31,12 @@ class Aparelhos_model extends CI_Model
                     md.nome AS nome_modelo,
                     sc.nome AS status_condicao,
                     ap.nota_fiscal,
-                    ap.data_nota,
-                    ap.valor,
+                    DATE_FORMAT(ap.data_nota, '%d/%m/%Y') AS data_nota,
+                    REPLACE(ap.valor, '.', ',') AS valor,
                     ap.valor_depreciado,
                     us.nome AS registro_usuario,
-                    ap.data_registro,
-                    ap.status
+                    DATE_FORMAT(ap.data_registro, '%d/%m/%Y') AS data_registro,
+                    IF(ap.status = " . STATUS_ATIVO . " , 'ATIVO', 'INATIVO') AS status
                 FROM
                     {$this->tabela} ap
                 INNER JOIN marcas mc ON mc.id = ap.id_marca
