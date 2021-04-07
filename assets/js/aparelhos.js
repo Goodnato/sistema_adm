@@ -216,17 +216,31 @@ const tabelaAparelhos = $("#tabelaAparelhos").DataTable({
         { data: "registro_usuario" },
         { data: "data_registro" },
         { data: "status" },
+        {
+            data: "acao",
+            render: function (data, type, row, meta) {
+                return '<button style="padding: 0 5px;" class="btn btn-warning editar"><i class="fas fa-edit"></i></button>';
+            }
+        }
     ],
     columnDefs: [
-        { targets: [10], orderable: false }
+        { 
+            targets: [10, 12], 
+            orderable: false 
+        },
+        {
+            targets: [12],
+            className: "text-center",
+       }
     ],
     language: {
         url: "//cdn.datatables.net/plug-ins/1.10.24/i18n/Portuguese.json"
     }
 });
 
-$("#btnPesquisarFiltros").click(function (event){
+$("#btnPesquisarFiltros").click(function (event) {
     event.preventDefault()
 
     tabelaAparelhos.ajax.reload();
 })
+

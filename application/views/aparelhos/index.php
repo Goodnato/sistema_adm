@@ -92,6 +92,7 @@
                         <th scope="col">Cadastrado por</th>
                         <th scope="col">Data registro</th>
                         <th scope="col">Status</th>
+                        <th scope="col">Ação</th>
                     </tr>
                 </thead>
                 <tbody>
