@@ -103,14 +103,14 @@ class Aparelhos extends CI_Controller
 
     public function listaAparelhos()
     {
-        $numeroPorPagina = $_POST['length'];
-        $inicioLimite = $_POST['start'];
+        $numeroPorPagina = $this->input->post('length');
+        $inicioLimite = $this->input->post('start');
         $finalLimite = $inicioLimite + $numeroPorPagina;
-        $draw = $_POST['draw'];
-        $indiceColuna = $_POST['order'][0]['column'];
+        $draw = $this->input->post('draw');
+        $indiceColuna = $this->input->post('order')[0]['column'];
         $ordenar = [
-            'coluna' => $_POST['columns'][$indiceColuna]['data'],
-            'direcao' => $_POST['order'][0]['dir']
+            'coluna' => $this->input->post('columns')[$indiceColuna]['data'],
+            'direcao' => $this->input->post('order')[0]['dir']
         ];
         $procurarSql = $this->montaCondicaoListaAparelhosProcurar();
         $filtrosSql = $this->montaCondicaoListaAparelhosFiltros();
@@ -128,7 +128,7 @@ class Aparelhos extends CI_Controller
 
     private function montaCondicaoListaAparelhosProcurar()
     {
-        $procurarValor = $_POST['search']['value'];
+        $procurarValor = $this->input->post('search')['value'];
 
         $procurarSql = " ";
         if (!empty($procurarValor)) {
@@ -148,32 +148,32 @@ class Aparelhos extends CI_Controller
     {
         $filtrosSql = " ";
 
-        if (is_array($_POST['idMarca']) && count($_POST['idMarca']) > 0) {
-            $filtrosSql .= "AND mc.id IN(" . implode(", ", $_POST['idMarca']) . ") ";
+        if (is_array($this->input->post('idMarca')) && count($this->input->post('idMarca')) > 0) {
+            $filtrosSql .= "AND mc.id IN(" . implode(", ", $this->input->post('idMarca')) . ") ";
         }
 
-        if (is_array($_POST['idModelo']) && count($_POST['idModelo']) > 0) {
-            $filtrosSql .= "AND md.id IN(" . implode(", ", $_POST['idModelo']) . ") ";
+        if (is_array($this->input->post('idModelo')) && count($this->input->post('idModelo')) > 0) {
+            $filtrosSql .= "AND md.id IN(" . implode(", ", $this->input->post('idModelo')) . ") ";
         }
 
-        if (!empty($_POST['imei'])) {
-            $filtrosSql .= "AND ap.imei1 = '" . $_POST['imei'] . "'";
+        if (!empty($this->input->post('imei'))) {
+            $filtrosSql .= "AND ap.imei1 = '" . $this->input->post('imei') . "'";
         }
 
-        if (is_array($_POST['idUsuarioRegistro']) && count($_POST['idUsuarioRegistro']) > 0) {
-            $filtrosSql .= "AND us.id IN(" . implode(", ", $_POST['idUsuarioRegistro']) . ") ";
+        if (is_array($this->input->post('idUsuarioRegistro')) && count($this->input->post('idUsuarioRegistro')) > 0) {
+            $filtrosSql .= "AND us.id IN(" . implode(", ", $this->input->post('idUsuarioRegistro')) . ") ";
         }
 
-        if (is_array($_POST['idStatusCondicaoAparelho']) && count($_POST['idStatusCondicaoAparelho']) > 0) {
-            $filtrosSql .= "AND sc.id IN(" . implode(", ", $_POST['idStatusCondicaoAparelho']) . ") ";
+        if (is_array($this->input->post('idStatusCondicaoAparelho')) && count($this->input->post('idStatusCondicaoAparelho')) > 0) {
+            $filtrosSql .= "AND sc.id IN(" . implode(", ", $this->input->post('idStatusCondicaoAparelho')) . ") ";
         }
 
-        /*if (is_array($_POST['idDisponibilidade']) && count($_POST['idDisponibilidade']) > 0) {
-            $filtrosSql .= "AND md.id IN(" . implode(", ", $_POST['idDisponibilidade']) . ") ";
+        /*if (is_array($this->input->post('idDisponibilidade')) && count($this->input->post('idDisponibilidade')) > 0) {
+            $filtrosSql .= "AND md.id IN(" . implode(", ", $this->input->post('idDisponibilidade')) . ") ";
         }*/
 
-        if (is_array($_POST['status']) && count($_POST['status']) > 0) {
-            $filtrosSql .= "AND ap.status IN(" . implode(", ", $_POST['status']) . ") ";
+        if (is_array($this->input->post('status')) && count($this->input->post('status')) > 0) {
+            $filtrosSql .= "AND ap.status IN(" . implode(", ", $this->input->post('status')) . ") ";
         }
 
         return $filtrosSql;
