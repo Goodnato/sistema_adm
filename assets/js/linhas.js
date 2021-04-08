@@ -136,12 +136,21 @@ function limpaFormularioCadastroLinha() {
 }
 
 //javascript da tabela que aciona o metodo Lista Linhas
-var tabelaLinhas = $("#tabelaLinhas").dataTable({
+const tabelaLinhas = $("#tabelaLinhas").dataTable({
     "processing": true,
     "serverSide": true,
     "ajax": {
         "type": "post",
-        "url": base_url("Linhas/listaLinhas")
+        "url": base_url("Linhas/listaLinhas"),
+        dataType: "json",
+        data: function (d) {
+            d.numeroLinha = $("#pesquisaNumero").val()
+            d.codigoChip = $("#pesquisaCodigoChip").val()
+            d.idCategoria = $("#pesquisaCategoria").val()
+            d.idUsuarioRegistro = $("#pesquisaCadastradoPor").val()
+            d.idDisponibilidade = $("#pesquisaDisponibilidade").val()
+            d.status = $("#pesquisaStatusLinha").val()
+        }
     },
     "columns": [
         { "data": "id_linha" },

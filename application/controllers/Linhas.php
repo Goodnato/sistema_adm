@@ -75,16 +75,19 @@ class Linhas extends CI_Controller
 
     public function listaLinhas()
     {
-        $numeroPorPagina = $_POST['length'];
-        $inicioLimite = $_POST['start'];
+        $numeroPorPagina = $this->input->post('length');
+        $inicioLimite = $this->input->post('start');
         $finalLimite = $inicioLimite + $numeroPorPagina;
-        $draw = $_POST['draw'];
-        $indiceColuna = $_POST['order'][0]['column'];
+        $draw = $this->input->post('draw');
+        $indiceColuna = $this->input->post('order')[0]['column'];
         $ordenar = [
-            'coluna' => $_POST['columns'][$indiceColuna]['data'],
-            'direcao' => $_POST['order'][0]['dir']
+            'coluna' => $this->input->post('columns')[$indiceColuna]['data'],
+            'direcao' => $this->input->post('order')[0]['dir']
         ];
-        $procurarSql = $this->montaCondicaoListaLinhas();
+
+        $procurarSql = $this->montaCondicaoListaLinhasProcurar();
+
+        $filtrosSql = $this->montaCondicaoListaLinhasFiltros();
 
         $listaAparelhos = $this->Linhas_model->listaLinhas($procurarSql, $ordenar, $inicioLimite, $finalLimite);
         //organizar o array para fazer json_encode e popular a tabela
@@ -98,7 +101,7 @@ class Linhas extends CI_Controller
         echo json_encode($teste);
     }
     
-    private function montaCondicaoListaLinhas() //criar os critérios para a consulta ao banco, gera  a variavel $procurarSql
+    private function montaCondicaoListaLinhasProcurar() //criar os critérios para a consulta ao banco, gera  a variavel $procurarSql
     {
         $procurarValor = $_POST['search']['value'];
 
@@ -114,6 +117,42 @@ class Linhas extends CI_Controller
 
         return $procurarSql;
     }
+
+    private function montaCondicaoListaLinhasFiltros()
+    {
+        $filtrosSql = " ";
+
+        if (!empty($this->input->post('numeroLinha'))) {
+            $filtrosSql .= "AND li.numero_linha = '" . $this->input->post('numeroLinha') . "'";
+        }
+
+        if (!empty($this->input->post('codigoChip'))) {
+            $filtrosSql .= "AND li.imei1 = '" . $this->input->post('codigoChip') . "'";
+        }
+
+        if (is_array($this->input->post('idCategoria')) && count($this->input->post('idCategoria')) > 0) {
+            $filtrosSql .= "AND cg.id IN(" . implode(", ", $this->input->post('idCategoria')) . ") ";
+        }
+
+        if (is_array($this->input->post('idOperadora')) && count($this->input->post('idOperadora')) > 0) {
+            $filtrosSql .= "AND op.id IN(" . implode(", ", $this->input->post('idOperadora')) . ") ";
+        }
+
+        if (is_array($this->input->post('idUsuarioRegistro')) && count($this->input->post('idUsuarioRegistro')) > 0) {
+            $filtrosSql .= "AND us.id IN(" . implode(", ", $this->input->post('idUsuarioRegistro')) . ") ";
+        }
+
+        /*if (is_array($this->input->post('idDisponibilidade')) && count($this->input->post('idDisponibilidade')) > 0) {
+            $filtrosSql .= "AND md.id IN(" . implode(", ", $this->input->post('idDisponibilidade')) . ") ";
+        }*/
+
+        if (is_array($this->input->post('status')) && count($this->input->post('status')) > 0) {
+            $filtrosSql .= "AND li.status IN(" . implode(", ", $this->input->post('status')) . ") ";
+        }
+
+        return $filtrosSql;
+    }
+
 
 
 }
