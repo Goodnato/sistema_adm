@@ -30,19 +30,13 @@ class Aparelhos_model extends CI_Model
                     mc.nome AS nome_marca,
                     md.nome AS nome_modelo,
                     sc.nome AS status_condicao,
-                    ap.nota_fiscal,
-                    DATE_FORMAT(ap.data_nota, '%d/%m/%Y') AS data_nota,
-                    REPLACE(ap.valor, '.', ',') AS valor,
-                    ap.valor_depreciado,
-                    us.nome AS registro_usuario,
-                    DATE_FORMAT(ap.data_registro, '%d/%m/%Y') AS data_registro,
+                    ap.valor,
                     IF(ap.status = " . STATUS_ATIVO . " , 'ATIVO', 'INATIVO') AS status
                 FROM
                     {$this->tabela} ap
                 INNER JOIN marcas mc ON mc.id = ap.id_marca
                 INNER JOIN modelos md ON md.id = ap.id_modelo
                 INNER JOIN status_condicoes_aparelhos sc ON sc.id = ap.id_status_condicao_aparelho
-                INNER JOIN usuarios us ON us.id = ap.id_usuario_registro
                 WHERE
                     1 = 1
                     $procurarSql

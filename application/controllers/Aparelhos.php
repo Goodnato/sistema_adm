@@ -136,7 +136,6 @@ class Aparelhos extends CI_Controller
                 mc.nome LIKE '%" . $procurarValor . "%' OR 
                 md.nome LIKE '%" . $procurarValor . "%' OR 
                 ap.imei1 LIKE '%" . $procurarValor . "%' OR 
-                us.nome LIKE '%" . $procurarValor . "%' OR 
                 sc.nome LIKE '%" . $procurarValor . "%'
             )";
         }
@@ -158,10 +157,6 @@ class Aparelhos extends CI_Controller
 
         if (!empty($this->input->post('imei'))) {
             $filtrosSql .= "AND ap.imei1 = '" . $this->input->post('imei') . "'";
-        }
-
-        if (is_array($this->input->post('idUsuarioRegistro')) && count($this->input->post('idUsuarioRegistro')) > 0) {
-            $filtrosSql .= "AND us.id IN(" . implode(", ", $this->input->post('idUsuarioRegistro')) . ") ";
         }
 
         if (is_array($this->input->post('idStatusCondicaoAparelho')) && count($this->input->post('idStatusCondicaoAparelho')) > 0) {

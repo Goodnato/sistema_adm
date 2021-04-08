@@ -85,12 +85,7 @@
                         <th scope="col">Marca</th>
                         <th scope="col">Modelo</th>
                         <th scope="col">Condição</th>
-                        <th scope="col">Nota fiscal</th>
-                        <th scope="col">Data nota fiscal</th>
-                        <th scope="col">Valor R$</th>
-                        <th scope="col">Valor depreciado</th>
-                        <th scope="col">Cadastrado por</th>
-                        <th scope="col">Data registro</th>
+                        <th scope="col">Valor</th>
                         <th scope="col">Status</th>
                         <th scope="col">Ação</th>
                     </tr>
@@ -180,3 +175,6 @@
         </div>
     </div>
 </div>
+<script>
+    const statusCondicaoAparelho = <?= json_encode($listaStatusCondicoes); ?>
+</script>

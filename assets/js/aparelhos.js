@@ -209,29 +209,29 @@ const tabelaAparelhos = $("#tabelaAparelhos").DataTable({
         { data: "nome_marca" },
         { data: "nome_modelo" },
         { data: "status_condicao" },
-        { data: "nota_fiscal" },
-        { data: "data_nota" },
-        { data: "valor" },
-        { data: "valor_depreciado" },
-        { data: "registro_usuario" },
-        { data: "data_registro" },
+        {
+            data: "valor",
+            render: function (data, type, row, meta) {
+                return 'R$ ' + parseFloat(data).toLocaleString('pt-br', { minimumFractionDigits: 2 });
+            }
+        },
         { data: "status" },
         {
             data: "acao",
             render: function (data, type, row, meta) {
-                return '<button style="padding: 0 5px;" class="btn btn-warning editar"><i class="fas fa-edit"></i></button>';
+                return '<button style="padding: 0 5px;" class="btn btn-primary visualizar"><i class="fas fa-eye"></i></button>';
             }
         }
     ],
     columnDefs: [
         { 
-            targets: [10, 12], 
+            targets: [7], 
             orderable: false 
         },
-        {
-            targets: [12],
+        { 
+            targets: [7],
             className: "text-center",
-       }
+        }
     ],
     language: {
         url: "//cdn.datatables.net/plug-ins/1.10.24/i18n/Portuguese.json"
@@ -243,4 +243,3 @@ $("#btnPesquisarFiltros").click(function (event) {
 
     tabelaAparelhos.ajax.reload();
 })
-
