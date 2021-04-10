@@ -76,4 +76,31 @@ class Aparelhos_model extends CI_Model
 
         return count($resultado) == 0 ? 0 : $resultado[0]['total'];
     }
+
+    public function consultaAparelhosPorId($idAparelho)
+    {
+        $sql = "SELECT
+                    ap.id AS id_aparelho,
+                    ap.imei1 AS imei1,
+                    md.nome AS nome_modelo,
+                    mc.nome AS nome_marca,
+                    ap.id_status_condicao_aparelho,
+                    ap.nota_fiscal,
+                    ap.data_nota,
+                    REPLACE(ap.valor, '.', ',') AS valor,
+                    ap.valor_depreciado,
+                    us.nome AS nome_usuario_registro,
+                    ap.status
+                FROM
+                    {$this->tabela} ap
+                INNER JOIN marcas mc ON mc.id = ap.id_marca
+                INNER JOIN modelos md ON md.id = ap.id_modelo
+                INNER JOIN usuarios us ON us.id = ap.id_usuario_registro
+                WHERE
+                    ap.id = $idAparelho";
+        
+        $resultado = $this->db->query($sql)->result_array();
+
+        return count($resultado) == 0 ? [] : $resultado[0];
+    }
 }

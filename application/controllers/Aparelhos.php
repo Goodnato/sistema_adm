@@ -173,4 +173,32 @@ class Aparelhos extends CI_Controller
 
         return $filtrosSql;
     }
+
+    public function visualizarAparelho()
+    {
+        $idAparelho = (int) $this->input->post('idAparelho');
+
+        if ($idAparelho <= 0) {
+            echo json_encode([
+                'status' => false
+            ]);
+
+            return false;
+        }
+
+        $aparelho = $this->Aparelhos_model->consultaAparelhosPorId($idAparelho);
+
+        if (count($aparelho) == 0) {
+            echo json_encode([
+                'status' => false
+            ]);
+
+            return false;
+        }
+
+        echo json_encode([
+            'status' => true,
+            'aparelho' => $aparelho
+        ]);
+    }
 }
