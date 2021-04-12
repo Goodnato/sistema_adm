@@ -22,6 +22,11 @@ class Aparelhos_model extends CI_Model
         $this->db->insert($this->tabela, $dadosAparelho);
     }
 
+    public function editarAparelho($idAparelho, $dadosAparelho)
+    {
+        $this->db->update($this->tabela, $dadosAparelho, ['id' => $idAparelho]);
+    }
+
     public function listaAparelhos($procurarSql, $ordenar, $inicioLimite, $finalLimite)
     {
         $sql = "SELECT
