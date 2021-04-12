@@ -157,15 +157,30 @@ const tabelaLinhas = $("#tabelaLinhas").dataTable({
         { "data": "numero_linha" },
         { "data": "codigo_chip" },
         { "data": "nome_categoria" },
-        { "data": "nome_operadora" },
-        { "data": "pin_puk1" },
-        { "data": "pin_puk2" },
-        { "data": "registro_usuario" },
-        { "data": "data_registro" },
         { "data": "status" },
+        
     ],
+
+    columnDefs: [
+        {
+            targets: [4],
+            orderable: false
+        },
+        {
+            targets: [4],
+            className: "text-center",
+        }
+    ],
+
     "language": {
         "url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/Portuguese.json"
     }
 });
+
+
+$("#btnPesquisarFiltros").click(function (event) {
+    event.preventDefault()
+
+    tabelaLinhas.ajax.reload();
+})
 

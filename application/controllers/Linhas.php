@@ -89,13 +89,13 @@ class Linhas extends CI_Controller
 
         $filtrosSql = $this->montaCondicaoListaLinhasFiltros();
 
-        $listaAparelhos = $this->Linhas_model->listaLinhas($procurarSql, $ordenar, $inicioLimite, $finalLimite);
+        $listaLinhas = $this->Linhas_model->listaLinhas(($procurarSql . $filtrosSql), $ordenar, $inicioLimite, $finalLimite);
         //organizar o array para fazer json_encode e popular a tabela
         $teste = [
             "draw" => $draw,
             "recordsTotal" => $this->Linhas_model->totalRegistroLinhas(),
             "recordsFiltered" => $this->Linhas_model->totalRegistroLinhasFiltradas($procurarSql),
-            "data" => $listaAparelhos
+            "data" => $listaLinhas
         ];
         //fornece a variavel que popula a tabela com os dados
         echo json_encode($teste);
@@ -110,8 +110,7 @@ class Linhas extends CI_Controller
             $procurarSql = " AND (
                 li.numero_linha LIKE '%".$procurarValor."%' OR 
                 li.codigo_chip LIKE '%".$procurarValor."%' OR 
-                cg.nome LIKE '%".$procurarValor."%' OR 
-                us.nome LIKE '%".$procurarValor."%' OR 
+                cg.nome LIKE '%".$procurarValor."%'
             )";
         }
 
@@ -132,14 +131,6 @@ class Linhas extends CI_Controller
 
         if (is_array($this->input->post('idCategoria')) && count($this->input->post('idCategoria')) > 0) {
             $filtrosSql .= "AND cg.id IN(" . implode(", ", $this->input->post('idCategoria')) . ") ";
-        }
-
-        if (is_array($this->input->post('idOperadora')) && count($this->input->post('idOperadora')) > 0) {
-            $filtrosSql .= "AND op.id IN(" . implode(", ", $this->input->post('idOperadora')) . ") ";
-        }
-
-        if (is_array($this->input->post('idUsuarioRegistro')) && count($this->input->post('idUsuarioRegistro')) > 0) {
-            $filtrosSql .= "AND us.id IN(" . implode(", ", $this->input->post('idUsuarioRegistro')) . ") ";
         }
 
         /*if (is_array($this->input->post('idDisponibilidade')) && count($this->input->post('idDisponibilidade')) > 0) {

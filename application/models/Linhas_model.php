@@ -29,17 +29,11 @@ class Linhas_model extends CI_Model
                     li.numero_linha AS numero_linha,
                     li.codigo_chip AS codigo_chip,
                     cg.nome AS nome_categoria,
-                    op.nome AS nome_operadora,
-                    li.pin_puk1,
-                    li.pin_puk2,
-                    us.nome AS registro_usuario,
-                    li.data_registro,
-                    li.status
+                    IF(li.status = " . STATUS_ATIVO . " , 'ATIVO', 'INATIVO') AS status
                 FROM
                     {$this->tabela} li
                 INNER JOIN categorias cg ON cg.id = li.id_categoria
                 INNER JOIN operadoras op ON op.id = li.id_operadora
-                INNER JOIN usuarios us ON us.id = li.id_usuario_registro
                 WHERE
                     1 = 1
                     $procurarSql
@@ -67,7 +61,7 @@ class Linhas_model extends CI_Model
 
         return count($resultado) == 0 ? 0 : $resultado[0]['total'];
     }
-
+    //1 =1  da consulta é utlizando pra quando não houver resultado na $procurarSQL
     public function totalRegistroLinhas()
     {
         $sql = "SELECT

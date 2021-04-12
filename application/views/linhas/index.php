@@ -56,7 +56,7 @@
                             </div>
                             <div class="row mt-2">
                                 <div class="col-12">
-                                    <button class="btn btn-primary"><i class="fas fa-search"></i> Pesquisar</button>
+                                    <button class="btn btn-primary" id="btnPesquisarFiltros"><i class="fas fa-search"></i> Pesquisar</button>
                                     <button class="btn btn-warning"><i class="fas fa-file-excel"></i> Excel</button>
                                     <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#modalNovaLinha"><i class="fas fa-plus-square"></i> Nova Linha</button>
                                     <!-- botão do modal botão do modal /// ids do modal => data-toggle="modal" data-target="#exampleModal" -->
@@ -76,11 +76,6 @@
                                 <th scope="col">Número da Linha</th>
                                 <th scope="col">Código do Chip</th>
                                 <th scope="col">Categoria</th>
-                                <th scope="col">Operadoras</th>
-                                <th scope="col">PIN-PUK1</th>
-                                <th scope="col">PIN-PUK2</th>
-                                <th scope="col">Cadastrado por</th>
-                                <th scope="col">Data registro</th>
                                 <th scope="col">Status</th>
                             </tr>
                         </thead>
