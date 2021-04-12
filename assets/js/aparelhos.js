@@ -1,3 +1,57 @@
+
+
+const tabelaAparelhos = $("#tabelaAparelhos").DataTable({
+    processing: true,
+    serverSide: true,
+    ajax: {
+        type: "post",
+        url: base_url("Aparelhos/listaAparelhos"),
+        dataType: "json",
+        data: function (d) {
+            d.idMarca = $("#pesquisaMarca").val()
+            d.idModelo = $("#pesquisaModelo").val()
+            d.imei = $("#pesquisaImei").val()
+            d.idUsuarioRegistro = $("#pesquisaCadastradoPor").val()
+            d.idStatusCondicaoAparelho = $("#pesquisaStatusCondicoes").val()
+            d.idDisponibilidade = $("#pesquisaDisponibilidade").val()
+            d.status = $("#pesquisaStatus").val()
+        }
+    },
+    columns: [
+        { data: "id_aparelho" },
+        { data: "imei1" },
+        { data: "nome_marca" },
+        { data: "nome_modelo" },
+        { data: "status_condicao" },
+        {
+            data: "valor",
+            render: function (data, type, row, meta) {
+                return 'R$ ' + parseFloat(data).toLocaleString('pt-br', { minimumFractionDigits: 2 });
+            }
+        },
+        { data: "status" },
+        {
+            data: "acao",
+            render: function (data, type, row, meta) {
+                return '<button style="padding: 0 5px;" class="btn btn-primary visualizar"><i class="fas fa-eye"></i></button>';
+            }
+        }
+    ],
+    columnDefs: [
+        {
+            targets: [7],
+            orderable: false
+        },
+        {
+            targets: [7],
+            className: "text-center",
+        }
+    ],
+    language: {
+        url: "//cdn.datatables.net/plug-ins/1.10.24/i18n/Portuguese.json"
+    }
+});
+
 $('#pesquisaMarca').multiselect({
     buttonWidth: '100%',
     includeSelectAllOption: true,
@@ -175,6 +229,7 @@ $('#btnSalvarAparelho').click(function (event) {
             timer: 1500,
             heightAuto: false
         }).then((result) => {
+            tabelaAparelhos.ajax.reload()
             $('#modalNovoAparelho').modal('hide')
 
             limpaFormularioCadastro()
@@ -202,62 +257,10 @@ function limpaFormularioCadastro() {
     $('#cadastroValorNotaFiscal').val('')
 }
 
-const tabelaAparelhos = $("#tabelaAparelhos").DataTable({
-    processing: true,
-    serverSide: true,
-    ajax: {
-        type: "post",
-        url: base_url("Aparelhos/listaAparelhos"),
-        dataType: "json",
-        data: function (d) {
-            d.idMarca = $("#pesquisaMarca").val()
-            d.idModelo = $("#pesquisaModelo").val()
-            d.imei = $("#pesquisaImei").val()
-            d.idUsuarioRegistro = $("#pesquisaCadastradoPor").val()
-            d.idStatusCondicaoAparelho = $("#pesquisaStatusCondicoes").val()
-            d.idDisponibilidade = $("#pesquisaDisponibilidade").val()
-            d.status = $("#pesquisaStatus").val()
-        }
-    },
-    columns: [
-        { data: "id_aparelho" },
-        { data: "imei1" },
-        { data: "nome_marca" },
-        { data: "nome_modelo" },
-        { data: "status_condicao" },
-        {
-            data: "valor",
-            render: function (data, type, row, meta) {
-                return 'R$ ' + parseFloat(data).toLocaleString('pt-br', { minimumFractionDigits: 2 });
-            }
-        },
-        { data: "status" },
-        {
-            data: "acao",
-            render: function (data, type, row, meta) {
-                return '<button style="padding: 0 5px;" class="btn btn-primary visualizar"><i class="fas fa-eye"></i></button>';
-            }
-        }
-    ],
-    columnDefs: [
-        {
-            targets: [7],
-            orderable: false
-        },
-        {
-            targets: [7],
-            className: "text-center",
-        }
-    ],
-    language: {
-        url: "//cdn.datatables.net/plug-ins/1.10.24/i18n/Portuguese.json"
-    }
-});
-
 $("#btnPesquisarFiltros").click(function (event) {
     event.preventDefault()
 
-    tabelaAparelhos.ajax.reload();
+    tabelaAparelhos.ajax.reload()
 })
 
 tabelaAparelhos.on('click', '.visualizar', function (event) {
