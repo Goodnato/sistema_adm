@@ -126,7 +126,7 @@ class Linhas extends CI_Controller
         }
 
         if (!empty($this->input->post('codigoChip'))) {
-            $filtrosSql .= "AND li.imei1 = '" . $this->input->post('codigoChip') . "'";
+            $filtrosSql .= "AND li.codigo_chip = '" . $this->input->post('codigoChip') . "'";
         }
 
         if (is_array($this->input->post('idCategoria')) && count($this->input->post('idCategoria')) > 0) {
