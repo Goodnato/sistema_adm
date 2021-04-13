@@ -96,3 +96,7 @@ define('ARRAY_STATUS', [
     0 => 'INATIVO',
     1 => 'ATIVO'
 ]);
+
+define('PAGINA_APARELHOS', 1);
+define('PAGINA_LINHAS', 2);
+define('PAGINA_DISTRIBUICOES', 3);
