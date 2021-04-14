@@ -190,17 +190,17 @@ $("#btnPesquisarFiltros").click(function (event) {
     tabelaLinhas.ajax.reload();
 })
 
-
-tabelaAparelhos.on('click', '.visualizar', function (event) {
+//codigo javascritp referente ao modal visualizar da tabela para editar os dados 
+tabelaLinhas.on('click', '.visualizar', function (event) {
     let td = $(this).closest('tr').find('td')
-    let idAparelho = td.eq(0).text()
+    let idLinha = td.eq(0).text()
 
     $.ajax({
-        url: base_url("Aparelhos/visualizarAparelho"),
+        url: base_url("Linhas/visualizarLinha"),
         dataType: "json",
         type: "Post",
         data: {
-            idAparelho
+            idLinha 
         }
     }).done(function (response) {
         if (response.status) {

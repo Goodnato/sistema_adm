@@ -144,6 +144,34 @@ class Linhas extends CI_Controller
         return $filtrosSql;
     }
 
+    public function visualizarLinha()
+    {
+        $idLinha = (int) $this->input->post('idlinha');
+
+        if ($idLinha <= 0) {
+            echo json_encode([
+                'status' => false
+            ]);
+
+            return false;
+        }
+
+        $linha = $this->Aparelhos_model->consultaLinhasPorId($idLinha);
+
+        if (count($linha) == 0) {
+            echo json_encode([
+                'status' => false
+            ]);
+
+            return false;
+        }
+
+        echo json_encode([
+            'status' => true,
+            'aparelho' => $linha
+        ]);
+    }
+
 
 
 }
