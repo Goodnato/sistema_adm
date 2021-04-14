@@ -89,10 +89,10 @@ class Linhas_model extends CI_Model
                 FROM
                     {$this->tabela} li
                 INNER JOIN categorias cg ON cg.id = li.id_categoria
-                INNER JOIN operadoras op ON op.id = ap.id_operadora
+                INNER JOIN operadoras op ON op.id = li.id_operadora
                 INNER JOIN usuarios us ON us.id = li.id_usuario_registro
                 WHERE
-                    ap.id = $idLinha";
+                    li.id = $idLinha";
         
         $resultado = $this->db->query($sql)->result_array();
 

@@ -148,7 +148,7 @@ class Linhas extends CI_Controller
 
     public function visualizarLinha()
     {
-        $idLinha = (int) $this->input->post('idlinha');
+        $idLinha = (int) $this->input->post('idLinha');
 
         if ($idLinha <= 0) {
             echo json_encode([
@@ -170,7 +170,7 @@ class Linhas extends CI_Controller
 
         echo json_encode([
             'status' => true,
-            'aparelho' => $linha
+            'linha' => $linha
         ]);
     }
 

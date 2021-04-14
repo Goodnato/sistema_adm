@@ -194,7 +194,7 @@ $("#btnPesquisarFiltros").click(function (event) {
 tabelaLinhas.on('click', '.visualizar', function (event) {
     let td = $(this).closest('tr').find('td')
     let idLinha = td.eq(0).text()
-
+    
     $.ajax({
         url: base_url("Linhas/visualizarLinha"),
         dataType: "json",
@@ -204,7 +204,7 @@ tabelaLinhas.on('click', '.visualizar', function (event) {
         }
     }).done(function (response) {
         if (response.status) {
-            $('#tituloLinha').text(idLinha)
+            $('#tituloLinha').text(response.linha.numero_linha)
             $('#editaNumeroLinha').val(response.linha.numero_linha)
             $('#editaCodigoChip').val(response.linha.codigo_chip)
             $('#editaCategoria').val(response.linha.nome_categoria)
