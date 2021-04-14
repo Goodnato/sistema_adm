@@ -8,9 +8,7 @@ class Distribuicoes extends CI_Controller
     {
         parent::__construct();
 
-        $this->load->model('Aparelhos_model');
-        $this->load->model('Marcas_model');
-        $this->load->model('Modelos_model');
+        $this->load->model('Distribuicoes_model');
         $this->load->model('Status_condicoes_aparelhos_model');
         $this->load->model('Status_disponibilidades_model');
     }
@@ -29,13 +27,10 @@ class Distribuicoes extends CI_Controller
             'paginaAtual' => PAGINA_DISTRIBUICOES,
             'caminhoCss' => 'assets/css/distribuicoes.css',
             'caminhoJs' => 'assets/js/distribuicoes.js',
-            'listaMarcas' => $this->Marcas_model->consultaTodasMarcas(),
-            'listaMarcasAtivas' => $this->Marcas_model->consultaTodasMarcasPorStatus(STATUS_ATIVO),
-            'listaModelos' => $this->Modelos_model->consultaTodosModelos(),
-            'listaModelosAtivos' => $this->Modelos_model->consultaTodosModelosPorStatus(STATUS_ATIVO),
-            'listaStatusCondicoes' => $this->Status_condicoes_aparelhos_model->consultaTodosStatus(),
-            'listaStatusDisponibilidades' => $this->Status_disponibilidades_model->consultaTodosStatus(),
-            'listaUsuariosCadastroAparelho' => $this->Aparelhos_model->consultaTodosUsuariosCadastroAparelho()
+            'listaColaboradoresCadastrados' => $this->Distribuicoes_model->consultaTodosColaboradoresCadastradosDistribuicao(),
+            'listaCidadesCadastradas' => $this->Distribuicoes_model->consultaTodasCidadesCadastradosDistribuicao(),
+            'listaAreasCadastradas' => $this->Distribuicoes_model->consultaTodasAreasCadastradasDistribuicao(),
+            'listaStatusDisponibilidades' => $this->Status_disponibilidades_model->consultaTodosStatus()
         ];
 
         return $carregaView;

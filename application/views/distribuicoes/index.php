@@ -21,6 +21,9 @@
                     <div class="col-4">
                         <label for="pesquisaColaborador" class="form-label">Colaborador</label><br>
                         <select id="pesquisaColaborador" multiple="multiple">
+                            <?php foreach ($listaColaboradoresCadastrados as $colaborador) { ?>
+                                <option value="<?= $colaborador['id'] ?>"><?= $colaborador['nome'] ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                     <div class="col-4">
@@ -30,6 +33,9 @@
                     <div class="col-4">
                         <label for="pesquisaCidade" class="form-label">Cidade</label>
                         <select id="pesquisaCidade" multiple="multiple">
+                            <?php foreach ($listaCidadesCadastradas as $cidade) { ?>
+                                <option value="<?= $cidade['cidade'] ?>"><?= $cidade['cidade'] ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                 </div>
@@ -37,6 +43,9 @@
                     <div class="col">
                         <label for="pesquisaArea" class="form-label">Área</label><br>
                         <select id="pesquisaArea" multiple="multiple">
+                            <?php foreach ($listaAreasCadastradas as $area) { ?>
+                                <option value="<?= $area['area'] ?>"><?= $cidade['area'] ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                     <div class="col">
