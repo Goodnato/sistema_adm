@@ -186,47 +186,34 @@
                                     </div>
                                 </div>
                                 <div class="row">
+                                    <input type="hidden" id="editaIdLinha" value="">
                                     <div class="col">
-                                        <label for="editaImei" class="form-label">IMEI*</label>
-                                        <input type="number" name="imei" class="form-control form-control-sm" id="editaImei" disabled>
+                                        <label for="editaNumeroLinha" class="form-label">Número Linha*</label>
+                                        <input type="text" name="numeroLinha" class="form-control form-control-sm" id="editaNumeroLinha" disabled>
                                     </div>
                                     <div class="col">
-                                        <label for="editaModelo" class="form-label">Modelo*</label>
-                                        <input type="text" class="form-control form-control-sm" id="editaModelo" disabled>
-                                    </div>
-                                </div>
-                                <div class="row mt-2">
-                                    <div class="col">
-                                        <label for="editaMarca" class="form-label">Marca*</label>
-                                        <input type="text" class="form-control form-control-sm" id="editaMarca" disabled>
-                                    </div>
-                                    <div class="col">
-                                        <label for="editaStatusCondicaoAparelho" class="form-label">Condição aparelho*</label>
-                                        <select class="form-control form-control-sm" id="editaStatusCondicaoAparelho">
-                                            <?php foreach ($listaStatusCondicoes as $status) { ?>
-                                                <option value="<?= $status['id'] ?>"><?= $status['nome'] ?></option>
-                                            <?php } ?>
-                                        </select>
+                                        <label for="editaCodigoChip" class="form-label">Código Chip*</label>
+                                        <input type="text" name="codigoChip" class="form-control form-control-sm" id="editaCodigoChip" disabled>
                                     </div>
                                 </div>
                                 <div class="row mt-2">
                                     <div class="col">
-                                        <label for="editaNotaFiscal" class="form-label">Nota fiscal</label>
-                                        <input type="number" class="form-control form-control-sm" id="editaNotaFiscal" placeholder="DIGITE AQUI">
+                                        <label for="editaCategoria" class="form-label">Categoria*</label>
+                                        <input type="text" class="form-control form-control-sm" id="editaCategoria" disabled>
                                     </div>
                                     <div class="col">
-                                        <label for="editaDataNotaFiscal" class="form-label">Data nota fiscal</label>
-                                        <input type="date" class="form-control form-control-sm" id="editaDataNotaFiscal">
+                                        <label for="editaOperadora" class="form-label">Operadora*</label>
+                                        <input type="text" class="form-control form-control-sm" id="editaOperadora" disabled>
                                     </div>
                                 </div>
                                 <div class="row mt-2">
                                     <div class="col">
-                                        <label for="editaValorNotaFiscal" class="form-label">Valor nota fiscal R$</label>
-                                        <input type="text" class="form-control form-control-sm" id="editaValorNotaFiscal" placeholder="0,00">
+                                        <label for="editaPinPuk1" class="form-label">Pin-Puk 1*</label>
+                                        <input type="text" name="pin_puk1" class="form-control form-control-sm" id="editaPinPuk1" disabled>
                                     </div>
                                     <div class="col">
-                                        <label for="editaValorDepreciado" class="form-label">Valor depreciado R$</label>
-                                        <input type="text" class="form-control form-control-sm" id="editaValorDepreciado" disabled>
+                                        <label for="editaPinPuk2" class="form-label">Pin-Puk 2*</label>
+                                        <input type="text" name="pin_puk2" class="form-control form-control-sm" id="editaPinPuk2" disabled>
                                     </div>
                                 </div>
                                 <div class="row mt-2">
@@ -256,7 +243,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-window-close"></i> Cancelar</button>
-                <button type="button" class="btn btn-success" id="btnEditarAparelho"><i class="fas fa-save"></i> Salvar</button>
+                <button type="button" class="btn btn-success" id="btnEditarLinha"><i class="fas fa-save"></i> Salvar</button>
             </div>
         </div>
     </div>

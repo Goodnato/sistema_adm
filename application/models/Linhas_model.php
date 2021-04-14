@@ -77,22 +77,20 @@ class Linhas_model extends CI_Model
     public function consultaLinhasPorId($idLinha)
     {
         $sql = "SELECT
-                    ap.id AS id_aparelho,
-                    ap.imei1 AS imei1,
-                    md.nome AS nome_modelo,
-                    mc.nome AS nome_marca,
-                    ap.id_status_condicao_aparelho,
-                    ap.nota_fiscal,
-                    ap.data_nota,
-                    REPLACE(ap.valor, '.', ',') AS valor,
-                    ap.valor_depreciado,
+                    li.id AS id_linha,
+                    li.numero_linha AS numero_linha,
+                    li.codigo_chip AS codigo_chip,
+                    cg.nome AS nome_categoria,
+                    op.nome AS nome_operadora,
+                    li.pin_puk1,
+                    li.pin_puk2,    
                     us.nome AS nome_usuario_registro,
-                    ap.status
+                    li.status
                 FROM
-                    {$this->tabela} ap
-                INNER JOIN marcas mc ON mc.id = ap.id_marca
-                INNER JOIN modelos md ON md.id = ap.id_modelo
-                INNER JOIN usuarios us ON us.id = ap.id_usuario_registro
+                    {$this->tabela} li
+                INNER JOIN categorias cg ON cg.id = li.id_categoria
+                INNER JOIN operadoras op ON op.id = ap.id_operadora
+                INNER JOIN usuarios us ON us.id = li.id_usuario_registro
                 WHERE
                     ap.id = $idLinha";
         
