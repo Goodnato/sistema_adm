@@ -158,7 +158,7 @@ class Linhas extends CI_Controller
             return false;
         }
 
-        $linha = $this->Aparelhos_model->consultaLinhasPorId($idLinha);
+        $linha = $this->Linhas_model->consultaLinhasPorId($idLinha);
 
         if (count($linha) == 0) {
             echo json_encode([

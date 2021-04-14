@@ -204,42 +204,37 @@ tabelaLinhas.on('click', '.visualizar', function (event) {
         }
     }).done(function (response) {
         if (response.status) {
-            $('#tituloAparelho').text(response.aparelho.nome_modelo)
-            $('#editaImei').val(response.aparelho.imei1)
-            $('#editaModelo').val(response.aparelho.nome_modelo)
-            $('#editaMarca').val(response.aparelho.nome_marca)
-            $('#editaStatusCondicaoAparelho').val(response.aparelho.id_status_condicao_aparelho)
-            $('#editaNotaFiscal').val(response.aparelho.nota_fiscal)
-            $('#editaDataNotaFiscal').val(response.aparelho.data_nota)
-            $('#editaValorNotaFiscal').val(response.aparelho.valor)
-            $('#editaValorDepreciado').val(response.aparelho.valor_depreciado)
-            $('#editaCadastradoPor').val(response.aparelho.nome_usuario_registro)
+            $('#tituloLinha').text(idLinha)
+            $('#editaNumeroLinha').val(response.linha.numero_linha)
+            $('#editaCodigoChip').val(response.linha.codigo_chip)
+            $('#editaCategoria').val(response.linha.nome_categoria)
+            $('#editaOperadora').val(response.linha.nome_operadora)
+            $('#editaPinPuk1').val(response.linha.pin_puk1)
+            $('#editaPinPuk2').val(response.linha.pin_puk2)
+            $('#editaCadastradoPor').val(response.linha.nome_usuario_registro)
             //$('#editaValorDisponibilidade').val(response.aparelho.valor)
-            $('#editaStatus').val(response.aparelho.status)
+            $('#editaStatus').val(response.linha.status)
 
-            $('#modalVerAparelho').modal('show')
+            $('#modalVerLinha').modal('show')
         }
     }).fail(function (response) {
         alert("Ocorreu um erro ao visualizar o aparelho. Contate o administrador do sistema")
         console.log(response)
-        $('#modalVerAparelho').modal('hide')
+        $('#modalVerLinha').modal('hide')
     })
 })
 
-$('#modalVerAparelho').on('hidden.bs.modal', function (e) {
+$('#modalVerLinha').on('hidden.bs.modal', function (e) {
     limpaFormularioEditar()
 })
 
 function limpaFormularioEditar() {
-    $('#tituloAparelho').text('')
-    $('#editaImei').val('')
-    $("#editaModelo").val('')
-    $('#editaMarca').val('')
-    $("#editaStatusCondicaoAparelho").val($("#editaStatusCondicaoAparelho option:first").val()).multiselect('refresh')
-    $('#editaNotaFiscal').val('')
-    $('#editaDataNotaFiscal').val('')
-    $('#editaValorNotaFiscal').val('')
-    $('#editaValorDepreciado').val('')
+    $('#tituloLinha').text('')
+    $('#editaNumeroLinha').val('')
+    $("#editaCodigoChip").val('')
+    $('#editaCategoria').val('')
+    $('#editaOperadora').val('')
+    $('#editaPinPuk1').val('')
     $('#editaCadastradoPor').val('')
     $('#editaValorDisponibilidade').val('')
 }
