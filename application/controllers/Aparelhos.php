@@ -25,6 +25,8 @@ class Aparelhos extends CI_Controller
     private function carregaView()
     {
         $carregaView = [
+            'tituloAtual' => 'Aparelhos',
+            'paginaAtual' => PAGINA_APARELHOS,
             'caminhoCss' => 'assets/css/aparelhos.css',
             'caminhoJs' => 'assets/js/aparelhos.js',
             'listaMarcas' => $this->Marcas_model->consultaTodasMarcas(),

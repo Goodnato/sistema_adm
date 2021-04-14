@@ -24,6 +24,8 @@ class Linhas extends CI_Controller
     private function carregaView()
     {        
         $carregaView = [
+            'tituloAtual' => 'Linhas',
+            'paginaAtual' => PAGINA_LINHAS,
             'caminhoCss' => 'assets/css/linhas.css',
             'caminhoJs' => 'assets/js/linhas.js',
             'listaCategorias' => $this->Categorias_model->consultaTodasCategorias(),

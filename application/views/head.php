@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aparelhos</title>
+    <title><?= $tituloAtual; ?></title>
     <link rel="stylesheet" href="<?= base_url("assets/css/bootstrap.min.css"); ?>">
     <link rel="stylesheet" href="<?= base_url("assets/css/datatable-bootstrap.min.css"); ?>">
     <link rel="stylesheet" href="<?= base_url("assets/css/bootstrap-multiselect.min.css"); ?>">
@@ -24,13 +24,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Aparelhos <span class="sr-only">(current)</span></a>
+                        <a class="nav-link <?=$paginaAtual == PAGINA_APARELHOS ? 'active' : ''?>" href="<?= base_url('Aparelhos/') ?>">Aparelhos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Linhas <span class="sr-only">(current)</span></a>
+                        <a class="nav-link <?=$paginaAtual == PAGINA_LINHAS ? 'active' : ''?>" href="<?= base_url('Linhas/') ?>">Linhas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Distribuições <span class="sr-only">(current)</span></a>
+                        <a class="nav-link <?=$paginaAtual == PAGINA_DISTRIBUICOES ? 'active' : ''?>" href="<?= base_url('Distribuicoes/') ?>">Distribuições</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">
