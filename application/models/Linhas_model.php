@@ -83,8 +83,10 @@ class Linhas_model extends CI_Model
     {
         $sql = "SELECT
                     li.id AS id_linha,
-                    li.numero_linha AS numero_linha,
-                    li.codigo_chip AS codigo_chip,
+                    li.numero_linha,
+                    li.codigo_chip,
+                    li.id_categoria,
+                    li.id_operadora,
                     cg.nome AS nome_categoria,
                     op.nome AS nome_operadora,
                     li.pin_puk1,

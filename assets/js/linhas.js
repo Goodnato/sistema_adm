@@ -226,11 +226,12 @@ tabelaLinhas.on('click', '.visualizar', function (event) {
         }
     }).done(function (response) {
         if (response.status) {
+            $('#editaIdLinha').val(idLinha) //importante veio do elemento hidden
             $('#tituloLinha').text(response.linha.numero_linha)
             $('#editaNumeroLinha').val(response.linha.numero_linha)
             $('#editaCodigoChip').val(response.linha.codigo_chip)
-            $('#editaCategoria').val(response.linha.nome_categoria)
-            $('#editaOperadora').val(response.linha.nome_operadora)
+            $('#editaCategoria').val(response.linha.id_categoria).multiselect('refresh')
+            $('#editaOperadora').val(response.linha.id_operadora).multiselect('refresh')
             $('#editaPinPuk1').val(response.linha.pin_puk1)
             $('#editaPinPuk2').val(response.linha.pin_puk2)
             $('#editaCadastradoPor').val(response.linha.nome_usuario_registro)
