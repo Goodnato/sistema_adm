@@ -61,7 +61,7 @@
                     <div class="col-12">
                         <button class="btn btn-primary" id="btnPesquisarFiltros"><i class="fas fa-search"></i> Pesquisar</button>
                         <button class="btn btn-warning"><i class="fas fa-file-excel"></i> Excel</button>
-                        <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#modalNovoAparelho"><i class="fas fa-plus-square"></i> Nova distribuição</button>
+                        <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#modalNovaDistribuicao"><i class="fas fa-plus-square"></i> Nova distribuição</button>
                     </div>
                 </div>
             </form>
@@ -69,7 +69,7 @@
     </div>
     <div class="row mt-5 px-2">
         <div class="table-responsive">
-            <table class="table table-striped table-bordered table-sm" id="tabelaAparelhos">
+            <table class="table table-striped table-bordered table-sm" id="tabelaDistribuicao">
                 <thead class="table-dark">
                     <tr>
                         <th scope="col">#</th>
@@ -89,11 +89,11 @@
     </div>
 </div>
 
-<div class="modal fade" id="modalNovoAparelho" tabindex="-1">
+<div class="modal fade" id="modalNovaDistribuicao" tabindex="-1">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title text-success"><i class="fas fa-plus-square"></i> Novo aparelho</h5>
+                <h5 class="modal-title text-success"><i class="fas fa-plus-square"></i> Nova distribuição</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -110,49 +110,34 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row mt-2">
+                                    <div class="col">
+                                        <label for="cadastroMatricula" class="form-label">Matrícula*</label>
+                                        <input type="number" name="cadastroMatricula" class="form-control form-control-sm" id="cadastroMatricula" placeholder="DIGITE AQUI">
+                                    </div>
+                                    <div class="col">
+                                        <label class="form-label">Colaborador</label>
+                                        <input type="text" class="form-control form-control-sm" id="cadastroColaborador" disabled>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
                                     <div class="col">
                                         <label for="cadastroImei" class="form-label">IMEI*</label>
                                         <input type="number" name="imei" class="form-control form-control-sm" id="cadastroImei" placeholder="DIGITE AQUI">
                                     </div>
                                     <div class="col">
-                                        <label for="cadastroModelo" class="form-label">Modelo*</label>
-                                        <select class="form-control form-control-sm" id="cadastroModelo">
-                                            <option value>SELECIONE</option>
-                                            <?php foreach ($listaModelosAtivos as $modelo) { ?>
-                                                <option value="<?= $modelo['id'] ?>"><?= $modelo['nome'] ?></option>
-                                            <?php } ?>
-                                        </select>
+                                        <label class="form-label">Modelo</label>
+                                        <input type="text" class="form-control form-control-sm" id="cadastroModelo" disabled>
                                     </div>
                                 </div>
                                 <div class="row mt-2">
                                     <div class="col">
-                                        <label for="cadastroMarca" class="form-label">Marca*</label>
-                                        <input type="text" class="form-control form-control-sm text-center" id="cadastroMarca" value="SELECIONE UM MODELO" disabled>
+                                        <label for="cadastroLinha" class="form-label">Linha*</label>
+                                        <input type="number" name="Linha" class="form-control form-control-sm" id="cadastroLinha" placeholder="DIGITE AQUI">
                                     </div>
                                     <div class="col">
-                                        <label for="cadastroStatusCondicaoAparelho" class="form-label">Condição aparelho*</label>
-                                        <select class="form-control form-control-sm" id="cadastroStatusCondicaoAparelho">
-                                            <?php foreach ($listaStatusCondicoes as $status) { ?>
-                                                <option value="<?= $status['id'] ?>"><?= $status['nome'] ?></option>
-                                            <?php } ?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row mt-2">
-                                    <div class="col-6">
-                                        <label for="cadastroNotaFiscal" class="form-label">Nota fiscal</label>
-                                        <input type="number" class="form-control form-control-sm" id="cadastroNotaFiscal" placeholder="DIGITE AQUI">
-                                    </div>
-                                    <div class="col-6">
-                                        <label for="cadastroDataNotaFiscal" class="form-label">Data nota fiscal</label>
-                                        <input type="date" class="form-control form-control-sm" id="cadastroDataNotaFiscal">
-                                    </div>
-                                </div>
-                                <div class="row mt-2">
-                                    <div class="col-6">
-                                        <label for="cadastroValorNotaFiscal" class="form-label">Valor nota fiscal R$</label>
-                                        <input type="text" class="form-control form-control-sm" id="cadastroValorNotaFiscal" placeholder="0,00">
+                                        <label class="form-label">Categoria</label>
+                                        <input type="text" class="form-control form-control-sm" id="cadastroCategoria" disabled>
                                     </div>
                                 </div>
                             </form>
