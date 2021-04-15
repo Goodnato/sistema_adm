@@ -22,6 +22,11 @@ class Linhas_model extends CI_Model
         $this->db->insert($this->tabela, $dadosLinha);
     }
 
+    public function editarLinha($idLinha, $dadosLinha)
+    {
+        $this->db->update($this->tabela, $dadosLinha, ['id' => $idLinha]);
+    }
+
     public function listaLinhas($procurarSql, $ordenar, $inicioLimite, $finalLimite)
     {
         $sql = "SELECT

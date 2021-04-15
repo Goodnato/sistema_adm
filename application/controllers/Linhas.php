@@ -75,6 +75,37 @@ class Linhas extends CI_Controller
         
     }
 
+    public function editarLinha()
+    {
+        $this->form_validation->set_rules("idCategoria", "<b>Categoria</b>", "trim|required|integer|combines[categorias.id]");
+        $this->form_validation->set_rules("idOperadora", "<b>Operadora</b>", "trim|required|integer|combines[operadoras.id]");
+        $this->form_validation->set_rules("pinPuk1", "<b>Pin-Puk1</b>", "trim|max_length[13]");
+        $this->form_validation->set_rules("pinPuk2", "<b>Pin-Puk2</b>", "max_length[13]");
+        $this->form_validation->set_rules("status", "<b>Status</b>", "trim|required|in_list[0,1]");
+
+        if (!$this->form_validation->run()) {
+            echo json_encode([
+                'status' => false,
+                'mensagem' => validation_errors()
+            ]);
+
+            return false;
+        }
+
+        $this->Linhas_model->editarLinha($this->input->post('idLinha'), [
+            'id_categoria' => $this->input->post('idCategoria'),
+            'id_operadora' => $this->input->post('idOperadora'),
+            'pin_puk1' => $this->input->post('pinPuk1'),
+            'pin_puk2' => $this->input->post('pinPuk2'),
+            'status' => $this->input->post('status'),
+            'id_usuario_at' => 1
+        ]);
+
+        echo json_encode([
+            'status' => true
+        ]);
+    }
+
     public function listaLinhas()
     {
         $numeroPorPagina = $this->input->post('length');

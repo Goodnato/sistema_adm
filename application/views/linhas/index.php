@@ -11,11 +11,11 @@
                             <div class="row mt-2">
                                 <div class="col">
                                     <label for="pesquisaNumero" class="form-label">Número da Linha</label>
-                                    <input type="text" class="form-control" id="pesquisaNumero" placeholder="DIGITE AQUI">
+                                    <input type="text" class="form-control form-control-sm" id="pesquisaNumero" placeholder="DIGITE AQUI">
                                 </div>
                                 <div class="col">
                                     <label for="pesquisaCodigoChip" class="form-label">Código do Chip</label>
-                                    <input type="text" class="form-control" id="pesquisaCodigoChip" placeholder="DIGITE AQUI">
+                                    <input type="text" class="form-control form-control-sm" id="pesquisaCodigoChip" placeholder="DIGITE AQUI">
                                 </div>
                             </div>
                             <div class="row mt-2">
@@ -199,21 +199,29 @@
                                 <div class="row mt-2">
                                     <div class="col">
                                         <label for="editaCategoria" class="form-label">Categoria*</label>
-                                        <input type="text" class="form-control form-control-sm" id="editaCategoria" disabled>
+                                        <select class="form-control form-control-sm" id="editaCategoria">
+                                            <?php foreach ($listaCategoriasAtivas as $categorias) { ?>
+                                                <option value="<?= $categorias['id'] ?>"><?= $categorias['nome'] ?></option>
+                                            <?php } ?>
+                                        </select>
                                     </div>
                                     <div class="col">
                                         <label for="editaOperadora" class="form-label">Operadora*</label>
-                                        <input type="text" class="form-control form-control-sm" id="editaOperadora" disabled>
+                                        <select class="form-control form-control-sm" id="editaOperadora">
+                                            <?php foreach ($listaOperadorasAtivas as $operadoras) { ?>
+                                                <option value="<?= $operadoras['id'] ?>"><?= $operadoras['nome'] ?></option>
+                                            <?php } ?>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="row mt-2">
                                     <div class="col">
                                         <label for="editaPinPuk1" class="form-label">Pin-Puk 1*</label>
-                                        <input type="text" name="pin_puk1" class="form-control form-control-sm" id="editaPinPuk1" disabled>
+                                        <input type="text" name="pin_puk1" class="form-control form-control-sm" id="editaPinPuk1">
                                     </div>
                                     <div class="col">
                                         <label for="editaPinPuk2" class="form-label">Pin-Puk 2*</label>
-                                        <input type="text" name="pin_puk2" class="form-control form-control-sm" id="editaPinPuk2" disabled>
+                                        <input type="text" name="pin_puk2" class="form-control form-control-sm" id="editaPinPuk2">
                                     </div>
                                 </div>
                                 <div class="row mt-2">

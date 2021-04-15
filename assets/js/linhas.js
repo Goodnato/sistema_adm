@@ -53,7 +53,7 @@ $('#cadastroCategoria').multiselect({
     nSelectedText: 'SELECIONADO(S)',
     buttonClass: 'form-control form-control-sm'
 });
-$('#cadastroCategoria').multiselect('selectAll', false);
+
 
 $('#cadastroOperadora').multiselect({
     buttonWidth: '100%',
@@ -64,14 +64,36 @@ $('#cadastroOperadora').multiselect({
     nSelectedText: 'SELECIONADO(S)',
     buttonClass: 'form-control form-control-sm'
 });
-$('#cadastroOperadora').multiselect('selectAll', false);
+
+
+$('#editaCategoria').multiselect({
+    buttonWidth: '100%',
+    includeSelectAllOption: true,
+    selectAllText: 'TODOS',
+    nonSelectedText: 'SELECIONE UMA OPÇÃO',
+    allSelectedText: 'TODOS',
+    nSelectedText: 'SELECIONADO(S)',
+    buttonClass: 'form-control form-control-sm'
+});
+
+$('#editaOperadora').multiselect({
+    buttonWidth: '100%',
+    includeSelectAllOption: true,
+    selectAllText: 'TODOS',
+    nonSelectedText: 'SELECIONE UMA OPÇÃO',
+    allSelectedText: 'TODOS',
+    nSelectedText: 'SELECIONADO(S)',
+    buttonClass: 'form-control form-control-sm'
+});
 
 //mascara dos campos telefone pinpunk - biblioteca mask jquery
 $('#pesquisaNumero').mask("(00)00000-0000");
 $('#cadastroNumero').mask("(00)00000-0000");
 $('#cadastroPinPuk1').mask("0000-00000000");
 $('#cadastroPinPuk2').mask("0000-00000000");
-
+$('#cadastroCodigoChip').mask("000000000000000");
+$('#editaPinPuk1').mask("0000-00000000");
+$('#editaPinPuk2').mask("0000-00000000");
 
 //codigo abaixo de jquery para o botão salvar do modal cadastro efeitos, acionar metodos de Salvar linha
 $('#btnSalvarLinha').click(function(event) {
@@ -190,7 +212,7 @@ $("#btnPesquisarFiltros").click(function (event) {
     tabelaLinhas.ajax.reload();
 })
 
-//codigo javascritp referente ao modal visualizar da tabela para editar os dados 
+//codigo javascritp referente ao modal visualizar da tabela para editar os dados. Aciona o icone ver na tabela
 tabelaLinhas.on('click', '.visualizar', function (event) {
     let td = $(this).closest('tr').find('td')
     let idLinha = td.eq(0).text()
@@ -212,20 +234,20 @@ tabelaLinhas.on('click', '.visualizar', function (event) {
             $('#editaPinPuk1').val(response.linha.pin_puk1)
             $('#editaPinPuk2').val(response.linha.pin_puk2)
             $('#editaCadastradoPor').val(response.linha.nome_usuario_registro)
-            //$('#editaValorDisponibilidade').val(response.aparelho.valor)
+            //$('#editaValorDisponibilidade').val(response.linha.valor)
             $('#editaStatus').val(response.linha.status)
 
             $('#modalVerLinha').modal('show')
         }
     }).fail(function (response) {
-        alert("Ocorreu um erro ao visualizar o aparelho. Contate o administrador do sistema")
+        alert("Ocorreu um erro ao visualizar a linha. Contate o administrador do sistema")
         console.log(response)
         $('#modalVerLinha').modal('hide')
     })
 })
 
 
-$('#btnEditarAparelho').click(function (event) {
+$('#btnEditarLinha').click(function (event) {
     $(this)
         .html('<div class="spinner-border spinner-border-sm text-light" role="status"></div> Salvando...')
         .prop('disabled', true)
@@ -233,16 +255,17 @@ $('#btnEditarAparelho').click(function (event) {
     $('#editaAlert').addClass('d-none')
     $('#editaMensagem').html('')
 
+
     $.ajax({
-        url: base_url("Aparelhos/editarAparelho"),
+        url: base_url("Linhas/editarLinha"),
         dataType: "json",
         type: "Post",
         data: {
-            idAparelho: $('#editaIdAparelho').val(),
-            idStatusCondicaoAparelho: $('#editaStatusCondicaoAparelho').val(),
-            notaFiscal: $('#editaNotaFiscal').val(),
-            dataNotaFiscal: $('#editaDataNotaFiscal').val(),
-            valorNotaFiscal: formataDecimal($('#editaValorNotaFiscal').val()),
+            idLinha: $('#editaIdLinha').val(),
+            idCategoria: $('#editaCategoria').val(),
+            idOperadora: $('#editaOperadora').val(),
+            pinPuk1: $('#editaPinPuk1').val(),
+            pinPuk2: $('#editaPinPuk2').val(),
             status: $('#editaStatus').val()
         }
     }).done(function (response) {
@@ -250,7 +273,7 @@ $('#btnEditarAparelho').click(function (event) {
             $('#editaMensagem').html(response.mensagem)
             $('#editaAlert').removeClass('d-none')
 
-            $('#btnEditarAparelho')
+            $('#btnEditarLinha')
                 .html('<i class="fas fa-save"></i> Salvar')
                 .prop('disabled', false)
 
@@ -260,24 +283,23 @@ $('#btnEditarAparelho').click(function (event) {
         Swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'Aparelho alterado com sucesso!',
+            title: 'Linha alterada com sucesso!',
             showConfirmButton: false,
             timer: 1500,
             heightAuto: false
         }).then((result) => {
-            tabelaAparelhos.ajax.reload()
-            $('#modalVerAparelho').modal('hide')
+            tabelaLinhas.ajax.reload()
+            $('#modalVerLinha').modal('hide')
 
-            limpaFormularioCadastro()
 
-            $('#btnEditarAparelho')
+            $('#btnEditarLinha')
                 .html('<i class="fas fa-save"></i> Salvar')
                 .prop('disabled', false)
         })
     }).fail(function (response) {
         alert("Ocorreu um erro ao pesquisar os modelos. Contate o administrador do sistema")
         console.log(response)
-        $('#btnEditarAparelho')
+        $('#btnEditarLinha')
             .html('<i class="fas fa-save"></i> Salvar')
             .prop('disabled', false)
     })
@@ -291,8 +313,8 @@ function limpaFormularioEditar() {
     $('#tituloLinha').text('')
     $('#editaNumeroLinha').val('')
     $("#editaCodigoChip").val('')
-    $('#editaCategoria').val('')
-    $('#editaOperadora').val('')
+    $("#editaCategoria").val($("#editaCategoria option:first").val()).multiselect('refresh')
+    $("#editaOperadora").val($("#editaOperadora option:first").val()).multiselect('refresh')
     $('#editaPinPuk1').val('')
     $('#editaCadastradoPor').val('')
     $('#editaValorDisponibilidade').val('')
