@@ -46,18 +46,27 @@ $('#pesquisaDisponibilidade').multiselect({
 });
 $('#pesquisaDisponibilidade').multiselect('selectAll', false);
 
-
-$('#cadastroMatricula').blur(function(){
+$('#cadastroMatricula').blur(function () {
+    let matricula = $(this).val()
 
     $.ajax({
-        url: base_url("Distribuicoes/visualizarDistribuicao"),
-        dataType: "json",
-        type: "Post",
+        url: base_url('Distribuicoes/consultarColaboradorPelaMatricula'),
+        dataType: 'json',
+        type: 'Post',
         data: {
-            idDistribuicao
+            matricula
         }
     }).done(function (response) {
-        if (response.status) {
-            $('#cadastroColaborador').val(response.colaborador) 
-           
+        if(response.status) {
+            $('#cadastroColaborador').val(response.colaborador)
+
+            return
+        }
+
+        $('#cadastroColaborador').val("NÃO ENCONTRADO")
+    }).fail(function (response){
+        console.log(response)
+
+        alert("Ocorreu um erro ao consultar a matrícula. Contate o administrador do sistema")
+    })
 })

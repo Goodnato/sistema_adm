@@ -9,7 +9,7 @@ class Distribuicoes extends CI_Controller
         parent::__construct();
 
         $this->load->model('Distribuicoes_model');
-        $this->load->model('Status_condicoes_aparelhos_model');
+        $this->load->model('Colaboradores_model');
         $this->load->model('Status_disponibilidades_model');
     }
 
@@ -34,5 +34,33 @@ class Distribuicoes extends CI_Controller
         ];
 
         return $carregaView;
+    }
+
+    public function consultarColaboradorPelaMatricula()
+    {
+        $matricula = (int) $this->input->post('matricula');
+
+        if ($matricula <= 0) {
+            echo json_encode([
+                'status' => false
+            ]);
+
+            return false;
+        }
+
+        $colaborador = $this->Colaboradores_model->consultaColaboradorPelaMatricula($matricula);
+
+        if (empty($colaborador)) {
+            echo json_encode([
+                'status' => false
+            ]);
+
+            return false;
+        }
+
+        echo json_encode([
+            'status' => true,
+            'colaborador' => $colaborador
+        ]);
     }
 }

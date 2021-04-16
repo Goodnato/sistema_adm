@@ -251,6 +251,3 @@
         </div>
     </div>
 </div>
-<script>
-    const statusCondicaoAparelho = <?= json_encode($listaStatusCondicoes); ?>
-</script>
