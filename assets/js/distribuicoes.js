@@ -45,3 +45,19 @@ $('#pesquisaDisponibilidade').multiselect({
     buttonClass: 'form-control form-control-sm'
 });
 $('#pesquisaDisponibilidade').multiselect('selectAll', false);
+
+
+$('#cadastroMatricula').blur(function(){
+
+    $.ajax({
+        url: base_url("Distribuicoes/visualizarDistribuicao"),
+        dataType: "json",
+        type: "Post",
+        data: {
+            idDistribuicao
+        }
+    }).done(function (response) {
+        if (response.status) {
+            $('#cadastroColaborador').val(response.colaborador) 
+           
+})
