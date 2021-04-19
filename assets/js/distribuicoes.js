@@ -99,8 +99,8 @@ $('#cadastroImei').blur(function () {
 
 
 $('#cadastroLinha').blur(function () { 
-    let numeroLinha = $(this).val() 
-    
+    let numeroLinha = $(this).val()
+
    $.ajax({
        url: base_url('Distribuicoes/consultarCategoriaPeloNumero'),
        dataType: 'json',

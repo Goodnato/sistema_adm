@@ -10,6 +10,7 @@ class Distribuicoes extends CI_Controller
 
         $this->load->model('Distribuicoes_model');
         $this->load->model('Aparelhos_model');
+        $this->load->model('Linhas_model');
         $this->load->model('Colaboradores_model');
         $this->load->model('Status_disponibilidades_model');
     }
@@ -94,9 +95,9 @@ class Distribuicoes extends CI_Controller
 
     public function consultarCategoriaPeloNumero()
     {   
-        $numeroLinha = (int) $this->input->post('numeroLinha');
-    
-        if ($numeroLinha <= 0) {
+        $numeroLinha = $this->input->post('numeroLinha');
+        
+        if (empty($numeroLinha)) {
             echo json_encode([
                 'status' => false
             ]);
@@ -105,7 +106,7 @@ class Distribuicoes extends CI_Controller
         }
 
         $categoria = $this->Linhas_model->consultaCategoriaPeloNumero($numeroLinha);
-
+ 
         if (empty($categoria)) {
             echo json_encode([
                 'status' => false
