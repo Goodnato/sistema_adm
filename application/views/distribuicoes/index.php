@@ -102,7 +102,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
-                            <form>
+                            <form autocomplete="off">
                                 <div class="row">
                                     <div class="col">
                                         <div id="cadastroAlert" class="alert alert-danger d-none" role="alert">
@@ -122,18 +122,26 @@
                                 </div>
                                 <div class="row mt-2">
                                     <div class="col">
-                                        <label for="cadastroImei" class="form-label">IMEI*</label>
-                                        <input type="number" name="imei" class="form-control form-control-sm" id="cadastroImei" placeholder="DIGITE AQUI">
+                                        <label for="cadastroImei" class="form-label">Aparelho*</label>
+                                        <input type="number" name="imei" class="form-control form-control-sm" id="cadastroImei" placeholder="DIGITE O IMEI">
+                                        <div class="form-check">
+                                            <input type="checkbox" name="cadastroSemAparelho" id="cadastroSemAparelho" class="form-check-input">
+                                            <label for="cadastroSemAparelho" class="form-label"><small>Distribuição sem aparelho</small></label>
+                                        </div>
                                     </div>
                                     <div class="col">
                                         <label class="form-label">Modelo</label>
                                         <input type="text" class="form-control form-control-sm" id="cadastroModelo" disabled>
                                     </div>
                                 </div>
-                                <div class="row mt-2">
+                                <div class="row">
                                     <div class="col">
                                         <label for="cadastroLinha" class="form-label">Linha*</label>
                                         <input type="text" name="linha" class="form-control form-control-sm" id="cadastroLinha" placeholder="DIGITE AQUI">
+                                        <div class="form-check">
+                                            <input type="checkbox" name="cadastroSemLinha" id="cadastroSemLinha" class="form-check-input">
+                                            <label for="cadastroSemLinha" class="form-label"><small>Distribuição sem linha</small></label>
+                                        </div>
                                     </div>
                                     <div class="col">
                                         <label class="form-label">Categoria</label>

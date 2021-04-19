@@ -66,9 +66,9 @@ class Distribuicoes extends CI_Controller
     }
 
     public function consultarModeloPeloImei()
-    {   
+    {
         $imei = (int) $this->input->post('imei');
-        
+
         if ($imei <= 0) {
             echo json_encode([
                 'status' => false
@@ -94,9 +94,9 @@ class Distribuicoes extends CI_Controller
     }
 
     public function consultarCategoriaPeloNumero()
-    {   
+    {
         $numeroLinha = $this->input->post('numeroLinha');
-        
+
         if (empty($numeroLinha)) {
             echo json_encode([
                 'status' => false
@@ -106,7 +106,7 @@ class Distribuicoes extends CI_Controller
         }
 
         $categoria = $this->Linhas_model->consultaCategoriaPeloNumero($numeroLinha);
- 
+
         if (empty($categoria)) {
             echo json_encode([
                 'status' => false
@@ -120,7 +120,4 @@ class Distribuicoes extends CI_Controller
             'categoria' => $categoria
         ]);
     }
-
-
-
 }

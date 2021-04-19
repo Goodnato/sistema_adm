@@ -49,6 +49,10 @@ $('#pesquisaDisponibilidade').multiselect('selectAll', false);
 $('#cadastroMatricula').blur(function () {
     let matricula = $(this).val()
 
+    if (matricula == '') {
+        return
+    }
+
     $.ajax({
         url: base_url('Distribuicoes/consultarColaboradorPelaMatricula'),
         dataType: 'json',
@@ -57,33 +61,36 @@ $('#cadastroMatricula').blur(function () {
             matricula
         }
     }).done(function (response) {
-        if(response.status) {
+        if (response.status) {
             $('#cadastroColaborador').val(response.colaborador)
 
             return
         }
 
         $('#cadastroColaborador').val("NÃO ENCONTRADO")
-    }).fail(function (response){
+    }).fail(function (response) {
         console.log(response)
 
         alert("Ocorreu um erro ao consultar a matrícula. Contate o administrador do sistema")
     })
 })
 
+$('#cadastroImei').blur(function () {
+    let imei = $(this).val()
 
-$('#cadastroImei').blur(function () { 
-   let imei = $(this).val() 
+    if (imei == '') {
+        return
+    }
 
-   $.ajax({
-       url: base_url('Distribuicoes/consultarModeloPeloImei'),
-       dataType: 'json',
-       type: 'Post',
-       data: {
-           imei
-       }
+    $.ajax({
+        url: base_url('Distribuicoes/consultarModeloPeloImei'),
+        dataType: 'json',
+        type: 'Post',
+        data: {
+            imei
+        }
     }).done(function (response) {
-        if(response.status){
+        if (response.status) {
             $('#cadastroModelo').val(response.modelo)
 
             return
@@ -97,28 +104,57 @@ $('#cadastroImei').blur(function () {
     })
 })
 
+$('#cadastroSemAparelho').click(function () {
+    if ($(this).is(':checked')) {
+        $('#cadastroModelo').val("")
+        $('#cadastroImei').val("").prop('disabled', true)
+        
+        $('#cadastroLinha').prop('disabled', false)
+        $('#cadastroSemLinha').prop('checked', false)
+        return
+    }
 
-$('#cadastroLinha').blur(function () { 
+    $('#cadastroImei').val("").prop('disabled', false).focus()
+})
+
+$('#cadastroLinha').blur(function () {
     let numeroLinha = $(this).val()
 
-   $.ajax({
-       url: base_url('Distribuicoes/consultarCategoriaPeloNumero'),
-       dataType: 'json',
-       type: 'Post',
-       data: {
-            numeroLinha 
-       }
-     }).done(function (response) {
-         if(response.status){
-             $('#cadastroCategoria').val(response.categoria)
- 
-             return
-         }
- 
-         $('#cadastroCategoria').val("NÃO ENCONTRADO")
-     }).fail(function (response) {
-         console.log(response)
- 
-         alert("Ocorreu um erro ao consultar o número da linha. Contate o administrador do sistema")
-     })
- })
+    if (numeroLinha == '') {
+        return
+    }
+
+    $.ajax({
+        url: base_url('Distribuicoes/consultarCategoriaPeloNumero'),
+        dataType: 'json',
+        type: 'Post',
+        data: {
+            numeroLinha
+        }
+    }).done(function (response) {
+        if (response.status) {
+            $('#cadastroCategoria').val(response.categoria)
+
+            return
+        }
+
+        $('#cadastroCategoria').val("NÃO ENCONTRADO")
+    }).fail(function (response) {
+        console.log(response)
+
+        alert("Ocorreu um erro ao consultar o número da linha. Contate o administrador do sistema")
+    })
+})
+
+$('#cadastroSemLinha').click(function () {
+    if ($(this).is(':checked')) {
+        $('#cadastroCategoria').val("")
+        $('#cadastroLinha').val("").prop('disabled', true)
+
+        $('#cadastroImei').prop('disabled', false)
+        $('#cadastroSemAparelho').prop('checked', false)
+        return
+    }
+
+    $('#cadastroLinha').val("").prop('disabled', false).focus()
+})
