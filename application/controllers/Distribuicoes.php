@@ -9,6 +9,7 @@ class Distribuicoes extends CI_Controller
         parent::__construct();
 
         $this->load->model('Distribuicoes_model');
+        $this->load->model('Aparelhos_model');
         $this->load->model('Colaboradores_model');
         $this->load->model('Status_disponibilidades_model');
     }
@@ -49,7 +50,6 @@ class Distribuicoes extends CI_Controller
         }
 
         $colaborador = $this->Colaboradores_model->consultaColaboradorPelaMatricula($matricula);
-
         if (empty($colaborador)) {
             echo json_encode([
                 'status' => false
@@ -63,4 +63,63 @@ class Distribuicoes extends CI_Controller
             'colaborador' => $colaborador
         ]);
     }
+
+    public function consultarModeloPeloImei()
+    {   
+        $imei = (int) $this->input->post('imei');
+        
+        if ($imei <= 0) {
+            echo json_encode([
+                'status' => false
+            ]);
+
+            return false;
+        }
+
+        $modelo = $this->Aparelhos_model->consultaModeloPeloImei($imei);
+
+        if (empty($modelo)) {
+            echo json_encode([
+                'status' => false
+            ]);
+
+            return false;
+        }
+
+        echo json_encode([
+            'status' => true,
+            'modelo' => $modelo
+        ]);
+    }
+
+    public function consultarCategoriaPeloNumero()
+    {   
+        $numeroLinha = (int) $this->input->post('numeroLinha');
+    
+        if ($numeroLinha <= 0) {
+            echo json_encode([
+                'status' => false
+            ]);
+
+            return false;
+        }
+
+        $categoria = $this->Linhas_model->consultaCategoriaPeloNumero($numeroLinha);
+
+        if (empty($categoria)) {
+            echo json_encode([
+                'status' => false
+            ]);
+
+            return false;
+        }
+
+        echo json_encode([
+            'status' => true,
+            'categoria' => $categoria
+        ]);
+    }
+
+
+
 }

@@ -39,4 +39,5 @@ class Modelos_model extends CI_Model
     	
         return count($query->result_array()) == 0 ? [] : $query->result_array()[0];
     }
+
 }

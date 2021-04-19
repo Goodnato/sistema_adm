@@ -106,5 +106,21 @@ class Linhas_model extends CI_Model
         return count($resultado) == 0 ? [] : $resultado[0];
     }
 
+    public function consultaCategoriaPeloNumero($numeroLinha)
+    {
+        $sql = "SELECT
+                    cg.nome AS categoria
+                FROM 
+                    {$this->tabela} li
+                INNER JOIN categorias cg ON cg.id = li.id_categoria
+                WHERE
+                    li.numero_linha = $numeroLinha";
+
+        $resultado = $this->db->query($sql)->result_array();
+
+        return count($resultado) == 0 ? null : $resultado[0]['nome'];
+
+    }
+
     
 }

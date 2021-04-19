@@ -70,3 +70,55 @@ $('#cadastroMatricula').blur(function () {
         alert("Ocorreu um erro ao consultar a matrícula. Contate o administrador do sistema")
     })
 })
+
+
+$('#cadastroImei').blur(function () { 
+   let imei = $(this).val() 
+
+   $.ajax({
+       url: base_url('Distribuicoes/consultarModeloPeloImei'),
+       dataType: 'json',
+       type: 'Post',
+       data: {
+           imei
+       }
+    }).done(function (response) {
+        if(response.status){
+            $('#cadastroModelo').val(response.modelo)
+
+            return
+        }
+
+        $('#cadastroModelo').val("NÃO ENCONTRADO")
+    }).fail(function (response) {
+        console.log(response)
+
+        alert("Ocorreu um erro ao consultar o imei. Contate o administrador do sistema")
+    })
+})
+
+
+$('#cadastroLinha').blur(function () { 
+    let numeroLinha = $(this).val() 
+    
+   $.ajax({
+       url: base_url('Distribuicoes/consultarCategoriaPeloNumero'),
+       dataType: 'json',
+       type: 'Post',
+       data: {
+            numeroLinha 
+       }
+     }).done(function (response) {
+         if(response.status){
+             $('#cadastroCategoria').val(response.categoria)
+ 
+             return
+         }
+ 
+         $('#cadastroCategoria').val("NÃO ENCONTRADO")
+     }).fail(function (response) {
+         console.log(response)
+ 
+         alert("Ocorreu um erro ao consultar o número da linha. Contate o administrador do sistema")
+     })
+ })

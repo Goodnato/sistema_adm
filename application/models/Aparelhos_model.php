@@ -108,4 +108,20 @@ class Aparelhos_model extends CI_Model
 
         return count($resultado) == 0 ? [] : $resultado[0];
     }
+
+    public function consultaModeloPeloImei($imei)
+    {
+        $sql = "SELECT
+                    md.nome AS modelo
+                FROM 
+                    {$this->tabela} ap
+                INNER JOIN modelos md ON md.id = ap.id_modelo
+                WHERE
+                    ap.imei1 = $imei";
+
+        $resultado = $this->db->query($sql)->result_array();
+
+        return count($resultado) == 0 ? null : $resultado[0]['modelo'];
+
+    }
 }

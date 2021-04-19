@@ -133,7 +133,7 @@
                                 <div class="row mt-2">
                                     <div class="col">
                                         <label for="cadastroLinha" class="form-label">Linha*</label>
-                                        <input type="number" name="Linha" class="form-control form-control-sm" id="cadastroLinha" placeholder="DIGITE AQUI">
+                                        <input type="number" name="linha" class="form-control form-control-sm" id="cadastroLinha" placeholder="DIGITE AQUI">
                                     </div>
                                     <div class="col">
                                         <label class="form-label">Categoria</label>
