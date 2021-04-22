@@ -113,7 +113,7 @@
                                 <div class="row mt-2">
                                     <div class="col">
                                         <label for="cadastroMatricula" class="form-label">Matrícula*</label>
-                                        <input type="number" name="cadastroMatricula" class="form-control form-control-sm" id="cadastroMatricula" placeholder="DIGITE AQUI">
+                                        <input type="text" name="cadastroMatricula" class="form-control form-control-sm" id="cadastroMatricula" placeholder="DIGITE AQUI">
                                     </div>
                                     <div class="col">
                                         <label class="form-label">Colaborador</label>
@@ -125,7 +125,7 @@
                                         <label for="cadastroImei" class="form-label">Aparelho*</label>
                                         <input type="number" name="imei" class="form-control form-control-sm" id="cadastroImei" placeholder="DIGITE O IMEI">
                                         <div class="form-check">
-                                            <input type="checkbox" name="cadastroSemAparelho" id="cadastroSemAparelho" class="form-check-input">
+                                            <input type="checkbox" name="cadastroSemAparelho" id="cadastroSemAparelho" value="1" class="form-check-input">
                                             <label for="cadastroSemAparelho" class="form-label"><small>Distribuição sem aparelho</small></label>
                                         </div>
                                     </div>
@@ -139,7 +139,7 @@
                                         <label for="cadastroLinha" class="form-label">Linha*</label>
                                         <input type="text" name="linha" class="form-control form-control-sm" id="cadastroLinha" placeholder="DIGITE AQUI">
                                         <div class="form-check">
-                                            <input type="checkbox" name="cadastroSemLinha" id="cadastroSemLinha" class="form-check-input">
+                                            <input type="checkbox" name="cadastroSemLinha" id="cadastroSemLinha" value="1" class="form-check-input">
                                             <label for="cadastroSemLinha" class="form-label"><small>Distribuição sem linha</small></label>
                                         </div>
                                     </div>

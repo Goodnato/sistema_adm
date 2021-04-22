@@ -50,7 +50,8 @@ class Distribuicoes extends CI_Controller
             return false;
         }
 
-        $colaborador = $this->Colaboradores_model->consultaColaboradorPelaMatricula($matricula);
+        $colaborador = $this->consultaMatriculaNasTabelas($matricula);
+
         if (empty($colaborador)) {
             echo json_encode([
                 'status' => false
@@ -119,5 +120,122 @@ class Distribuicoes extends CI_Controller
             'status' => true,
             'categoria' => $categoria
         ]);
+    }
+
+    public function salvaDistribuicao()
+    {
+        $matricula = $this->input->post("matricula");
+        $imei = $this->input->post("imei");
+        $semAparelho = $this->input->post("semAparelho");
+        $linha = $this->input->post("linha");
+        $semLinha = $this->input->post("semLinha");
+
+        $validaMatricula = $this->validaMatricula($matricula);
+        if (!$validaMatricula['status']) {
+
+            return false;
+        }
+
+        $validaAparelho = $this->validaAparelho($semAparelho, $imei);
+        if (!$validaAparelho['status']) {
+
+            return false;
+        }
+    }
+
+    private function validaMatricula($matricula)
+    {
+        if (empty($matricula) || !is_numeric($matricula)) {
+            return [
+                'status' => false,
+                'mensagem' => "A <b>Matrícula</b> é obrigatória"
+            ];
+        }
+
+        if (!empty($this->consultaMatriculaNasTabelas($matricula))) {
+            return [
+                'status' => false,
+                'mensagem' => "A <b>Matrícula</b> não foi encontrada"
+            ];
+        }
+
+        return [
+            'status' => true
+        ];
+    }
+
+    private function validaAparelho($semAparelho, $imei)
+    {
+        if ($semAparelho == 1) {
+            return [
+                'status' => true
+            ];
+        }
+
+        if (empty($imei)) {
+            return [
+                'status' => false,
+                'mensagem' => "O <b>Imei</b> é obrigatório"
+            ];
+        }
+
+        $modelo = $this->Aparelhos_model->consultaModeloPeloImei($imei);
+        if (empty($modelo)) {
+            return [
+                'status' => false,
+                'mensagem' => "O <b>Aparelho</b> não foi encontrado"
+            ];
+        }
+
+        $statusDistribuicao = $this->Aparelhos_model->consultaDisponibilidadeAparelhoPorImei($imei);
+        if (empty($statusDistribuicao) || $statusDistribuicao == DISTRIBUICAO_EM_USO) {
+            return [
+                'status' => false,
+                'mensagem' => "O <b>Aparelho</b> está indisponível"
+            ];
+        }
+
+        $condicao = $this->Aparelhos_model->consultaCondicaoAparelhoPorImei($imei);
+        if (empty($condicao) || $condicao == CONDICAO_DESCARTADO || $condicao == CONDICAO_MANUTENCAO) {
+            return [
+                'status' => false,
+                'mensagem' => "O <b>Aparelho</b> está indisponível"
+            ];
+        }
+
+        return [
+            'status' => true
+        ];
+    }
+
+    private function validaLinha($semLinha, $numeroLinha)
+    {
+        if ($semLinha == 1) {
+            return true;
+        }
+
+        $linha = $this->Linhas_model->consultaCategoriaPeloNumero($numeroLinha);
+        if (empty($linha)) {
+            return false;
+        }
+
+        return true;
+    }
+
+
+
+    private function consultaMatriculaNasTabelas($matricula)
+    {
+        $colaborador = $this->Colaboradores_model->consultaColaboradorPelaMatricula($matricula);
+        if (!empty($colaborador)) {
+            return $colaborador;
+        }
+
+        $colaborador = $this->Colaboradores_model->consultaColaboradorImportPelaMatricula($matricula);
+        if (!empty($colaborador)) {
+            return $colaborador;
+        }
+
+        return null;
     }
 }

@@ -114,7 +114,7 @@ $('#cadastroSemAparelho').click(function () {
     if ($(this).is(':checked')) {
         $('#cadastroModelo').val("")
         $('#cadastroImei').val("").prop('disabled', true)
-        
+
         $('#cadastroLinha').prop('disabled', false)
         $('#cadastroSemLinha').prop('checked', false)
         return
@@ -163,4 +163,21 @@ $('#cadastroSemLinha').click(function () {
     }
 
     $('#cadastroLinha').val("").prop('disabled', false).focus()
+})
+
+$('#btnSalvarAparelho').click(function () {
+    $.ajax({
+        url: base_url('Distribuicoes/salvaDistribuicao'),
+        dataType: 'json',
+        type: 'Post',
+        data: {
+            matricula: $("#cadastroMatricula").val()
+        }
+    }).done(function (response) {
+        console.log(response)
+    }).fail(function (response) {
+        console.log(response)
+
+        alert("Ocorreu um erro ao consultar o imei. Contate o administrador do sistema")
+    })
 })

@@ -103,7 +103,7 @@ class Aparelhos_model extends CI_Model
                 INNER JOIN usuarios us ON us.id = ap.id_usuario_registro
                 WHERE
                     ap.id = $idAparelho";
-        
+
         $resultado = $this->db->query($sql)->result_array();
 
         return count($resultado) == 0 ? [] : $resultado[0];
@@ -122,6 +122,35 @@ class Aparelhos_model extends CI_Model
         $resultado = $this->db->query($sql)->result_array();
 
         return count($resultado) == 0 ? null : $resultado[0]['modelo'];
+    }
 
+    public function consultaDisponibilidadeAparelhoPorImei($imei)
+    {
+        $sql = "SELECT
+                    id_status_disponibilidade
+                FROM 
+                    {$this->tabela}
+                WHERE
+                    imei1 = $imei
+                    AND status = " . STATUS_ATIVO;
+
+        $resultado = $this->db->query($sql)->result_array();
+
+        return $resultado[0]['id_status_disponibilidade'];
+    }
+
+    public function consultaCondicaoAparelhoPorImei($imei)
+    {
+        $sql = "SELECT
+                    id_status_condicao_aparelho
+                FROM 
+                    {$this->tabela}
+                WHERE
+                    imei1 = $imei
+                    AND status = " . STATUS_ATIVO;
+
+        $resultado = $this->db->query($sql)->result_array();
+
+        return $resultado[0]['id_status_disponibilidade'];
     }
 }
