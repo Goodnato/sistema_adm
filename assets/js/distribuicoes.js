@@ -46,6 +46,12 @@ $('#pesquisaDisponibilidade').multiselect({
 });
 $('#pesquisaDisponibilidade').multiselect('selectAll', false);
 
+
+//mascara dos campos telefone pinpunk - biblioteca mask jquery
+$('#cadastroLinha').mask("(00)00000-0000");
+
+
+
 $('#cadastroMatricula').blur(function () {
     let matricula = $(this).val()
 
