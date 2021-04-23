@@ -122,5 +122,20 @@ class Linhas_model extends CI_Model
 
     }
 
+    public function consultaDisponibilidadeLinhaPorNumero($numeroLinha)
+    {
+        $sql = "SELECT
+                    id_status_disponibilidade
+                FROM 
+                    {$this->tabela}
+                WHERE
+                    numero_linha = $numeroLinha
+                    AND status = " . STATUS_ATIVO;
+
+        $resultado = $this->db->query($sql)->result_array();
+
+        return $resultado[0]['id_status_disponibilidade'];
+    }
+
     
 }

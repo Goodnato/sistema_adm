@@ -141,6 +141,12 @@ class Distribuicoes extends CI_Controller
 
             return false;
         }
+
+        $validaLinha = $this->validaLinha($semLinha , $linha);
+        if (!$validaLinha['status']) {
+
+            return false;
+        }
     }
 
     private function validaMatricula($matricula)
@@ -218,6 +224,15 @@ class Distribuicoes extends CI_Controller
         if (empty($linha)) {
             return false;
         }
+
+        $statusDistribuicao = $this->Linhas_model->consultaDisponibilidadeLinhaPorNumero($numeroLinha);
+        if (empty($statusDistribuicao) || $statusDistribuicao == DISTRIBUICAO_EM_USO) {
+            return [
+                'status' => false,
+                'mensagem' => "A <b>Linha</b> está indisponível"
+            ];
+        }
+
 
         return true;
     }
