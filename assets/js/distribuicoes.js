@@ -96,13 +96,7 @@ $('#cadastroImei').blur(function () {
             imei
         }
     }).done(function (response) {
-        if (response.status) {
-            $('#cadastroModelo').val(response.modelo)
-
-            return
-        }
-
-        $('#cadastroModelo').val("NÃO ENCONTRADO")
+        $('#cadastroModelo').val(response.mensagem)
     }).fail(function (response) {
         console.log(response)
 
@@ -138,13 +132,7 @@ $('#cadastroLinha').blur(function () {
             numeroLinha
         }
     }).done(function (response) {
-        if (response.status) {
-            $('#cadastroCategoria').val(response.categoria)
-
-            return
-        }
-
-        $('#cadastroCategoria').val("NÃO ENCONTRADO")
+        $('#cadastroCategoria').val(response.mensagem)
     }).fail(function (response) {
         console.log(response)
 
@@ -165,19 +153,23 @@ $('#cadastroSemLinha').click(function () {
     $('#cadastroLinha').val("").prop('disabled', false).focus()
 })
 
-$('#btnSalvarAparelho').click(function () {
+$('#btnSalvarDistribuicao').click(function () {
     $.ajax({
         url: base_url('Distribuicoes/salvaDistribuicao'),
         dataType: 'json',
         type: 'Post',
         data: {
-            matricula: $("#cadastroMatricula").val()
+            matricula: $("#cadastroMatricula").val(),
+            imei: $("#cadastroImei").val(),
+            semAparelho: $("#cadastroSemAparelho").is(":checked") ? 1 : 0,
+            linha: $("#cadastroLinha").val(),
+            semLinha: $("#cadastroSemLinha").is(":checked") ? 1 : 0,
         }
     }).done(function (response) {
         console.log(response)
     }).fail(function (response) {
         console.log(response)
 
-        alert("Ocorreu um erro ao consultar o imei. Contate o administrador do sistema")
+        alert("Ocorreu um erro ao salvar a distribuição. Contate o administrador do sistema")
     })
 })

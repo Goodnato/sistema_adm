@@ -123,7 +123,7 @@
                                 <div class="row mt-2">
                                     <div class="col">
                                         <label for="cadastroImei" class="form-label">Aparelho*</label>
-                                        <input type="number" name="imei" class="form-control form-control-sm" id="cadastroImei" placeholder="DIGITE O IMEI">
+                                        <input type="number" name="cadastroImei" class="form-control form-control-sm" id="cadastroImei" placeholder="DIGITE O IMEI">
                                         <div class="form-check">
                                             <input type="checkbox" name="cadastroSemAparelho" id="cadastroSemAparelho" value="1" class="form-check-input">
                                             <label for="cadastroSemAparelho" class="form-label"><small>Distribuição sem aparelho</small></label>
@@ -137,7 +137,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <label for="cadastroLinha" class="form-label">Linha*</label>
-                                        <input type="text" name="linha" class="form-control form-control-sm" id="cadastroLinha" placeholder="DIGITE AQUI">
+                                        <input type="text" name="cadastrolinha" class="form-control form-control-sm" id="cadastroLinha" placeholder="DIGITE AQUI">
                                         <div class="form-check">
                                             <input type="checkbox" name="cadastroSemLinha" id="cadastroSemLinha" value="1" class="form-check-input">
                                             <label for="cadastroSemLinha" class="form-label"><small>Distribuição sem linha</small></label>
@@ -155,7 +155,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-window-close"></i> Cancelar</button>
-                <button type="button" class="btn btn-success" id="btnSalvarAparelho"><i class="fas fa-save"></i> Salvar</button>
+                <button type="button" class="btn btn-success" id="btnSalvarDistribuicao"><i class="fas fa-save"></i> Salvar</button>
             </div>
         </div>
     </div>

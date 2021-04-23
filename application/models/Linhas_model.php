@@ -60,7 +60,7 @@ class Linhas_model extends CI_Model
                 WHERE
                     1 = 1 
                     $procurarSql";
-                    
+
         //1 = constante STATUS_ATIVO
         $resultado = $this->db->query($sql)->result_array();
 
@@ -100,7 +100,7 @@ class Linhas_model extends CI_Model
                 INNER JOIN usuarios us ON us.id = li.id_usuario_registro
                 WHERE
                     li.id = $idLinha";
-        
+
         $resultado = $this->db->query($sql)->result_array();
 
         return count($resultado) == 0 ? [] : $resultado[0];
@@ -119,7 +119,6 @@ class Linhas_model extends CI_Model
         $resultado = $this->db->query($sql)->result_array();
 
         return count($resultado) == 0 ? null : $resultado[0]['categoria'];
-
     }
 
     public function consultaDisponibilidadeLinhaPorNumero($numeroLinha)
@@ -129,13 +128,11 @@ class Linhas_model extends CI_Model
                 FROM 
                     {$this->tabela}
                 WHERE
-                    numero_linha = $numeroLinha
+                    numero_linha = '$numeroLinha'
                     AND status = " . STATUS_ATIVO;
 
         $resultado = $this->db->query($sql)->result_array();
 
-        return $resultado[0]['id_status_disponibilidade'];
+        return count($resultado) == 0 ? null : $resultado[0]['id_status_disponibilidade'];
     }
-
-    
 }

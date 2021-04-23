@@ -136,7 +136,7 @@ class Aparelhos_model extends CI_Model
 
         $resultado = $this->db->query($sql)->result_array();
 
-        return $resultado[0]['id_status_disponibilidade'];
+        return count($resultado) == 0 ? null : $resultado[0]['id_status_disponibilidade'];
     }
 
     public function consultaCondicaoAparelhoPorImei($imei)
@@ -151,6 +151,6 @@ class Aparelhos_model extends CI_Model
 
         $resultado = $this->db->query($sql)->result_array();
 
-        return $resultado[0]['id_status_disponibilidade'];
+        return count($resultado) == 0 ? null : $resultado[0]['id_status_condicao_aparelho'];
     }
 }

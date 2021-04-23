@@ -72,25 +72,44 @@ class Distribuicoes extends CI_Controller
 
         if ($imei <= 0) {
             echo json_encode([
-                'status' => false
+                'status' => false,
+                'mensagem' => 'IMEI OBRIGATÓRIO'
             ]);
 
             return false;
         }
 
         $modelo = $this->Aparelhos_model->consultaModeloPeloImei($imei);
-
         if (empty($modelo)) {
             echo json_encode([
-                'status' => false
+                'status' => false,
+                'mensagem' => 'NÃO ENCONTRADO'
             ]);
 
             return false;
         }
 
+        $statusDistribuicao = $this->Aparelhos_model->consultaDisponibilidadeAparelhoPorImei($imei);
+        if (empty($statusDistribuicao) || $statusDistribuicao == DISTRIBUICAO_EM_USO) {
+            echo json_encode([
+                'status' => false,
+                'mensagem' => "INDISPONÍVEL"
+            ]);
+
+            return false;
+        }
+
+        $condicao = $this->Aparelhos_model->consultaCondicaoAparelhoPorImei($imei);
+        if (empty($condicao) || $condicao == CONDICAO_DESCARTADO || $condicao == CONDICAO_MANUTENCAO) {
+            return [
+                'status' => false,
+                'mensagem' => "INDISPONÍVEL"
+            ];
+        }
+
         echo json_encode([
             'status' => true,
-            'modelo' => $modelo
+            'mensagem' => $modelo
         ]);
     }
 
@@ -100,17 +119,28 @@ class Distribuicoes extends CI_Controller
 
         if (empty($numeroLinha)) {
             echo json_encode([
-                'status' => false
+                'status' => false,
+                'mensagem' => 'LINHA É OBRIGATÓRIO'
             ]);
 
             return false;
         }
 
         $categoria = $this->Linhas_model->consultaCategoriaPeloNumero($numeroLinha);
-
         if (empty($categoria)) {
             echo json_encode([
-                'status' => false
+                'status' => false,
+                'mensagem' => 'NÃO ENCONTRADA'
+            ]);
+
+            return false;
+        }
+
+        $statusDistribuicao = $this->Linhas_model->consultaDisponibilidadeLinhaPorNumero($numeroLinha);
+        if (empty($statusDistribuicao) || $statusDistribuicao == DISTRIBUICAO_EM_USO) {
+            echo json_encode([
+                'status' => false,
+                'mensagem' => "INDISPONÍVEL"
             ]);
 
             return false;
@@ -118,7 +148,7 @@ class Distribuicoes extends CI_Controller
 
         echo json_encode([
             'status' => true,
-            'categoria' => $categoria
+            'mensagem' => $categoria
         ]);
     }
 
@@ -127,26 +157,66 @@ class Distribuicoes extends CI_Controller
         $matricula = $this->input->post("matricula");
         $imei = $this->input->post("imei");
         $semAparelho = $this->input->post("semAparelho");
-        $linha = $this->input->post("linha");
+        $numeroLinha = $this->input->post("linha");
         $semLinha = $this->input->post("semLinha");
+
+        $validaSemAparelhoLinha = $this->validaSemAparelhoLinha($semAparelho, $semLinha);
+        if (!$validaSemAparelhoLinha['status']) {
+            echo json_encode([
+                'status' => false,
+                'mensagem' => $validaSemAparelhoLinha['mensagem']
+            ]);
+
+            return false;
+        }
 
         $validaMatricula = $this->validaMatricula($matricula);
         if (!$validaMatricula['status']) {
+            echo json_encode([
+                'status' => false,
+                'mensagem' => $validaMatricula['mensagem']
+            ]);
 
             return false;
         }
 
         $validaAparelho = $this->validaAparelho($semAparelho, $imei);
         if (!$validaAparelho['status']) {
+            echo json_encode([
+                'status' => false,
+                'mensagem' => $validaAparelho['mensagem']
+            ]);
 
             return false;
         }
 
-        $validaLinha = $this->validaLinha($semLinha , $linha);
+        $validaLinha = $this->validaLinha($semLinha, $numeroLinha);
         if (!$validaLinha['status']) {
+            echo json_encode([
+                'status' => false,
+                'mensagem' => $validaLinha['mensagem']
+            ]);
 
             return false;
         }
+
+        echo json_encode([
+            'status' => true
+        ]);
+    }
+
+    private function validaSemAparelhoLinha($semAparelho, $semLinha)
+    {
+        if ($semLinha == 1 && $semAparelho == 1) {
+            return [
+                'status' => false,
+                'mensagem' => "Precisa selecionar um aparelho ou uma linha"
+            ];
+        }
+
+        return [
+            'status' => true
+        ];
     }
 
     private function validaMatricula($matricula)
@@ -158,7 +228,7 @@ class Distribuicoes extends CI_Controller
             ];
         }
 
-        if (!empty($this->consultaMatriculaNasTabelas($matricula))) {
+        if (empty($this->consultaMatriculaNasTabelas($matricula))) {
             return [
                 'status' => false,
                 'mensagem' => "A <b>Matrícula</b> não foi encontrada"
@@ -182,14 +252,6 @@ class Distribuicoes extends CI_Controller
             return [
                 'status' => false,
                 'mensagem' => "O <b>Imei</b> é obrigatório"
-            ];
-        }
-
-        $modelo = $this->Aparelhos_model->consultaModeloPeloImei($imei);
-        if (empty($modelo)) {
-            return [
-                'status' => false,
-                'mensagem' => "O <b>Aparelho</b> não foi encontrado"
             ];
         }
 
@@ -220,9 +282,19 @@ class Distribuicoes extends CI_Controller
             return true;
         }
 
+        if (empty($numeroLinha)) {
+            return [
+                'status' => false,
+                'mensagem' => "A <b>Linha</b> é obrigatório"
+            ];
+        }
+
         $linha = $this->Linhas_model->consultaCategoriaPeloNumero($numeroLinha);
         if (empty($linha)) {
-            return false;
+            return [
+                'status' => false,
+                'mensagem' => "A <b>Linha</b> não foi encontrada"
+            ];
         }
 
         $statusDistribuicao = $this->Linhas_model->consultaDisponibilidadeLinhaPorNumero($numeroLinha);
@@ -233,11 +305,10 @@ class Distribuicoes extends CI_Controller
             ];
         }
 
-
-        return true;
+        return [
+            'status' => true
+        ];
     }
-
-
 
     private function consultaMatriculaNasTabelas($matricula)
     {
