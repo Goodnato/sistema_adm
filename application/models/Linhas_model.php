@@ -106,9 +106,10 @@ class Linhas_model extends CI_Model
         return count($resultado) == 0 ? [] : $resultado[0];
     }
 
-    public function consultaCategoriaPeloNumero($numeroLinha)
+    public function consultaLinhaPeloNumero($numeroLinha)
     {
         $sql = "SELECT
+                    li.id AS id_linha,
                     cg.nome AS categoria
                 FROM 
                     {$this->tabela} li
@@ -118,7 +119,7 @@ class Linhas_model extends CI_Model
 
         $resultado = $this->db->query($sql)->result_array();
 
-        return count($resultado) == 0 ? null : $resultado[0]['categoria'];
+        return count($resultado) == 0 ? [] : $resultado[0];
     }
 
     public function consultaDisponibilidadeLinhaPorNumero($numeroLinha)

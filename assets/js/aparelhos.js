@@ -232,7 +232,7 @@ $('#btnSalvarAparelho').click(function (event) {
         Swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'Aparelho salvo com sucesso!',
+            title: 'Salvo com sucesso!',
             showConfirmButton: false,
             timer: 1500,
             heightAuto: false
@@ -346,7 +346,7 @@ $('#btnEditarAparelho').click(function (event) {
         Swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'Aparelho alterado com sucesso!',
+            title: 'Alterado com sucesso!',
             showConfirmButton: false,
             timer: 1500,
             heightAuto: false

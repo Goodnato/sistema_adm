@@ -37,4 +37,9 @@ class Distribuicoes_model extends CI_Model
 
         return $this->db->query($sql)->result_array();
     }
+
+    public function salvarDistribuicao($dadosDistribuicao)
+    {
+        $this->db->insert($this->tabela, $dadosDistribuicao);
+    }
 }

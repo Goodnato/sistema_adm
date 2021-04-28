@@ -109,9 +109,10 @@ class Aparelhos_model extends CI_Model
         return count($resultado) == 0 ? [] : $resultado[0];
     }
 
-    public function consultaModeloPeloImei($imei)
+    public function consultaAparelhoPeloImei($imei)
     {
         $sql = "SELECT
+                    ap.id AS id_aparelho,
                     md.nome AS modelo
                 FROM 
                     {$this->tabela} ap
@@ -121,7 +122,7 @@ class Aparelhos_model extends CI_Model
 
         $resultado = $this->db->query($sql)->result_array();
 
-        return count($resultado) == 0 ? null : $resultado[0]['modelo'];
+        return count($resultado) == 0 ? [] : $resultado[0];
     }
 
     public function consultaDisponibilidadeAparelhoPorImei($imei)

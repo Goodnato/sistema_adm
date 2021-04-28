@@ -137,7 +137,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <label for="cadastroLinha" class="form-label">Linha*</label>
-                                        <input type="text" name="cadastrolinha" class="form-control form-control-sm" id="cadastroLinha" placeholder="DIGITE AQUI">
+                                        <input type="text" name="cadastroLinha" class="form-control form-control-sm" id="cadastroLinha" placeholder="DIGITE AQUI">
                                         <div class="form-check">
                                             <input type="checkbox" name="cadastroSemLinha" id="cadastroSemLinha" value="1" class="form-check-input">
                                             <label for="cadastroSemLinha" class="form-label"><small>Distribuição sem linha</small></label>

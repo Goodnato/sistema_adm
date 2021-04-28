@@ -79,8 +79,8 @@ class Distribuicoes extends CI_Controller
             return false;
         }
 
-        $modelo = $this->Aparelhos_model->consultaModeloPeloImei($imei);
-        if (empty($modelo)) {
+        $modelo = $this->Aparelhos_model->consultaAparelhoPeloImei($imei);
+        if (count($modelo) == 0) {
             echo json_encode([
                 'status' => false,
                 'mensagem' => 'NÃO ENCONTRADO'
@@ -109,7 +109,7 @@ class Distribuicoes extends CI_Controller
 
         echo json_encode([
             'status' => true,
-            'mensagem' => $modelo
+            'mensagem' => $modelo['modelo']
         ]);
     }
 
@@ -126,7 +126,7 @@ class Distribuicoes extends CI_Controller
             return false;
         }
 
-        $categoria = $this->Linhas_model->consultaCategoriaPeloNumero($numeroLinha);
+        $categoria = $this->Linhas_model->consultaLinhaPeloNumero($numeroLinha);
         if (empty($categoria)) {
             echo json_encode([
                 'status' => false,
@@ -148,7 +148,7 @@ class Distribuicoes extends CI_Controller
 
         echo json_encode([
             'status' => true,
-            'mensagem' => $categoria
+            'mensagem' => $categoria['id_linha']
         ]);
     }
 
@@ -199,6 +199,19 @@ class Distribuicoes extends CI_Controller
 
             return false;
         }
+
+        $idAparelho = empty($imei) ? null : $this->Aparelhos_model->consultaAparelhoPeloImei($imei)['id_aparelho'];
+        $idLinha = empty($numeroLinha) ? null : $this->Linhas_model->consultaLinhaPeloNumero($numeroLinha)['id_linha'];
+
+        $this->Distribuicoes_model->salvarDistribuicao([
+            'id_aparelho' => $idAparelho,
+            'id_linha' => $idLinha,
+            'id_colaborador' => $matricula,
+            'id_status_disponibilidade' => DISTRIBUICAO_EM_USO,
+            'id_usuario_registro' => 1
+        ]);
+
+        $this->alteraDisponibilidadeAparelhoLinha($idAparelho, $idLinha);
 
         echo json_encode([
             'status' => true
@@ -279,7 +292,9 @@ class Distribuicoes extends CI_Controller
     private function validaLinha($semLinha, $numeroLinha)
     {
         if ($semLinha == 1) {
-            return true;
+            return [
+                'status' => true
+            ];
         }
 
         if (empty($numeroLinha)) {
@@ -289,7 +304,7 @@ class Distribuicoes extends CI_Controller
             ];
         }
 
-        $linha = $this->Linhas_model->consultaCategoriaPeloNumero($numeroLinha);
+        $linha = $this->Linhas_model->consultaLinhaPeloNumero($numeroLinha);
         if (empty($linha)) {
             return [
                 'status' => false,
@@ -323,5 +338,20 @@ class Distribuicoes extends CI_Controller
         }
 
         return null;
+    }
+
+    private function alteraDisponibilidadeAparelhoLinha($idAparelho, $idLinha)
+    {
+        if (!empty($idAparelho)) {
+            $this->Aparelhos_model->editarAparelho($idAparelho, [
+                'id_status_disponibilidade' => DISTRIBUICAO_EM_USO
+            ]);
+        }
+
+        if (!empty($idLinha)) {
+            $this->Linhas_model->editarLinha($idLinha, [
+                'id_status_disponibilidade' => DISTRIBUICAO_EM_USO
+            ]);
+        }
     }
 }

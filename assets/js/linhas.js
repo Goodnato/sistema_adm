@@ -96,8 +96,8 @@ $('#editaPinPuk1').mask("0000-00000000");
 $('#editaPinPuk2').mask("0000-00000000");
 
 //codigo abaixo de jquery para o botão salvar do modal cadastro efeitos, acionar metodos de Salvar linha
-$('#btnSalvarLinha').click(function(event) {
-    $(this) 
+$('#btnSalvarLinha').click(function (event) {
+    $(this)
         .html('<div class="spinner-border spinner-border-sm text-light" role="status"></div> Salvando...') // para manipular elementos, neste caso o efeito de carregando do botão salvar
         .prop('disabled', true)
     //faz exibir d-none seção de mensagens. d-nome é pra ocultar a seção
@@ -108,8 +108,8 @@ $('#btnSalvarLinha').click(function(event) {
         url: base_url("Linhas/salvarLinha"),
         dataType: "json",
         type: "Post",
-        data: { 
-            numeroLinha: $('#cadastroNumero').val(), 
+        data: {
+            numeroLinha: $('#cadastroNumero').val(),
             codigoChip: $('#cadastroCodigoChip').val(),
             idCategoria: $('#cadastroCategoria').val(),
             idOperadora: $('#cadastroOperadora').val(),
@@ -117,7 +117,7 @@ $('#btnSalvarLinha').click(function(event) {
             pinPuk2: $('#cadastroPinPuk2').val(),
         }
     }).done(function (response) {
-        if(!response.status){
+        if (!response.status) {
             $('#cadastroMensagem').html(response.mensagem) //prepara a mensagem de erro
             $('#cadastroAlert').removeClass('d-none') //remove class d-nome para exibir a seção
 
@@ -128,23 +128,23 @@ $('#btnSalvarLinha').click(function(event) {
             return false
         }
 
-            Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Linha cadastrada com sucesso!',
-                showConfirmButton: false,
-                timer: 1500,
-                heightAuto: false
-            }).then((result) => {
-                $('#modalNovaLinha').modal('hide')
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Cadastrada com sucesso!',
+            showConfirmButton: false,
+            timer: 1500,
+            heightAuto: false
+        }).then((result) => {
+            $('#modalNovaLinha').modal('hide')
 
-                limpaFormularioCadastroLinha()
+            limpaFormularioCadastroLinha()
 
-                $('#btnSalvarLinha')
-                    .html('<i class="fas fa-save"></i> Salvar')
-                    .prop('disabled', false)
-            })
-    })   
+            $('#btnSalvarLinha')
+                .html('<i class="fas fa-save"></i> Salvar')
+                .prop('disabled', false)
+        })
+    })
 })
 
 //limpa o formulário do modal de cadastro
@@ -186,7 +186,7 @@ const tabelaLinhas = $("#tabelaLinhas").DataTable({
                 return '<button style="padding: 0 5px;" class="btn btn-primary visualizar"><i class="fas fa-eye"></i></button>';
             }
         }
-        
+
     ],
 
     columnDefs: [
@@ -216,13 +216,13 @@ $("#btnPesquisarFiltros").click(function (event) {
 tabelaLinhas.on('click', '.visualizar', function (event) {
     let td = $(this).closest('tr').find('td')
     let idLinha = td.eq(0).text()
-    
+
     $.ajax({
         url: base_url("Linhas/visualizarLinha"),
         dataType: "json",
         type: "Post",
         data: {
-            idLinha 
+            idLinha
         }
     }).done(function (response) {
         if (response.status) {
@@ -284,7 +284,7 @@ $('#btnEditarLinha').click(function (event) {
         Swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'Linha alterada com sucesso!',
+            title: 'Alterada com sucesso!',
             showConfirmButton: false,
             timer: 1500,
             heightAuto: false

@@ -154,6 +154,10 @@ $('#cadastroSemLinha').click(function () {
 })
 
 $('#btnSalvarDistribuicao').click(function () {
+    $(this)
+        .html('<div class="spinner-border spinner-border-sm text-light" role="status"></div> Salvando...')
+        .prop('disabled', true)
+
     $.ajax({
         url: base_url('Distribuicoes/salvaDistribuicao'),
         dataType: 'json',
@@ -166,10 +170,50 @@ $('#btnSalvarDistribuicao').click(function () {
             semLinha: $("#cadastroSemLinha").is(":checked") ? 1 : 0,
         }
     }).done(function (response) {
-        console.log(response)
-    }).fail(function (response) {
-        console.log(response)
+        if (!response.status) {
+            $('#cadastroMensagem').html(response.mensagem)
+            $('#cadastroAlert').removeClass('d-none')
 
+            $('#btnSalvarDistribuicao')
+                .html('<i class="fas fa-save"></i> Salvar')
+                .prop('disabled', false)
+
+            return false
+        }
+
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Salvo com sucesso!',
+            showConfirmButton: false,
+            timer: 1500,
+            heightAuto: false
+        }).then((result) => {
+            $('#modalNovaDistribuicao').modal('hide')
+
+            limpaFormularioCadastro()
+
+            $('#btnSalvarDistribuicao')
+                .html('<i class="fas fa-save"></i> Salvar')
+                .prop('disabled', false)
+        })
+
+    }).fail(function (response) {
         alert("Ocorreu um erro ao salvar a distribuição. Contate o administrador do sistema")
+        console.log(response)
+        $('#btnSalvarDistribuicao')
+            .html('<i class="fas fa-save"></i> Salvar')
+            .prop('disabled', false)
     })
 })
+
+function limpaFormularioCadastro() {
+    $('#cadastroMatricula').val('')
+    $('#cadastroColaborador').val('')
+    $('#cadastroImei').val('').prop('disabled', false)
+    $('#cadastroSemAparelho').prop('checked', false)
+    $('#cadastroModelo').val('')
+    $('#cadastroLinha').val('').prop('disabled', false)
+    $('#cadastroSemLinha').prop('checked', false)
+    $('#cadastroCategoria').val('')
+}
