@@ -354,4 +354,107 @@ class Distribuicoes extends CI_Controller
             ]);
         }
     }
+
+    public function listaDistribuicoes()
+    {
+        $numeroPorPagina = $this->input->post('length');
+        $inicioLimite = $this->input->post('start');
+        $finalLimite = $inicioLimite + $numeroPorPagina;
+        $draw = $this->input->post('draw');
+        $indiceColuna = $this->input->post('order')[0]['column'];
+        $ordenar = [
+            'coluna' => $this->input->post('columns')[$indiceColuna]['data'],
+            'direcao' => $this->input->post('order')[0]['dir']
+        ];
+        $procurarSql = $this->montaCondicaoListaDistribuicoesProcurar();
+        //$filtrosSql = $this->montaCondicaoListaDistribuicoesFiltros();
+
+        $listaDistribuicoes = $this->Distribuicoes_model->listaDistribuicoes(($procurarSql), $ordenar, $inicioLimite, $finalLimite);
+
+        $dadosTabela = [
+            "draw" => $draw,
+            "recordsTotal" => $this->Distribuicoes_model->totalRegistroDistribuicoes(),
+            "recordsFiltered" => count($listaDistribuicoes),
+            "data" => $listaDistribuicoes
+        ];
+        echo json_encode($dadosTabela);
+    }
+
+    private function montaCondicaoListaDistribuicoesProcurar()
+    {
+        $procurarValor = $this->input->post('search')['value'];
+
+        $procurarSql = " ";
+        if (!empty($procurarValor)) {
+            $procurarSql = " AND (
+                md.nome LIKE '%" . $procurarValor . "%' OR 
+                li.numero_linha LIKE '%" . $procurarValor . "%' OR 
+                co.nome LIKE '%" . $procurarValor . "%' OR
+                cc.nome LIKE '%" . $procurarValor . "%' OR
+                co.cidade LIKE '%" . $procurarValor . "%' OR
+                sd.nome LIKE '%" . $procurarValor . "%' 
+            )";
+        }
+
+        return $procurarSql;
+    }
+
+    private function montaCondicaoListaDistribuicoesFiltros()
+    {
+        $filtrosSql = " ";
+
+        if (is_array($this->input->post('idMarca')) && count($this->input->post('idMarca')) > 0) {
+            $filtrosSql .= "AND mc.id IN(" . implode(", ", $this->input->post('idMarca')) . ") ";
+        }
+
+        if (is_array($this->input->post('idModelo')) && count($this->input->post('idModelo')) > 0) {
+            $filtrosSql .= "AND md.id IN(" . implode(", ", $this->input->post('idModelo')) . ") ";
+        }
+
+        if (!empty($this->input->post('imei'))) {
+            $filtrosSql .= "AND ap.imei1 = '" . $this->input->post('imei') . "'";
+        }
+
+        if (is_array($this->input->post('idStatusCondicaoAparelho')) && count($this->input->post('idStatusCondicaoAparelho')) > 0) {
+            $filtrosSql .= "AND sc.id IN(" . implode(", ", $this->input->post('idStatusCondicaoAparelho')) . ") ";
+        }
+
+        if (is_array($this->input->post('idDisponibilidade')) && count($this->input->post('idDisponibilidade')) > 0) {
+            $filtrosSql .= "AND sd.id IN(" . implode(", ", $this->input->post('idDisponibilidade')) . ") ";
+        }
+
+        if (is_array($this->input->post('status')) && count($this->input->post('status')) > 0) {
+            $filtrosSql .= "AND ap.status IN(" . implode(", ", $this->input->post('status')) . ") ";
+        }
+
+        return $filtrosSql;
+    }
+
+    public function visualizarAparelho()
+    {
+        $idAparelho = (int) $this->input->post('idAparelho');
+
+        if ($idAparelho <= 0) {
+            echo json_encode([
+                'status' => false
+            ]);
+
+            return false;
+        }
+
+        $aparelho = $this->Distribuicoes_model->consultaDistribuicoesPorId($idAparelho);
+
+        if (count($aparelho) == 0) {
+            echo json_encode([
+                'status' => false
+            ]);
+
+            return false;
+        }
+
+        echo json_encode([
+            'status' => true,
+            'aparelho' => $aparelho
+        ]);
+    }
 }

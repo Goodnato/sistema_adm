@@ -73,12 +73,12 @@
                 <thead class="table-dark">
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Imei</th>
-                        <th scope="col">Marca</th>
                         <th scope="col">Modelo</th>
-                        <th scope="col">Condição</th>
-                        <th scope="col">Valor</th>
-                        <th scope="col">Status</th>
+                        <th scope="col">Linha</th>
+                        <th scope="col">Colaborador</th>
+                        <th scope="col">Centro de custo</th>
+                        <th scope="col">Cidade</th>
+                        <th scope="col">Disponibilidade</th>
                         <th scope="col">Ação</th>
                     </tr>
                 </thead>

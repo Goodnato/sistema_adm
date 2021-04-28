@@ -1,5 +1,3 @@
-
-
 const tabelaAparelhos = $("#tabelaAparelhos").DataTable({
     processing: true,
     serverSide: true,
@@ -29,7 +27,7 @@ const tabelaAparelhos = $("#tabelaAparelhos").DataTable({
                 return 'R$ ' + parseFloat(data).toLocaleString('pt-br', { minimumFractionDigits: 2 });
             }
         },
-        { data: "status" },
+        { data: "status_disponibilidade" },
         {
             data: "acao",
             render: function (data, type, row, meta) {
@@ -295,7 +293,7 @@ tabelaAparelhos.on('click', '.visualizar', function (event) {
             $('#editaValorNotaFiscal').val(response.aparelho.valor)
             $('#editaValorDepreciado').val(response.aparelho.valor_depreciado)
             $('#editaCadastradoPor').val(response.aparelho.nome_usuario_registro)
-            //$('#editaValorDisponibilidade').val(response.aparelho.valor)
+            $('#editaValorDisponibilidade').val(response.aparelho.status_disponibilidade)
             $('#editaStatus').val(response.aparelho.status).multiselect('refresh')
 
             $('#modalVerAparelho').modal('show')

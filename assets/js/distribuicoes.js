@@ -1,3 +1,50 @@
+const tabelaDistribuicao = $("#tabelaDistribuicao").DataTable({
+    processing: true,
+    serverSide: true,
+    ajax: {
+        type: "post",
+        url: base_url("Distribuicoes/listaDistribuicoes"),
+        dataType: "json",
+        data: function (d) {
+            d.imei = $("#pesquisaImei").val()
+            d.numeroLinha = $("#pesquisaNumero").val()
+            d.nomeColaborador = $("#pesquisaColaborador").val()
+            d.matricula = $("#pesquisaMatricula").val()
+            d.cidade = $("#pesquisaCidade").val()
+            d.area = $("#pesquisaArea").val()
+            d.idDisponibilidade = $("#pesquisaDisponibilidade").val()
+        }
+    },
+    columns: [
+        { data: "id_distribuicao" },
+        { data: "modelo" },
+        { data: "numero_linha" },
+        { data: "nome_colaborador" },
+        { data: "centro_custo" },
+        { data: "cidade" },
+        { data: "status_disponibilidade" },
+        {
+            data: "acao",
+            render: function (data, type, row, meta) {
+                return '<button style="padding: 0 5px;" class="btn btn-primary visualizar"><i class="fas fa-eye"></i></button>';
+            }
+        }
+    ],
+    columnDefs: [
+        {
+            targets: [7],
+            orderable: false
+        },
+        {
+            targets: [7],
+            className: "text-center",
+        }
+    ],
+    language: {
+        url: "//cdn.datatables.net/plug-ins/1.10.24/i18n/Portuguese.json"
+    }
+});
+
 $('#pesquisaColaborador').multiselect({
     buttonWidth: '100%',
     includeSelectAllOption: true,

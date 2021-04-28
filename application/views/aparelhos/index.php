@@ -86,7 +86,7 @@
                         <th scope="col">Modelo</th>
                         <th scope="col">Condição</th>
                         <th scope="col">Valor</th>
-                        <th scope="col">Status</th>
+                        <th scope="col">Disponibilidade</th>
                         <th scope="col">Ação</th>
                     </tr>
                 </thead>
