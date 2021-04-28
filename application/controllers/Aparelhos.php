@@ -150,13 +150,13 @@ class Aparelhos extends CI_Controller
 
         $listaAparelhos = $this->Aparelhos_model->listaAparelhos(($procurarSql . $filtrosSql), $ordenar, $inicioLimite, $finalLimite);
 
-        $teste = [
+        $dadosTabela = [
             "draw" => $draw,
             "recordsTotal" => $this->Aparelhos_model->totalRegistroAparelhos(),
-            "recordsFiltered" => $this->Aparelhos_model->totalRegistroAparelhosFiltrados($procurarSql),
+            "recordsFiltered" => count($listaAparelhos),
             "data" => $listaAparelhos
         ];
-        echo json_encode($teste);
+        echo json_encode($dadosTabela);
     }
 
     private function montaCondicaoListaAparelhosProcurar()
@@ -169,7 +169,8 @@ class Aparelhos extends CI_Controller
                 mc.nome LIKE '%" . $procurarValor . "%' OR 
                 md.nome LIKE '%" . $procurarValor . "%' OR 
                 ap.imei1 LIKE '%" . $procurarValor . "%' OR 
-                sc.nome LIKE '%" . $procurarValor . "%'
+                sc.nome LIKE '%" . $procurarValor . "%' OR
+                sd.nome LIKE '%" . $procurarValor . "%' 
             )";
         }
 
@@ -196,9 +197,9 @@ class Aparelhos extends CI_Controller
             $filtrosSql .= "AND sc.id IN(" . implode(", ", $this->input->post('idStatusCondicaoAparelho')) . ") ";
         }
 
-        /*if (is_array($this->input->post('idDisponibilidade')) && count($this->input->post('idDisponibilidade')) > 0) {
-            $filtrosSql .= "AND md.id IN(" . implode(", ", $this->input->post('idDisponibilidade')) . ") ";
-        }*/
+        if (is_array($this->input->post('idDisponibilidade')) && count($this->input->post('idDisponibilidade')) > 0) {
+            $filtrosSql .= "AND sd.id IN(" . implode(", ", $this->input->post('idDisponibilidade')) . ") ";
+        }
 
         if (is_array($this->input->post('status')) && count($this->input->post('status')) > 0) {
             $filtrosSql .= "AND ap.status IN(" . implode(", ", $this->input->post('status')) . ") ";

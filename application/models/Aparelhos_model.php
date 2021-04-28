@@ -35,13 +35,14 @@ class Aparelhos_model extends CI_Model
                     mc.nome AS nome_marca,
                     md.nome AS nome_modelo,
                     sc.nome AS status_condicao,
-                    ap.valor,
-                    IF(ap.status = " . STATUS_ATIVO . " , 'ATIVO', 'INATIVO') AS status
+                    sd.nome AS status_disponibilidade,
+                    ap.valor
                 FROM
                     {$this->tabela} ap
                 INNER JOIN marcas mc ON mc.id = ap.id_marca
                 INNER JOIN modelos md ON md.id = ap.id_modelo
                 INNER JOIN status_condicoes_aparelhos sc ON sc.id = ap.id_status_condicao_aparelho
+                INNER JOIN status_disponibilidades sd ON sd.id = ap.id_status_disponibilidade
                 WHERE
                     1 = 1
                     $procurarSql
@@ -49,25 +50,6 @@ class Aparelhos_model extends CI_Model
                 LIMIT $inicioLimite, $finalLimite";
 
         return $this->db->query($sql)->result_array();
-    }
-
-    public function totalRegistroAparelhosFiltrados($procurarSql)
-    {
-        $sql = "SELECT
-                    COUNT(ap.id) AS total
-                FROM
-                    {$this->tabela} ap
-                INNER JOIN marcas mc ON mc.id = ap.id_marca
-                INNER JOIN modelos md ON md.id = ap.id_modelo
-                INNER JOIN status_condicoes_aparelhos sc ON sc.id = ap.id_status_condicao_aparelho
-                INNER JOIN usuarios us ON us.id = ap.id_usuario_registro
-                WHERE
-                    1 = 1
-                    $procurarSql";
-
-        $resultado = $this->db->query($sql)->result_array();
-
-        return count($resultado) == 0 ? 0 : $resultado[0]['total'];
     }
 
     public function totalRegistroAparelhos()
@@ -95,12 +77,14 @@ class Aparelhos_model extends CI_Model
                     REPLACE(ap.valor, '.', ',') AS valor,
                     ap.valor_depreciado,
                     us.nome AS nome_usuario_registro,
-                    ap.status
+                    ap.status,
+                    sd.nome AS status_disponibilidade
                 FROM
                     {$this->tabela} ap
                 INNER JOIN marcas mc ON mc.id = ap.id_marca
                 INNER JOIN modelos md ON md.id = ap.id_modelo
                 INNER JOIN usuarios us ON us.id = ap.id_usuario_registro
+                INNER JOIN status_disponibilidades sd ON sd.id = ap.id_status_disponibilidade
                 WHERE
                     ap.id = $idAparelho";
 
