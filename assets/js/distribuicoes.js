@@ -264,3 +264,36 @@ function limpaFormularioCadastro() {
     $('#cadastroSemLinha').prop('checked', false)
     $('#cadastroCategoria').val('')
 }
+
+tabelaDistribuicao.on('click', '.visualizar', function (event) {
+    let td = $(this).closest('tr').find('td')
+    let idDistribuicao = td.eq(0).text()
+
+    $.ajax({
+        url: base_url("Distribuicoes/visualizarDistribuicao"),
+        dataType: "json",
+        type: "Post",
+        data: {
+            idDistribuicao
+        }
+    }).done(function (response) {
+        console.log(response)
+        if (response.status) {
+            $('#editaIdDistribuicao').val(idDistribuicao)
+            $('#idColaborador').val(response.distribuicao.id_colaborador)
+            $('#nomeColaborador').val(response.distribuicao.nome_colaborador)
+            $('#editaImei').val(response.distribuicao.imei)
+            $('#editaModelo').val(response.distribuicao.nome_modelo)
+            $('#editaNumeroLinha').val(response.distribuicao.numero_linha)
+            $('#editaCategoria').val(response.distribuicao.categoria)
+            $('#editaCentroCusto').val(response.distribuicao.centro_custo)
+            $('#editaCidade').val(response.distribuicao.cidade)
+
+            $('#modalVerDistribuicao').modal('show')
+        }
+    }).fail(function (response) {
+        alert("Ocorreu um erro ao visualizar o distribuição. Contate o administrador do sistema")
+        console.log(response)
+        $('#modalVerDistribuicao').modal('hide')
+    })
+})

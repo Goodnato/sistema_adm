@@ -81,4 +81,31 @@ class Distribuicoes_model extends CI_Model
 
         return count($resultado) == 0 ? 0 : $resultado[0]['total'];
     }
+
+    public function consultaDistribuicaoPorId($idDistribuicao)
+    {
+        $sql = "SELECT
+                    co.id AS id_colaborador,
+                    co.nome AS nome_colaborador,
+                    ap.imei1 AS imei,
+                    md.nome AS nome_modelo,
+                    li.numero_linha,
+                    cg.nome AS categoria,
+                    cc.nome AS centro_custo,
+                    co.cidade AS cidade
+                FROM
+                    {$this->tabela} dt
+                LEFT JOIN aparelhos ap ON ap.id = dt.id_aparelho
+                LEFT JOIN modelos md ON md.id = ap.id_modelo
+                LEFT JOIN linhas li ON li.id = dt.id_linha
+                INNER JOIN colaboradores co ON co.id = dt.id_colaborador
+                LEFT JOIN categorias cg ON cg.id = li.id_categoria
+                LEFT JOIN centro_custo cc ON cc.id = co.id_centro_custo
+                WHERE
+                    dt.id = $idDistribuicao";
+
+        $resultado = $this->db->query($sql)->result_array();
+
+        return count($resultado) == 0 ? [] : $resultado[0];
+    }
 }

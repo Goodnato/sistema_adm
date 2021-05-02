@@ -430,11 +430,11 @@ class Distribuicoes extends CI_Controller
         return $filtrosSql;
     }
 
-    public function visualizarAparelho()
+    public function visualizarDistribuicao()
     {
-        $idAparelho = (int) $this->input->post('idAparelho');
+        $idDistribuicao = (int) $this->input->post('idDistribuicao');
 
-        if ($idAparelho <= 0) {
+        if ($idDistribuicao <= 0) {
             echo json_encode([
                 'status' => false
             ]);
@@ -442,9 +442,9 @@ class Distribuicoes extends CI_Controller
             return false;
         }
 
-        $aparelho = $this->Distribuicoes_model->consultaDistribuicoesPorId($idAparelho);
+        $distribuicao = $this->Distribuicoes_model->consultaDistribuicaoPorId($idDistribuicao);
 
-        if (count($aparelho) == 0) {
+        if (count($distribuicao) == 0) {
             echo json_encode([
                 'status' => false
             ]);
@@ -454,7 +454,7 @@ class Distribuicoes extends CI_Controller
 
         echo json_encode([
             'status' => true,
-            'aparelho' => $aparelho
+            'distribuicao' => $distribuicao
         ]);
     }
 }
