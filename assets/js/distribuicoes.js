@@ -289,6 +289,34 @@ tabelaDistribuicao.on('click', '.visualizar', function (event) {
             $('#editaCentroCusto').val(response.distribuicao.centro_custo)
             $('#editaCidade').val(response.distribuicao.cidade)
 
+            let tabelaLogDistribuicao = $("#logDistribuicao");
+            tabelaLogDistribuicao.empty()
+
+            let contador = 1;
+            tabelaLogDistribuicao.append(
+                `<tr>
+                    <td>${contador}</td>
+                    <td>${response.distribuicao.nome_usuario}</td>
+                    <td>${response.distribuicao.status_disponibilidade}</td>
+                    <td>${response.distribuicao.data_registro}</td>
+                </tr>`
+            )
+
+            contador++;
+
+            $.each(response.logs, function (index, value) {
+                tabelaLogDistribuicao.append(
+                    `<tr>
+                        <td>${contador}</td>
+                        <td>${value.nome_usuario}</td>
+                        <td>${value.valor_novo.status_disponibilidade}</td>
+                        <td>${value.data_registro}</td>
+                    </tr>`
+                )
+
+                contador++;
+            })
+
             $('#modalVerDistribuicao').modal('show')
         }
     }).fail(function (response) {

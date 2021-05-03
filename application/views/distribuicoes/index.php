@@ -240,7 +240,7 @@
                                         <th scope="col">Data</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="logDistribuicao">
                                 </tbody>
                             </table>
                         </div>

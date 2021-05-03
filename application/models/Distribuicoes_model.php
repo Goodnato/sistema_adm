@@ -94,7 +94,10 @@ class Distribuicoes_model extends CI_Model
                     li.id AS id_linha,
                     cg.nome AS categoria,
                     cc.nome AS centro_custo,
-                    co.cidade AS cidade
+                    co.cidade AS cidade,
+                    u.nome AS nome_usuario,
+                    DATE_FORMAT(dt.data_registro, '%d/%m/%Y') AS data_registro,
+                    'EM USO' AS status_disponibilidade
                 FROM
                     {$this->tabela} dt
                 LEFT JOIN aparelhos ap ON ap.id = dt.id_aparelho
@@ -103,6 +106,7 @@ class Distribuicoes_model extends CI_Model
                 INNER JOIN colaboradores co ON co.id = dt.id_colaborador
                 LEFT JOIN categorias cg ON cg.id = li.id_categoria
                 LEFT JOIN centro_custo cc ON cc.id = co.id_centro_custo
+                INNER JOIN usuarios u ON u.id = dt.id_usuario_registro
                 WHERE
                     dt.id = $idDistribuicao";
 

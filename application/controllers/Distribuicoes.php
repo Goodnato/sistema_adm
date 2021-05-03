@@ -455,8 +455,27 @@ class Distribuicoes extends CI_Controller
 
         echo json_encode([
             'status' => true,
-            'distribuicao' => $distribuicao
+            'distribuicao' => $distribuicao,
+            'logs' => $this->converteLogParaArray($this->Logs_alteracoes_model->consultarLog('distribuicoes', $idDistribuicao))
         ]);
+    }
+
+    private function converteLogParaArray($listaLog)
+    {
+        if (count($listaLog) == 0) {
+            return [];
+        }
+
+        $i = 0;
+        foreach ($listaLog as $log) {
+            $logFormatado[$i] = $log;
+            $logFormatado[$i]['valor_antigo'] = json_decode($log['valor_antigo'], true);
+            $logFormatado[$i]['valor_novo'] = json_decode($log['valor_novo'], true);
+
+            $i++;
+        }
+
+        return $logFormatado;
     }
 
     public function fecharDistribuicao()
@@ -490,8 +509,8 @@ class Distribuicoes extends CI_Controller
             'tabela' => 'distribuicoes',
             'id_usuario' => 1,
             'identificador' => $idDistribuicao,
-            'valor_antigo' => json_encode(['id_status_disponibilidade' => DISTRIBUICAO_EM_USO]),
-            'valor_novo' => json_encode(['id_status_disponibilidade' => DISTRIBUICAO_DEVOLVIDO])
+            'valor_antigo' => json_encode(['id_status_disponibilidade' => DISTRIBUICAO_EM_USO, 'status_disponibilidade' => "EM USO"]),
+            'valor_novo' => json_encode(['id_status_disponibilidade' => DISTRIBUICAO_DEVOLVIDO, 'status_disponibilidade' => "DEVOLVIDO"])
         ]);
 
         echo json_encode([
