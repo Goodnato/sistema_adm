@@ -13,6 +13,7 @@ class Distribuicoes extends CI_Controller
         $this->load->model('Linhas_model');
         $this->load->model('Colaboradores_model');
         $this->load->model('Status_disponibilidades_model');
+        $this->load->model('Logs_alteracoes_model');
     }
 
     public function index()
@@ -456,5 +457,47 @@ class Distribuicoes extends CI_Controller
             'status' => true,
             'distribuicao' => $distribuicao
         ]);
+    }
+
+    public function fecharDistribuicao()
+    {
+        $idDistribuicao = (int) $this->input->post('idDistribuicao');
+
+        if ($idDistribuicao <= 0) {
+            echo json_encode([
+                'status' => false
+            ]);
+
+            return false;
+        }
+
+        $distribuicao = $this->Distribuicoes_model->consultaDistribuicaoPorId($idDistribuicao);
+
+        if (count($distribuicao) == 0) {
+            echo json_encode([
+                'status' => false
+            ]);
+
+            return false;
+        }
+
+        $this->Distribuicoes_model->fecharDistribuicao($idDistribuicao);
+
+        $this->Distribuicoes_model->alterarDisponibilidadeItens('aparelhos', $distribuicao['id_aparelho']);
+        $this->Distribuicoes_model->alterarDisponibilidadeItens('linhas', $distribuicao['id_linha']);
+
+        $this->Logs_alteracoes_model->registrarLog([
+            'tabela' => 'distribuicoes',
+            'id_usuario' => 1,
+            'identificador' => $idDistribuicao,
+            'valor_antigo' => json_encode(['id_status_disponibilidade' => DISTRIBUICAO_EM_USO]),
+            'valor_novo' => json_encode(['id_status_disponibilidade' => DISTRIBUICAO_DEVOLVIDO])
+        ]);
+
+        echo json_encode([
+            'status' => true
+        ]);
+
+        return true;
     }
 }

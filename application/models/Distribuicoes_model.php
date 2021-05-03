@@ -88,8 +88,10 @@ class Distribuicoes_model extends CI_Model
                     co.id AS id_colaborador,
                     co.nome AS nome_colaborador,
                     ap.imei1 AS imei,
+                    ap.id AS id_aparelho,
                     md.nome AS nome_modelo,
                     li.numero_linha,
+                    li.id AS id_linha,
                     cg.nome AS categoria,
                     cc.nome AS centro_custo,
                     co.cidade AS cidade
@@ -107,5 +109,22 @@ class Distribuicoes_model extends CI_Model
         $resultado = $this->db->query($sql)->result_array();
 
         return count($resultado) == 0 ? [] : $resultado[0];
+    }
+
+    public function fecharDistribuicao($idDistribuicao)
+    {
+        $this->db->update($this->tabela, ['id_status_disponibilidade' => DISTRIBUICAO_DEVOLVIDO], ['id' => $idDistribuicao]);
+    }
+
+    public function alterarDisponibilidadeItens($tabela, $idItem)
+    {
+        $sql = "UPDATE
+                    $tabela
+                SET
+                    id_status_disponibilidade = " . DISTRIBUICAO_DEVOLVIDO . "
+                WHERE
+                    id = $idItem";
+
+        $this->db->query($sql);
     }
 }

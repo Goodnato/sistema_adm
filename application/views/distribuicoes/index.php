@@ -206,7 +206,7 @@
                                 <div class="row mt-2">
                                     <div class="col">
                                         <label for="editaNumeroLinha" class="form-label">Número da linha</label>
-                                        <input type="number" class="form-control form-control-sm" id="editaNumeroLinha" disabled>
+                                        <input type="text" class="form-control form-control-sm" id="editaNumeroLinha" disabled>
                                     </div>
                                     <div class="col">
                                         <label for="editaCategoria" class="form-label">Categoria</label>
@@ -249,7 +249,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-window-close"></i> Cancelar</button>
-                <button type="button" class="btn btn-success" id="btnEditarDistribuicao"><i class="fas fa-check-circle"></i> Fechar distribuição</button>
+                <button type="button" class="btn btn-success" id="btnFecharDistribuicao"><i class="fas fa-check-circle"></i> Fechar distribuição</button>
             </div>
         </div>
     </div>

@@ -292,8 +292,52 @@ tabelaDistribuicao.on('click', '.visualizar', function (event) {
             $('#modalVerDistribuicao').modal('show')
         }
     }).fail(function (response) {
-        alert("Ocorreu um erro ao visualizar o distribuição. Contate o administrador do sistema")
+        alert("Ocorreu um erro ao visualizar a distribuição. Contate o administrador do sistema")
         console.log(response)
         $('#modalVerDistribuicao').modal('hide')
+    })
+})
+
+$("#btnFecharDistribuicao").click(function () {
+    Swal.fire({
+        title: 'Deseja fechar?',
+        text: "Confirme se os itens foram devolvidos",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#28a745',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: 'Sim'
+    }).then((result) => {
+        if (!result.isConfirmed) {
+            return
+        }
+
+        let idDistribuicao = $("#editaIdDistribuicao").val()
+        $.ajax({
+            url: base_url("Distribuicoes/fecharDistribuicao"),
+            dataType: "json",
+            type: "Post",
+            data: {
+                idDistribuicao
+            }
+        }).done(function (response) {
+            console.log(response)
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Fechado com sucesso!',
+                showConfirmButton: false,
+                timer: 1500,
+                heightAuto: false
+            }).then((result) => {
+                tabelaDistribuicao.ajax.reload()
+                $('#modalVerDistribuicao').modal('hide')
+            })
+        }).fail(function (response) {
+            alert("Ocorreu um erro ao fechar a distribuição. Contate o administrador do sistema")
+            console.log(response)
+            $('#modalVerDistribuicao').modal('hide')
+        })
     })
 })
