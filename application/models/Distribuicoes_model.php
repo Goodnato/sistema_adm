@@ -85,6 +85,7 @@ class Distribuicoes_model extends CI_Model
     public function consultaDistribuicaoPorId($idDistribuicao)
     {
         $sql = "SELECT
+                    dt.id_status_disponibilidade,
                     co.id AS id_colaborador,
                     co.nome AS nome_colaborador,
                     ap.imei1 AS imei,

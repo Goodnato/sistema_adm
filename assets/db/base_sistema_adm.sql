@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Tempo de geração: 28-Abr-2021 às 21:48
+-- Tempo de geração: 06-Maio-2021 às 22:31
 -- Versão do servidor: 8.0.23
 -- versão do PHP: 7.4.16
 SET
@@ -67,14 +67,14 @@ VALUES
     1,
     '123456789456123',
     1,
-    1,
+    2,
     1,
     '1451541451',
     '2021-06-28',
     121.54,
     NULL,
     '2021-04-13 22:20:16',
-    '2021-04-28 21:41:55',
+    '2021-05-06 22:29:41',
     1,
     1
   );
@@ -248,6 +248,33 @@ VALUES
     `id_usuario_registro` int NOT NULL,
     `id_usuario_at` int DEFAULT NULL
   ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
+--
+  -- Extraindo dados da tabela `distribuicoes`
+  --
+INSERT INTO
+  `distribuicoes` (
+    `id`,
+    `id_aparelho`,
+    `id_linha`,
+    `id_colaborador`,
+    `id_status_disponibilidade`,
+    `data_registro`,
+    `data_at`,
+    `id_usuario_registro`,
+    `id_usuario_at`
+  )
+VALUES
+  (
+    1,
+    1,
+    NULL,
+    1234,
+    2,
+    '2021-05-06 22:17:36',
+    '2021-05-06 22:29:41',
+    1,
+    NULL
+  );
 -- --------------------------------------------------------
   --
   -- Estrutura da tabela `linhas`
@@ -325,10 +352,10 @@ VALUES
     '912345678',
     1,
     1,
-    1,
+    2,
     1,
     '2021-04-02 11:03:50',
-    '2021-04-28 21:43:45',
+    '2021-05-06 22:17:17',
     1,
     NULL
   ),
@@ -346,6 +373,42 @@ VALUES
     NULL,
     1,
     NULL
+  );
+-- --------------------------------------------------------
+  --
+  -- Estrutura da tabela `logs_alteracoes`
+  --
+  CREATE TABLE `logs_alteracoes` (
+    `id` int NOT NULL,
+    `tabela` varchar(100) NOT NULL,
+    `id_usuario` int NOT NULL,
+    `identificador` int NOT NULL,
+    `valor_antigo` text NOT NULL,
+    `valor_novo` text NOT NULL,
+    `data_registro` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
+--
+  -- Extraindo dados da tabela `logs_alteracoes`
+  --
+INSERT INTO
+  `logs_alteracoes` (
+    `id`,
+    `tabela`,
+    `id_usuario`,
+    `identificador`,
+    `valor_antigo`,
+    `valor_novo`,
+    `data_registro`
+  )
+VALUES
+  (
+    1,
+    'distribuicoes',
+    1,
+    1,
+    '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\"}',
+    '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\"}',
+    '2021-05-06 22:29:41'
   );
 -- --------------------------------------------------------
   --
@@ -800,6 +863,17 @@ ADD
 ADD
   KEY `FK_linhas_status_disponibilidades` (`id_status_disponibilidade`);
 --
+  -- Índices para tabela `logs_alteracoes`
+  --
+ALTER TABLE
+  `logs_alteracoes`
+ADD
+  PRIMARY KEY (`id`),
+ADD
+  KEY `IDX_logs_alteracoes_tabela` (`tabela`),
+ADD
+  KEY `IDX_logs_alteracoes_identificador` (`identificador`);
+--
   -- Índices para tabela `marcas`
   --
 ALTER TABLE
@@ -897,7 +971,8 @@ MODIFY
 ALTER TABLE
   `distribuicoes`
 MODIFY
-  `id` int NOT NULL AUTO_INCREMENT;
+  `id` int NOT NULL AUTO_INCREMENT,
+  AUTO_INCREMENT = 2;
 --
   -- AUTO_INCREMENT de tabela `linhas`
   --
@@ -906,6 +981,14 @@ ALTER TABLE
 MODIFY
   `id` int NOT NULL AUTO_INCREMENT,
   AUTO_INCREMENT = 8;
+--
+  -- AUTO_INCREMENT de tabela `logs_alteracoes`
+  --
+ALTER TABLE
+  `logs_alteracoes`
+MODIFY
+  `id` int NOT NULL AUTO_INCREMENT,
+  AUTO_INCREMENT = 2;
 --
   -- AUTO_INCREMENT de tabela `marcas`
   --

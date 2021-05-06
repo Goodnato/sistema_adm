@@ -1,3 +1,5 @@
+const DEVOLVIDO = 2
+
 const tabelaDistribuicao = $("#tabelaDistribuicao").DataTable({
     processing: true,
     serverSide: true,
@@ -269,6 +271,8 @@ tabelaDistribuicao.on('click', '.visualizar', function (event) {
     let td = $(this).closest('tr').find('td')
     let idDistribuicao = td.eq(0).text()
 
+    $('#btnFecharDistribuicao').show()
+
     $.ajax({
         url: base_url("Distribuicoes/visualizarDistribuicao"),
         dataType: "json",
@@ -277,8 +281,8 @@ tabelaDistribuicao.on('click', '.visualizar', function (event) {
             idDistribuicao
         }
     }).done(function (response) {
-        console.log(response)
         if (response.status) {
+            $('#tituloDistribuicao').text(response.distribuicao.nome_colaborador)
             $('#editaIdDistribuicao').val(idDistribuicao)
             $('#idColaborador').val(response.distribuicao.id_colaborador)
             $('#nomeColaborador').val(response.distribuicao.nome_colaborador)
@@ -316,6 +320,10 @@ tabelaDistribuicao.on('click', '.visualizar', function (event) {
 
                 contador++;
             })
+
+            if (response.distribuicao.id_status_disponibilidade == DEVOLVIDO) {
+                $('#btnFecharDistribuicao').hide()
+            }
 
             $('#modalVerDistribuicao').modal('show')
         }

@@ -502,8 +502,12 @@ class Distribuicoes extends CI_Controller
 
         $this->Distribuicoes_model->fecharDistribuicao($idDistribuicao);
 
-        $this->Distribuicoes_model->alterarDisponibilidadeItens('aparelhos', $distribuicao['id_aparelho']);
-        $this->Distribuicoes_model->alterarDisponibilidadeItens('linhas', $distribuicao['id_linha']);
+        if (!empty($distribuicao['id_aparelho'])) {
+            $this->Distribuicoes_model->alterarDisponibilidadeItens('aparelhos', $distribuicao['id_aparelho']);
+        }
+        if (!empty($distribuicao['id_linha'])) {
+            $this->Distribuicoes_model->alterarDisponibilidadeItens('linhas', $distribuicao['id_linha']);
+        }
 
         $this->Logs_alteracoes_model->registrarLog([
             'tabela' => 'distribuicoes',
