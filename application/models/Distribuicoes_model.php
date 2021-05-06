@@ -9,10 +9,10 @@ class Distribuicoes_model extends CI_Model
     public function consultaTodosColaboradoresCadastradosDistribuicao()
     {
         $sql = "SELECT DISTINCT
-                    us.id, 
-                    us.nome 
+                    co.id, 
+                    co.nome 
                 FROM {$this->tabela} AS di 
-                INNER JOIN usuarios AS us ON us.id = di.id_usuario_registro";
+                INNER JOIN colaboradores AS co ON co.id = di.id_colaborador";
 
         return $this->db->query($sql)->result_array();
     }
@@ -22,7 +22,8 @@ class Distribuicoes_model extends CI_Model
         $sql = "SELECT DISTINCT
                     cl.cidade 
                 FROM {$this->tabela} AS di 
-                INNER JOIN colaboradores AS cl ON cl.id = di.id_colaborador";
+                INNER JOIN colaboradores AS cl ON cl.id = di.id_colaborador
+                WHERE cl.cidade IS NOT NULL";
 
         return $this->db->query($sql)->result_array();
     }
@@ -49,8 +50,8 @@ class Distribuicoes_model extends CI_Model
                     dt.id AS id_distribuicao,
                     md.nome AS modelo,
                     li.numero_linha,
-                    co.nome AS nome_colaborador,
-                    cc.nome AS centro_custo,
+                    CONCAT(co.nome, ' (', co.id, ')') AS nome_colaborador,
+                    CONCAT(cc.nome, ' (', cc.area, ')') AS centro_custo,
                     co.cidade AS cidade,
                     IF(dt.id_status_disponibilidade = " . DISTRIBUICAO_DISPONIVEL . " , 'DEVOLVIDO', sd.nome) AS status_disponibilidade
                 FROM

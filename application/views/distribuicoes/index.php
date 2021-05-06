@@ -44,7 +44,7 @@
                         <label for="pesquisaArea" class="form-label">Área</label><br>
                         <select id="pesquisaArea" multiple="multiple">
                             <?php foreach ($listaAreasCadastradas as $area) { ?>
-                                <option value="<?= $area['area'] ?>"><?= $cidade['area'] ?></option>
+                                <option value="<?= $area['area'] ?>"><?= $area['area'] ?></option>
                             <?php } ?>
                         </select>
                     </div>
@@ -216,7 +216,7 @@
                                 <div class="row mt-2">
                                     <div class="col">
                                         <label for="editaCentroCusto" class="form-label">Centro de custo</label>
-                                        <input type="number" class="form-control form-control-sm" id="editaCentroCusto" disabled>
+                                        <input type="text" class="form-control form-control-sm" id="editaCentroCusto" disabled>
                                     </div>
                                     <div class="col">
                                         <label for="editaCidade" class="form-label">Cidade</label>

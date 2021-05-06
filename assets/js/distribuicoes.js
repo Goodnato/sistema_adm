@@ -10,7 +10,7 @@ const tabelaDistribuicao = $("#tabelaDistribuicao").DataTable({
         data: function (d) {
             d.imei = $("#pesquisaImei").val()
             d.numeroLinha = $("#pesquisaNumero").val()
-            d.nomeColaborador = $("#pesquisaColaborador").val()
+            d.idColaborador = $("#pesquisaColaborador").val()
             d.matricula = $("#pesquisaMatricula").val()
             d.cidade = $("#pesquisaCidade").val()
             d.area = $("#pesquisaArea").val()
@@ -242,6 +242,8 @@ $('#btnSalvarDistribuicao').click(function () {
 
             limpaFormularioCadastro()
 
+            tabelaDistribuicao.ajax.reload()
+
             $('#btnSalvarDistribuicao')
                 .html('<i class="fas fa-save"></i> Salvar')
                 .prop('disabled', false)
@@ -267,6 +269,12 @@ function limpaFormularioCadastro() {
     $('#cadastroCategoria').val('')
 }
 
+$("#btnPesquisarFiltros").click(function (event) {
+    event.preventDefault()
+
+    tabelaDistribuicao.ajax.reload()
+})
+
 tabelaDistribuicao.on('click', '.visualizar', function (event) {
     let td = $(this).closest('tr').find('td')
     let idDistribuicao = td.eq(0).text()
@@ -281,6 +289,7 @@ tabelaDistribuicao.on('click', '.visualizar', function (event) {
             idDistribuicao
         }
     }).done(function (response) {
+        console.log(response)
         if (response.status) {
             $('#tituloDistribuicao').text(response.distribuicao.nome_colaborador)
             $('#editaIdDistribuicao').val(idDistribuicao)

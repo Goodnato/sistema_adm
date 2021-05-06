@@ -149,7 +149,7 @@ class Distribuicoes extends CI_Controller
 
         echo json_encode([
             'status' => true,
-            'mensagem' => $categoria['id_linha']
+            'mensagem' => $categoria['categoria']
         ]);
     }
 
@@ -368,9 +368,9 @@ class Distribuicoes extends CI_Controller
             'direcao' => $this->input->post('order')[0]['dir']
         ];
         $procurarSql = $this->montaCondicaoListaDistribuicoesProcurar();
-        //$filtrosSql = $this->montaCondicaoListaDistribuicoesFiltros();
+        $filtrosSql = $this->montaCondicaoListaDistribuicoesFiltros();
 
-        $listaDistribuicoes = $this->Distribuicoes_model->listaDistribuicoes(($procurarSql), $ordenar, $inicioLimite, $finalLimite);
+        $listaDistribuicoes = $this->Distribuicoes_model->listaDistribuicoes(($procurarSql . $filtrosSql), $ordenar, $inicioLimite, $finalLimite);
 
         $dadosTabela = [
             "draw" => $draw,
@@ -404,28 +404,38 @@ class Distribuicoes extends CI_Controller
     {
         $filtrosSql = " ";
 
-        if (is_array($this->input->post('idMarca')) && count($this->input->post('idMarca')) > 0) {
-            $filtrosSql .= "AND mc.id IN(" . implode(", ", $this->input->post('idMarca')) . ") ";
-        }
-
-        if (is_array($this->input->post('idModelo')) && count($this->input->post('idModelo')) > 0) {
-            $filtrosSql .= "AND md.id IN(" . implode(", ", $this->input->post('idModelo')) . ") ";
-        }
-
         if (!empty($this->input->post('imei'))) {
             $filtrosSql .= "AND ap.imei1 = '" . $this->input->post('imei') . "'";
         }
 
-        if (is_array($this->input->post('idStatusCondicaoAparelho')) && count($this->input->post('idStatusCondicaoAparelho')) > 0) {
-            $filtrosSql .= "AND sc.id IN(" . implode(", ", $this->input->post('idStatusCondicaoAparelho')) . ") ";
+        if (!empty($this->input->post('numeroLinha'))) {
+            $filtrosSql .= "AND li.numero_linha = '" . $this->input->post('numeroLinha') . "'";
+        }
+
+        if (is_array($this->input->post('idColaborador')) && count($this->input->post('idColaborador')) > 0) {
+            $filtrosSql .= "AND co.id IN(" . implode(", ", $this->input->post('idColaborador')) . ") ";
+        }
+
+        if (!empty($this->input->post('matricula'))) {
+            $filtrosSql .= "AND co.id = '" . $this->input->post('matricula') . "'";
+        }
+
+        if (is_array($this->input->post('cidade')) && count($this->input->post('cidade')) > 0) {
+            $cidades = array_map(function ($cidade) {
+                return "'$cidade'";
+            }, $this->input->post('cidade'));
+            $filtrosSql .= "AND co.cidade IN(" . implode(", ", $cidades) . ") ";
+        }
+
+        if (is_array($this->input->post('area')) && count($this->input->post('area')) > 0) {
+            $areas = array_map(function ($area) {
+                return "'$area'";
+            }, $this->input->post('area'));
+            $filtrosSql .= "AND cc.area IN(" . implode(", ", $areas) . ") ";
         }
 
         if (is_array($this->input->post('idDisponibilidade')) && count($this->input->post('idDisponibilidade')) > 0) {
-            $filtrosSql .= "AND sd.id IN(" . implode(", ", $this->input->post('idDisponibilidade')) . ") ";
-        }
-
-        if (is_array($this->input->post('status')) && count($this->input->post('status')) > 0) {
-            $filtrosSql .= "AND ap.status IN(" . implode(", ", $this->input->post('status')) . ") ";
+            $filtrosSql .= "AND dt.id IN(" . implode(", ", $this->input->post('idDisponibilidade')) . ") ";
         }
 
         return $filtrosSql;
