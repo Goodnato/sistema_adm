@@ -13,6 +13,7 @@ class Aparelhos extends CI_Controller
         $this->load->model('Modelos_model');
         $this->load->model('Status_condicoes_aparelhos_model');
         $this->load->model('Status_disponibilidades_model');
+        $this->load->model('Logs_alteracoes_model');
     }
 
     public function index()
@@ -120,14 +121,25 @@ class Aparelhos extends CI_Controller
             return false;
         }
 
-        $this->Aparelhos_model->editarAparelho($this->input->post('idAparelho'), [
+        $idAparelho = $this->input->post('idAparelho');
+        $novosDadosAparelho = [
             'id_status_condicao_aparelho' => $this->input->post('idStatusCondicaoAparelho'),
             'nota_fiscal' => $this->input->post('notaFiscal'),
             'data_nota' => $this->input->post('dataNotaFiscal'),
             'valor' => $this->input->post('valorNotaFiscal'),
             'status' => $this->input->post('status'),
             'id_usuario_at' => 1
+        ];
+
+        $this->Logs_alteracoes_model->registrarLog([
+            'tabela' => 'aparelhos',
+            'id_usuario' => 1,
+            'identificador' => $idAparelho,
+            'valor_antigo' => json_encode($this->Aparelhos_model->consultaAparelhosPorId($idAparelho)),
+            'valor_novo' => json_encode($novosDadosAparelho)
         ]);
+
+        $this->Aparelhos_model->editarAparelho($idAparelho, $novosDadosAparelho);
 
         echo json_encode([
             'status' => true
