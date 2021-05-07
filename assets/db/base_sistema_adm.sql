@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Tempo de geração: 07-Maio-2021 às 22:38
+-- Tempo de geração: 07-Maio-2021 às 23:04
 -- Versão do servidor: 8.0.23
 -- versão do PHP: 7.4.16
 SET
@@ -222,8 +222,8 @@ VALUES
     1,
     'NOVO',
     1,
-    '2021-05-07 22:36:32',
-    '2021-05-07 22:35:48',
+    '2021-05-07 23:04:43',
+    '2021-05-07 23:04:06',
     1,
     NULL
   ),
@@ -231,8 +231,8 @@ VALUES
     2,
     'USADO',
     1,
-    '2021-05-07 22:36:32',
-    '2021-05-07 22:35:48',
+    '2021-05-07 23:04:43',
+    '2021-05-07 23:04:06',
     1,
     NULL
   ),
@@ -240,8 +240,8 @@ VALUES
     3,
     'DESCARTADO',
     1,
-    '2021-05-07 22:36:32',
-    '2021-05-07 22:35:48',
+    '2021-05-07 23:04:43',
+    '2021-05-07 23:04:06',
     1,
     NULL
   ),
@@ -249,8 +249,8 @@ VALUES
     4,
     'MANUNTENÇÃO',
     1,
-    '2021-05-07 22:36:32',
-    '2021-05-07 22:35:48',
+    '2021-05-07 23:04:43',
+    '2021-05-07 23:04:06',
     1,
     NULL
   );
@@ -285,8 +285,8 @@ VALUES
     1,
     'EM USO',
     1,
-    '2021-05-07 22:37:04',
-    '2021-05-07 22:36:49',
+    '2021-05-07 23:03:59',
+    '2021-05-07 23:03:28',
     1,
     NULL
   ),
@@ -294,8 +294,8 @@ VALUES
     2,
     'DISPONÍVEL',
     1,
-    '2021-05-07 22:37:04',
-    '2021-05-07 22:36:49',
+    '2021-05-07 23:03:59',
+    '2021-05-07 23:03:28',
     1,
     NULL
   );
@@ -331,9 +331,9 @@ VALUES
     'CLEYTON',
     'cleyton',
     '123',
-    'cle@g.com',
-    '1',
-    '2021-05-07 22:34:03'
+    'rsfd@d.com',
+    '',
+    '2021-05-07 23:03:17'
   );
 --
   -- Índices para tabelas despejadas
@@ -346,34 +346,14 @@ ALTER TABLE
 ADD
   PRIMARY KEY (`id`) USING BTREE,
 ADD
-  UNIQUE KEY `imei1` (`imei1`),
-ADD
-  KEY `FK_aparelhos_modelos` (`id_modelo`),
-ADD
-  KEY `FK_aparelhos_marcas` (`id_marca`),
-ADD
-  KEY `FK_aparelhos_status_condicoes` (`id_status_condicao_aparelho`),
-ADD
-  KEY `FK_aparelhos_usuarios_registro` (`id_usuario_registro`),
-ADD
-  KEY `FK_aparelhos_usuarios_at` (`id_usuario_at`),
-ADD
-  KEY `status` (`status`),
-ADD
-  KEY `FK_aparelhos_status_disponibilidade_aparelhos` (`id_status_disponibilidade`) USING BTREE;
+  UNIQUE KEY `imei1` (`imei1`) USING BTREE;
 --
   -- Índices para tabela `categorias`
   --
 ALTER TABLE
   `categorias`
 ADD
-  PRIMARY KEY (`id`),
-ADD
-  KEY `FK_categorias_usuarios_registro` (`id_usuario_registro`),
-ADD
-  KEY `FK_categorias_usuarios_at` (`id_usuario_at`),
-ADD
-  KEY `status` (`status`);
+  PRIMARY KEY (`id`);
 --
   -- Índices para tabela `centro_custo`
   --
@@ -394,9 +374,7 @@ ADD
 ALTER TABLE
   `colaboradores`
 ADD
-  PRIMARY KEY (`id`),
-ADD
-  KEY `FK_colaboradores_centro_custo` (`id_centro_custo`);
+  PRIMARY KEY (`id`);
 --
   -- Índices para tabela `colaboradores_import`
   --
@@ -410,106 +388,49 @@ ADD
 ALTER TABLE
   `distribuicoes`
 ADD
-  PRIMARY KEY (`id`),
-ADD
-  KEY `FK_distribuicoes_aparelhos` (`id_aparelho`),
-ADD
-  KEY `FK_distribuicoes_colaboradores` (`id_colaborador`),
-ADD
-  KEY `FK_distribuicoes_linhas` (`id_linha`),
-ADD
-  KEY `FK_distribuicoes_status_distribuicoes` (`id_status_disponibilidade`),
-ADD
-  KEY `FK_distribuicoes_usuarios_registro` (`id_usuario_registro`),
-ADD
-  KEY `FK_distribuicoes_usuarios_at` (`id_usuario_at`);
+  PRIMARY KEY (`id`);
 --
   -- Índices para tabela `linhas`
   --
 ALTER TABLE
   `linhas`
 ADD
-  PRIMARY KEY (`id`) USING BTREE,
-ADD
-  UNIQUE KEY `numero_linha` (`numero_linha`),
-ADD
-  KEY `FK_linhas_categorias` (`id_categoria`),
-ADD
-  KEY `FK_linhas_operadoras` (`id_operadora`),
-ADD
-  KEY `FK_linhas_usuarios_registro` (`id_usuario_registro`),
-ADD
-  KEY `FK_linhas_usuarios_at` (`id_usuario_at`),
-ADD
-  KEY `status` (`status`),
-ADD
-  KEY `FK_linhas_status_disponibilidades` (`id_status_disponibilidade`);
---
-  -- Índices para tabela `logs_alteracoes`
-  --
-ALTER TABLE
-  `logs_alteracoes`
-ADD
-  PRIMARY KEY (`id`),
-ADD
-  KEY `IDX_logs_alteracoes_tabela` (`tabela`),
-ADD
-  KEY `IDX_logs_alteracoes_identificador` (`identificador`);
+  PRIMARY KEY (`id`) USING BTREE;
 --
   -- Índices para tabela `marcas`
   --
 ALTER TABLE
   `marcas`
 ADD
-  PRIMARY KEY (`id`) USING BTREE,
-ADD
-  KEY `FK_marcas_usuarios_registro` (`id_usuario_registro`),
-ADD
-  KEY `FK_marcas_usuarios_at` (`id_usuario_at`);
+  PRIMARY KEY (`id`) USING BTREE;
 --
   -- Índices para tabela `modelos`
   --
 ALTER TABLE
   `modelos`
 ADD
-  PRIMARY KEY (`id`) USING BTREE,
-ADD
-  KEY `FK_modelos_usuarios_registro` (`id_usuario_registro`),
-ADD
-  KEY `FK_modelos_usuarios_at` (`id_usuario_at`),
-ADD
-  KEY `FK_modelos_marcas` (`id_marca`);
+  PRIMARY KEY (`id`) USING BTREE;
 --
   -- Índices para tabela `operadoras`
   --
 ALTER TABLE
   `operadoras`
 ADD
-  PRIMARY KEY (`id`),
-ADD
-  KEY `FK_operadoras_usuarios_registro` (`id_usuario_registro`);
+  PRIMARY KEY (`id`);
 --
   -- Índices para tabela `status_condicoes_aparelhos`
   --
 ALTER TABLE
   `status_condicoes_aparelhos`
 ADD
-  PRIMARY KEY (`id`),
-ADD
-  KEY `FK_status_condicoes_usuarios_registro` (`id_usuario_registro`),
-ADD
-  KEY `FK_status_condicoes_usuarios_at` (`id_usuario_at`);
+  PRIMARY KEY (`id`);
 --
   -- Índices para tabela `status_disponibilidades`
   --
 ALTER TABLE
   `status_disponibilidades`
 ADD
-  PRIMARY KEY (`id`) USING BTREE,
-ADD
-  KEY `FK_status_disponibilidades_aparelhos_usuarios_registro` (`id_usuario_registro`),
-ADD
-  KEY `FK_status_disponibilidades_aparelhos_usuarios_at` (`id_usuario_at`);
+  PRIMARY KEY (`id`) USING BTREE;
 --
   -- Índices para tabela `usuarios`
   --
@@ -546,13 +467,6 @@ MODIFY
   --
 ALTER TABLE
   `linhas`
-MODIFY
-  `id` int NOT NULL AUTO_INCREMENT;
---
-  -- AUTO_INCREMENT de tabela `logs_alteracoes`
-  --
-ALTER TABLE
-  `logs_alteracoes`
 MODIFY
   `id` int NOT NULL AUTO_INCREMENT;
 --
@@ -600,119 +514,6 @@ ALTER TABLE
 MODIFY
   `id` int NOT NULL AUTO_INCREMENT,
   AUTO_INCREMENT = 2;
---
-  -- Restrições para despejos de tabelas
-  --
-  --
-  -- Limitadores para a tabela `aparelhos`
-  --
-ALTER TABLE
-  `aparelhos`
-ADD
-  CONSTRAINT `FK_aparelhos_marcas` FOREIGN KEY (`id_marca`) REFERENCES `marcas` (`id`),
-ADD
-  CONSTRAINT `FK_aparelhos_modelos` FOREIGN KEY (`id_modelo`) REFERENCES `modelos` (`id`),
-ADD
-  CONSTRAINT `FK_aparelhos_status_condicoes` FOREIGN KEY (`id_status_condicao_aparelho`) REFERENCES `status_condicoes_aparelhos` (`id`),
-ADD
-  CONSTRAINT `FK_aparelhos_status_disponibilidades` FOREIGN KEY (`id_status_disponibilidade`) REFERENCES `status_disponibilidades` (`id`),
-ADD
-  CONSTRAINT `FK_aparelhos_usuarios_at` FOREIGN KEY (`id_usuario_at`) REFERENCES `usuarios` (`id`),
-ADD
-  CONSTRAINT `FK_aparelhos_usuarios_registro` FOREIGN KEY (`id_usuario_registro`) REFERENCES `usuarios` (`id`);
---
-  -- Limitadores para a tabela `categorias`
-  --
-ALTER TABLE
-  `categorias`
-ADD
-  CONSTRAINT `FK_categorias_usuarios_at` FOREIGN KEY (`id_usuario_at`) REFERENCES `usuarios` (`id`),
-ADD
-  CONSTRAINT `FK_categorias_usuarios_registro` FOREIGN KEY (`id_usuario_registro`) REFERENCES `usuarios` (`id`);
---
-  -- Limitadores para a tabela `colaboradores`
-  --
-ALTER TABLE
-  `colaboradores`
-ADD
-  CONSTRAINT `FK_colaboradores_centro_custo` FOREIGN KEY (`id_centro_custo`) REFERENCES `centro_custo` (`id`);
---
-  -- Limitadores para a tabela `distribuicoes`
-  --
-ALTER TABLE
-  `distribuicoes`
-ADD
-  CONSTRAINT `FK_distribuicoes_aparelhos` FOREIGN KEY (`id_aparelho`) REFERENCES `aparelhos` (`id`),
-ADD
-  CONSTRAINT `FK_distribuicoes_colaboradores` FOREIGN KEY (`id_colaborador`) REFERENCES `colaboradores` (`id`),
-ADD
-  CONSTRAINT `FK_distribuicoes_linhas` FOREIGN KEY (`id_linha`) REFERENCES `linhas` (`id`),
-ADD
-  CONSTRAINT `FK_distribuicoes_status_distribuicoes` FOREIGN KEY (`id_status_disponibilidade`) REFERENCES `status_distribuicoes` (`id`),
-ADD
-  CONSTRAINT `FK_distribuicoes_usuarios_at` FOREIGN KEY (`id_usuario_at`) REFERENCES `usuarios` (`id`),
-ADD
-  CONSTRAINT `FK_distribuicoes_usuarios_registro` FOREIGN KEY (`id_usuario_registro`) REFERENCES `usuarios` (`id`);
---
-  -- Limitadores para a tabela `linhas`
-  --
-ALTER TABLE
-  `linhas`
-ADD
-  CONSTRAINT `FK_linhas_categorias` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id`),
-ADD
-  CONSTRAINT `FK_linhas_operadoras` FOREIGN KEY (`id_operadora`) REFERENCES `operadoras` (`id`),
-ADD
-  CONSTRAINT `FK_linhas_status_disponibilidades` FOREIGN KEY (`id_status_disponibilidade`) REFERENCES `status_disponibilidades` (`id`),
-ADD
-  CONSTRAINT `FK_linhas_usuarios_at` FOREIGN KEY (`id_usuario_at`) REFERENCES `usuarios` (`id`),
-ADD
-  CONSTRAINT `FK_linhas_usuarios_registro` FOREIGN KEY (`id_usuario_registro`) REFERENCES `usuarios` (`id`);
---
-  -- Limitadores para a tabela `marcas`
-  --
-ALTER TABLE
-  `marcas`
-ADD
-  CONSTRAINT `FK_marcas_usuarios_at` FOREIGN KEY (`id_usuario_at`) REFERENCES `usuarios` (`id`),
-ADD
-  CONSTRAINT `FK_marcas_usuarios_registro` FOREIGN KEY (`id_usuario_registro`) REFERENCES `usuarios` (`id`);
---
-  -- Limitadores para a tabela `modelos`
-  --
-ALTER TABLE
-  `modelos`
-ADD
-  CONSTRAINT `FK_modelos_marcas` FOREIGN KEY (`id_marca`) REFERENCES `marcas` (`id`),
-ADD
-  CONSTRAINT `FK_modelos_usuarios_at` FOREIGN KEY (`id_usuario_at`) REFERENCES `usuarios` (`id`),
-ADD
-  CONSTRAINT `FK_modelos_usuarios_registro` FOREIGN KEY (`id_usuario_registro`) REFERENCES `usuarios` (`id`);
---
-  -- Limitadores para a tabela `operadoras`
-  --
-ALTER TABLE
-  `operadoras`
-ADD
-  CONSTRAINT `FK_operadoras_usuarios_registro` FOREIGN KEY (`id_usuario_registro`) REFERENCES `usuarios` (`id`);
---
-  -- Limitadores para a tabela `status_condicoes_aparelhos`
-  --
-ALTER TABLE
-  `status_condicoes_aparelhos`
-ADD
-  CONSTRAINT `FK_status_condicoes_usuarios_at` FOREIGN KEY (`id_usuario_at`) REFERENCES `usuarios` (`id`),
-ADD
-  CONSTRAINT `FK_status_condicoes_usuarios_registro` FOREIGN KEY (`id_usuario_registro`) REFERENCES `usuarios` (`id`);
---
-  -- Limitadores para a tabela `status_disponibilidades`
-  --
-ALTER TABLE
-  `status_disponibilidades`
-ADD
-  CONSTRAINT `FK_status_disponibilidades_aparelhos_usuarios_at` FOREIGN KEY (`id_usuario_at`) REFERENCES `usuarios` (`id`),
-ADD
-  CONSTRAINT `FK_status_disponibilidades_aparelhos_usuarios_registro` FOREIGN KEY (`id_usuario_registro`) REFERENCES `usuarios` (`id`);
 COMMIT;
   /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
   /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
