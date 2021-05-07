@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Tempo de geração: 06-Maio-2021 às 22:31
+-- Tempo de geração: 07-Maio-2021 às 22:38
 -- Versão do servidor: 8.0.23
 -- versão do PHP: 7.4.16
 SET
@@ -39,45 +39,6 @@ SET
     `id_usuario_registro` int NOT NULL,
     `id_usuario_at` int DEFAULT NULL
   ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
---
-  -- Extraindo dados da tabela `aparelhos`
-  --
-INSERT INTO
-  `aparelhos` (
-    `id`,
-    `id_modelo`,
-    `id_marca`,
-    `imei1`,
-    `id_status_condicao_aparelho`,
-    `id_status_disponibilidade`,
-    `status`,
-    `nota_fiscal`,
-    `data_nota`,
-    `valor`,
-    `valor_depreciado`,
-    `data_registro`,
-    `data_at`,
-    `id_usuario_registro`,
-    `id_usuario_at`
-  )
-VALUES
-  (
-    1,
-    1,
-    1,
-    '123456789456123',
-    1,
-    2,
-    1,
-    '1451541451',
-    '2021-06-28',
-    121.54,
-    NULL,
-    '2021-04-13 22:20:16',
-    '2021-05-06 22:29:41',
-    1,
-    1
-  );
 -- --------------------------------------------------------
   --
   -- Estrutura da tabela `categorias`
@@ -91,65 +52,6 @@ VALUES
     `id_usuario_registro` int NOT NULL,
     `id_usuario_at` int DEFAULT NULL
   ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
---
-  -- Extraindo dados da tabela `categorias`
-  --
-INSERT INTO
-  `categorias` (
-    `id`,
-    `nome`,
-    `status`,
-    `data_registro`,
-    `data_at`,
-    `id_usuario_registro`,
-    `id_usuario_at`
-  )
-VALUES
-  (
-    1,
-    'CATEGORIA I',
-    1,
-    '2021-03-31 22:58:01',
-    NULL,
-    1,
-    NULL
-  ),
-  (
-    3,
-    'CATEGORIA II',
-    1,
-    '2021-04-01 21:22:19',
-    NULL,
-    1,
-    NULL
-  ),
-  (
-    4,
-    'CATEGORIA III',
-    1,
-    '2021-04-01 21:23:04',
-    NULL,
-    1,
-    NULL
-  ),
-  (
-    6,
-    'CATEGORIA IV',
-    1,
-    '2021-04-01 21:23:45',
-    NULL,
-    1,
-    NULL
-  ),
-  (
-    7,
-    'CATEGORIA V',
-    1,
-    '2021-04-01 21:24:53',
-    NULL,
-    1,
-    NULL
-  );
 -- --------------------------------------------------------
   --
   -- Estrutura da tabela `centro_custo`
@@ -186,37 +88,6 @@ VALUES
     `matricula_coordenador` int DEFAULT NULL,
     `status` tinyint UNSIGNED DEFAULT '1'
   ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
---
-  -- Extraindo dados da tabela `colaboradores`
-  --
-INSERT INTO
-  `colaboradores` (
-    `id`,
-    `nome`,
-    `id_centro_custo`,
-    `cargo`,
-    `email`,
-    `gestor`,
-    `situacao`,
-    `empresa`,
-    `cidade`,
-    `matricula_coordenador`,
-    `status`
-  )
-VALUES
-  (
-    1234,
-    'Renato',
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    NULL,
-    1
-  );
 -- --------------------------------------------------------
   --
   -- Estrutura da tabela `colaboradores_import`
@@ -248,33 +119,6 @@ VALUES
     `id_usuario_registro` int NOT NULL,
     `id_usuario_at` int DEFAULT NULL
   ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
---
-  -- Extraindo dados da tabela `distribuicoes`
-  --
-INSERT INTO
-  `distribuicoes` (
-    `id`,
-    `id_aparelho`,
-    `id_linha`,
-    `id_colaborador`,
-    `id_status_disponibilidade`,
-    `data_registro`,
-    `data_at`,
-    `id_usuario_registro`,
-    `id_usuario_at`
-  )
-VALUES
-  (
-    1,
-    1,
-    NULL,
-    1234,
-    2,
-    '2021-05-06 22:17:36',
-    '2021-05-06 22:29:41',
-    1,
-    NULL
-  );
 -- --------------------------------------------------------
   --
   -- Estrutura da tabela `linhas`
@@ -294,86 +138,6 @@ VALUES
     `id_usuario_registro` int NOT NULL,
     `id_usuario_at` int DEFAULT NULL
   ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
---
-  -- Extraindo dados da tabela `linhas`
-  --
-INSERT INTO
-  `linhas` (
-    `id`,
-    `numero_linha`,
-    `codigo_chip`,
-    `pin_puk1`,
-    `pin_puk2`,
-    `id_operadora`,
-    `id_categoria`,
-    `id_status_disponibilidade`,
-    `status`,
-    `data_registro`,
-    `data_at`,
-    `id_usuario_registro`,
-    `id_usuario_at`
-  )
-VALUES
-  (
-    1,
-    '12345678901',
-    '123456789012345',
-    '123412345678',
-    '012345678',
-    1,
-    3,
-    1,
-    1,
-    '2021-04-01 22:08:13',
-    '2021-04-05 16:05:46',
-    1,
-    NULL
-  ),
-  (
-    2,
-    '11986680241',
-    '123456789012344',
-    '321409876543',
-    '412345678',
-    1,
-    1,
-    1,
-    1,
-    '2021-04-02 10:00:36',
-    '2021-04-05 16:05:48',
-    1,
-    NULL
-  ),
-  (
-    3,
-    '(11)98765-3421',
-    '123456789012303',
-    '123271230985',
-    '912345678',
-    1,
-    1,
-    2,
-    1,
-    '2021-04-02 11:03:50',
-    '2021-05-06 22:17:17',
-    1,
-    NULL
-  ),
-  (
-    7,
-    '12345678923',
-    '123456789012350',
-    '127610987654',
-    '945671234',
-    1,
-    1,
-    1,
-    1,
-    '2021-04-05 16:18:01',
-    NULL,
-    1,
-    NULL
-  );
 -- --------------------------------------------------------
   --
   -- Estrutura da tabela `logs_alteracoes`
@@ -387,29 +151,6 @@ VALUES
     `valor_novo` text NOT NULL,
     `data_registro` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
   ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
---
-  -- Extraindo dados da tabela `logs_alteracoes`
-  --
-INSERT INTO
-  `logs_alteracoes` (
-    `id`,
-    `tabela`,
-    `id_usuario`,
-    `identificador`,
-    `valor_antigo`,
-    `valor_novo`,
-    `data_registro`
-  )
-VALUES
-  (
-    1,
-    'distribuicoes',
-    1,
-    1,
-    '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\"}',
-    '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\"}',
-    '2021-05-06 22:29:41'
-  );
 -- --------------------------------------------------------
   --
   -- Estrutura da tabela `marcas`
@@ -423,38 +164,6 @@ VALUES
     `id_usuario_registro` int NOT NULL,
     `id_usuario_at` int DEFAULT NULL
   ) ENGINE = InnoDB DEFAULT CHARSET = utf8 ROW_FORMAT = DYNAMIC;
---
-  -- Extraindo dados da tabela `marcas`
-  --
-INSERT INTO
-  `marcas` (
-    `id`,
-    `nome`,
-    `status`,
-    `data_registro`,
-    `data_at`,
-    `id_usuario_registro`,
-    `id_usuario_at`
-  )
-VALUES
-  (
-    1,
-    'LG',
-    1,
-    '2021-03-31 23:01:59',
-    '2021-03-31 23:01:46',
-    1,
-    NULL
-  ),
-  (
-    2,
-    'SAMSUNG',
-    1,
-    '2021-03-31 23:01:59',
-    '2021-03-31 23:01:46',
-    1,
-    NULL
-  );
 -- --------------------------------------------------------
   --
   -- Estrutura da tabela `modelos`
@@ -469,51 +178,6 @@ VALUES
     `id_usuario_registro` int NOT NULL,
     `id_usuario_at` int DEFAULT NULL
   ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
---
-  -- Extraindo dados da tabela `modelos`
-  --
-INSERT INTO
-  `modelos` (
-    `id`,
-    `nome`,
-    `id_marca`,
-    `status`,
-    `data_registro`,
-    `data_at`,
-    `id_usuario_registro`,
-    `id_usuario_at`
-  )
-VALUES
-  (
-    1,
-    'LG K40S',
-    1,
-    1,
-    '2021-03-31 23:02:58',
-    '2021-03-31 23:02:19',
-    1,
-    NULL
-  ),
-  (
-    2,
-    'LG X STYLE',
-    1,
-    1,
-    '2021-03-31 23:02:58',
-    '2021-03-31 23:02:19',
-    1,
-    NULL
-  ),
-  (
-    3,
-    'SAMSUNG TAB A6',
-    2,
-    1,
-    '2021-03-31 23:02:58',
-    '2021-03-31 23:02:19',
-    1,
-    NULL
-  );
 -- --------------------------------------------------------
   --
   -- Estrutura da tabela `operadoras`
@@ -527,38 +191,6 @@ VALUES
     `id_usuario_registro` int NOT NULL,
     `id_usuario_at` int DEFAULT NULL
   ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
---
-  -- Extraindo dados da tabela `operadoras`
-  --
-INSERT INTO
-  `operadoras` (
-    `id`,
-    `nome`,
-    `status`,
-    `data_registro`,
-    `data_at`,
-    `id_usuario_registro`,
-    `id_usuario_at`
-  )
-VALUES
-  (
-    1,
-    'CLARO',
-    1,
-    '2021-03-31 23:01:18',
-    '2021-03-31 23:01:14',
-    1,
-    NULL
-  ),
-  (
-    2,
-    'OUTRA',
-    1,
-    '2021-04-01 21:25:33',
-    NULL,
-    1,
-    NULL
-  );
 -- --------------------------------------------------------
   --
   -- Estrutura da tabela `status_condicoes_aparelhos`
@@ -590,8 +222,8 @@ VALUES
     1,
     'NOVO',
     1,
-    '2021-03-31 22:54:06',
-    '2021-03-31 22:53:50',
+    '2021-05-07 22:36:32',
+    '2021-05-07 22:35:48',
     1,
     NULL
   ),
@@ -599,8 +231,8 @@ VALUES
     2,
     'USADO',
     1,
-    '2021-03-31 22:54:06',
-    '2021-03-31 22:53:50',
+    '2021-05-07 22:36:32',
+    '2021-05-07 22:35:48',
     1,
     NULL
   ),
@@ -608,17 +240,17 @@ VALUES
     3,
     'DESCARTADO',
     1,
-    '2021-03-31 22:54:18',
-    '2021-03-31 22:54:08',
+    '2021-05-07 22:36:32',
+    '2021-05-07 22:35:48',
     1,
     NULL
   ),
   (
     4,
-    'EM MANUTENÇÃO',
+    'MANUNTENÇÃO',
     1,
-    '2021-04-27 21:42:19',
-    '2021-04-27 21:42:06',
+    '2021-05-07 22:36:32',
+    '2021-05-07 22:35:48',
     1,
     NULL
   );
@@ -653,8 +285,8 @@ VALUES
     1,
     'EM USO',
     1,
-    '2021-03-31 22:55:48',
-    '2021-03-31 22:54:49',
+    '2021-05-07 22:37:04',
+    '2021-05-07 22:36:49',
     1,
     NULL
   ),
@@ -662,58 +294,8 @@ VALUES
     2,
     'DISPONÍVEL',
     1,
-    '2021-03-31 22:55:48',
-    '2021-03-31 22:54:49',
-    1,
-    NULL
-  ),
-  (
-    3,
-    'MANUTENÇÃO',
-    1,
-    '2021-03-31 22:55:48',
-    '2021-03-31 22:54:49',
-    1,
-    NULL
-  );
--- --------------------------------------------------------
-  --
-  -- Estrutura da tabela `status_distribuicoes`
-  --
-  CREATE TABLE `status_distribuicoes` (
-    `id` int NOT NULL,
-    `nome` varchar(100) NOT NULL,
-    `data_registro` datetime DEFAULT CURRENT_TIMESTAMP,
-    `data_at` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-    `id_usuario_registro` int NOT NULL,
-    `id_usuario_at` int DEFAULT NULL
-  ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
---
-  -- Extraindo dados da tabela `status_distribuicoes`
-  --
-INSERT INTO
-  `status_distribuicoes` (
-    `id`,
-    `nome`,
-    `data_registro`,
-    `data_at`,
-    `id_usuario_registro`,
-    `id_usuario_at`
-  )
-VALUES
-  (
-    1,
-    'EM USO',
-    '2021-04-27 21:41:33',
-    '2021-04-27 21:36:03',
-    1,
-    NULL
-  ),
-  (
-    2,
-    'DISPONÍVEL',
-    '2021-04-27 21:41:33',
-    '2021-04-27 21:36:03',
+    '2021-05-07 22:37:04',
+    '2021-05-07 22:36:49',
     1,
     NULL
   );
@@ -746,12 +328,12 @@ INSERT INTO
 VALUES
   (
     1,
-    'CLEYTON CARVALHO',
-    'N6169286',
+    'CLEYTON',
+    'cleyton',
     '123',
-    'cleyton.neves@claro.com.br',
-    'admin',
-    '2021-03-31 22:53:02'
+    'cle@g.com',
+    '1',
+    '2021-05-07 22:34:03'
   );
 --
   -- Índices para tabelas despejadas
@@ -929,17 +511,6 @@ ADD
 ADD
   KEY `FK_status_disponibilidades_aparelhos_usuarios_at` (`id_usuario_at`);
 --
-  -- Índices para tabela `status_distribuicoes`
-  --
-ALTER TABLE
-  `status_distribuicoes`
-ADD
-  PRIMARY KEY (`id`),
-ADD
-  KEY `FK_status_distribuicoes_usuarios_registro` (`id_usuario_registro`),
-ADD
-  KEY `FK_status_distribuicoes_usuarios_at` (`id_usuario_at`);
---
   -- Índices para tabela `usuarios`
   --
 ALTER TABLE
@@ -955,64 +526,56 @@ ADD
 ALTER TABLE
   `aparelhos`
 MODIFY
-  `id` int NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 2;
+  `id` int NOT NULL AUTO_INCREMENT;
 --
   -- AUTO_INCREMENT de tabela `categorias`
   --
 ALTER TABLE
   `categorias`
 MODIFY
-  `id` int NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 8;
+  `id` int NOT NULL AUTO_INCREMENT;
 --
   -- AUTO_INCREMENT de tabela `distribuicoes`
   --
 ALTER TABLE
   `distribuicoes`
 MODIFY
-  `id` int NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 2;
+  `id` int NOT NULL AUTO_INCREMENT;
 --
   -- AUTO_INCREMENT de tabela `linhas`
   --
 ALTER TABLE
   `linhas`
 MODIFY
-  `id` int NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 8;
+  `id` int NOT NULL AUTO_INCREMENT;
 --
   -- AUTO_INCREMENT de tabela `logs_alteracoes`
   --
 ALTER TABLE
   `logs_alteracoes`
 MODIFY
-  `id` int NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 2;
+  `id` int NOT NULL AUTO_INCREMENT;
 --
   -- AUTO_INCREMENT de tabela `marcas`
   --
 ALTER TABLE
   `marcas`
 MODIFY
-  `id` int NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 3;
+  `id` int NOT NULL AUTO_INCREMENT;
 --
   -- AUTO_INCREMENT de tabela `modelos`
   --
 ALTER TABLE
   `modelos`
 MODIFY
-  `id` int NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 4;
+  `id` int NOT NULL AUTO_INCREMENT;
 --
   -- AUTO_INCREMENT de tabela `operadoras`
   --
 ALTER TABLE
   `operadoras`
 MODIFY
-  `id` int NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 3;
+  `id` int NOT NULL AUTO_INCREMENT;
 --
   -- AUTO_INCREMENT de tabela `status_condicoes_aparelhos`
   --
@@ -1028,7 +591,7 @@ ALTER TABLE
   `status_disponibilidades`
 MODIFY
   `id` int NOT NULL AUTO_INCREMENT,
-  AUTO_INCREMENT = 4;
+  AUTO_INCREMENT = 3;
 --
   -- AUTO_INCREMENT de tabela `usuarios`
   --
@@ -1150,15 +713,6 @@ ADD
   CONSTRAINT `FK_status_disponibilidades_aparelhos_usuarios_at` FOREIGN KEY (`id_usuario_at`) REFERENCES `usuarios` (`id`),
 ADD
   CONSTRAINT `FK_status_disponibilidades_aparelhos_usuarios_registro` FOREIGN KEY (`id_usuario_registro`) REFERENCES `usuarios` (`id`);
---
-  -- Limitadores para a tabela `status_distribuicoes`
-  --
-ALTER TABLE
-  `status_distribuicoes`
-ADD
-  CONSTRAINT `FK_status_distribuicoes_usuarios_at` FOREIGN KEY (`id_usuario_at`) REFERENCES `usuarios` (`id`),
-ADD
-  CONSTRAINT `FK_status_distribuicoes_usuarios_registro` FOREIGN KEY (`id_usuario_registro`) REFERENCES `usuarios` (`id`);
 COMMIT;
   /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
   /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
