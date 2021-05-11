@@ -435,7 +435,7 @@ class Distribuicoes extends CI_Controller
         }
 
         if (is_array($this->input->post('idDisponibilidade')) && count($this->input->post('idDisponibilidade')) > 0) {
-            $filtrosSql .= "AND dt.id IN(" . implode(", ", $this->input->post('idDisponibilidade')) . ") ";
+            $filtrosSql .= "AND dt.id_status_disponibilidade IN(" . implode(", ", $this->input->post('idDisponibilidade')) . ") ";
         }
 
         return $filtrosSql;
