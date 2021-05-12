@@ -7,6 +7,11 @@ class Linhas extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+
+        if (!isset($this->session->dadosUsuario)) {
+            redirect(base_url('/'));
+        }
+
         $this->load->model('Linhas_model');
         $this->load->model('Categorias_model');
         $this->load->model('Operadoras_model');
@@ -22,7 +27,7 @@ class Linhas extends CI_Controller
     }
 
     private function carregaView()
-    {        
+    {
         $carregaView = [
             'tituloAtual' => 'Linhas',
             'paginaAtual' => PAGINA_LINHAS,
@@ -54,7 +59,7 @@ class Linhas extends CI_Controller
                 'status' => false,
                 'mensagem' => validation_errors()
             ]);
-            
+
             return false;
         }
 
@@ -71,8 +76,6 @@ class Linhas extends CI_Controller
         echo json_encode([
             'status' => true
         ]);
-
-        
     }
 
     public function editarLinha()
@@ -133,17 +136,17 @@ class Linhas extends CI_Controller
         //fornece a variavel que popula a tabela com os dados
         echo json_encode($teste);
     }
-    
+
     private function montaCondicaoListaLinhasProcurar() //criar os critérios para a consulta ao banco, gera  a variavel $procurarSql
     {
         $procurarValor = $_POST['search']['value'];
 
         $procurarSql = " ";
-        if(!empty($procurarValor)){
+        if (!empty($procurarValor)) {
             $procurarSql = " AND (
-                li.numero_linha LIKE '%".$procurarValor."%' OR 
-                li.codigo_chip LIKE '%".$procurarValor."%' OR 
-                cg.nome LIKE '%".$procurarValor."%'
+                li.numero_linha LIKE '%" . $procurarValor . "%' OR 
+                li.codigo_chip LIKE '%" . $procurarValor . "%' OR 
+                cg.nome LIKE '%" . $procurarValor . "%'
             )";
         }
 
@@ -204,7 +207,4 @@ class Linhas extends CI_Controller
             'linha' => $linha
         ]);
     }
-
-
-
 }

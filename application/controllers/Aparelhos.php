@@ -8,6 +8,10 @@ class Aparelhos extends CI_Controller
     {
         parent::__construct();
 
+        if (!isset($this->session->dadosUsuario)) {
+            redirect(base_url('/'));
+        }
+
         $this->load->model('Aparelhos_model');
         $this->load->model('Marcas_model');
         $this->load->model('Modelos_model');
