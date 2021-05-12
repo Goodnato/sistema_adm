@@ -51,7 +51,7 @@ class Distribuicoes_model extends CI_Model
                     md.nome AS modelo,
                     li.numero_linha,
                     CONCAT(co.nome, ' (', co.id, ')') AS nome_colaborador,
-                    CONCAT(cc.nome, ' (', cc.area, ')') AS centro_custo,
+                    CONCAT(cc.id, ' (', cc.area, ')') AS centro_custo,
                     co.cidade AS cidade,
                     IF(dt.id_status_disponibilidade = " . DISTRIBUICAO_DISPONIVEL . " , 'DEVOLVIDO', sd.nome) AS status_disponibilidade
                 FROM
@@ -95,7 +95,7 @@ class Distribuicoes_model extends CI_Model
                     li.numero_linha,
                     li.id AS id_linha,
                     cg.nome AS categoria,
-                    cc.nome AS centro_custo,
+                    cc.id AS centro_custo,
                     co.cidade AS cidade,
                     u.nome AS nome_usuario,
                     DATE_FORMAT(dt.data_registro, '%d/%m/%Y') AS data_registro,

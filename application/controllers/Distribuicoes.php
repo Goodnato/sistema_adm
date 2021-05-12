@@ -8,6 +8,10 @@ class Distribuicoes extends CI_Controller
     {
         parent::__construct();
 
+        if (!isset($this->session->dadosUsuario)) {
+            redirect(base_url('/'));
+        }
+
         $this->load->model('Distribuicoes_model');
         $this->load->model('Aparelhos_model');
         $this->load->model('Linhas_model');
@@ -391,7 +395,7 @@ class Distribuicoes extends CI_Controller
                 md.nome LIKE '%" . $procurarValor . "%' OR 
                 li.numero_linha LIKE '%" . $procurarValor . "%' OR 
                 co.nome LIKE '%" . $procurarValor . "%' OR
-                cc.nome LIKE '%" . $procurarValor . "%' OR
+                cc.id LIKE '%" . $procurarValor . "%' OR
                 co.cidade LIKE '%" . $procurarValor . "%' OR
                 sd.nome LIKE '%" . $procurarValor . "%' 
             )";
