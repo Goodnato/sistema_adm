@@ -12,6 +12,7 @@ class Linhas extends CI_Controller
         $this->load->model('Operadoras_model');
         $this->load->model('Status_condicoes_aparelhos_model');
         $this->load->model('Status_disponibilidades_model');
+        $this->load->model('Logs_alteracoes_model');
     }
 
     public function index()
@@ -92,14 +93,26 @@ class Linhas extends CI_Controller
             return false;
         }
 
-        $this->Linhas_model->editarLinha($this->input->post('idLinha'), [
+        $idLinha = $this->input->post('idLinha');
+        $dadosLinha = [
             'id_categoria' => $this->input->post('idCategoria'),
             'id_operadora' => $this->input->post('idOperadora'),
             'pin_puk1' => $this->input->post('pinPuk1'),
             'pin_puk2' => $this->input->post('pinPuk2'),
             'status' => $this->input->post('status'),
             'id_usuario_at' => 1
+        ];
+        
+
+        $this->Logs_alteracoes_model->registrarLog([
+            'tabela' => 'linhas',
+            'id_usuario' => 1,
+            'identificador' => $idLinha,
+            'valor_antigo' => json_encode($this->Linhas_model->consultaLinhasPorId($idLinha)),
+            'valor_novo' => json_encode($dadosLinha)
         ]);
+
+        $this->Linhas_model->editarLinha($idLinha, $dadosLinha);
 
         echo json_encode([
             'status' => true
