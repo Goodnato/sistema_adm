@@ -92,12 +92,14 @@ class Linhas_model extends CI_Model
                     li.pin_puk1,
                     li.pin_puk2,    
                     us.nome AS nome_usuario_registro,
-                    li.status
+                    li.status,
+                    sd.nome AS status_disponibilidade
                 FROM
                     {$this->tabela} li
                 INNER JOIN categorias cg ON cg.id = li.id_categoria
                 INNER JOIN operadoras op ON op.id = li.id_operadora
                 INNER JOIN usuarios us ON us.id = li.id_usuario_registro
+                INNER JOIN status_disponibilidades sd ON sd.id = li.id_status_disponibilidade
                 WHERE
                     li.id = $idLinha";
 

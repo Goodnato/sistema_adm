@@ -212,11 +212,12 @@ $("#btnPesquisarFiltros").click(function (event) {
     tabelaLinhas.ajax.reload();
 })
 
+console.log(2)
+
 //codigo javascritp referente ao modal visualizar da tabela para editar os dados. Aciona o icone ver na tabela
 tabelaLinhas.on('click', '.visualizar', function (event) {
     let td = $(this).closest('tr').find('td')
     let idLinha = td.eq(0).text()
-
     $.ajax({
         url: base_url("Linhas/visualizarLinha"),
         dataType: "json",
@@ -225,6 +226,7 @@ tabelaLinhas.on('click', '.visualizar', function (event) {
             idLinha
         }
     }).done(function (response) {
+        console.log(response)
         if (response.status) {
             $('#editaIdLinha').val(idLinha) //importante veio do elemento hidden
             $('#tituloLinha').text(response.linha.numero_linha)
@@ -235,7 +237,7 @@ tabelaLinhas.on('click', '.visualizar', function (event) {
             $('#editaPinPuk1').val(response.linha.pin_puk1)
             $('#editaPinPuk2').val(response.linha.pin_puk2)
             $('#editaCadastradoPor').val(response.linha.nome_usuario_registro)
-            //$('#editaValorDisponibilidade').val(response.linha.valor)
+            $('#editaValorDisponibilidade').val(response.linha.status_disponibilidade)
             $('#editaStatus').val(response.linha.status)
 
             $('#modalVerLinha').modal('show')
