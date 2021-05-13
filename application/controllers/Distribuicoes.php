@@ -12,6 +12,14 @@ class Distribuicoes extends CI_Controller
             redirect(base_url('/'));
         }
 
+        $this->load->library('Sistemas_library');
+
+        if (!$this->sistemas_library->validaAcessoTela($this->session->dadosUsuario['telas_autorizadas'], PAGINA_DISTRIBUICOES)) {
+            $this->load->view('acesso_proibido');
+
+            redirect(base_url('/Sistemas/acessoProibido'));
+        }
+
         $this->load->model('Distribuicoes_model');
         $this->load->model('Aparelhos_model');
         $this->load->model('Linhas_model');
@@ -32,6 +40,7 @@ class Distribuicoes extends CI_Controller
         $carregaView = [
             'tituloAtual' => 'Distribuições',
             'paginaAtual' => PAGINA_DISTRIBUICOES,
+            'arrayAcessoPaginas' => explode("|", $this->session->dadosUsuario['telas_autorizadas']),
             'caminhoCss' => 'assets/css/distribuicoes.css',
             'caminhoJs' => 'assets/js/distribuicoes.js',
             'listaColaboradoresCadastrados' => $this->Distribuicoes_model->consultaTodosColaboradoresCadastradosDistribuicao(),

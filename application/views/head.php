@@ -23,15 +23,21 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link <?= $paginaAtual == PAGINA_APARELHOS ? 'active' : '' ?>" href="<?= base_url('Aparelhos/') ?>">Aparelhos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link <?= $paginaAtual == PAGINA_LINHAS ? 'active' : '' ?>" href="<?= base_url('Linhas/') ?>">Linhas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link <?= $paginaAtual == PAGINA_DISTRIBUICOES ? 'active' : '' ?>" href="<?= base_url('Distribuicoes/') ?>">Distribuições</a>
-                    </li>
+                    <?php if (!empty($arrayAcessoPaginas) || in_array(PAGINA_APARELHOS, $arrayAcessoPaginas)) { ?>
+                        <li class="nav-item">
+                            <a class="nav-link <?= $paginaAtual == PAGINA_APARELHOS ? 'active' : '' ?>" href="<?= base_url('Aparelhos/') ?>">Aparelhos</a>
+                        </li>
+                    <?php } ?>
+                    <?php if (!empty($arrayAcessoPaginas) || in_array(PAGINA_LINHAS, $arrayAcessoPaginas)) { ?>
+                        <li class="nav-item">
+                            <a class="nav-link <?= $paginaAtual == PAGINA_LINHAS ? 'active' : '' ?>" href="<?= base_url('Linhas/') ?>">Linhas</a>
+                        </li>
+                    <?php } ?>
+                    <?php if (!empty($arrayAcessoPaginas) || in_array(PAGINA_DISTRIBUICOES, $arrayAcessoPaginas)) { ?>
+                        <li class="nav-item">
+                            <a class="nav-link <?= $paginaAtual == PAGINA_DISTRIBUICOES ? 'active' : '' ?>" href="<?= base_url('Distribuicoes/') ?>">Distribuições</a>
+                        </li>
+                    <?php } ?>
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">

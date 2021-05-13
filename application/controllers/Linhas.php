@@ -12,6 +12,14 @@ class Linhas extends CI_Controller
             redirect(base_url('/'));
         }
 
+        $this->load->library('Sistemas_library');
+
+        if (!$this->sistemas_library->validaAcessoTela($this->session->dadosUsuario['telas_autorizadas'], PAGINA_LINHAS)) {
+            $this->load->view('acesso_proibido');
+
+            redirect(base_url('/Sistemas/acessoProibido'));
+        }
+
         $this->load->model('Linhas_model');
         $this->load->model('Categorias_model');
         $this->load->model('Operadoras_model');
@@ -32,6 +40,7 @@ class Linhas extends CI_Controller
         $carregaView = [
             'tituloAtual' => 'Linhas',
             'paginaAtual' => PAGINA_LINHAS,
+            'arrayAcessoPaginas' => explode("|", $this->session->dadosUsuario['telas_autorizadas']),
             'caminhoCss' => 'assets/css/linhas.css',
             'caminhoJs' => 'assets/js/linhas.js',
             'listaCategorias' => $this->Categorias_model->consultaTodasCategorias(),
@@ -105,7 +114,7 @@ class Linhas extends CI_Controller
             'status' => $this->input->post('status'),
             'id_usuario_at' => 1
         ];
-        
+
 
         $this->Logs_alteracoes_model->registrarLog([
             'tabela' => 'linhas',

@@ -12,6 +12,7 @@ class Usuarios extends CI_Controller
             redirect(base_url('/Aparelhos'));
         }
 
+        $this->load->library('Sistemas_library');
         $this->load->model('Usuarios_model');
     }
 
@@ -38,7 +39,8 @@ class Usuarios extends CI_Controller
 
         $this->session->set_userdata('dadosUsuario', $usuario);
 
-        redirect(base_url('/Aparelhos'));
+        $tela = $this->sistemas_library->retornaPrimeiraTelaAcesso($this->session->dadosUsuario['telas_autorizadas']);
+        redirect(base_url("/$tela"));
     }
 
     private function confereCredenciais($email, $senha)

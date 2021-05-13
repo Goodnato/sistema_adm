@@ -73,4 +73,9 @@ class Sistemas extends CI_Controller
 
         return false;
     }
+
+    public function acessoProibido()
+    {
+        $this->load->view('acesso_proibido');
+    }
 }

@@ -12,6 +12,14 @@ class Aparelhos extends CI_Controller
             redirect(base_url('/'));
         }
 
+        $this->load->library('Sistemas_library');
+
+        if (!$this->sistemas_library->validaAcessoTela($this->session->dadosUsuario['telas_autorizadas'], PAGINA_APARELHOS)) {
+            $this->load->view('acesso_proibido');
+
+            redirect(base_url('/Sistemas/acessoProibido'));
+        }
+
         $this->load->model('Aparelhos_model');
         $this->load->model('Marcas_model');
         $this->load->model('Modelos_model');
@@ -32,6 +40,7 @@ class Aparelhos extends CI_Controller
         $carregaView = [
             'tituloAtual' => 'Aparelhos',
             'paginaAtual' => PAGINA_APARELHOS,
+            'arrayAcessoPaginas' => explode("|", $this->session->dadosUsuario['telas_autorizadas']),
             'caminhoCss' => 'assets/css/aparelhos.css',
             'caminhoJs' => 'assets/js/aparelhos.js',
             'listaMarcas' => $this->Marcas_model->consultaTodasMarcas(),
