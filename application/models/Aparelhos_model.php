@@ -64,6 +64,25 @@ class Aparelhos_model extends CI_Model
         return count($resultado) == 0 ? 0 : $resultado[0]['total'];
     }
 
+    public function totalRegistroAparelhosFiltrado($procurarSql)
+    {
+        $sql = "SELECT
+                    COUNT(ap.id) AS total
+                FROM
+                    {$this->tabela} ap
+                INNER JOIN marcas mc ON mc.id = ap.id_marca
+                INNER JOIN modelos md ON md.id = ap.id_modelo
+                INNER JOIN status_condicoes_aparelhos sc ON sc.id = ap.id_status_condicao_aparelho
+                INNER JOIN status_disponibilidades sd ON sd.id = ap.id_status_disponibilidade
+                WHERE
+                    1 = 1
+                    $procurarSql";
+
+        $resultado = $this->db->query($sql)->result_array();
+
+        return count($resultado) == 0 ? 0 : $resultado[0]['total'];
+    }
+
     public function consultaAparelhosPorId($idAparelho)
     {
         $sql = "SELECT

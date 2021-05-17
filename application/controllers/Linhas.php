@@ -152,7 +152,7 @@ class Linhas extends CI_Controller
         $teste = [
             "draw" => $draw,
             "recordsTotal" => $this->Linhas_model->totalRegistroLinhas(),
-            "recordsFiltered" => $this->Linhas_model->totalRegistroLinhasFiltradas($procurarSql),
+            "recordsFiltered" => $this->Linhas_model->totalRegistroLinhasFiltradas(($procurarSql . $filtrosSql)),
             "data" => $listaLinhas
         ];
         //fornece a variavel que popula a tabela com os dados

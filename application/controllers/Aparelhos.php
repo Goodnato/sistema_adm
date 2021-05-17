@@ -178,7 +178,7 @@ class Aparelhos extends CI_Controller
         $dadosTabela = [
             "draw" => $draw,
             "recordsTotal" => $this->Aparelhos_model->totalRegistroAparelhos(),
-            "recordsFiltered" => count($listaAparelhos),
+            "recordsFiltered" => $this->Aparelhos_model->totalRegistroAparelhosFiltrado(($procurarSql . $filtrosSql)),
             "data" => $listaAparelhos
         ];
         echo json_encode($dadosTabela);
