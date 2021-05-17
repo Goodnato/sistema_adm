@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Tempo de geração: 12-Maio-2021 às 21:48
+-- Tempo de geração: 17-Maio-2021 às 22:04
 -- Versão do servidor: 8.0.24
 -- versão do PHP: 7.4.16
 SET
@@ -147,7 +147,7 @@ SET
     `valor_antigo` text NOT NULL,
     `valor_novo` text NOT NULL,
     `data_registro` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-  ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
+  ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb3;
 -- --------------------------------------------------------
   --
   -- Estrutura da tabela `marcas`
@@ -307,7 +307,8 @@ VALUES
     `senha` varchar(100) NOT NULL,
     `email` varchar(100) NOT NULL,
     `hierarquia` varchar(100) NOT NULL,
-    `nivel_acesso` varchar(100) NOT NULL,
+    `telas_autorizadas` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+    `somente_leitura` tinyint DEFAULT NULL,
     `data_criado` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
   ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb3;
 --
@@ -321,7 +322,8 @@ INSERT INTO
     `senha`,
     `email`,
     `hierarquia`,
-    `nivel_acesso`,
+    `telas_autorizadas`,
+    `somente_leitura`,
     `data_criado`
   )
 VALUES
@@ -333,6 +335,7 @@ VALUES
     'renato@gmail.com',
     'Administrador',
     '',
+    1,
     '2021-05-07 23:03:17'
   );
 --

@@ -61,7 +61,9 @@
                     <div class="col-12">
                         <button class="btn btn-primary" id="btnPesquisarFiltros"><i class="fas fa-search"></i> Pesquisar</button>
                         <button class="btn btn-warning"><i class="fas fa-file-excel"></i> Excel</button>
+                        <? if (!$this->session->dadosUsuario['somente_leitura']) { ?>}
                         <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#modalNovaDistribuicao"><i class="fas fa-plus-square"></i> Nova distribuição</button>
+                    <?php } ?>
                     </div>
                 </div>
             </form>
@@ -249,7 +251,9 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-window-close"></i> Cancelar</button>
+                <? if (!$this->session->dadosUsuario['somente_leitura']) { ?>}
                 <button type="button" class="btn btn-success" id="btnFecharDistribuicao"><i class="fas fa-check-circle"></i> Fechar distribuição</button>
+            <?php } ?>
             </div>
         </div>
     </div>
