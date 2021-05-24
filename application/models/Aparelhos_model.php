@@ -35,7 +35,7 @@ class Aparelhos_model extends CI_Model
                     mc.nome AS nome_marca,
                     md.nome AS nome_modelo,
                     sc.nome AS status_condicao,
-                    CASE id_status_condicao_aparelho
+                    CASE ap.id_status_condicao_aparelho
                         WHEN " . CONDICAO_MANUTENCAO . " THEN 'INDISPONIVEL'
                         WHEN " . CONDICAO_DESCARTADO . " THEN 'INDISPONIVEL'
                         ELSE sd.nome
@@ -101,7 +101,11 @@ class Aparelhos_model extends CI_Model
                     ap.valor_depreciado,
                     us.nome AS nome_usuario_registro,
                     ap.status,
-                    sd.nome AS status_disponibilidade
+                    CASE ap.id_status_condicao_aparelho
+                        WHEN " . CONDICAO_MANUTENCAO . " THEN 'INDISPONIVEL'
+                        WHEN " . CONDICAO_DESCARTADO . " THEN 'INDISPONIVEL'
+                        ELSE sd.nome
+                    END AS status_disponibilidade,
                 FROM
                     {$this->tabela} ap
                 INNER JOIN marcas mc ON mc.id = ap.id_marca
