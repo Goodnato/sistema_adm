@@ -105,7 +105,7 @@ class Aparelhos_model extends CI_Model
                         WHEN " . CONDICAO_MANUTENCAO . " THEN 'INDISPONIVEL'
                         WHEN " . CONDICAO_DESCARTADO . " THEN 'INDISPONIVEL'
                         ELSE sd.nome
-                    END AS status_disponibilidade,
+                    END AS status_disponibilidade
                 FROM
                     {$this->tabela} ap
                 INNER JOIN marcas mc ON mc.id = ap.id_marca
