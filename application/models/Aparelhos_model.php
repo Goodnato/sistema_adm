@@ -35,7 +35,11 @@ class Aparelhos_model extends CI_Model
                     mc.nome AS nome_marca,
                     md.nome AS nome_modelo,
                     sc.nome AS status_condicao,
-                    sd.nome AS status_disponibilidade,
+                    CASE id_status_condicao_aparelho
+                        WHEN " . CONDICAO_MANUTENCAO . " THEN 'INDISPONIVEL'
+                        WHEN " . CONDICAO_DESCARTADO . " THEN 'INDISPONIVEL'
+                        ELSE sd.nome
+                    END AS status_disponibilidade,
                     ap.valor
                 FROM
                     {$this->tabela} ap
