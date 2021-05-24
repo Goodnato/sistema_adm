@@ -115,10 +115,12 @@ class Distribuicoes extends CI_Controller
 
         $condicao = $this->Aparelhos_model->consultaCondicaoAparelhoPorImei($imei);
         if (empty($condicao) || $condicao == CONDICAO_DESCARTADO || $condicao == CONDICAO_MANUTENCAO) {
-            return [
+            echo json_encode ([
                 'status' => false,
                 'mensagem' => "INDISPONÍVEL"
-            ];
+            ]);
+
+            return false;
         }
 
         echo json_encode([
