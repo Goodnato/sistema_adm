@@ -165,4 +165,14 @@ class Aparelhos_model extends CI_Model
 
         return count($resultado) == 0 ? null : $resultado[0]['id_status_condicao_aparelho'];
     }
+
+    public function consultaTodosAparelhos()
+    {
+        $sql = "SELECT
+                    *
+                FROM
+                    {$this->tabela}";
+
+        return $this->db->query($sql)->result_array();
+    }
 }
