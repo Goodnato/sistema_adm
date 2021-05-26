@@ -25,23 +25,23 @@
                 <ul class="navbar-nav mr-auto">
                     <?php if (!empty($arrayAcessoPaginas) || in_array(PAGINA_APARELHOS, $arrayAcessoPaginas)) { ?>
                         <li class="nav-item">
-                            <a class="nav-link <?= $paginaAtual == PAGINA_APARELHOS ? 'active' : '' ?>" href="<?= base_url('Aparelhos/') ?>">Aparelhos</a>
+                            <a class="nav-link active" href="<?= base_url('Aparelhos/') ?>">Aparelhos</a>
                         </li>
                     <?php } ?>
                     <?php if (!empty($arrayAcessoPaginas) || in_array(PAGINA_LINHAS, $arrayAcessoPaginas)) { ?>
                         <li class="nav-item">
-                            <a class="nav-link <?= $paginaAtual == PAGINA_LINHAS ? 'active' : '' ?>" href="<?= base_url('Linhas/') ?>">Linhas</a>
+                            <a class="nav-link active" href="<?= base_url('Linhas/') ?>">Linhas</a>
                         </li>
                     <?php } ?>
                     <?php if (!empty($arrayAcessoPaginas) || in_array(PAGINA_DISTRIBUICOES, $arrayAcessoPaginas)) { ?>
                         <li class="nav-item">
-                            <a class="nav-link <?= $paginaAtual == PAGINA_DISTRIBUICOES ? 'active' : '' ?>" href="<?= base_url('Distribuicoes/') ?>">Distribuições</a>
+                            <a class="nav-link active" href="<?= base_url('Distribuicoes/') ?>">Distribuições</a>
                         </li>
                     <?php } ?>
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Olá, <?= $this->session->dadosUsuario['nome'] ?> <i class="fas fa-user"></i>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -51,7 +51,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= base_url('Sistemas/sair') ?>">Sair</a>
+                        <a class="nav-link active" href="<?= base_url('Sistemas/sair') ?>">Sair</a>
                     </li>
                 </ul>
             </div>

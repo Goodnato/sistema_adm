@@ -70,8 +70,8 @@
                         <button class="btn btn-primary" id="btnPesquisarFiltros"><i class="fas fa-search"></i> Pesquisar</button>
                         <button class="btn btn-warning"><i class="fas fa-file-excel"></i> Excel</button>
                         <?php if (!$this->session->dadosUsuario['somente_leitura']) { ?>
-                        <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#modalNovoAparelho"><i class="fas fa-plus-square"></i> Novo aparelho</button>
-                    <?php } ?>
+                            <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#modalNovoAparelho"><i class="fas fa-plus-square"></i> Novo aparelho</button>
+                        <?php } ?>
                     </div>
                 </div>
             </form>
@@ -79,7 +79,7 @@
     </div>
     <div class="row mt-5 px-2">
         <div class="table-responsive">
-            <table class="table table-striped table-bordered table-sm" id="tabelaAparelhos">
+            <table class="table table-hover table-bordered table-sm" id="tabelaAparelhos">
                 <thead class="table bg-light">
                     <tr>
                         <th scope="col">#</th>
@@ -272,8 +272,8 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-window-close"></i> Cancelar</button>
                 <?php if (!$this->session->dadosUsuario['somente_leitura']) { ?>
-                <button type="button" class="btn btn-success" id="btnEditarAparelho"><i class="fas fa-save"></i> Salvar</button>
-            <?php } ?>
+                    <button type="button" class="btn btn-success" id="btnEditarAparelho"><i class="fas fa-save"></i> Salvar</button>
+                <?php } ?>
             </div>
         </div>
     </div>
