@@ -50,7 +50,7 @@
     <!-- para chamar imagens necessário incluir o echo base_url devido ao arquivo config -->
     <form action="<?php echo base_url("Usuarios/login"); ?>" method="Post" id="submit" class="form-signin" autocomplete="off">
         <div class="text-center mb-4">
-            <img src="<?php echo base_url("assets/images/logo-claro.png"); ?>" class="img-fluid">
+            <img src="<?php echo base_url("assets/images/logo-claro2.png"); ?>" class="img-fluid">
         </div>
         <?php
         if ($this->session->mensagemLogin) { ?>

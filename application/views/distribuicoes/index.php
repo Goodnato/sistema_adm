@@ -72,7 +72,7 @@
     <div class="row mt-5 px-2">
         <div class="table-responsive">
             <table class="table table-striped table-bordered table-sm" id="tabelaDistribuicao">
-                <thead class="table-dark">
+                <thead class="table bg-light">
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Modelo</th>
@@ -233,7 +233,7 @@
                             <div class="alert alert-primary text-center" role="alert">
                                 Registro de alteração
                             </div>
-                            <table class="table">
+                            <table class="table bg-light">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>

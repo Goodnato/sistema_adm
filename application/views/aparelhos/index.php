@@ -80,7 +80,7 @@
     <div class="row mt-5 px-2">
         <div class="table-responsive">
             <table class="table table-striped table-bordered table-sm" id="tabelaAparelhos">
-                <thead class="table-dark">
+                <thead class="table bg-light">
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Imei</th>
