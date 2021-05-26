@@ -32,7 +32,7 @@ class Comandos extends CI_Controller
             $valorDepreciado = $this->calculaValorDepreciado($aparelho['valor'], $periodoDoisAnos);
 
             $this->Aparelhos_model->editarAparelho($aparelho['id'], [
-                'valor' => $valorDepreciado
+                'valor_depreciado' => $valorDepreciado
             ]);
         }
 
