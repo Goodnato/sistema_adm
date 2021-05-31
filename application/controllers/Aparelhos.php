@@ -86,6 +86,7 @@ class Aparelhos extends CI_Controller
     public function salvarAparelho()
     {
         $this->form_validation->set_rules("imei", "<b>Imei</b>", "trim|required|greater_than[0]|is_unique[aparelhos.imei1]|exact_length[15]");
+        $this->form_validation->set_rules("imei2", "<b>Imei 2</b>", "trim|greater_than[0]|is_unique[aparelhos.imei2]|exact_length[15]");
         $this->form_validation->set_rules("idModelo", "<b>Modelo</b>", "trim|required|integer|combines[modelos.id]");
         $this->form_validation->set_rules("idStatusCondicaoAparelho", "<b>Condição aparelho</b>", "trim|required|integer|combines[status_condicoes_aparelhos.id]");
         $this->form_validation->set_rules("notaFiscal", "<b>Nota fiscal</b>", "trim|integer|max_length[50]");
@@ -105,6 +106,7 @@ class Aparelhos extends CI_Controller
             'id_modelo' => $this->input->post('idModelo'),
             'id_marca' => $this->Modelos_model->consultaMarcaPorModeloPorStatus($this->input->post('idModelo'))['id'],
             'imei1' => $this->input->post('imei'),
+            'imei2' => $this->input->post('imei2'),
             'id_status_condicao_aparelho' => $this->input->post('idStatusCondicaoAparelho'),
             'nota_fiscal' => $this->input->post('notaFiscal'),
             'data_nota' => $this->input->post('dataNotaFiscal'),

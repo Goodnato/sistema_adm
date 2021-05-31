@@ -209,6 +209,7 @@ $('#btnSalvarAparelho').click(function (event) {
         type: "Post",
         data: {
             imei: $('#cadastroImei').val(),
+            imei2: $('#cadastroImei2').val(),
             idModelo: $('#cadastroModelo').val(),
             idStatusCondicaoAparelho: $('#cadastroStatusCondicaoAparelho').val(),
             notaFiscal: $('#cadastroNotaFiscal').val(),
@@ -255,6 +256,7 @@ $('#btnSalvarAparelho').click(function (event) {
 
 function limpaFormularioCadastro() {
     $('#cadastroImei').val('')
+    $('#cadastroImei2').val('')
     $("#cadastroModelo").val($("#cadastroModelo option:first").val()).multiselect('refresh');
     $("#cadastroStatusCondicaoAparelho").val($("#cadastroStatusCondicaoAparelho option:first").val()).multiselect('refresh');
     $('#cadastroMarca').val('SELECIONE UM MODELO')

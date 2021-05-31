@@ -126,6 +126,12 @@
                                         <input type="number" name="imei" class="form-control form-control-sm" id="cadastroImei" placeholder="DIGITE AQUI">
                                     </div>
                                     <div class="col">
+                                        <label for="cadastroImei2" class="form-label">IMEI 2*</label>
+                                        <input type="number" name="imei" class="form-control form-control-sm" id="cadastroImei2" placeholder="DIGITE AQUI">
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                <div class="col">
                                         <label for="cadastroModelo" class="form-label">Modelo*</label>
                                         <select class="form-control form-control-sm" id="cadastroModelo">
                                             <option value>SELECIONE</option>
@@ -134,13 +140,13 @@
                                             <?php } ?>
                                         </select>
                                     </div>
-                                </div>
-                                <div class="row mt-2">
                                     <div class="col">
                                         <label for="cadastroMarca" class="form-label">Marca*</label>
                                         <input type="text" class="form-control form-control-sm text-center" id="cadastroMarca" value="SELECIONE UM MODELO" disabled>
                                     </div>
-                                    <div class="col">
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-6">
                                         <label for="cadastroStatusCondicaoAparelho" class="form-label">Condição aparelho*</label>
                                         <select class="form-control form-control-sm" id="cadastroStatusCondicaoAparelho">
                                             <?php foreach ($listaStatusCondicoes as $status) { ?>
@@ -148,18 +154,16 @@
                                             <?php } ?>
                                         </select>
                                     </div>
-                                </div>
-                                <div class="row mt-2">
                                     <div class="col-6">
                                         <label for="cadastroNotaFiscal" class="form-label">Nota fiscal</label>
                                         <input type="number" class="form-control form-control-sm" id="cadastroNotaFiscal" placeholder="DIGITE AQUI">
                                     </div>
+                                </div>
+                                <div class="row mt-2">
                                     <div class="col-6">
                                         <label for="cadastroDataNotaFiscal" class="form-label">Data nota fiscal</label>
                                         <input type="date" class="form-control form-control-sm" id="cadastroDataNotaFiscal">
                                     </div>
-                                </div>
-                                <div class="row mt-2">
                                     <div class="col-6">
                                         <label for="cadastroValorNotaFiscal" class="form-label">Valor nota fiscal R$</label>
                                         <input type="text" class="form-control form-control-sm" id="cadastroValorNotaFiscal" placeholder="0,00">
