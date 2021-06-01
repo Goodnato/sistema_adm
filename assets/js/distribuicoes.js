@@ -19,10 +19,10 @@ const tabelaDistribuicao = $("#tabelaDistribuicao").DataTable({
     },
     columns: [
         { data: "id_distribuicao" },
-        { data: "modelo" },
+        { data: "imei" },
         { data: "numero_linha" },
+        { data: "modelo" },
         { data: "nome_colaborador" },
-        { data: "centro_custo" },
         { data: "cidade" },
         { data: "status_disponibilidade" },
         {

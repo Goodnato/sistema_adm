@@ -75,10 +75,10 @@
                 <thead class="table bg-light">
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Modelo</th>
+                        <th scope="col">IMEI</th>
                         <th scope="col">Linha</th>
+                        <th scope="col">Modelo</th>
                         <th scope="col">Colaborador</th>
-                        <th scope="col">Centro de custo</th>
                         <th scope="col">Cidade</th>
                         <th scope="col">Disponibilidade</th>
                         <th scope="col">Ação</th>

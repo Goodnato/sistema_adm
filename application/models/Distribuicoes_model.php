@@ -50,6 +50,7 @@ class Distribuicoes_model extends CI_Model
                     dt.id AS id_distribuicao,
                     md.nome AS modelo,
                     li.numero_linha,
+                    ap.imei1 AS imei,
                     CONCAT(co.nome, ' (', co.id, ')') AS nome_colaborador,
                     CONCAT(cc.id, ' (', cc.area, ')') AS centro_custo,
                     co.cidade AS cidade,
