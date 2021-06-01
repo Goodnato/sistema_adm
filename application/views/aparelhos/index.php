@@ -211,7 +211,7 @@
                                     </div>
                                     <div class="col">
                                         <label for="editaImei2" class="form-label">IMEI2</label>
-                                        <input type="number" name="imei" class="form-control form-control-sm" id="editaImei2" disabled>
+                                        <input type="number" name="imei2" class="form-control form-control-sm" id="editaImei2" disabled>
                                     </div>
                                 </div>
                                 <div class="row mt-2">
