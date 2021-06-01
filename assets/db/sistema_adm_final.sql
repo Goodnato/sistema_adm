@@ -27,6 +27,7 @@ SET
     `id_modelo` int NOT NULL,
     `id_marca` int NOT NULL,
     `imei1` varchar(200) NOT NULL,
+    `imei2` varchar(200) NULL,
     `id_status_condicao_aparelho` int NOT NULL,
     `id_status_disponibilidade` int NOT NULL DEFAULT '1',
     `status` int NOT NULL DEFAULT '1',
@@ -350,6 +351,8 @@ ADD
   PRIMARY KEY (`id`) USING BTREE,
 ADD
   UNIQUE KEY `imei1` (`imei1`) USING BTREE,
+ADD
+  UNIQUE KEY `imei2` (`imei2`) USING BTREE,
 ADD
   KEY `FK_aparelhos_modelos` (`id_modelo`),
 ADD
