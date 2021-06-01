@@ -115,7 +115,7 @@ class Distribuicoes extends CI_Controller
 
         $condicao = $this->Aparelhos_model->consultaCondicaoAparelhoPorImei($imei);
         if (empty($condicao) || $condicao == CONDICAO_DESCARTADO || $condicao == CONDICAO_MANUTENCAO) {
-            echo json_encode ([
+            echo json_encode([
                 'status' => false,
                 'mensagem' => "INDISPONÍVEL"
             ]);
@@ -224,7 +224,7 @@ class Distribuicoes extends CI_Controller
             'id_linha' => $idLinha,
             'id_colaborador' => $matricula,
             'id_status_disponibilidade' => DISTRIBUICAO_EM_USO,
-            'id_usuario_registro' => 1
+            'id_usuario_registro' => $this->session->dadosUsuario['id']
         ]);
 
         $this->alteraDisponibilidadeAparelhoLinha($idAparelho, $idLinha);
@@ -536,7 +536,7 @@ class Distribuicoes extends CI_Controller
 
         $this->Logs_alteracoes_model->registrarLog([
             'tabela' => 'distribuicoes',
-            'id_usuario' => 1,
+            'id_usuario' => $this->session->dadosUsuario['id'],
             'identificador' => $idDistribuicao,
             'valor_antigo' => json_encode(['id_status_disponibilidade' => DISTRIBUICAO_EM_USO, 'status_disponibilidade' => "EM USO"]),
             'valor_novo' => json_encode(['id_status_disponibilidade' => DISTRIBUICAO_DEVOLVIDO, 'status_disponibilidade' => "DEVOLVIDO"])

@@ -80,7 +80,7 @@ class Linhas extends CI_Controller
             'id_operadora' => $this->input->post('idOperadora'),
             'pin_puk1' => $this->input->post('pinPuk1'),
             'pin_puk2' => $this->input->post('pinPuk2'),
-            'id_usuario_registro' => 1
+            'id_usuario_registro' => $this->session->dadosUsuario['id']
         ]);
 
         echo json_encode([
@@ -112,13 +112,13 @@ class Linhas extends CI_Controller
             'pin_puk1' => $this->input->post('pinPuk1'),
             'pin_puk2' => $this->input->post('pinPuk2'),
             'status' => $this->input->post('status'),
-            'id_usuario_at' => 1
+            'id_usuario_at' => $this->session->dadosUsuario['id']
         ];
 
 
         $this->Logs_alteracoes_model->registrarLog([
             'tabela' => 'linhas',
-            'id_usuario' => 1,
+            'id_usuario' => $this->session->dadosUsuario['id'],
             'identificador' => $idLinha,
             'valor_antigo' => json_encode($this->Linhas_model->consultaLinhasPorId($idLinha)),
             'valor_novo' => json_encode($dadosLinha)

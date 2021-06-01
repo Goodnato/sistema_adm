@@ -111,7 +111,7 @@ class Aparelhos extends CI_Controller
             'nota_fiscal' => $this->input->post('notaFiscal'),
             'data_nota' => $this->input->post('dataNotaFiscal'),
             'valor' => $this->input->post('valorNotaFiscal'),
-            'id_usuario_registro' => 1
+            'id_usuario_registro' => $this->session->dadosUsuario['id']
         ]);
 
         echo json_encode([
@@ -143,12 +143,12 @@ class Aparelhos extends CI_Controller
             'data_nota' => $this->input->post('dataNotaFiscal'),
             'valor' => $this->input->post('valorNotaFiscal'),
             'status' => $this->input->post('status'),
-            'id_usuario_at' => 1
+            'id_usuario_at' => $this->session->dadosUsuario['id']
         ];
 
         $this->Logs_alteracoes_model->registrarLog([
             'tabela' => 'aparelhos',
-            'id_usuario' => 1,
+            'id_usuario' => $this->session->dadosUsuario['id'],
             'identificador' => $idAparelho,
             'valor_antigo' => json_encode($this->Aparelhos_model->consultaAparelhosPorId($idAparelho)),
             'valor_novo' => json_encode($novosDadosAparelho)
