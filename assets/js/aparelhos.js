@@ -298,7 +298,6 @@ tabelaAparelhos.on('click', '.visualizar', function (event) {
             idAparelho
         }
     }).done(function (response) {
-        console.log(response)
         if (response.status) {
             $('#editaIdAparelho').val(idAparelho)
             $('#tituloAparelho').text(response.aparelho.nome_modelo)
@@ -386,6 +385,16 @@ $('#btnEditarAparelho').click(function (event) {
     })
 })
 
+$("#editaStatusCondicaoAparelho").change(function () {
+    if ($(this).val() == STATUS_CONDICAO_DESCARTADO) {
+        $('#editaStatus').val(STATUS_INATIVO).multiselect('refresh')
+
+        return
+    }
+
+    $('#editaStatus').val(STATUS_ATIVO).multiselect('refresh')
+})
+
 $('#modalVerAparelho').on('hidden.bs.modal', function (e) {
     limpaFormularioEditar()
 })
@@ -403,4 +412,5 @@ function limpaFormularioEditar() {
     $('#editaValorDepreciado').val('')
     $('#editaCadastradoPor').val('')
     $('#editaValorDisponibilidade').val('')
+    $('#editaStatus').val(STATUS_ATIVO).multiselect('refresh')
 }

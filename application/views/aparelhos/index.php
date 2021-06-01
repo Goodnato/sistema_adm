@@ -131,7 +131,7 @@
                                     </div>
                                 </div>
                                 <div class="row mt-2">
-                                <div class="col">
+                                    <div class="col">
                                         <label for="cadastroModelo" class="form-label">Modelo*</label>
                                         <select class="form-control form-control-sm" id="cadastroModelo">
                                             <option value>SELECIONE</option>
@@ -287,5 +287,8 @@
     </div>
 </div>
 <script>
-    const statusCondicaoAparelho = <?= json_encode($listaStatusCondicoes); ?>
+    const statusCondicaoAparelho = <?= json_encode($listaStatusCondicoes); ?>;
+    const STATUS_CONDICAO_DESCARTADO = <?= CONDICAO_DESCARTADO ?>;
+    const STATUS_ATIVO = <?= STATUS_ATIVO ?>;
+    const STATUS_INATIVO = <?= STATUS_INATIVO ?>;
 </script>
