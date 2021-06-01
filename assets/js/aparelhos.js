@@ -196,61 +196,76 @@ $("#cadastroModelo").change(function (e) {
 })
 
 $('#btnSalvarAparelho').click(function (event) {
-    $(this)
-        .html('<div class="spinner-border spinner-border-sm text-light" role="status"></div> Salvando...')
-        .prop('disabled', true)
-
-    $('#cadastroAlert').addClass('d-none')
-    $('#cadastroMensagem').html('')
-
-    $.ajax({
-        url: base_url("Aparelhos/salvarAparelho"),
-        dataType: "json",
-        type: "Post",
-        data: {
-            imei: $('#cadastroImei').val(),
-            imei2: $('#cadastroImei2').val(),
-            idModelo: $('#cadastroModelo').val(),
-            idStatusCondicaoAparelho: $('#cadastroStatusCondicaoAparelho').val(),
-            notaFiscal: $('#cadastroNotaFiscal').val(),
-            dataNotaFiscal: $('#cadastroDataNotaFiscal').val(),
-            valorNotaFiscal: formataDecimal($('#cadastroValorNotaFiscal').val()),
-        }
-    }).done(function (response) {
-        if (!response.status) {
-            $('#cadastroMensagem').html(response.mensagem)
-            $('#cadastroAlert').removeClass('d-none')
-
-            $('#btnSalvarAparelho')
-                .html('<i class="fas fa-save"></i> Salvar')
-                .prop('disabled', false)
-
-            return false
+    Swal.fire({
+        title: 'Deseja salvar o aparelho?',
+        text: "Não poderá ser alterado depois",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#28a745',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: 'Sim'
+    }).then((result) => {
+        if (!result.isConfirmed) {
+            return
         }
 
-        Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Salvo com sucesso!',
-            showConfirmButton: false,
-            timer: 1500,
-            heightAuto: false
-        }).then((result) => {
-            tabelaAparelhos.ajax.reload()
-            $('#modalNovoAparelho').modal('hide')
+        $(this)
+            .html('<div class="spinner-border spinner-border-sm text-light" role="status"></div> Salvando...')
+            .prop('disabled', true)
 
-            limpaFormularioCadastro()
+        $('#cadastroAlert').addClass('d-none')
+        $('#cadastroMensagem').html('')
 
+        $.ajax({
+            url: base_url("Aparelhos/salvarAparelho"),
+            dataType: "json",
+            type: "Post",
+            data: {
+                imei: $('#cadastroImei').val(),
+                imei2: $('#cadastroImei2').val(),
+                idModelo: $('#cadastroModelo').val(),
+                idStatusCondicaoAparelho: $('#cadastroStatusCondicaoAparelho').val(),
+                notaFiscal: $('#cadastroNotaFiscal').val(),
+                dataNotaFiscal: $('#cadastroDataNotaFiscal').val(),
+                valorNotaFiscal: formataDecimal($('#cadastroValorNotaFiscal').val()),
+            }
+        }).done(function (response) {
+            if (!response.status) {
+                $('#cadastroMensagem').html(response.mensagem)
+                $('#cadastroAlert').removeClass('d-none')
+
+                $('#btnSalvarAparelho')
+                    .html('<i class="fas fa-save"></i> Salvar')
+                    .prop('disabled', false)
+
+                return false
+            }
+
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Salvo com sucesso!',
+                showConfirmButton: false,
+                timer: 1500,
+                heightAuto: false
+            }).then((result) => {
+                tabelaAparelhos.ajax.reload()
+                $('#modalNovoAparelho').modal('hide')
+
+                limpaFormularioCadastro()
+
+                $('#btnSalvarAparelho')
+                    .html('<i class="fas fa-save"></i> Salvar')
+                    .prop('disabled', false)
+            })
+        }).fail(function (response) {
+            alert("Ocorreu um erro ao pesquisar os modelos. Contate o administrador do sistema")
+            console.log(response)
             $('#btnSalvarAparelho')
                 .html('<i class="fas fa-save"></i> Salvar')
                 .prop('disabled', false)
         })
-    }).fail(function (response) {
-        alert("Ocorreu um erro ao pesquisar os modelos. Contate o administrador do sistema")
-        console.log(response)
-        $('#btnSalvarAparelho')
-            .html('<i class="fas fa-save"></i> Salvar')
-            .prop('disabled', false)
     })
 })
 

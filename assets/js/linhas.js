@@ -97,52 +97,67 @@ $('#editaPinPuk2').mask("0000-00000000");
 
 //codigo abaixo de jquery para o botão salvar do modal cadastro efeitos, acionar metodos de Salvar linha
 $('#btnSalvarLinha').click(function (event) {
-    $(this)
-        .html('<div class="spinner-border spinner-border-sm text-light" role="status"></div> Salvando...') // para manipular elementos, neste caso o efeito de carregando do botão salvar
-        .prop('disabled', true)
-    //faz exibir d-none seção de mensagens. d-nome é pra ocultar a seção
-    $('#cadastroAlert').addClass('d-none')
-    $('#cadastroMensagem').html('')
-    //ajax para pegar os dados do formulário no modal pelo metodo post 
-    $.ajax({
-        url: base_url("Linhas/salvarLinha"),
-        dataType: "json",
-        type: "Post",
-        data: {
-            numeroLinha: $('#cadastroNumero').val(),
-            codigoChip: $('#cadastroCodigoChip').val(),
-            idCategoria: $('#cadastroCategoria').val(),
-            idOperadora: $('#cadastroOperadora').val(),
-            pinPuk1: $('#cadastroPinPuk1').val(),
-            pinPuk2: $('#cadastroPinPuk2').val(),
-        }
-    }).done(function (response) {
-        if (!response.status) {
-            $('#cadastroMensagem').html(response.mensagem) //prepara a mensagem de erro
-            $('#cadastroAlert').removeClass('d-none') //remove class d-nome para exibir a seção
-
-            $('#btnSalvarLinha')
-                .html('<i class="fas fa-save"></i> Salvar') // quando exibe o erro o botão volta o texto salvar
-                .prop('disabled', false)
-
-            return false
+    Swal.fire({
+        title: 'Deseja salvar a linha?',
+        text: "Não poderá ser alterado depois",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#28a745',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: 'Sim'
+    }).then((result) => {
+        if (!result.isConfirmed) {
+            return
         }
 
-        Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Cadastrada com sucesso!',
-            showConfirmButton: false,
-            timer: 1500,
-            heightAuto: false
-        }).then((result) => {
-            $('#modalNovaLinha').modal('hide')
+        $(this)
+            .html('<div class="spinner-border spinner-border-sm text-light" role="status"></div> Salvando...') // para manipular elementos, neste caso o efeito de carregando do botão salvar
+            .prop('disabled', true)
+        //faz exibir d-none seção de mensagens. d-nome é pra ocultar a seção
+        $('#cadastroAlert').addClass('d-none')
+        $('#cadastroMensagem').html('')
+        //ajax para pegar os dados do formulário no modal pelo metodo post 
+        $.ajax({
+            url: base_url("Linhas/salvarLinha"),
+            dataType: "json",
+            type: "Post",
+            data: {
+                numeroLinha: $('#cadastroNumero').val(),
+                codigoChip: $('#cadastroCodigoChip').val(),
+                idCategoria: $('#cadastroCategoria').val(),
+                idOperadora: $('#cadastroOperadora').val(),
+                pinPuk1: $('#cadastroPinPuk1').val(),
+                pinPuk2: $('#cadastroPinPuk2').val(),
+            }
+        }).done(function (response) {
+            if (!response.status) {
+                $('#cadastroMensagem').html(response.mensagem) //prepara a mensagem de erro
+                $('#cadastroAlert').removeClass('d-none') //remove class d-nome para exibir a seção
 
-            limpaFormularioCadastroLinha()
+                $('#btnSalvarLinha')
+                    .html('<i class="fas fa-save"></i> Salvar') // quando exibe o erro o botão volta o texto salvar
+                    .prop('disabled', false)
 
-            $('#btnSalvarLinha')
-                .html('<i class="fas fa-save"></i> Salvar')
-                .prop('disabled', false)
+                return false
+            }
+
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Cadastrada com sucesso!',
+                showConfirmButton: false,
+                timer: 1500,
+                heightAuto: false
+            }).then((result) => {
+                $('#modalNovaLinha').modal('hide')
+
+                limpaFormularioCadastroLinha()
+
+                $('#btnSalvarLinha')
+                    .html('<i class="fas fa-save"></i> Salvar')
+                    .prop('disabled', false)
+            })
         })
     })
 })
@@ -211,8 +226,6 @@ $("#btnPesquisarFiltros").click(function (event) {
 
     tabelaLinhas.ajax.reload();
 })
-
-console.log(2)
 
 //codigo javascritp referente ao modal visualizar da tabela para editar os dados. Aciona o icone ver na tabela
 tabelaLinhas.on('click', '.visualizar', function (event) {
