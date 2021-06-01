@@ -126,8 +126,8 @@
                                         <input type="number" name="imei" class="form-control form-control-sm" id="cadastroImei" placeholder="DIGITE AQUI">
                                     </div>
                                     <div class="col">
-                                        <label for="cadastroImei2" class="form-label">IMEI 2*</label>
-                                        <input type="number" name="imei" class="form-control form-control-sm" id="cadastroImei2" placeholder="DIGITE AQUI">
+                                        <label for="cadastroImei2" class="form-label">IMEI 2</label>
+                                        <input type="number" name="imei2" class="form-control form-control-sm" id="cadastroImei2" placeholder="DIGITE AQUI">
                                     </div>
                                 </div>
                                 <div class="row mt-2">
