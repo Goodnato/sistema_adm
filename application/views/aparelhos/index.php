@@ -210,15 +210,21 @@
                                         <input type="number" name="imei" class="form-control form-control-sm" id="editaImei" disabled>
                                     </div>
                                     <div class="col">
-                                        <label for="editaModelo" class="form-label">Modelo*</label>
-                                        <input type="text" class="form-control form-control-sm" id="editaModelo" disabled>
+                                        <label for="editaImei2" class="form-label">IMEI2</label>
+                                        <input type="number" name="imei" class="form-control form-control-sm" id="editaImei2" disabled>
                                     </div>
                                 </div>
                                 <div class="row mt-2">
                                     <div class="col">
+                                        <label for="editaModelo" class="form-label">Modelo*</label>
+                                        <input type="text" class="form-control form-control-sm" id="editaModelo" disabled>
+                                    </div>
+                                    <div class="col">
                                         <label for="editaMarca" class="form-label">Marca*</label>
                                         <input type="text" class="form-control form-control-sm" id="editaMarca" disabled>
                                     </div>
+                                </div>
+                                <div class="row mt-2">
                                     <div class="col">
                                         <label for="editaStatusCondicaoAparelho" class="form-label">Condição aparelho*</label>
                                         <select class="form-control form-control-sm" id="editaStatusCondicaoAparelho">
@@ -227,38 +233,36 @@
                                             <?php } ?>
                                         </select>
                                     </div>
-                                </div>
-                                <div class="row mt-2">
                                     <div class="col">
                                         <label for="editaNotaFiscal" class="form-label">Nota fiscal</label>
                                         <input type="number" class="form-control form-control-sm" id="editaNotaFiscal" placeholder="DIGITE AQUI">
                                     </div>
+                                </div>
+                                <div class="row mt-2">
                                     <div class="col">
                                         <label for="editaDataNotaFiscal" class="form-label">Data nota fiscal</label>
                                         <input type="date" class="form-control form-control-sm" id="editaDataNotaFiscal">
                                     </div>
-                                </div>
-                                <div class="row mt-2">
                                     <div class="col">
                                         <label for="editaValorNotaFiscal" class="form-label">Valor nota fiscal R$</label>
                                         <input type="text" class="form-control form-control-sm" id="editaValorNotaFiscal" placeholder="0,00">
                                     </div>
+                                </div>
+                                <div class="row mt-2">
                                     <div class="col">
                                         <label for="editaValorDepreciado" class="form-label">Valor depreciado R$</label>
                                         <input type="text" class="form-control form-control-sm" id="editaValorDepreciado" disabled>
                                     </div>
-                                </div>
-                                <div class="row mt-2">
                                     <div class="col">
                                         <label for="editaCadastradoPor" class="form-label">Cadastrado por</label>
                                         <input type="text" class="form-control form-control-sm" id="editaCadastradoPor" disabled>
                                     </div>
-                                    <div class="col">
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-6">
                                         <label for="editaValorDisponibilidade" class="form-label">Disponibilidade</label>
                                         <input type="text" class="form-control form-control-sm" id="editaValorDisponibilidade" disabled>
                                     </div>
-                                </div>
-                                <div class="row mt-2">
                                     <div class="col-6">
                                         <label for="editaStatus" class="form-label">Status</label><br>
                                         <select class="form-control form-control-sm" id="editaStatus">

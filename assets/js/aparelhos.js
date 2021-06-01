@@ -283,10 +283,12 @@ tabelaAparelhos.on('click', '.visualizar', function (event) {
             idAparelho
         }
     }).done(function (response) {
+        console.log(response)
         if (response.status) {
             $('#editaIdAparelho').val(idAparelho)
             $('#tituloAparelho').text(response.aparelho.nome_modelo)
             $('#editaImei').val(response.aparelho.imei1)
+            $('#editaImei2').val(response.aparelho.imei2)
             $('#editaModelo').val(response.aparelho.nome_modelo)
             $('#editaMarca').val(response.aparelho.nome_marca)
             $('#editaStatusCondicaoAparelho').val(response.aparelho.id_status_condicao_aparelho).multiselect('refresh')

@@ -92,6 +92,7 @@ class Aparelhos_model extends CI_Model
         $sql = "SELECT
                     ap.id AS id_aparelho,
                     ap.imei1 AS imei1,
+                    ap.imei2 AS imei2,
                     md.nome AS nome_modelo,
                     mc.nome AS nome_marca,
                     ap.id_status_condicao_aparelho,
