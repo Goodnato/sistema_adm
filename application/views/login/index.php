@@ -77,7 +77,7 @@
 
         <!-- botão para entrar no sistema base_url direciona o usuário para o dashboard -->
         <button class="btn btn-lg btn-danger btn-block" id="btn_login">Entrar</button>
-        <p class="text-center mt-3">Não possui acesso? <a href="#" data-toggle="modal" data-target="#novoCadastroModal">Solicite aqui</a></p>
+        <p class="text-center mt-3">Não possui acesso? <a href="#" data-toggle="modal" data-target="#novoCadastroModal">Solicite </a></p>
 
 
     </form>
@@ -87,7 +87,7 @@
         <div class="modal-dialog modal-md" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title text-danger">Solicitar acesso</h5>
+                    <h5 class="modal-title text-danger">Solicitação de acesso ou suporte</h5>
                     <button type="button" class="close" data-dismiss="modal">
                         <span>&times;</span>
                     </button>
@@ -95,26 +95,14 @@
                 <div class="modal-body">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-12">
-                                <form action="<?php echo base_url("Usuario/novo_cadastro") ?>" method="Post" autocomplete="off">
-                                    <div class="form-group">
-                                        <label for="nome">Primeiro nome</label>
-                                        <input type="text" class="form-control" id="cadastro_nome" value="<?php echo set_value("cadastro_nome") ?>" name="cadastro_nome" placeholder="" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email">Informe o email</label>
-                                        <input type="email" class="form-control" id="cadastro_email" value="<?php echo set_value("cadastro_email") ?>" name="cadastro_email" placeholder="" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email">Crie uma senha</label>
-                                        <input type="password" class="form-control" id="cadastro_pass" value="<?php echo set_value("cadastro_pass") ?>" name="cadastro_pass" placeholder="" required>
-                                    </div>
-                                    <small class="form-text text-muted">O seu cadastro passará por uma análise.</small>
-                                    <button type="submit" class="btn btn-danger mt-3">
-                                        Solicitar
-                                    </button>
-                                </form>
-                            </div>
+                            <h5 class="modal-title text-danger">PLANEJAMENTO ADM SP</h5>
+                        </div>
+                        <div class="row">
+                            <h9><b>CLEYTON CARVALHO NEVES</b> - cleyton.neves@claro.com.br </h9><br>
+                            <h9><b> FELIPE LIMA FERREIRA</b>   - felipe.ferreira@claro.com.br </h9><br>
+                            <h9><b> ADRIANA PEREIRA PRIMO</b>  - adriana.primo2@claro.com.br</h9><br><br>
+                            <h9><b>COORDENADOR:</b></h9>
+                            <h9><b>PAULO BATISTA DE SOUSA</b> - paulo.batista@claro.com.br</h9>
                         </div>
                     </div>
                 </div>

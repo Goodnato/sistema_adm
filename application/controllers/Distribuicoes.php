@@ -82,7 +82,7 @@ class Distribuicoes extends CI_Controller
 
     public function consultarModeloPeloImei()
     {
-        $imei = (int) $this->input->post('imei');
+        $imei = $this->input->post('imei');
 
         if ($imei <= 0) {
             echo json_encode([
