@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="<?= base_url("assets/css/bootstrap.min.css"); ?>">
     <link rel="stylesheet" href="<?= base_url("assets/css/datatable-bootstrap.min.css"); ?>">
     <link rel="stylesheet" href="<?= base_url("assets/css/bootstrap-multiselect.min.css"); ?>">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="stylesheet" href="<?= base_url("assets/css/fontawesomeall.min.css"); ?>">
     <link rel="stylesheet" href="<?= base_url($caminhoCss); ?>">
 </head>
 
