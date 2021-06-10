@@ -67,7 +67,7 @@
         <?php } ?>
         <!-- campo para inclusão do email -->
         <div class="form-label-group">
-            <input type="text" name="login" id="login" class="form-control" placeholder="E-mail" autofocus required>
+            <input type="text" name="login" id="login" class="form-control" placeholder="Login" autofocus required>
         </div>
 
         <!-- campo para inclusão da senha -->
