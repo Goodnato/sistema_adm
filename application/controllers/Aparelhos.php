@@ -175,7 +175,7 @@ class Aparelhos extends CI_Controller
         $procurarSql = $this->montaCondicaoListaAparelhosProcurar();
         $filtrosSql = $this->montaCondicaoListaAparelhosFiltros();
 
-        $listaAparelhos = $this->Aparelhos_model->listaAparelhos(($procurarSql . $filtrosSql), $ordenar, $inicioPagina, $rangePorPagina);
+        $listaAparelhos = $this->Aparelhos_model->listaAparelhos(($procurarSql . $filtrosSql), $ordenar, $rangePorPagina, $inicioPagina);
 
         $dadosTabela = [
             "draw" => $draw,
