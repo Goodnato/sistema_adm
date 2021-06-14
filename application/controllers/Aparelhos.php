@@ -163,9 +163,9 @@ class Aparelhos extends CI_Controller
 
     public function listaAparelhos()
     {
-        $numeroPorPagina = $this->input->post('length');
-        $inicioLimite = $this->input->post('start');
-        $finalLimite = $inicioLimite + $numeroPorPagina;
+        $totalPorPagina = $this->input->post('length');
+        $inicioPagina = $this->input->post('start');
+        $rangePorPagina = $inicioPagina + $totalPorPagina;
         $draw = $this->input->post('draw');
         $indiceColuna = $this->input->post('order')[0]['column'];
         $ordenar = [
@@ -175,7 +175,7 @@ class Aparelhos extends CI_Controller
         $procurarSql = $this->montaCondicaoListaAparelhosProcurar();
         $filtrosSql = $this->montaCondicaoListaAparelhosFiltros();
 
-        $listaAparelhos = $this->Aparelhos_model->listaAparelhos(($procurarSql . $filtrosSql), $ordenar, $inicioLimite, $finalLimite);
+        $listaAparelhos = $this->Aparelhos_model->listaAparelhos(($procurarSql . $filtrosSql), $ordenar, $inicioPagina, $rangePorPagina);
 
         $dadosTabela = [
             "draw" => $draw,

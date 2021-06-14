@@ -27,7 +27,7 @@ class Aparelhos_model extends CI_Model
         $this->db->update($this->tabela, $dadosAparelho, ['id' => $idAparelho]);
     }
 
-    public function listaAparelhos($procurarSql, $ordenar, $inicioLimite, $finalLimite)
+    public function listaAparelhos($procurarSql, $ordenar, $totalPorPagina, $rangePorPagina)
     {
         $sql = "SELECT
                     ap.id AS id_aparelho,
@@ -52,7 +52,8 @@ class Aparelhos_model extends CI_Model
                     1 = 1
                     $procurarSql
                 ORDER BY {$ordenar['coluna']} {$ordenar['direcao']}
-                LIMIT $inicioLimite, $finalLimite";
+                LIMIT $totalPorPagina
+                OFFSET $rangePorPagina";
 
         return $this->db->query($sql)->result_array();
     }
