@@ -35,6 +35,7 @@ class Aparelhos_model extends CI_Model
                     mc.nome AS nome_marca,
                     md.nome AS nome_modelo,
                     sc.nome AS status_condicao,
+                    ap.id_usuario_registro AS usuario_registro,
                     CASE ap.id_status_condicao_aparelho
                         WHEN " . CONDICAO_MANUTENCAO . " THEN 'INDISPONIVEL'
                         WHEN " . CONDICAO_DESCARTADO . " THEN 'INDISPONIVEL'
