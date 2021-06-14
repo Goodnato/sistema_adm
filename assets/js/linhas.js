@@ -1,3 +1,50 @@
+const tabelaLinhas = $("#tabelaLinhas").DataTable({
+    "processing": true,
+    "serverSide": true,
+    "ajax": {
+        "type": "post",
+        "url": base_url("Linhas/listaLinhas"),
+        dataType: "json",
+        data: function (d) {
+            d.numeroLinha = $("#pesquisaNumero").val()
+            d.codigoChip = $("#pesquisaCodigoChip").val()
+            d.idCategoria = $("#pesquisaCategoria").val()
+            d.idUsuarioRegistro = $("#pesquisaCadastradoPor").val()
+            d.idDisponibilidade = $("#pesquisaDisponibilidade").val()
+            d.status = $("#pesquisaStatusLinha").val()
+        }
+    },
+    "columns": [
+        { "data": "id_linha" },
+        { "data": "numero_linha" },
+        { "data": "codigo_chip" },
+        { "data": "nome_categoria" },
+        { "data": "status" },
+        {
+            data: "acao",
+            render: function (data, type, row, meta) {
+                return '<button style="padding: 0 5px;" class="btn btn-primary visualizar"><i class="fas fa-eye"></i></button>';
+            }
+        }
+
+    ],
+
+    columnDefs: [
+        {
+            targets: [5],
+            orderable: false
+        },
+        {
+            targets: [5],
+            className: "text-center",
+        }
+    ],
+
+    "language": {
+        "url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/Portuguese.json"
+    }
+});
+
 //javascript do multiselect, definição de padrões e traduções tela pesquisa
 $('#pesquisaCategoria').multiselect({
     buttonWidth: '100%',
@@ -171,55 +218,6 @@ function limpaFormularioCadastroLinha() {
     $('#cadastroPinPuk1').val('')
     $('#cadastroPinPuk2').val('')
 }
-
-//javascript da tabela que aciona o metodo Lista Linhas
-const tabelaLinhas = $("#tabelaLinhas").DataTable({
-    "processing": true,
-    "serverSide": true,
-    "ajax": {
-        "type": "post",
-        "url": base_url("Linhas/listaLinhas"),
-        dataType: "json",
-        data: function (d) {
-            d.numeroLinha = $("#pesquisaNumero").val()
-            d.codigoChip = $("#pesquisaCodigoChip").val()
-            d.idCategoria = $("#pesquisaCategoria").val()
-            d.idUsuarioRegistro = $("#pesquisaCadastradoPor").val()
-            d.idDisponibilidade = $("#pesquisaDisponibilidade").val()
-            d.status = $("#pesquisaStatusLinha").val()
-        }
-    },
-    "columns": [
-        { "data": "id_linha" },
-        { "data": "numero_linha" },
-        { "data": "codigo_chip" },
-        { "data": "nome_categoria" },
-        { "data": "status" },
-        {
-            data: "acao",
-            render: function (data, type, row, meta) {
-                return '<button style="padding: 0 5px;" class="btn btn-primary visualizar"><i class="fas fa-eye"></i></button>';
-            }
-        }
-
-    ],
-
-    columnDefs: [
-        {
-            targets: [5],
-            orderable: false
-        },
-        {
-            targets: [5],
-            className: "text-center",
-        }
-    ],
-
-    "language": {
-        "url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/Portuguese.json"
-    }
-});
-
 
 $("#btnPesquisarFiltros").click(function (event) {
     event.preventDefault()

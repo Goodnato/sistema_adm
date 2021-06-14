@@ -191,9 +191,13 @@ class Linhas extends CI_Controller
             $filtrosSql .= "AND cg.id IN(" . implode(", ", $this->input->post('idCategoria')) . ") ";
         }
 
-        /*if (is_array($this->input->post('idDisponibilidade')) && count($this->input->post('idDisponibilidade')) > 0) {
-            $filtrosSql .= "AND md.id IN(" . implode(", ", $this->input->post('idDisponibilidade')) . ") ";
-        }*/
+        if (is_array($this->input->post('idUsuarioRegistro')) && count($this->input->post('idUsuarioRegistro')) > 0) {
+            $filtrosSql .= "AND li.id_usuario_registro IN(" . implode(", ", $this->input->post('idUsuarioRegistro')) . ") ";
+        }
+
+        if (is_array($this->input->post('idDisponibilidade')) && count($this->input->post('idDisponibilidade')) > 0) {
+            $filtrosSql .= "AND sd.id IN(" . implode(", ", $this->input->post('idDisponibilidade')) . ") ";
+        }
 
         if (is_array($this->input->post('status')) && count($this->input->post('status')) > 0) {
             $filtrosSql .= "AND li.status IN(" . implode(", ", $this->input->post('status')) . ") ";

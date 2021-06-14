@@ -34,11 +34,14 @@ class Linhas_model extends CI_Model
                     li.numero_linha AS numero_linha,
                     li.codigo_chip AS codigo_chip,
                     cg.nome AS nome_categoria,
+                    li.id_usuario_registro AS usuario_registro,
+                    li.id_status_disponibilidade AS status_disponibilidade,
                     IF(li.status = " . STATUS_ATIVO . " , 'ATIVO', 'INATIVO') AS status
                 FROM
                     {$this->tabela} li
                 INNER JOIN categorias cg ON cg.id = li.id_categoria
                 INNER JOIN operadoras op ON op.id = li.id_operadora
+                INNER JOIN status_disponibilidades sd ON sd.id = li.id_status_disponibilidade
                 WHERE
                     1 = 1
                     $procurarSql
@@ -57,6 +60,7 @@ class Linhas_model extends CI_Model
                 INNER JOIN categorias cg ON cg.id = li.id_categoria
                 INNER JOIN operadoras op ON op.id = li.id_operadora
                 INNER JOIN usuarios us ON us.id = li.id_usuario_registro
+                INNER JOIN status_disponibilidades sd ON sd.id = li.id_status_disponibilidade
                 WHERE
                     1 = 1 
                     $procurarSql";
