@@ -96,7 +96,7 @@ class Distribuicoes_model extends CI_Model
                     li.numero_linha,
                     li.id AS id_linha,
                     cg.nome AS categoria,
-                    cc.id AS centro_custo,
+                    CONCAT(cc.id, ' (', cc.area, ')') AS centro_custo,
                     co.cidade AS cidade,
                     u.nome AS nome_usuario,
                     DATE_FORMAT(dt.data_registro, '%d/%m/%Y') AS data_registro,

@@ -78,7 +78,7 @@
                         <th scope="col">IMEI</th>
                         <th scope="col">Linha</th>
                         <th scope="col">Modelo</th>
-                        <th scope="col">Colaborador</th>
+                        <th scope="col">Colaborador (Matrícula)</th>
                         <th scope="col">Cidade</th>
                         <th scope="col">Disponibilidade</th>
                         <th scope="col">Ação</th>
@@ -217,7 +217,7 @@
                                 </div>
                                 <div class="row mt-2">
                                     <div class="col">
-                                        <label for="editaCentroCusto" class="form-label">Centro de custo</label>
+                                        <label for="editaCentroCusto" class="form-label">Centro de custo (Área) </label>
                                         <input type="text" class="form-control form-control-sm" id="editaCentroCusto" disabled>
                                     </div>
                                     <div class="col">
