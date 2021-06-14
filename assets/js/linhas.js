@@ -138,7 +138,7 @@ $('#pesquisaNumero').mask("(00)00000-0000");
 $('#cadastroNumero').mask("(00)00000-0000");
 $('#cadastroPinPuk1').mask("0000-00000000");
 $('#cadastroPinPuk2').mask("0000-00000000");
-$('#cadastroCodigoChip').mask("000000000000000");
+$('#cadastroCodigoChip').mask("00000000000000000000");
 $('#editaPinPuk1').mask("0000-00000000");
 $('#editaPinPuk2').mask("0000-00000000");
 
