@@ -133,9 +133,8 @@ class Linhas extends CI_Controller
 
     public function listaLinhas()
     {
-        $numeroPorPagina = $this->input->post('length');
-        $inicioLimite = $this->input->post('start');
-        $finalLimite = $inicioLimite + $numeroPorPagina;
+        $totalPorPagina = $this->input->post('length');
+        $inicioPagina = $this->input->post('start');
         $draw = $this->input->post('draw');
         $indiceColuna = $this->input->post('order')[0]['column'];
         $ordenar = [
@@ -144,10 +143,9 @@ class Linhas extends CI_Controller
         ];
 
         $procurarSql = $this->montaCondicaoListaLinhasProcurar();
-
         $filtrosSql = $this->montaCondicaoListaLinhasFiltros();
 
-        $listaLinhas = $this->Linhas_model->listaLinhas(($procurarSql . $filtrosSql), $ordenar, $inicioLimite, $finalLimite);
+        $listaLinhas = $this->Linhas_model->listaLinhas(($procurarSql . $filtrosSql), $ordenar, $totalPorPagina, $inicioPagina);
         //organizar o array para fazer json_encode e popular a tabela
         $teste = [
             "draw" => $draw,

@@ -27,7 +27,7 @@ class Linhas_model extends CI_Model
         $this->db->update($this->tabela, $dadosLinha, ['id' => $idLinha]);
     }
 
-    public function listaLinhas($procurarSql, $ordenar, $inicioLimite, $finalLimite)
+    public function listaLinhas($procurarSql, $ordenar, $totalPorPagina, $inicioPagina)
     {
         $sql = "SELECT
                     li.id AS id_linha,
@@ -46,7 +46,8 @@ class Linhas_model extends CI_Model
                     1 = 1
                     $procurarSql
                 ORDER BY {$ordenar['coluna']} {$ordenar['direcao']}
-                LIMIT $inicioLimite, $finalLimite";
+                LIMIT $totalPorPagina
+                OFFSET $inicioPagina";
 
         return $this->db->query($sql)->result_array();
     }
