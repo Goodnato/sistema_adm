@@ -44,7 +44,7 @@ class Distribuicoes_model extends CI_Model
         $this->db->insert($this->tabela, $dadosDistribuicao);
     }
 
-    public function listaDistribuicoes($procurarSql, $ordenar, $inicioLimite, $finalLimite)
+    public function listaDistribuicoes($procurarSql, $ordenar, $totalPorPagina, $inicioPagina)
     {
         $sql = "SELECT
                     dt.id AS id_distribuicao,
@@ -67,7 +67,8 @@ class Distribuicoes_model extends CI_Model
                     1 = 1
                     $procurarSql
                 ORDER BY {$ordenar['coluna']} {$ordenar['direcao']}
-                LIMIT $inicioLimite, $finalLimite";
+                LIMIT $totalPorPagina
+                OFFSET $inicioPagina";
 
         return $this->db->query($sql)->result_array();
     }
@@ -83,6 +84,28 @@ class Distribuicoes_model extends CI_Model
 
         return count($resultado) == 0 ? 0 : $resultado[0]['total'];
     }
+
+    public function totalRegistroDistribuicoesFiltrado($procurarSql)
+    {
+        $sql = "SELECT
+                    COUNT(dt.id) AS total
+                FROM
+                    {$this->tabela} dt
+                LEFT JOIN aparelhos ap ON ap.id = dt.id_aparelho
+                INNER JOIN linhas li ON li.id = dt.id_linha
+                INNER JOIN colaboradores co ON co.id = dt.id_colaborador
+                INNER JOIN centro_custo cc ON cc.id = co.id_centro_custo
+                INNER JOIN status_disponibilidades sd ON sd.id = dt.id_status_disponibilidade
+                WHERE
+                    1 = 1
+                    $procurarSql";
+
+        $resultado = $this->db->query($sql)->result_array();
+
+        return count($resultado) == 0 ? 0 : $resultado[0]['total'];
+    }
+
+
 
     public function consultaDistribuicaoPorId($idDistribuicao)
     {

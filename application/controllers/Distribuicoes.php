@@ -373,9 +373,8 @@ class Distribuicoes extends CI_Controller
 
     public function listaDistribuicoes()
     {
-        $numeroPorPagina = $this->input->post('length');
-        $inicioLimite = $this->input->post('start');
-        $finalLimite = $inicioLimite + $numeroPorPagina;
+        $totalPorPagina = $this->input->post('length');
+        $inicioPagina = $this->input->post('start');
         $draw = $this->input->post('draw');
         $indiceColuna = $this->input->post('order')[0]['column'];
         $ordenar = [
@@ -385,12 +384,12 @@ class Distribuicoes extends CI_Controller
         $procurarSql = $this->montaCondicaoListaDistribuicoesProcurar();
         $filtrosSql = $this->montaCondicaoListaDistribuicoesFiltros();
 
-        $listaDistribuicoes = $this->Distribuicoes_model->listaDistribuicoes(($procurarSql . $filtrosSql), $ordenar, $inicioLimite, $finalLimite);
+        $listaDistribuicoes = $this->Distribuicoes_model->listaDistribuicoes(($procurarSql . $filtrosSql), $ordenar, $totalPorPagina, $inicioPagina);
 
         $dadosTabela = [
             "draw" => $draw,
             "recordsTotal" => $this->Distribuicoes_model->totalRegistroDistribuicoes(),
-            "recordsFiltered" => count($listaDistribuicoes),
+            "recordsFiltered" => $this->Distribuicoes_model->totalRegistroDistribuicoesFiltrado(($procurarSql . $filtrosSql)),
             "data" => $listaDistribuicoes
         ];
         echo json_encode($dadosTabela);
@@ -403,10 +402,9 @@ class Distribuicoes extends CI_Controller
         $procurarSql = " ";
         if (!empty($procurarValor)) {
             $procurarSql = " AND (
-                md.nome LIKE '%" . $procurarValor . "%' OR 
+                ap.imei1 LIKE '%" . $procurarValor . "%' OR 
                 li.numero_linha LIKE '%" . $procurarValor . "%' OR 
                 co.nome LIKE '%" . $procurarValor . "%' OR
-                cc.id LIKE '%" . $procurarValor . "%' OR
                 co.cidade LIKE '%" . $procurarValor . "%' OR
                 sd.nome LIKE '%" . $procurarValor . "%' 
             )";
