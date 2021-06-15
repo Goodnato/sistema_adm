@@ -92,7 +92,7 @@ class Distribuicoes_model extends CI_Model
                 FROM
                     {$this->tabela} dt
                 LEFT JOIN aparelhos ap ON ap.id = dt.id_aparelho
-                INNER JOIN linhas li ON li.id = dt.id_linha
+                LEFT JOIN linhas li ON li.id = dt.id_linha
                 INNER JOIN colaboradores co ON co.id = dt.id_colaborador
                 INNER JOIN centro_custo cc ON cc.id = co.id_centro_custo
                 INNER JOIN status_disponibilidades sd ON sd.id = dt.id_status_disponibilidade
