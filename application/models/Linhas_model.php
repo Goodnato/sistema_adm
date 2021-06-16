@@ -36,6 +36,7 @@ class Linhas_model extends CI_Model
                     cg.nome AS nome_categoria,
                     li.id_usuario_registro AS usuario_registro,
                     li.id_status_disponibilidade AS status_disponibilidade,
+                    sd.nome AS nome_disponibilidade,
                     IF(li.status = " . STATUS_ATIVO . " , 'ATIVO', 'INATIVO') AS status
                 FROM
                     {$this->tabela} li

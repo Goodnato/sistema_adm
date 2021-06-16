@@ -78,7 +78,7 @@
                         <th scope="col">Número da Linha</th>
                         <th scope="col">Código do Chip</th>
                         <th scope="col">Categoria</th>
-                        <th scope="col">Status</th>
+                        <th scope="col">Disponibilidade</th>
                         <th scope="col">Ação</th>
                     </tr>
                 </thead>

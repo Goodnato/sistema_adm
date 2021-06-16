@@ -19,7 +19,7 @@ const tabelaLinhas = $("#tabelaLinhas").DataTable({
         { "data": "numero_linha" },
         { "data": "codigo_chip" },
         { "data": "nome_categoria" },
-        { "data": "status" },
+        { "data": "nome_disponibilidade" },
         {
             data: "acao",
             render: function (data, type, row, meta) {
