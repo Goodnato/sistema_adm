@@ -82,14 +82,7 @@ class Sistemas extends CI_Controller
 
     public function atualizaColaboradores()
     {
-        $todosColaboradoresImport = $this->Colaboradores_model->consultaTodosColaboradoresImport();
-
-        if (empty($todosColaboradoresImport)) {
-            echo 'Nenhum colaborador no import';
-            return false;
-        }
-
-        $this->Colaboradores_model->atualizaTodosColeboradores($todosColaboradoresImport);
+        $this->Colaboradores_model->atualizaTodosColeboradores();
         echo 'Finalizado';
     }
 }

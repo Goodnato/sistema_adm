@@ -21,19 +21,7 @@ class Colaboradores_model extends CI_Model
         return count($resultado) == 0 ? null : $resultado[0]['nome'];
     }
 
-    public function consultaTodosColaboradoresImport()
-    {
-        $sql = "SELECT
-                    *
-                FROM 
-                    {$this->tabela}_import";
-
-        $resultado = $this->db->query($sql)->result_array();
-
-        return count($resultado) == 0 ? null : $resultado;
-    }
-
-    public function atualizaTodosColeboradores($todosColaboradoresImport)
+    public function atualizaTodosColeboradores()
     {
         $sql =
             "REPLACE INTO {$this->tabela}
@@ -49,24 +37,7 @@ class Colaboradores_model extends CI_Model
                     cidade,
                     matricula_coordenador
                 )
-                VALUES ";
-
-        foreach ($todosColaboradoresImport as $colaborador) {
-            $sql .= "(
-                '" . trim($colaborador['id']) . "',
-                '" . trim($colaborador['nome']) . "',
-                '" . trim($colaborador['id_centro_custo']) . "',
-                '" . trim($colaborador['cargo']) . "',
-                '" . trim($colaborador['email']) . "',
-                '" . trim($colaborador['gestor']) . "',
-                '" . trim($colaborador['situacao']) . "',
-                '" . trim($colaborador['empresa']) . "',
-                '" . trim($colaborador['cidade']) . "',
-                '" . trim($colaborador['matricula_coordenador']) . "'
-            ),";
-        }
-
-        $sql = substr($sql, 0, -1);
+                SELECT * FROM {$this->tabela}_import";
 
         $this->db->query($sql);
     }
