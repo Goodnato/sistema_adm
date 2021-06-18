@@ -348,11 +348,6 @@ class Distribuicoes extends CI_Controller
             return $colaborador;
         }
 
-        $colaborador = $this->Colaboradores_model->consultaColaboradorImportPelaMatricula($matricula);
-        if (!empty($colaborador)) {
-            return $colaborador;
-        }
-
         return null;
     }
 

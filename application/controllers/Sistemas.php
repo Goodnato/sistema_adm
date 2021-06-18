@@ -13,6 +13,7 @@ class Sistemas extends CI_Controller
         }
 
         $this->load->model('Usuarios_model');
+        $this->load->model('Colaboradores_model');
     }
 
     public function sair()
@@ -77,5 +78,18 @@ class Sistemas extends CI_Controller
     public function acessoProibido()
     {
         $this->load->view('acesso_proibido');
+    }
+
+    public function atualizaColaboradores()
+    {
+        $todosColaboradoresImport = $this->Colaboradores_model->consultaTodosColaboradoresImport();
+
+        if (empty($todosColaboradoresImport)) {
+            echo 'Nenhum colaborador no import';
+            return false;
+        }
+
+        $this->Colaboradores_model->atualizaTodosColeboradores($todosColaboradoresImport);
+        echo 'Finalizado';
     }
 }
