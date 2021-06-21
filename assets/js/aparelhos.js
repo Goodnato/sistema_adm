@@ -198,7 +198,7 @@ $("#cadastroModelo").change(function (e) {
 $('#btnSalvarAparelho').click(function (event) {
     Swal.fire({
         title: 'Deseja salvar o aparelho?',
-        text: "Não poderá ser alterado depois",
+        text: "Favor, confirme se os dados registrados estão corretos",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#28a745',

@@ -113,17 +113,17 @@
                                 </div>
                                 <div class="row mt-2">
                                     <div class="col-6">
-                                        <label for="cadastroNumero" class="form-label">Número da Linha</label>
+                                        <label for="cadastroNumero" class="form-label">Número da Linha*</label>
                                         <input type="text" class="form-control form-control-sm" id="cadastroNumero" placeholder="DIGITE AQUI">
                                     </div>
                                     <div class="col-6">
-                                        <label for="cadastroCodigoChip" class="form-label">Código do Chip</label>
+                                        <label for="cadastroCodigoChip" class="form-label">Código do Chip*</label>
                                         <input type="text" class="form-control form-control-sm" id="cadastroCodigoChip" placeholder="DIGITE AQUI">
                                     </div>
                                 </div>
                                 <div class="row mt-2">
                                     <div class="col-6">
-                                        <label for="cadastroCategoria" class="form-label">Categoria</label>
+                                        <label for="cadastroCategoria" class="form-label">Categoria*</label>
                                         <select class="form-control form-control-sm" id="cadastroCategoria">
                                             <option value>SELECIONE</option>
                                             <?php foreach ($listaCategoriasAtivas as $categoria) { ?>
@@ -132,7 +132,7 @@
                                         </select>
                                     </div>
                                     <div class="col-6">
-                                        <label for="cadastroOperadora" class="form-label">Operadoras</label>
+                                        <label for="cadastroOperadora" class="form-label">Operadoras*</label>
                                         <select class="form-control form-control-sm" id="cadastroOperadora">
                                             <option value>SELECIONE</option>
                                             <?php foreach ($listaOperadorasAtivas as $operadora) { ?>
@@ -218,11 +218,11 @@
                                 </div>
                                 <div class="row mt-2">
                                     <div class="col">
-                                        <label for="editaPinPuk1" class="form-label">Pin-Puk 1*</label>
+                                        <label for="editaPinPuk1" class="form-label">Pin-Puk 1</label>
                                         <input type="text" name="pin_puk1" class="form-control form-control-sm" id="editaPinPuk1">
                                     </div>
                                     <div class="col">
-                                        <label for="editaPinPuk2" class="form-label">Pin-Puk 2*</label>
+                                        <label for="editaPinPuk2" class="form-label">Pin-Puk 2</label>
                                         <input type="text" name="pin_puk2" class="form-control form-control-sm" id="editaPinPuk2">
                                     </div>
                                 </div>
