@@ -262,7 +262,26 @@ class Aparelhos extends CI_Controller
 
         echo json_encode([
             'status' => true,
-            'aparelho' => $aparelho
+            'aparelho' => $aparelho,
+			'logs' => $this->converteLogParaArray($this->Logs_alteracoes_model->consultarLog('aparelhos', $idAparelho))
         ]);
+    }
+
+	private function converteLogParaArray($listaLog)
+    {
+        if (count($listaLog) == 0) {
+            return [];
+        }
+
+        $i = 0;
+        foreach ($listaLog as $log) {
+            $logFormatado[$i] = $log;
+            $logFormatado[$i]['valor_antigo'] = json_decode($log['valor_antigo'], true);
+            $logFormatado[$i]['valor_novo'] = json_decode($log['valor_novo'], true);
+
+            $i++;
+        }
+
+        return $logFormatado;
     }
 }

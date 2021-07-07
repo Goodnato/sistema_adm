@@ -276,6 +276,25 @@
                         </div>
                     </div>
                 </div>
+				<div class="row mt-3">
+					<div class="col-12">
+						<div class="alert alert-primary text-center" role="alert">
+							Registro de alteração
+						</div>
+						<table class="table bg-light">
+							<thead>
+								<tr>
+									<th scope="col">#</th>
+									<th scope="col">Usuário</th>
+									<th scope="col">Condição</th>
+									<th scope="col">Data</th>
+								</tr>
+							</thead>
+							<tbody id="logAparelho">
+							</tbody>
+						</table>
+					</div>
+				</div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-window-close"></i> Cancelar</button>
@@ -289,6 +308,8 @@
 <script>
     const statusCondicaoAparelho = <?= json_encode($listaStatusCondicoes); ?>;
     const STATUS_CONDICAO_DESCARTADO = <?= CONDICAO_DESCARTADO ?>;
+    const STATUS_CONDICAO_MANUTENCAO = <?= CONDICAO_MANUTENCAO ?>;
+	const OBJETO_CONDICAO = <?= json_encode(ARRAY_CONDICAO) ?>;
     const STATUS_ATIVO = <?= STATUS_ATIVO ?>;
     const STATUS_INATIVO = <?= STATUS_INATIVO ?>;
 </script>

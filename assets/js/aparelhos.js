@@ -314,6 +314,43 @@ tabelaAparelhos.on('click', '.visualizar', function (event) {
             $('#editaValorDisponibilidade').val(response.aparelho.status_disponibilidade)
             $('#editaStatus').val(response.aparelho.status).multiselect('refresh')
 
+			let tabelaLogAparelho = $('#logAparelho')
+			tabelaLogAparelho.empty()
+
+			let contador = 1
+			let contadorCondicao = 0;
+
+			$.each(response.logs, function (index, value) {
+				if(
+					(
+						parseInt(value.valor_novo.id_status_condicao_aparelho) === STATUS_CONDICAO_MANUTENCAO &&
+						parseInt(value.valor_antigo.id_status_condicao_aparelho) !== STATUS_CONDICAO_MANUTENCAO
+					)
+					||
+					(
+						parseInt(value.valor_novo.id_status_condicao_aparelho) !== STATUS_CONDICAO_MANUTENCAO &&
+						parseInt(value.valor_antigo.id_status_condicao_aparelho) === STATUS_CONDICAO_MANUTENCAO
+					)
+				) {
+					contadorCondicao++;
+					
+					tabelaLogAparelho.append(
+						`<tr>
+							<td>${contador}</td>
+							<td>${value.nome_usuario}</td>
+							<td>${OBJETO_CONDICAO[value.valor_novo.id_status_condicao_aparelho]}</td>
+							<td>${value.data_registro}</td>
+						</tr>`
+					)
+					
+					if(contadorCondicao == 2) {
+						contadorCondicao = 0;
+					}
+
+					contador++;
+				}
+            })
+
             $('#modalVerAparelho').modal('show')
         }
     }).fail(function (response) {

@@ -289,7 +289,6 @@ tabelaDistribuicao.on('click', '.visualizar', function (event) {
             idDistribuicao
         }
     }).done(function (response) {
-        console.log(response)
         if (response.status) {
             $('#tituloDistribuicao').text(response.distribuicao.nome_colaborador)
             $('#editaIdDistribuicao').val(idDistribuicao)
