@@ -123,6 +123,7 @@ class Distribuicoes_model extends CI_Model
                     co.cidade AS cidade,
                     u.nome AS nome_usuario,
                     DATE_FORMAT(dt.data_registro, '%d/%m/%Y') AS data_registro,
+					mvd.motivo,
                     'EM USO' AS status_disponibilidade
                 FROM
                     {$this->tabela} dt
@@ -133,6 +134,7 @@ class Distribuicoes_model extends CI_Model
                 LEFT JOIN categorias cg ON cg.id = li.id_categoria
                 LEFT JOIN centro_custo cc ON cc.id = co.id_centro_custo
                 INNER JOIN usuarios u ON u.id = dt.id_usuario_registro
+                LEFT JOIN motivos_devolucoes mvd ON mvd.id = dt.id_motivo_devolucao
                 WHERE
                     dt.id = $idDistribuicao";
 
@@ -141,9 +143,12 @@ class Distribuicoes_model extends CI_Model
         return count($resultado) == 0 ? [] : $resultado[0];
     }
 
-    public function fecharDistribuicao($idDistribuicao)
+    public function fecharDistribuicao($idDistribuicao, $idMotivoDevolucao)
     {
-        $this->db->update($this->tabela, ['id_status_disponibilidade' => DISTRIBUICAO_DEVOLVIDO], ['id' => $idDistribuicao]);
+        $this->db->update($this->tabela, [
+			'id_status_disponibilidade' => DISTRIBUICAO_DEVOLVIDO,
+			'id_motivo_devolucao' => $idMotivoDevolucao
+		], ['id' => $idDistribuicao]);
     }
 
     public function alterarDisponibilidadeItens($tabela, $idItem)

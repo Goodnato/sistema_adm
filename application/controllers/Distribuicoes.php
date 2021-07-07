@@ -499,8 +499,17 @@ class Distribuicoes extends CI_Controller
     public function fecharDistribuicao()
     {
         $idDistribuicao = (int) $this->input->post('idDistribuicao');
+        $idMotivoDevolucao = (int) $this->input->post('idMotivoDevolucao');
 
         if ($idDistribuicao <= 0) {
+            echo json_encode([
+                'status' => false
+            ]);
+
+            return false;
+        }
+
+		if (!array_key_exists($idMotivoDevolucao, ARRAY_MOTIVO)) {
             echo json_encode([
                 'status' => false
             ]);
@@ -518,7 +527,7 @@ class Distribuicoes extends CI_Controller
             return false;
         }
 
-        $this->Distribuicoes_model->fecharDistribuicao($idDistribuicao);
+        $this->Distribuicoes_model->fecharDistribuicao($idDistribuicao, $idMotivoDevolucao);
 
         if (!empty($distribuicao['id_aparelho'])) {
             $this->Distribuicoes_model->alterarDisponibilidadeItens('aparelhos', $distribuicao['id_aparelho']);
@@ -531,8 +540,18 @@ class Distribuicoes extends CI_Controller
             'tabela' => 'distribuicoes',
             'id_usuario' => $this->session->dadosUsuario['id'],
             'identificador' => $idDistribuicao,
-            'valor_antigo' => json_encode(['id_status_disponibilidade' => DISTRIBUICAO_EM_USO, 'status_disponibilidade' => "EM USO"]),
-            'valor_novo' => json_encode(['id_status_disponibilidade' => DISTRIBUICAO_DEVOLVIDO, 'status_disponibilidade' => "DEVOLVIDO"])
+            'valor_antigo' => json_encode([
+				'id_status_disponibilidade' => DISTRIBUICAO_EM_USO, 
+				'status_disponibilidade' => "EM USO",
+				'id_motivo_devolucao' => null,
+				'motivo_devolucao' => null
+			]),
+            'valor_novo' => json_encode([
+				'id_status_disponibilidade' => DISTRIBUICAO_DEVOLVIDO, 
+				'status_disponibilidade' => "DEVOLVIDO",
+				'id_motivo_devolucao' => $idMotivoDevolucao,
+				'motivo_devolucao' => ARRAY_MOTIVO[$idMotivoDevolucao]
+			])
         ]);
 
         echo json_encode([

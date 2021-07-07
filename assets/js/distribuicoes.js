@@ -317,11 +317,13 @@ tabelaDistribuicao.on('click', '.visualizar', function (event) {
             contador++;
 
             $.each(response.logs, function (index, value) {
+				let disponibilidade = value.valor_novo.motivo_devolucao == undefined ? value.valor_novo.status_disponibilidade : value.valor_novo.status_disponibilidade + ` (${value.valor_novo.motivo_devolucao})`
+				
                 tabelaLogDistribuicao.append(
                     `<tr>
                         <td>${contador}</td>
                         <td>${value.nome_usuario}</td>
-                        <td>${value.valor_novo.status_disponibilidade}</td>
+                        <td>${disponibilidade}</td>
                         <td>${value.data_registro}</td>
                     </tr>`
                 )
@@ -347,6 +349,21 @@ $("#btnFecharDistribuicao").click(function () {
         title: 'Deseja fechar?',
         text: "Confirme se os itens foram devolvidos",
         icon: 'warning',
+		input: 'select',
+		inputOptions: MOTIVOS,
+		customClass: {
+			input: 'form-control-sm mb-1 mt-3 h-100',
+		},
+		inputPlaceholder: 'SELECIONE MOTIVO',
+		inputValidator: (value) => {
+			return new Promise((resolve) => {
+			  if (value == "") {
+				resolve('SELECIONE UM MOTIVO')
+			  } else {
+				  resolve()
+			  }
+			})
+		},
         showCancelButton: true,
         confirmButtonColor: '#28a745',
         cancelButtonColor: '#d33',
@@ -363,21 +380,29 @@ $("#btnFecharDistribuicao").click(function () {
             dataType: "json",
             type: "Post",
             data: {
-                idDistribuicao
+                idDistribuicao,
+				idMotivoDevolucao: result.value
             }
         }).done(function (response) {
+			if(response.status) {
+				Swal.fire({
+					position: 'center',
+					icon: 'success',
+					title: 'Fechado com sucesso!',
+					showConfirmButton: false,
+					timer: 1500,
+					heightAuto: false
+				}).then((result) => {
+					tabelaDistribuicao.ajax.reload()
+					$('#modalVerDistribuicao').modal('hide')
+				})
+
+				return
+			}
+
+			alert("Ocorreu um erro ao fechar a distribuição. Contate o administrador do sistema")
             console.log(response)
-            Swal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Fechado com sucesso!',
-                showConfirmButton: false,
-                timer: 1500,
-                heightAuto: false
-            }).then((result) => {
-                tabelaDistribuicao.ajax.reload()
-                $('#modalVerDistribuicao').modal('hide')
-            })
+            $('#modalVerDistribuicao').modal('hide')
         }).fail(function (response) {
             alert("Ocorreu um erro ao fechar a distribuição. Contate o administrador do sistema")
             console.log(response)

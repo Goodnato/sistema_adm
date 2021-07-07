@@ -258,3 +258,6 @@
         </div>
     </div>
 </div>
+<script>
+	const MOTIVOS = <?= json_encode(ARRAY_MOTIVO) ?>;
+</script>
