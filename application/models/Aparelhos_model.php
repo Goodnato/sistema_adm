@@ -178,4 +178,36 @@ class Aparelhos_model extends CI_Model
 
         return $this->db->query($sql)->result_array();
     }
+
+	public function listaAparelhosExcel($procurarSql)
+    {
+        $sql = "SELECT
+                    ap.imei1,
+                    ap.imei2,
+                    mc.nome AS nome_marca,
+                    md.nome AS nome_modelo,
+                    sc.nome AS status_condicao,
+                    CASE ap.id_status_condicao_aparelho
+                        WHEN " . CONDICAO_MANUTENCAO . " THEN 'INDISPONIVEL'
+                        WHEN " . CONDICAO_DESCARTADO . " THEN 'INDISPONIVEL'
+                        ELSE sd.nome
+                    END AS status_disponibilidade,
+                    ap.valor,
+					ap.valor_depreciado,
+					ap.nota_fiscal,
+					DATE_FORMAT(ap.data_nota, '%d/%m/%Y') AS data_nota,
+                    us.nome AS nome_usuario_registro
+                FROM
+                    {$this->tabela} ap
+                INNER JOIN marcas mc ON mc.id = ap.id_marca
+                INNER JOIN modelos md ON md.id = ap.id_modelo
+                INNER JOIN status_condicoes_aparelhos sc ON sc.id = ap.id_status_condicao_aparelho
+                INNER JOIN status_disponibilidades sd ON sd.id = ap.id_status_disponibilidade
+                INNER JOIN usuarios us ON us.id = ap.id_usuario_registro
+                WHERE
+                    1 = 1
+                    $procurarSql";
+
+        return $this->db->query($sql)->result_array();
+    }
 }

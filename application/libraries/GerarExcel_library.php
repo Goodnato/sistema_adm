@@ -8,35 +8,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class GerarExcel_library
 {
-	public function gerar()
+	public function gerar($nomeArquivo, $cabecalho, $valores)
 	{
 		$writer = WriterEntityFactory::createXLSXWriter();
-		// $writer = WriterEntityFactory::createODSWriter();
-		// $writer = WriterEntityFactory::createCSVWriter();
+		$writer->openToBrowser($nomeArquivo . ".xlsx");
 
-		$writer->openToBrowser("Teste.xlsx"); // stream data directly to the browser
+		$writer->addRow(WriterEntityFactory::createRowFromArray($cabecalho));
 
-		$cells = [
-			WriterEntityFactory::createCell('Carl'),
-			WriterEntityFactory::createCell('is'),
-			WriterEntityFactory::createCell('great!'),
-		];
-
-		/** add a row at a time */
-		$singleRow = WriterEntityFactory::createRow($cells);
-		$writer->addRow($singleRow);
-
-		/** add multiple rows at a time */
-		$multipleRows = [
-			WriterEntityFactory::createRow($cells),
-			WriterEntityFactory::createRow($cells),
-		];
-		$writer->addRows($multipleRows); 
-
-		/** Shortcut: add a row from an array of values */
-		$values = ['Carl', 'is', 'great!'];
-		$rowFromValues = WriterEntityFactory::createRowFromArray($values);
-		$writer->addRow($rowFromValues);
+		foreach ($valores as $linha) {
+			$writer->addRow(WriterEntityFactory::createRowFromArray($linha));
+		}
 
 		$writer->close();
 	}

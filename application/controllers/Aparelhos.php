@@ -13,6 +13,7 @@ class Aparelhos extends CI_Controller
         }
 
         $this->load->library('Sistemas_library');
+        $this->load->library('GerarExcel_library');
 
         if (!$this->sistemas_library->validaAcessoTela($this->session->dadosUsuario['telas_autorizadas'], PAGINA_APARELHOS)) {
             $this->load->view('acesso_proibido');
@@ -160,6 +161,27 @@ class Aparelhos extends CI_Controller
             'status' => true
         ]);
     }
+
+	public function gerarExcel()
+	{
+		$filtrosSql = $this->montaCondicaoListaAparelhosFiltros();
+
+		$listaAparelhos = $this->Aparelhos_model->listaAparelhosExcel($filtrosSql);
+
+		$this->gerarexcel_library->gerar("relatorio_aparelhos", [
+			"IMEI 1",
+			"IMEI 2",
+			"MARCA",
+			"MODELO",
+			"CONDIÇÃO APARELHO",
+			"DISPONIBILIDADE",
+			"VALOR",
+			"VALOR DEPRECIADO",
+			"NOTA FISCAL",
+			"DATA NOTA FISCAL",
+			"USUARIO REGISTRO"
+		], $listaAparelhos);
+	}
 
     public function listaAparelhos()
     {

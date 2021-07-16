@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row justify-content-center mt-5">
         <div class="col-6 p-3" style="background-color: #FAFBFC;">
-            <form>
+            <form action="<?= base_url("/Aparelhos/gerarExcel") ?>" method="Post">
                 <div class="row">
                     <div class="col-12">
                         <h1 class="text-center">Aparelhos</h1>
@@ -10,7 +10,7 @@
                 <div class="row">
                     <div class="col">
                         <label for="pesquisaMarca" class="form-label">Marca</label>
-                        <select id="pesquisaMarca" multiple="multiple">
+                        <select name="idMarca[]" id="pesquisaMarca" multiple="multiple">
                             <?php foreach ($listaMarcas as $marca) { ?>
                                 <option value="<?= $marca['id'] ?>"><?= $marca['nome'] ?></option>
                             <?php } ?>
@@ -18,7 +18,7 @@
                     </div>
                     <div class="col">
                         <label for="pesquisaModelo" class="form-label">Modelo</label>
-                        <select id="pesquisaModelo" multiple="multiple">
+                        <select name="idModelo[]" id="pesquisaModelo" multiple="multiple">
                             <?php foreach ($listaModelos as $modelo) { ?>
                                 <option value="<?= $modelo['id'] ?>"><?= $modelo['nome'] ?></option>
                             <?php } ?>
@@ -28,11 +28,11 @@
                 <div class="row mt-2">
                     <div class="col">
                         <label for="pesquisaImei" class="form-label">IMEI</label>
-                        <input type="number" class="form-control form-control-sm" id="pesquisaImei" placeholder="DIGITE AQUI">
+                        <input type="number" name="imei" class="form-control form-control-sm" id="pesquisaImei" placeholder="DIGITE AQUI">
                     </div>
                     <div class="col">
                         <label for="pesquisaCadastradoPor" class="form-label">Cadastrado por</label>
-                        <select id="pesquisaCadastradoPor" multiple="multiple">
+                        <select name="idUsuarioRegistro[]" id="pesquisaCadastradoPor" multiple="multiple">
                             <?php foreach ($listaUsuariosCadastroAparelho as $cadastradoPor) { ?>
                                 <option value="<?= $cadastradoPor['id'] ?>"><?= $cadastradoPor['nome'] ?></option>
                             <?php } ?>
@@ -42,7 +42,7 @@
                 <div class="row mt-2">
                     <div class="col-4">
                         <label for="pesquisaStatusCondicoes" class="form-label">Condições aparelho</label>
-                        <select id="pesquisaStatusCondicoes" multiple="multiple">
+                        <select name="idStatusCondicaoAparelho[]" id="pesquisaStatusCondicoes" multiple="multiple">
                             <?php foreach ($listaStatusCondicoes as $status) { ?>
                                 <option value="<?= $status['id'] ?>"><?= $status['nome'] ?></option>
                             <?php } ?>
@@ -50,7 +50,7 @@
                     </div>
                     <div class="col-4">
                         <label for="pesquisaDisponibilidade" class="form-label">Disponibilidade</label><br>
-                        <select id="pesquisaDisponibilidade" multiple="multiple">
+                        <select name="idDisponibilidade[]" id="pesquisaDisponibilidade" multiple="multiple">
                             <?php foreach ($listaStatusDisponibilidades as $status) { ?>
                                 <option value="<?= $status['id'] ?>"><?= $status['nome'] ?></option>
                             <?php } ?>
@@ -58,7 +58,7 @@
                     </div>
                     <div class="col-4">
                         <label for="pesquisaStatus" class="form-label">Status</label><br>
-                        <select id="pesquisaStatus" multiple="multiple">
+                        <select name="status[]" id="pesquisaStatus" multiple="multiple">
                             <?php foreach (ARRAY_STATUS as $idStatus => $status) { ?>
                                 <option value="<?= $idStatus ?>"><?= $status ?></option>
                             <?php } ?>
@@ -68,7 +68,7 @@
                 <div class="row mt-2">
                     <div class="col-12">
                         <button class="btn btn-primary" id="btnPesquisarFiltros"><i class="fas fa-search"></i> Pesquisar</button>
-                        <button class="btn btn-warning"><i class="fas fa-file-excel"></i> Excel</button>
+                        <button type="submit" class="btn btn-warning"><i class="fas fa-file-excel"></i> Excel</button>
                         <?php if (!$this->session->dadosUsuario['somente_leitura']) { ?>
                             <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#modalNovoAparelho"><i class="fas fa-plus-square"></i> Novo aparelho</button>
                         <?php } ?>
