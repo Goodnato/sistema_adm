@@ -195,7 +195,7 @@
                                     </div>
                                     <div class="col">
                                         <label for="editaCodigoChip" class="form-label">Código Chip*</label>
-                                        <input type="text" name="codigoChip" class="form-control form-control-sm" id="editaCodigoChip" disabled>
+                                        <input type="text" name="codigoChip" class="form-control form-control-sm" id="editaCodigoChip">
                                     </div>
                                 </div>
                                 <div class="row mt-2">

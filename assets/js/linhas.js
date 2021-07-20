@@ -276,6 +276,7 @@ $('#btnEditarLinha').click(function (event) {
         type: "Post",
         data: {
             idLinha: $('#editaIdLinha').val(),
+            codigoChip: $('#editaCodigoChip').val(),
             idCategoria: $('#editaCategoria').val(),
             idOperadora: $('#editaOperadora').val(),
             pinPuk1: $('#editaPinPuk1').val(),

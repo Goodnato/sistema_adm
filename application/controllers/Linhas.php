@@ -90,6 +90,7 @@ class Linhas extends CI_Controller
 
     public function editarLinha()
     {   //var_dump($_POST);exit;
+        $this->form_validation->set_rules("codigoChip", "<b>Código do Chip</b>", "trim|required|integer|is_unique[linhas.codigo_chip]|exact_length[20]");
         $this->form_validation->set_rules("idCategoria", "<b>Categoria</b>", "trim|required|integer|combines[categorias.id]");
         $this->form_validation->set_rules("idOperadora", "<b>Operadora</b>", "trim|required|integer|combines[operadoras.id]");
         $this->form_validation->set_rules("pinPuk1", "<b>Pin-Puk1</b>", "trim|max_length[13]");
@@ -107,6 +108,7 @@ class Linhas extends CI_Controller
 
         $idLinha = $this->input->post('idLinha');
         $dadosLinha = [
+            'codigo_chip' => $this->input->post('codigoChip'),
             'id_categoria' => $this->input->post('idCategoria'),
             'id_operadora' => $this->input->post('idOperadora'),
             'pin_puk1' => $this->input->post('pinPuk1'),
