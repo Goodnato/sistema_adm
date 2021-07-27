@@ -210,4 +210,14 @@ class Aparelhos_model extends CI_Model
 
         return $this->db->query($sql)->result_array();
     }
+
+
+    public function inativarDistribuicao($idAparelho, $idMotivoInativacao)
+    {
+        $this->db->update($this->tabela, [
+			'status' => STATUS_INATIVO,
+			'id_motivo_inativacao' => $idMotivoInativacao
+		], ['id' => $idAparelho]);
+    }
+
 }

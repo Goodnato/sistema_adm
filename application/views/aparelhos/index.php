@@ -265,7 +265,7 @@
                                     </div>
                                     <div class="col-6">
                                         <label for="editaStatus" class="form-label">Status</label><br>
-                                        <select class="form-control form-control-sm" id="editaStatus">
+                                        <select class="form-control form-control-sm" id="editaStatus" disabled>
                                             <?php foreach (ARRAY_STATUS as $idStatus => $status) { ?>
                                                 <option value="<?= $idStatus ?>"><?= $status ?></option>
                                             <?php } ?>
@@ -299,6 +299,9 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-window-close"></i> Cancelar</button>
                 <?php if (!$this->session->dadosUsuario['somente_leitura']) { ?>
+                    <button type="button" class="btn btn-secondary" id="btnInativarAparelho"><i class="fas fa-minus-circle"></i></i> Inativar</button>
+                <?php } ?>
+                <?php if (!$this->session->dadosUsuario['somente_leitura']) { ?>
                     <button type="button" class="btn btn-success" id="btnEditarAparelho"><i class="fas fa-save"></i> Salvar</button>
                 <?php } ?>
             </div>
@@ -312,4 +315,7 @@
 	const OBJETO_CONDICAO = <?= json_encode(ARRAY_CONDICAO) ?>;
     const STATUS_ATIVO = <?= STATUS_ATIVO ?>;
     const STATUS_INATIVO = <?= STATUS_INATIVO ?>;
+    const INATIVO = <?= json_encode(ARRAY_INATIVO) ?>;
 </script>
+
+

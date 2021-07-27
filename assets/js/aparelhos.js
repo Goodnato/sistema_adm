@@ -451,3 +451,71 @@ function limpaFormularioEditar() {
     $('#editaValorDisponibilidade').val('')
     $('#editaStatus').val(STATUS_ATIVO).multiselect('refresh')
 }
+
+
+$("#btnInativarAparelho").click(function () {
+    Swal.fire({
+        title: 'Deseja Inativar?',
+        text: "Não será possível desfazer",
+        icon: 'warning',
+		input: 'select',
+		inputOptions: INATIVO,
+		customClass: {
+			input: 'form-control-sm mb-1 mt-3 h-100',
+		},
+		inputPlaceholder: 'SELECIONE MOTIVO',
+		inputValidator: (value) => {
+			return new Promise((resolve) => {
+			  if (value == "") {
+				resolve('SELECIONE UM MOTIVO')
+			  } else {
+				  resolve()
+			  }
+			})
+		},
+        showCancelButton: true,
+        confirmButtonColor: '#28a745',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: 'Sim'
+    }).then((result) => {
+        if (!result.isConfirmed) {
+            return
+        }
+
+        let idAparelho = $("#editaIdAparelho").val()
+        $.ajax({
+            url: base_url("Aparelhos/inativarAparelho"),
+            dataType: "json",
+            type: "Post",
+            data: {
+                idAparelho,
+				idMotivoInativacao: result.value
+            }
+        }).done(function (response) {
+			if(response.status) {
+				Swal.fire({
+					position: 'center',
+					icon: 'success',
+					title: 'Inativado com sucesso!',
+					showConfirmButton: false,
+					timer: 1500,
+					heightAuto: false
+				}).then((result) => {
+					tabelaAparelhos.ajax.reload()
+					$('#modalVerAparelho').modal('hide')
+				})
+
+				return
+			}
+
+			alert("Ocorreu um erro ao fechar a distribuição. Contate o administrador do sistema")
+            console.log(response)
+            $('#modalVerDistribuicao').modal('hide')
+        }).fail(function (response) {
+            alert("Ocorreu um erro ao fechar a distribuição. Contate o administrador do sistema")
+            console.log(response)
+            $('#modalVerDistribuicao').modal('hide')
+        })
+    })
+})

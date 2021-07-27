@@ -306,4 +306,51 @@ class Aparelhos extends CI_Controller
 
         return $logFormatado;
     }
+
+  
+    public function inativarAparelho()
+    {
+        $idAparelho = (int) $this->input->post('idAparelho');
+        $idMotivoInativacao = (int) $this->input->post('idMotivoInativacao');
+
+        if ($idAparelho<= 0) {
+            echo json_encode([
+                'status' => false
+            ]);
+
+            return false;
+        }
+
+		if (!array_key_exists($idMotivoInativacao, ARRAY_INATIVO)) {
+            echo json_encode([
+                'status' => false
+            ]);
+
+            return false;
+        }
+        
+        $this->Aparelhos_model->inativarDistribuicao($idAparelho, $idMotivoInativacao);
+
+        $this->Logs_alteracoes_model->registrarLog([
+            'tabela' => 'aparelhos',
+            'id_usuario' => $this->session->dadosUsuario['id'],
+            'identificador' => $idAparelho,
+            'valor_antigo' => json_encode([
+				'id_motivo_inativacao' => null,
+				'motivo_inativacao' => null
+			]),
+            'valor_novo' => json_encode([
+				'id_motivo_inativacao' => $idMotivoInativacao,
+				'motivo_devolucao' => ARRAY_INATIVO[$idMotivoInativacao]
+			])
+        ]);
+
+        echo json_encode([
+            'status' => true
+        ]);
+
+        return true;
+    }
+
+
 }
