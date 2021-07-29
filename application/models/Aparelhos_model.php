@@ -98,6 +98,7 @@ class Aparelhos_model extends CI_Model
                     md.nome AS nome_modelo,
                     mc.nome AS nome_marca,
                     ap.id_status_condicao_aparelho,
+                    ap.id_status_disponibilidade,
                     ap.nota_fiscal,
                     ap.data_nota,
                     REPLACE(ap.valor, '.', ',') AS valor,
@@ -212,10 +213,11 @@ class Aparelhos_model extends CI_Model
     }
 
 
-    public function inativarDistribuicao($idAparelho, $idMotivoInativacao)
+    public function inativarAparelho($idAparelho, $idMotivoInativacao)
     {
         $this->db->update($this->tabela, [
-			'status' => STATUS_INATIVO,
+			'id_status_disponibilidade' => DISTRIBUICAO_INDISPONÍVEL,
+            'status' => STATUS_INATIVO,
 			'id_motivo_inativacao' => $idMotivoInativacao
 		], ['id' => $idAparelho]);
     }

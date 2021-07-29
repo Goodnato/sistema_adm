@@ -323,13 +323,25 @@ class Aparelhos extends CI_Controller
 
 		if (!array_key_exists($idMotivoInativacao, ARRAY_INATIVO)) {
             echo json_encode([
-                'status' => false
+                'status' => false,
             ]);
 
             return false;
         }
         
-        $this->Aparelhos_model->inativarDistribuicao($idAparelho, $idMotivoInativacao);
+        $dadosAparelho = $this->Aparelhos_model->consultaAparelhosPorId($idAparelho);
+
+        if($dadosAparelho['id_status_disponibilidade'] == DISTRIBUICAO_EM_USO){
+            echo json_encode([
+                'status' => false,
+                'mensagem'=> "Aparelho não pode ser ativado, pois está com o status EM USO"
+            ]);
+
+            return false;
+        }
+
+
+        $this->Aparelhos_model->inativarAparelho($idAparelho, $idMotivoInativacao);
 
         $this->Logs_alteracoes_model->registrarLog([
             'tabela' => 'aparelhos',

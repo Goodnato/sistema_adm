@@ -290,6 +290,9 @@ tabelaAparelhos.on('click', '.visualizar', function (event) {
     let td = $(this).closest('tr').find('td')
     let idAparelho = td.eq(0).text()
 
+    $('#btnInativarAparelho').show()
+    $('#btnEditarAparelho').show()
+
     $.ajax({
         url: base_url("Aparelhos/visualizarAparelho"),
         dataType: "json",
@@ -331,6 +334,11 @@ tabelaAparelhos.on('click', '.visualizar', function (event) {
 						parseInt(value.valor_novo.id_status_condicao_aparelho) !== STATUS_CONDICAO_MANUTENCAO &&
 						parseInt(value.valor_antigo.id_status_condicao_aparelho) === STATUS_CONDICAO_MANUTENCAO
 					)
+                    ||
+					(
+						parseInt(value.valor_novo.status) === STATUS_INATIVO &&
+						parseInt(value.valor_antigo.status) === STATUS_ATIVO
+					)
 				) {
 					contadorCondicao++;
 					
@@ -350,6 +358,11 @@ tabelaAparelhos.on('click', '.visualizar', function (event) {
 					contador++;
 				}
             })
+
+            if (response.aparelho.status == STATUS_INATIVO) {
+                $('#btnInativarAparelho').hide()
+                $('#btnEditarAparelho').hide()
+            }
 
             $('#modalVerAparelho').modal('show')
         }
@@ -509,11 +522,9 @@ $("#btnInativarAparelho").click(function () {
 				return
 			}
 
-			alert("Ocorreu um erro ao fechar a distribuição. Contate o administrador do sistema")
-            console.log(response)
-            $('#modalVerDistribuicao').modal('hide')
+			alert(response.mensagem)
         }).fail(function (response) {
-            alert("Ocorreu um erro ao fechar a distribuição. Contate o administrador do sistema")
+            alert("Ocorreu um erro ao inativar o aparelho. Contate o administrador do sistema")
             console.log(response)
             $('#modalVerDistribuicao').modal('hide')
         })
