@@ -348,10 +348,14 @@ class Aparelhos extends CI_Controller
             'id_usuario' => $this->session->dadosUsuario['id'],
             'identificador' => $idAparelho,
             'valor_antigo' => json_encode([
+                'id_status_condicao_aparelho' => $dadosAparelho['id_status_condicao_aparelho'],
+                'status' => STATUS_ATIVO,
 				'id_motivo_inativacao' => null,
 				'motivo_inativacao' => null
 			]),
             'valor_novo' => json_encode([
+                'id_status_condicao_aparelho' => $dadosAparelho['id_status_condicao_aparelho'],
+                'status' => STATUS_INATIVO,
 				'id_motivo_inativacao' => $idMotivoInativacao,
 				'motivo_devolucao' => ARRAY_INATIVO[$idMotivoInativacao]
 			])

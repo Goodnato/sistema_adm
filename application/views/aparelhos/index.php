@@ -287,6 +287,7 @@
 									<th scope="col">#</th>
 									<th scope="col">Usuário</th>
 									<th scope="col">Condição</th>
+                                    <th scope="col">Status</th>
 									<th scope="col">Data</th>
 								</tr>
 							</thead>

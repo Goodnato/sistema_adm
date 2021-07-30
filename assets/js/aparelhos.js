@@ -301,6 +301,7 @@ tabelaAparelhos.on('click', '.visualizar', function (event) {
             idAparelho
         }
     }).done(function (response) {
+        console.log(response)
         if (response.status) {
             $('#editaIdAparelho').val(idAparelho)
             $('#tituloAparelho').text(response.aparelho.nome_modelo)
@@ -336,8 +337,7 @@ tabelaAparelhos.on('click', '.visualizar', function (event) {
 					)
                     ||
 					(
-						parseInt(value.valor_novo.status) === STATUS_INATIVO &&
-						parseInt(value.valor_antigo.status) === STATUS_ATIVO
+						parseInt(value.valor_novo.status) === STATUS_INATIVO
 					)
 				) {
 					contadorCondicao++;
@@ -347,6 +347,7 @@ tabelaAparelhos.on('click', '.visualizar', function (event) {
 							<td>${contador}</td>
 							<td>${value.nome_usuario}</td>
 							<td>${OBJETO_CONDICAO[value.valor_novo.id_status_condicao_aparelho]}</td>
+                            <td>${value.valor_novo.status === STATUS_INATIVO ? "INATIVO" : "ATIVO"}</td> 
 							<td>${value.data_registro}</td>
 						</tr>`
 					)
