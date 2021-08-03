@@ -77,7 +77,7 @@
 
         <!-- botão para entrar no sistema base_url direciona o usuário para o dashboard -->
         <button class="btn btn-lg btn-danger btn-block" id="btn_login">Entrar</button>
-        <p class="text-center mt-3">Não possui acesso? <a href="#" data-toggle="modal" data-target="#novoCadastroModal">Solicite </a></p>
+        <!--<p class="text-center mt-3">Não possui acesso? <a href="#" data-toggle="modal" data-target="#novoCadastroModal">Solicite </a></p>-->
 
 
     </form>
@@ -99,10 +99,7 @@
                         </div>
                         <div class="row">
                             <h9><b>CLEYTON CARVALHO NEVES</b> - cleyton.neves@claro.com.br </h9><br>
-                            <h9><b> FELIPE LIMA FERREIRA</b>   - felipe.ferreira@claro.com.br </h9><br>
-                            <h9><b> ADRIANA PEREIRA PRIMO</b>  - adriana.primo2@claro.com.br</h9><br><br>
-                            <h9><b>COORDENADOR:</b></h9>
-                            <h9><b>PAULO BATISTA DE SOUSA</b> - paulo.batista@claro.com.br</h9>
+                            <h9><b> - </h9>
                         </div>
                     </div>
                 </div>
