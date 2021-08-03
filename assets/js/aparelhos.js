@@ -341,13 +341,15 @@ tabelaAparelhos.on('click', '.visualizar', function (event) {
 					)
 				) {
 					contadorCondicao++;
-					
+
+					let statusMotivo = isNaN(value.valor_novo.motivo_inativacao) ? ` (${value.valor_novo.motivo_inativacao})`:''
+
 					tabelaLogAparelho.append(
 						`<tr>
 							<td>${contador}</td>
 							<td>${value.nome_usuario}</td>
 							<td>${OBJETO_CONDICAO[value.valor_novo.id_status_condicao_aparelho]}</td>
-                            <td>${value.valor_novo.status === STATUS_INATIVO ? "INATIVO" : "ATIVO"}</td> 
+                            <td>${value.valor_novo.status === STATUS_INATIVO ? "INATIVO" + statusMotivo : "ATIVO"}</td> 
 							<td>${value.data_registro}</td>
 						</tr>`
 					)

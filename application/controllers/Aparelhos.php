@@ -357,7 +357,7 @@ class Aparelhos extends CI_Controller
                 'id_status_condicao_aparelho' => $dadosAparelho['id_status_condicao_aparelho'],
                 'status' => STATUS_INATIVO,
 				'id_motivo_inativacao' => $idMotivoInativacao,
-				'motivo_devolucao' => ARRAY_INATIVO[$idMotivoInativacao]
+				'motivo_inativacao' => ARRAY_INATIVO[$idMotivoInativacao]
 			])
         ]);
 
