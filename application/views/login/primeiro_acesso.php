@@ -48,7 +48,7 @@
 
     <!-- imagem do logotipo claro-->
     <!-- para chamar imagens necessário incluir o echo base_url devido ao arquivo config -->
-    <form action="<?php echo base_url("Usuarios/login"); ?>" method="Post" id="submit" class="form-signin" autocomplete="off">
+    <form action="<?php echo base_url("Usuarios/primeiro_acesso/salvar"); ?>" method="Post" id="submit" class="form-signin" autocomplete="off">
         <div class="text-center mb-4">
             <img src="<?php echo base_url("assets/images/logo-claro2.png"); ?>" class="img-fluid">
         </div>
@@ -60,24 +60,32 @@
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                         <?php
                         echo $this->session->mensagemLogin;
-						$this->session->mensagemLogin = 0;
+                        $this->session->mensagemLogin = 0;
                         ?>
                     </div>
                 </div>
             </div>
         <?php } ?>
         <!-- campo para inclusão do email -->
-        <div class="form-label-group">
-            <input type="text" name="login" id="login" class="form-control" placeholder="Login" autofocus required>
+        <div class="form-label-group text-center">
+            <h1>Primeiro acesso</h1>
+        </div>
+
+		<div class="form-label-group">
+            <input type="text" name="login" id="login" value="<?= $this->session->primeiroAcesso['login'] ?>" class="form-control" placeholder="Login" disabled>
+        </div>
+
+		<div class="form-label-group">
+            <input type="password" name="novaSenha" id="novaSenha" class="form-control" placeholder="Nova senha" autofocus required autocomplete="off">
         </div>
 
         <!-- campo para inclusão da senha -->
         <div class="form-label-group">
-            <input type="password" name="senha" id="senha" class="form-control" placeholder="Senha" required>
+            <input type="password" name="repitaSenha" id="repitaSenha" class="form-control" placeholder="Repita senha" required autocomplete="off">
         </div>
 
         <!-- botão para entrar no sistema base_url direciona o usuário para o dashboard -->
-        <button class="btn btn-lg btn-danger btn-block" id="btn_login">Entrar</button>
+        <button class="btn btn-lg btn-danger btn-block" id="btn_login">Salvar</button>
         <!--<p class="text-center mt-3">Não possui acesso? <a href="#" data-toggle="modal" data-target="#novoCadastroModal">Solicite </a></p>-->
 
 

@@ -24,7 +24,8 @@ class Usuarios_model extends CI_Model
         $sql = "UPDATE
                     {$this->tabela}
                 SET
-                    senha = '$senha'
+                    senha = '$senha',
+					primeiro_acesso = 0
                 WHERE
                     login = '$login'";
 

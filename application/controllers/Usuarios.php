@@ -35,6 +35,12 @@ class Usuarios extends CI_Controller
         }
 
         $usuario = $usuario[0];
+
+		if($usuario['primeiro_acesso'] == 1) {
+			$this->session->set_userdata('primeiroAcesso', $usuario);
+			redirect(base_url("/Usuarios/primeiro_acesso"));
+		}
+
         unset($usuario['senha']);
 
         $this->session->set_userdata('dadosUsuario', $usuario);
@@ -53,4 +59,41 @@ class Usuarios extends CI_Controller
 
         return $usuario;
     }
+
+	public function primeiro_acesso($submit = null)
+	{
+		$primeiroAcesso = $this->session->primeiroAcesso;
+		if (!isset($primeiroAcesso)) {
+            redirect(base_url('/'));
+        }
+
+		if (!$submit) {
+			$this->load->view('login/primeiro_acesso');
+			return;
+		}
+
+		$novaSenha = $_POST['novaSenha'];
+        $repitaSenha = $_POST['repitaSenha'];
+
+		if($novaSenha != $repitaSenha) {
+			$this->session->set_flashdata('mensagemLogin', 'Senhas não conferem');
+
+            redirect(base_url('/Usuarios/primeiro_acesso'));
+		}
+
+		if($novaSenha == $primeiroAcesso['senha']) {
+			$this->session->set_flashdata('mensagemLogin', 'Nova senha deve ser diferente da anterior');
+
+            redirect(base_url('/Usuarios/primeiro_acesso'));
+		}
+
+		$this->Usuarios_model->alteraSenha($primeiroAcesso['login'], $novaSenha);
+
+		unset($primeiroAcesso['senha']);
+		$this->session->set_userdata('dadosUsuario', $primeiroAcesso);
+		unset($_SESSION['primeiroAcesso']);
+
+        $tela = $this->sistemas_library->retornaPrimeiraTelaAcesso($this->session->dadosUsuario['telas_autorizadas']);
+        redirect(base_url("/$tela"));
+	}
 }
