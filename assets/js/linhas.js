@@ -197,6 +197,7 @@ $('#btnSalvarLinha').click(function (event) {
                 timer: 1500,
                 heightAuto: false
             }).then((result) => {
+                tabelaLinhas.ajax.reload()
                 $('#modalNovaLinha').modal('hide')
 
                 limpaFormularioCadastroLinha()

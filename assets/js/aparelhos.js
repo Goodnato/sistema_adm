@@ -173,6 +173,11 @@ $("#editaValorNotaFiscal").maskMoney({
     decimal: ','
 });
 
+
+//mascara dos campos telefone pinpunk - biblioteca mask jquery
+$('#cadastroImei').mask("000000000000000");
+$('#cadastroImei2').mask("000000000000000");
+
 $("#cadastroModelo").change(function (e) {
     let idModelo = $(this).val()
 
