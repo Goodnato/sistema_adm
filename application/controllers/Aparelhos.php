@@ -138,6 +138,21 @@ class Aparelhos extends CI_Controller
         }
 
         $idAparelho = $this->input->post('idAparelho');
+
+		$dadosAntigoAparelho = $this->Aparelhos_model->consultaAparelhosPorId($idAparelho);
+
+		if(
+			in_array($this->input->post('idStatusCondicaoAparelho'), [CONDICAO_DESCARTADO, CONDICAO_MANUTENCAO]) &&
+			$dadosAntigoAparelho['id_status_disponibilidade'] == DISTRIBUICAO_EM_USO
+		) {
+			echo json_encode([
+                'status' => false,
+                'mensagem' => 'Não é possível colocar o status condição para ' . ARRAY_CONDICAO[$this->input->post('idStatusCondicaoAparelho')] . ' com aparelho em uso.'
+            ]);
+
+            return false;
+		}
+
         $novosDadosAparelho = [
             'id_status_condicao_aparelho' => $this->input->post('idStatusCondicaoAparelho'),
             'nota_fiscal' => $this->input->post('notaFiscal'),
@@ -151,7 +166,7 @@ class Aparelhos extends CI_Controller
             'tabela' => 'aparelhos',
             'id_usuario' => $this->session->dadosUsuario['id'],
             'identificador' => $idAparelho,
-            'valor_antigo' => json_encode($this->Aparelhos_model->consultaAparelhosPorId($idAparelho)),
+            'valor_antigo' => json_encode($dadosAntigoAparelho),
             'valor_novo' => json_encode($novosDadosAparelho)
         ]);
 

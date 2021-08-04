@@ -197,13 +197,6 @@
                         <div class="col-12">
                             <form>
                                 <div class="row">
-                                    <div class="col">
-                                        <div id="editaAlert" class="alert alert-danger d-none" role="alert">
-                                            <div id="editaMensagem"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
                                     <input type="hidden" id="editaIdAparelho" value="">
                                     <div class="col">
                                         <label for="editaImei" class="form-label">IMEI*</label>

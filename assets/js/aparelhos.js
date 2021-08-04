@@ -407,8 +407,7 @@ $('#btnEditarAparelho').click(function (event) {
         }
     }).done(function (response) {
         if (!response.status) {
-            $('#editaMensagem').html(response.mensagem)
-            $('#editaAlert').removeClass('d-none')
+            alert(response.mensagem)
 
             $('#btnEditarAparelho')
                 .html('<i class="fas fa-save"></i> Salvar')
