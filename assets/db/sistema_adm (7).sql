@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 27-Jul-2021 às 21:30
+-- Tempo de geração: 04-Ago-2021 às 23:45
 -- Versão do servidor: 10.4.19-MariaDB
 -- versão do PHP: 7.4.20
 
@@ -52,42 +52,21 @@ CREATE TABLE `aparelhos` (
 --
 
 INSERT INTO `aparelhos` (`id`, `id_modelo`, `id_marca`, `imei1`, `imei2`, `id_status_condicao_aparelho`, `id_status_disponibilidade`, `id_motivo_inativacao`, `status`, `nota_fiscal`, `data_nota`, `valor`, `valor_depreciado`, `data_registro`, `data_at`, `id_usuario_registro`, `id_usuario_at`) VALUES
-(1, 2, 4, '674345678123456', '', 4, 2, 2, 0, '', '2020-01-29', 900.00, 900.00, '2021-05-14 12:03:07', '2021-07-27 16:03:07', 1, 1),
-(2, 1, 2, '985643237658345', '', 4, 2, 1, 0, '6785', '2020-01-29', 352.00, 352.00, '2021-05-14 12:03:55', '2021-07-27 16:03:22', 1, 1),
-(3, 6, 5, '987453452167845', '', 4, 2, NULL, 1, '4567', '2019-01-05', 600.00, 480.00, '2021-05-14 12:04:22', '2021-07-14 11:20:15', 1, 1),
-(4, 1, 2, '973634512456783', '', 1, 2, NULL, 1, '4567', '2019-01-05', 712.00, 569.60, '2021-05-14 12:04:55', '2021-06-22 08:49:06', 1, NULL),
-(5, 2, 4, '980076456123478', '', 1, 2, NULL, 1, '4567', '2018-01-04', 700.00, 560.00, '2021-05-14 12:05:47', '2021-06-21 18:52:04', 1, NULL),
-(6, 1, 2, '874534980012345', '', 2, 2, NULL, 1, '4567', '2018-01-04', 690.00, 552.00, '2021-05-14 12:07:11', '2021-06-22 08:54:18', 1, NULL),
-(7, 6, 5, '987564345890125', '', 2, 2, NULL, 0, '5678', '2017-01-03', 900.00, 576.00, '2021-05-14 12:09:04', '2021-06-21 18:22:27', 1, NULL),
-(8, 4, 3, '345678123908765', '', 1, 2, NULL, 1, '5678', '2017-01-03', 570.00, 364.80, '2021-05-14 12:09:41', '2021-06-22 08:54:37', 1, NULL),
-(9, 3, 2, '902345125637845', '', 1, 1, NULL, 1, '6789', '2016-01-02', 800.00, 512.00, '2021-05-14 12:10:45', '2021-07-14 15:03:48', 1, NULL),
-(10, 2, 4, '986032478453098', '', 1, 2, NULL, 1, '5678', '2016-01-03', 600.00, 384.00, '2021-05-14 12:11:22', '2021-06-22 08:49:18', 1, NULL),
-(11, 4, 3, '874539283749012', '', 1, 2, NULL, 1, '4687', '2021-05-05', 720.00, 720.00, '2021-05-14 12:12:04', '2021-06-22 08:54:42', 1, NULL),
-(12, 2, 4, '983472890125789', '', 1, 2, NULL, 1, '6712', '2014-01-04', 570.00, 291.84, '2021-05-14 12:12:45', '2021-07-14 14:22:11', 1, NULL),
-(13, 1, 2, '873863829837645', '', 1, 2, NULL, 1, '2324', '2016-01-28', 690.00, 441.60, '2021-05-14 14:05:19', '2021-06-21 18:22:31', 1, NULL),
-(14, 1, 2, '738937845678123', '', 1, 2, NULL, 1, '4432', '2021-05-05', 780.00, 780.00, '2021-05-14 14:05:49', '2021-06-21 18:22:32', 1, NULL),
-(15, 6, 5, '983456237348934', '', 2, 2, NULL, 1, '43532', '2021-05-11', 600.00, 600.00, '2021-05-14 14:06:45', '2021-07-14 14:24:51', 1, NULL),
-(16, 2, 4, '123456789012345', '', 1, 2, NULL, 1, '345663', '2021-05-11', 700.00, 700.00, '2021-05-17 14:32:15', '2021-06-21 18:57:01', 1, NULL),
-(17, 1, 2, '987364545123567', '', 1, 2, NULL, 1, '6754', '2021-05-12', 500.00, 500.00, '2021-05-17 18:14:37', '2021-06-22 08:54:12', 1, NULL),
-(18, 2, 4, '796545323456712', '', 1, 2, NULL, 1, '67890', '2021-05-05', 760.00, 760.00, '2021-05-18 11:00:19', '2021-06-21 18:57:08', 1, NULL),
-(19, 2, 4, '456321234678123', '', 1, 2, NULL, 1, '3456', '2021-05-20', 700.00, 700.00, '2021-05-31 17:46:11', '2021-07-14 14:25:04', 1, NULL),
-(20, 2, 4, '984534590123451', '', 1, 2, NULL, 1, '5674', '2021-05-12', 550.00, 550.00, '2021-05-31 17:47:53', '2021-06-22 08:49:01', 1, NULL),
-(21, 2, 4, '654789012312345', '', 1, 2, NULL, 1, '4567', '2021-05-13', 700.00, 700.00, '2021-05-31 17:53:05', '2021-06-21 18:22:38', 1, NULL),
-(22, 2, 4, '345212345123478', '', 4, 2, NULL, 1, '2345', '2021-05-05', 789.00, 789.00, '2021-05-31 17:56:59', '2021-06-24 10:40:13', 1, 1),
-(23, 2, 4, '980123451267891', '', 1, 2, NULL, 1, '4562', '2021-05-05', 660.00, 660.00, '2021-05-31 17:59:52', '2021-07-14 14:22:50', 1, NULL),
-(24, 2, 4, '456123789123451', '456123789123451', 1, 2, NULL, 1, '5674', '2021-05-05', 700.00, 700.00, '2021-05-31 18:21:36', '2021-07-14 14:24:22', 1, NULL),
-(25, 2, 4, '123418901234509', '123418901234509', 1, 2, NULL, 1, '6785', '2021-05-05', 600.00, 600.00, '2021-05-31 18:29:47', '2021-06-01 18:27:03', 1, NULL),
-(26, 2, 4, '891234516789123', '098712345612341', 1, 1, NULL, 1, '6754', '2021-05-12', 890.00, 890.00, '2021-05-31 18:31:13', '2021-06-01 18:27:03', 1, NULL),
-(27, 6, 5, '987231657812345', '908761235127865', 1, 2, NULL, 1, '9867', '2021-05-06', 780.00, 780.00, '2021-05-31 18:35:30', '2021-06-01 18:27:03', 1, NULL),
-(28, 2, 4, '912356781234178', '984532156712389', 1, 2, NULL, 1, '6754', '2021-04-28', 700.00, 700.00, '2021-05-31 18:40:27', '2021-06-01 18:27:03', 1, NULL),
-(29, 2, 4, '983424561267856', '937435362719834', 1, 2, NULL, 1, '3456', '2021-04-29', 700.00, 700.00, '2021-05-31 18:53:55', '2021-06-01 18:27:03', 1, NULL),
-(30, 6, 5, '236781209812341', '987342561278912', 1, 2, NULL, 1, '5612', '2021-05-30', 650.00, 650.00, '2021-06-01 18:20:11', '2021-06-21 18:54:57', 1, NULL),
-(31, 3, 2, '981234124512345', '981234125671235', 1, 2, NULL, 1, '45367', '2021-06-03', 600.00, 600.00, '2021-06-02 10:39:54', '2021-06-07 18:36:29', 1, NULL),
-(32, 2, 4, '923162341256342', '982345124356217', 1, 2, NULL, 1, '7824', '2021-06-02', 800.00, 800.00, '2021-06-09 11:21:27', '2021-06-15 11:16:03', 1, NULL),
-(33, 3, 2, '984734526173452', '', 1, 2, NULL, 1, '34323', '2021-06-03', 700.00, 700.00, '2021-06-10 10:35:17', '2021-06-15 11:16:03', 1, NULL),
-(34, 4, 3, '987342516273812', '928371263452134', 2, 2, NULL, 1, '8234782', '2021-06-02', 600.00, 600.00, '2021-06-14 14:42:30', '2021-06-15 11:16:03', 3, NULL),
-(35, 2, 4, '934523412678345', '', 1, 2, NULL, 1, '252324', '2021-06-02', 800.00, NULL, '2021-06-21 18:49:37', NULL, 1, NULL),
-(36, 2, 4, '934521623412536', '', 1, 2, NULL, 1, '', '0000-00-00', 0.00, NULL, '2021-06-22 10:45:51', NULL, 1, NULL);
+(1, 7, 6, '243124132413241', '321413241234231', 1, 3, 2, 0, '234901', '2021-08-05', 800.00, NULL, '2021-08-04 08:54:55', '2021-08-04 09:53:52', 1, NULL),
+(2, 25, 2, '274891349018390', '434149013294139', 1, 3, 1, 0, '2840', '2021-07-08', 900.00, NULL, '2021-08-04 08:55:51', '2021-08-04 09:55:21', 1, NULL),
+(3, 49, 5, '374138491839048', '489382401920491', 1, 3, 3, 0, '74823', '2021-06-30', 780.00, NULL, '2021-08-04 08:56:43', '2021-08-04 09:55:41', 1, NULL),
+(4, 31, 3, '874981328904812', '237481823948193', 1, 3, 4, 0, '9824', '2021-07-07', 680.00, NULL, '2021-08-04 08:57:48', '2021-08-04 09:55:57', 1, NULL),
+(5, 60, 6, '827948932849193', '990213849123904', 2, 3, 5, 0, '903849', '2021-07-07', 780.00, NULL, '2021-08-04 08:58:53', '2021-08-04 09:56:32', 1, NULL),
+(6, 64, 7, '237481732841832', '818493124901923', 2, 2, NULL, 1, '23478', '2021-07-07', 800.00, NULL, '2021-08-04 08:59:33', '2021-08-04 10:50:33', 1, 1),
+(7, 7, 6, '934891328491232', '359094013295491', 4, 2, NULL, 1, '84903289', '2021-07-01', 900.00, NULL, '2021-08-04 09:00:08', '2021-08-04 15:39:56', 1, 1),
+(8, 36, 3, '731248813294819', '883490812948190', 4, 2, NULL, 1, '424321', '2021-08-18', 500.00, NULL, '2021-08-04 09:04:02', '2021-08-04 15:40:05', 1, 1),
+(9, 24, 2, '283940218341902', '382914093129419', 3, 1, NULL, 0, '238472', '2021-07-01', 700.00, NULL, '2021-08-04 09:32:07', '2021-08-04 10:58:36', 1, 1),
+(10, 18, 6, '834913289048132', '834279183490128', 3, 1, NULL, 0, '392841', '2021-06-30', 700.00, NULL, '2021-08-04 09:32:39', '2021-08-04 18:42:06', 1, 1),
+(11, 8, 6, '839018902384901', '419413294091230', 4, 1, NULL, 1, '294932', '2021-08-18', 600.00, NULL, '2021-08-04 09:57:35', '2021-08-04 18:41:29', 1, 1),
+(12, 52, 5, '349128412309488', '218390489132849', 2, 3, 4, 0, '29039', '2021-08-25', 400.00, NULL, '2021-08-04 09:58:07', '2021-08-04 15:36:07', 1, NULL),
+(13, 29, 2, '189483290481932', '819483290849013', 2, 3, 5, 0, '2949239', '2021-07-08', 650.00, NULL, '2021-08-04 10:00:28', '2021-08-04 15:36:42', 1, NULL),
+(14, 25, 2, '184983948932184', '283492949349240', 2, 2, NULL, 1, '294923', '2021-06-30', 550.00, NULL, '2021-08-04 10:00:57', NULL, 1, NULL),
+(15, 3, 6, '848903284923149', '294013294092304', 4, 2, NULL, 1, '294092', '2021-07-07', 900.00, NULL, '2021-08-04 10:01:32', '2021-08-04 13:33:30', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -6312,40 +6291,14 @@ CREATE TABLE `distribuicoes` (
 --
 
 INSERT INTO `distribuicoes` (`id`, `id_aparelho`, `id_linha`, `id_colaborador`, `id_status_disponibilidade`, `id_motivo_devolucao`, `data_registro`, `data_at`, `id_usuario_registro`, `id_usuario_at`) VALUES
-(1, 1, 1, 172683, 2, NULL, '2021-05-14 14:10:39', '2021-06-22 09:34:38', 1, 0),
-(2, 1, 1, 176571, 2, NULL, '2021-05-14 14:18:05', '2021-06-22 09:34:59', 1, 0),
-(3, 2, 2, 172683, 2, NULL, '2021-05-14 14:18:44', '2021-06-22 09:35:31', 1, 0),
-(4, 3, 2, 172683, 2, NULL, '2021-05-14 14:21:59', '2021-06-22 09:35:48', 1, 0),
-(5, 0, 3, 154388, 2, NULL, '2021-05-14 14:25:10', '2021-06-22 08:48:07', 1, 0),
-(6, 2, 0, 172683, 2, NULL, '2021-05-17 15:01:03', '2021-06-22 08:59:36', 1, 0),
-(7, 7, 1, 171081, 2, NULL, '2021-05-18 11:41:05', '2021-06-21 19:00:49', 1, 0),
-(8, 8, 10, 163203, 2, NULL, '2019-06-18 15:41:28', '2021-06-15 11:27:25', 1, 0),
-(9, 0, 14, 171081, 2, NULL, '2018-06-18 15:52:19', '2021-06-21 19:00:50', 1, 0),
-(10, 26, 16, 176571, 2, NULL, '2021-06-01 15:32:17', '2021-06-21 18:58:43', 1, 0),
-(11, 1, 4, 160147, 2, NULL, '2021-06-07 16:07:03', '2021-06-22 08:56:40', 1, 0),
-(12, 2, 6, 154388, 2, NULL, '2021-06-08 10:15:51', '2021-06-22 08:48:35', 1, 0),
-(13, 0, 7, 176571, 2, NULL, '2021-06-10 10:17:21', '2021-06-21 18:58:45', 1, 0),
-(14, 3, 17, 176571, 2, NULL, '2021-06-14 14:47:59', '2021-06-21 18:59:19', 3, 0),
-(15, 8, 22, 163203, 2, NULL, '2021-06-14 14:48:33', '2021-06-22 08:54:37', 3, 0),
-(16, 11, 11, 163203, 2, NULL, '2021-06-15 10:06:57', '2021-06-22 08:54:42', 1, 0),
-(17, 16, 21, 181808, 2, NULL, '2021-06-15 10:08:17', '2021-06-21 18:57:01', 1, 0),
-(18, 23, 30, 154388, 2, 3, '2021-06-15 10:08:43', '2021-07-14 14:22:50', 1, 0),
-(19, 30, 33, 13006, 2, NULL, '2021-06-15 10:09:41', '2021-06-21 18:54:57', 1, 0),
-(20, 24, 27, 163203, 2, 1, '2021-06-15 10:10:47', '2021-07-14 14:24:22', 1, 0),
-(21, 18, 24, 181808, 2, NULL, '2021-06-15 10:11:22', '2021-06-21 18:57:08', 1, 0),
-(22, 20, 15, 149443, 2, NULL, '2021-06-15 10:13:09', '2021-06-22 08:49:00', 1, 0),
-(30, 17, 32, 8017256, 2, NULL, '2021-06-15 10:37:16', '2021-06-22 08:54:12', 1, 0),
-(31, 4, 28, 149443, 2, NULL, '2021-06-15 10:38:25', '2021-06-22 08:49:06', 1, 0),
-(32, 5, 18, 13006, 2, NULL, '2021-06-15 10:38:56', '2021-06-21 18:52:04', 1, 0),
-(33, 6, 12, 8017256, 2, NULL, '2021-06-15 10:40:53', '2021-06-22 08:54:18', 1, 0),
-(34, 9, 2, 181808, 2, NULL, '2021-06-15 10:41:50', '2021-06-21 18:57:14', 1, 0),
-(35, 10, 13, 149443, 2, NULL, '2021-06-15 10:42:58', '2021-06-22 08:49:18', 1, 0),
-(36, 22, 31, 13006, 2, NULL, '2021-06-15 10:43:32', '2021-06-24 10:39:49', 1, 0),
-(37, 12, 29, 8017256, 2, 2, '2021-06-15 10:44:01', '2021-07-14 14:22:11', 1, 0),
-(38, 15, 23, 181808, 2, 2, '2021-06-15 10:44:36', '2021-07-14 14:24:50', 1, 0),
-(39, 19, 20, 149443, 2, 3, '2021-06-15 10:45:21', '2021-07-14 14:25:04', 1, 0),
-(40, NULL, 6, 42667, 2, 4, '2021-06-22 10:54:33', '2021-07-14 14:25:18', 1, NULL),
-(41, 9, NULL, 169559, 1, NULL, '2021-07-14 15:03:48', NULL, 1, NULL);
+(1, 6, 1, 143858, 2, 1, '2021-08-04 10:02:39', '2021-08-04 10:43:38', 1, NULL),
+(2, 7, 2, 930355, 2, 4, '2021-08-04 10:03:26', '2021-08-04 15:39:56', 1, NULL),
+(3, 8, 3, 9323591, 2, 6, '2021-08-04 10:09:57', '2021-08-04 15:40:05', 1, NULL),
+(4, 9, NULL, 930692, 1, NULL, '2021-08-04 10:31:15', NULL, 1, NULL),
+(5, 10, NULL, 906965, 1, NULL, '2021-08-04 10:31:47', NULL, 1, NULL),
+(6, NULL, 4, 135663, 1, NULL, '2021-08-04 10:32:15', NULL, 1, NULL),
+(7, NULL, 5, 9696671, 1, NULL, '2021-08-04 10:32:47', NULL, 1, NULL),
+(8, 11, 6, 179421, 1, NULL, '2021-08-04 11:03:28', NULL, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -6374,42 +6327,18 @@ CREATE TABLE `linhas` (
 --
 
 INSERT INTO `linhas` (`id`, `numero_linha`, `codigo_chip`, `pin_puk1`, `pin_puk2`, `id_operadora`, `id_categoria`, `id_status_disponibilidade`, `status`, `data_registro`, `data_at`, `id_usuario_registro`, `id_usuario_at`) VALUES
-(1, '(11)98764-3567', '12345612341234666666', '4567-65432567', '2345-67876543', 1, 1, 2, 1, '2021-05-14 13:52:29', '2021-07-21 14:19:38', 1, 1),
-(2, '(11)98738-6826', '12345612341234666612', '4676-54321567', '2347-87643213', 1, 2, 2, 1, '2021-05-14 13:58:29', '2021-07-21 14:23:03', 1, 1),
-(3, '(11)97898-7654', '98765321234887612345', '8761-11236874', '2683-73829536', 1, 3, 2, 1, '2021-05-14 13:58:53', '2021-07-21 14:23:10', 1, 1),
-(4, '(11)97363-7372', '87654419182718112345', '8322-14426585', '1235-43524634', 1, 4, 2, 1, '2021-05-14 13:59:34', '2021-07-21 14:23:20', 1, 1),
-(5, '(11)97637-9567', '12345678901234567890', '3524-63463467', '8328-48917234', 1, 5, 2, 1, '2021-05-14 13:59:56', '2021-07-21 14:23:27', 1, 1),
-(6, '(11)98657-6794', '19765432345678912345', '3435-76543214', '5321-32874713', 2, 6, 2, 1, '2021-05-14 14:00:31', '2021-07-21 14:23:33', 1, 1),
-(7, '(11)97357-3538', '87483478136348912345', '3478-92483749', '3467-34687894', 1, 7, 2, 1, '2021-05-14 14:00:51', '2021-07-21 14:26:34', 1, 1),
-(8, '(11)96378-2424', '34789275489329412345', '8774-67827389', '6346-16832718', 2, 1, 2, 1, '2021-05-14 14:01:09', '2021-07-20 15:57:30', 1, 1),
-(9, '(11)97678-3274', '32847819273498112345', '3248-72894890', '7489-13849014', 1, 1, 2, 0, '2021-05-14 14:01:27', '2021-07-20 15:57:38', 1, 1),
-(10, '(11)98873-9841', '43871238498290412345', '4871-82934190', '3449-81993401', 1, 2, 2, 1, '2021-05-14 14:01:51', '2021-07-20 15:57:46', 1, 1),
-(11, '(11)99893-7248', '534761324791834', '6745-67183419', '7847-98747190', 1, 1, 2, 1, '2021-05-14 14:02:08', '2021-06-22 08:54:42', 1, 0),
-(12, '(11)97637-8235', '823748123049812', '9234-78819328', '8451-78390128', 1, 1, 2, 1, '2021-05-14 14:03:03', '2021-06-22 08:54:18', 1, 0),
-(13, '(11)98973-1298', '813274891284901', '4178-23478190', '7348-91839416', 4, 3, 2, 1, '2021-05-14 14:03:36', '2021-06-22 08:49:18', 1, 0),
-(14, '(11)97214-6761', '748913749182904', '6346-17893748', '9812-94781237', 1, 2, 1, 1, '2021-05-14 14:03:58', '2021-05-18 15:52:19', 1, 0),
-(15, '(11)96478-1326', '351478734781249', '3641-82397489', '6418-23748913', 1, 1, 2, 1, '2021-05-14 14:04:18', '2021-06-22 08:49:01', 1, 0),
-(16, '(11)99654-4356', '123456725791234', '6778-85322222', '2342-34235423', 1, 1, 1, 1, '2021-05-18 11:01:13', '2021-06-01 15:32:17', 1, 0),
-(17, '(11)98764-3344', '123451234517891', '1234-56543212', '1234-56764321', 1, 1, 2, 1, '2021-06-01 18:21:01', '2021-06-21 18:56:56', 1, 0),
-(18, '(11)98668-2334', '345126781234156', '3245-76321123', '2345-21234565', 1, 2, 2, 1, '2021-06-02 10:44:16', '2021-06-21 18:52:05', 1, 0),
-(19, '(11)98732-1234', '984321234512345', '8989-84848913', '1341-34130948', 1, 2, 2, 1, '2021-06-02 10:49:12', '0000-00-00 00:00:00', 1, 0),
-(20, '(11)98272-9828', '984536271235467', '3124-89328490', '1294-81908349', 1, 1, 2, 1, '2021-06-08 15:24:40', '2021-07-14 14:25:04', 1, 0),
-(21, '(11)92374-9128', '983452612789032', '4329-41923014', '3489-01234019', 1, 2, 2, 1, '2021-06-08 15:25:04', '2021-06-21 18:57:01', 1, 0),
-(22, '(11)97721-9847', '834526123789340', '9394-01932144', '3214-89283490', 1, 1, 2, 1, '2021-06-08 15:25:27', '2021-06-22 08:54:37', 1, 0),
-(23, '(11)92714-8832', '983428123784325', '4132-95491324', '3218-49340193', 1, 3, 2, 1, '2021-06-08 15:26:14', '2021-07-14 14:24:51', 1, 0),
-(24, '(11)99324-1892', '967584356123678', '4891-38419049', '1943-81909419', 1, 1, 2, 1, '2021-06-08 15:26:43', '2021-06-21 18:57:08', 1, 0),
-(25, '(11)98389-8433', '983456234516781', '2148-13294109', '1284-09312849', 1, 1, 2, 1, '2021-06-08 15:30:10', '0000-00-00 00:00:00', 1, 0),
-(26, '(11)98147-3812', '983452673848945', '4891-03849134', '2194-81908349', 1, 1, 2, 1, '2021-06-08 15:30:40', '0000-00-00 00:00:00', 1, 0),
-(27, '(11)98982-4981', '983456234561234', '3481-82349128', '4890-09890890', 1, 1, 2, 1, '2021-06-08 15:31:03', '2021-07-14 14:24:22', 1, 0),
-(28, '(11)98873-8497', '983647321234512', '9843-19028349', '8198-43909102', 1, 1, 2, 1, '2021-06-11 14:43:53', '2021-06-22 08:49:06', 1, 0),
-(29, '(11)98989-8903', '983425612356127', '3243-29419023', '8412-41329041', 1, 1, 2, 1, '2021-06-14 14:46:47', '2021-07-14 14:22:11', 3, 0),
-(30, '(11)98274-8312', '984536237812984', '4812-94019032', '3128-49132894', 1, 3, 2, 1, '2021-06-14 14:47:17', '2021-07-14 14:22:50', 3, 0),
-(31, '(11)98234-7832', '93847235426345234521', '4913-28409132', '8932-47891723', 1, 1, 2, 1, '2021-06-14 15:18:54', '2021-07-20 16:01:08', 1, 1),
-(32, '(11)98874-3284', '934723451267122', '8134-09183490', '4897-48913841', 2, 1, 2, 1, '2021-06-14 15:20:07', '2021-06-22 08:54:13', 1, 1),
-(33, '(11)98482-9341', '98345261234561782123', '4819-83901039', '8347-18384901', 1, 2, 2, 1, '2021-06-14 15:57:28', '2021-06-21 18:54:58', 3, 0),
-(34, '(11)98738-1739', '98456372183521234189', '7481-98341932', '3419-84930180', 1, 3, 2, 1, '2021-06-15 09:04:50', '0000-00-00 00:00:00', 1, 0),
-(35, '(11)83294-8129', '93452612345216734890', '', '', 1, 2, 2, 1, '2021-06-21 18:31:22', NULL, 1, NULL),
-(36, '(11)97284-8384', '98940813948931284918', '', '', 1, 3, 2, 1, '2021-06-21 18:50:39', NULL, 1, NULL);
+(1, '(11)98928-4903', '39084190328490123849', '9384-91324019', '9132-48491329', 1, 2, 2, 1, '2021-08-04 09:33:14', '2021-08-04 10:43:38', 1, NULL),
+(2, '(11)32843-2184', '99324893124919230491', '2384-91328498', '9821-09384091', 1, 2, 2, 1, '2021-08-04 09:37:25', '2021-08-04 15:39:56', 1, NULL),
+(3, '(11)98239-1493', '92834193204913294143', '9281-49328948', '0392-40293409', 1, 5, 2, 1, '2021-08-04 09:38:33', '2021-08-04 15:40:05', 1, NULL),
+(4, '(11)97827-4832', '29489384903124919349', '2814-93892493', '8123-49132942', 1, 3, 1, 1, '2021-08-04 09:38:53', '2021-08-04 10:32:15', 1, NULL),
+(5, '(11)94013-2490', '98349312849128394813', '2184-93128948', '9148-34012394', 1, 2, 1, 1, '2021-08-04 09:39:18', '2021-08-04 10:32:47', 1, NULL),
+(6, '(11)98431-9023', '94132490821394890132', '2148-29348901', '9238-41932849', 1, 3, 1, 1, '2021-08-04 09:39:49', '2021-08-04 11:03:28', 1, NULL),
+(7, '(11)98238-4831', '28938491238491328948', '1283-09481329', '3849-02138498', 1, 4, 2, 1, '2021-08-04 09:40:15', NULL, 1, NULL),
+(8, '(11)97824-9389', '39418901328491832948', '7743-82194890', '8324-81932849', 1, 5, 2, 1, '2021-08-04 09:40:43', NULL, 1, NULL),
+(9, '(11)98237-4832', '89348912834901823948', '4938-14039204', '2910-43913294', 1, 2, 2, 1, '2021-08-04 09:41:06', NULL, 1, NULL),
+(10, '(11)89283-9483', '28419032849132849081', '4182-39408193', '0928-49281394', 1, 4, 2, 1, '2021-08-04 09:43:18', NULL, 1, NULL),
+(11, '(11)98784-2903', '84091328491329401920', '', '', 1, 2, 2, 1, '2021-08-04 18:36:38', NULL, 1, NULL),
+(12, '(21)18829-0493', '84094913295413249312', '', '', 1, 3, 2, 1, '2021-08-04 18:40:47', NULL, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -6432,98 +6361,27 @@ CREATE TABLE `logs_alteracoes` (
 --
 
 INSERT INTO `logs_alteracoes` (`id`, `tabela`, `id_usuario`, `identificador`, `valor_antigo`, `valor_novo`, `data_registro`) VALUES
-(1, 'distribuicoes', 1, 5, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\"}', '2021-05-14 14:10:50'),
-(2, 'distribuicoes', 1, 7, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\"}', '2021-05-14 14:19:11'),
-(3, 'aparelhos', 1, 1, '{\"id_aparelho\":\"1\",\"imei1\":\"674345678123456\",\"nome_modelo\":\"NOKIA 208\",\"nome_marca\":\"NOKIA\",\"id_status_condicao_aparelho\":\"1\",\"nota_fiscal\":\"3457\",\"data_nota\":\"2021-04-29\",\"valor\":\"650,00\",\"valor_depreciado\":null,\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_condicao_aparelho\":\"2\",\"nota_fiscal\":\"3457\",\"data_nota\":\"2021-04-29\",\"valor\":\"650.00\",\"status\":\"1\",\"id_usuario_at\":1}', '2021-05-17 14:35:44'),
-(4, 'distribuicoes', 1, 6, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\"}', '2021-05-17 15:02:08'),
-(5, 'distribuicoes', 1, 10, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\"}', '2021-05-18 11:42:10'),
-(6, 'distribuicoes', 1, 15, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\"}', '2021-05-18 15:42:21'),
-(7, 'aparelhos', 1, 1, '{\"id_aparelho\":\"1\",\"imei1\":\"674345678123456\",\"nome_modelo\":\"NOKIA 208\",\"nome_marca\":\"NOKIA\",\"id_status_condicao_aparelho\":\"2\",\"nota_fiscal\":\"3457\",\"data_nota\":\"2021-04-29\",\"valor\":\"650,00\",\"valor_depreciado\":null,\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"id_status_condicao_aparelho\":\"4\",\"nota_fiscal\":\"3457\",\"data_nota\":\"2021-04-29\",\"valor\":\"650.00\",\"status\":\"1\",\"id_usuario_at\":1}', '2021-05-23 15:47:08'),
-(8, 'aparelhos', 1, 1, '{\"id_aparelho\":\"1\",\"imei1\":\"674345678123456\",\"nome_modelo\":\"NOKIA 208\",\"nome_marca\":\"NOKIA\",\"id_status_condicao_aparelho\":\"4\",\"nota_fiscal\":\"3457\",\"data_nota\":\"2021-04-29\",\"valor\":\"650,00\",\"valor_depreciado\":null,\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"id_status_condicao_aparelho\":\"3\",\"nota_fiscal\":\"3457\",\"data_nota\":\"2021-04-29\",\"valor\":\"650.00\",\"status\":\"1\",\"id_usuario_at\":1}', '2021-05-24 18:10:56'),
-(9, 'aparelhos', 1, 1, '{\"id_aparelho\":\"1\",\"imei1\":\"674345678123456\",\"nome_modelo\":\"NOKIA 208\",\"nome_marca\":\"NOKIA\",\"id_status_condicao_aparelho\":\"3\",\"nota_fiscal\":\"3457\",\"data_nota\":\"2021-04-29\",\"valor\":\"650,00\",\"valor_depreciado\":null,\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"INDISPONIVEL\"}', '{\"id_status_condicao_aparelho\":\"4\",\"nota_fiscal\":\"3457\",\"data_nota\":\"2021-04-29\",\"valor\":\"650.00\",\"status\":\"1\",\"id_usuario_at\":1}', '2021-05-24 18:14:53'),
-(10, 'aparelhos', 1, 1, '{\"id_aparelho\":\"1\",\"imei1\":\"674345678123456\",\"nome_modelo\":\"NOKIA 208\",\"nome_marca\":\"NOKIA\",\"id_status_condicao_aparelho\":\"4\",\"nota_fiscal\":\"3457\",\"data_nota\":\"2021-04-29\",\"valor\":\"650,00\",\"valor_depreciado\":null,\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"INDISPONIVEL\"}', '{\"id_status_condicao_aparelho\":\"1\",\"nota_fiscal\":\"3457\",\"data_nota\":\"2021-04-29\",\"valor\":\"650.00\",\"status\":\"1\",\"id_usuario_at\":1}', '2021-05-24 18:15:01'),
-(11, 'distribuicoes', 1, 8, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\"}', '2021-06-10 10:21:01'),
-(12, 'distribuicoes', 1, 9, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\"}', '2021-06-11 11:52:12'),
-(13, 'distribuicoes', 1, 14, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\"}', '2021-06-11 11:53:41'),
-(14, 'linhas', 1, 1, '{\"id_linha\":\"1\",\"numero_linha\":\"(11)98764-3567\",\"codigo_chip\":\"234567124909876\",\"id_categoria\":\"1\",\"id_operadora\":\"1\",\"nome_categoria\":\"CATEGORIA I\",\"nome_operadora\":\"CLARO\",\"pin_puk1\":\"4567-65432567\",\"pin_puk2\":\"2345-67876543\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"id_categoria\":\"2\",\"id_operadora\":\"1\",\"pin_puk1\":\"4567-65432567\",\"pin_puk2\":\"2345-67876543\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-06-11 14:45:03'),
-(15, 'linhas', 1, 4, '{\"id_linha\":\"4\",\"numero_linha\":\"(11)97363-7372\",\"codigo_chip\":\"876544191827181\",\"id_categoria\":\"2\",\"id_operadora\":\"1\",\"nome_categoria\":\"CATEGORIA II\",\"nome_operadora\":\"CLARO\",\"pin_puk1\":\"8322-14426585\",\"pin_puk2\":\"1235-43524634\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"EM USO\"}', '{\"id_categoria\":\"3\",\"id_operadora\":\"1\",\"pin_puk1\":\"8322-14426585\",\"pin_puk2\":\"1235-43524634\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-06-11 14:45:18'),
-(16, 'aparelhos', 1, 7, '{\"id_aparelho\":\"7\",\"imei1\":\"987564345890125\",\"imei2\":null,\"nome_modelo\":\"MOTO Z PLAY\",\"nome_marca\":\"MOTOROLA\",\"id_status_condicao_aparelho\":\"2\",\"nota_fiscal\":\"5678\",\"data_nota\":\"2017-01-03\",\"valor\":\"900,00\",\"valor_depreciado\":\"576.00\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"id_status_condicao_aparelho\":\"2\",\"nota_fiscal\":\"5678\",\"data_nota\":\"2017-01-03\",\"valor\":\"900.00\",\"status\":\"0\",\"id_usuario_at\":\"1\"}', '2021-06-14 15:02:56'),
-(17, 'linhas', 1, 9, '{\"id_linha\":\"9\",\"numero_linha\":\"(11)97678-3274\",\"codigo_chip\":\"328478192734981\",\"id_categoria\":\"1\",\"id_operadora\":\"1\",\"nome_categoria\":\"CATEGORIA I\",\"nome_operadora\":\"CLARO\",\"pin_puk1\":\"3248-72894890\",\"pin_puk2\":\"7489-13849014\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"id_categoria\":\"1\",\"id_operadora\":\"1\",\"pin_puk1\":\"3248-72894890\",\"pin_puk2\":\"7489-13849014\",\"status\":\"0\",\"id_usuario_at\":\"1\"}', '2021-06-14 15:43:35'),
-(18, 'linhas', 1, 32, '{\"id_linha\":\"32\",\"numero_linha\":\"(11)98874-3284\",\"codigo_chip\":\"934723451267122\",\"id_categoria\":\"1\",\"id_operadora\":\"1\",\"nome_categoria\":\"CATEGORIA I\",\"nome_operadora\":\"CLARO\",\"pin_puk1\":\"8134-09183490\",\"pin_puk2\":\"4897-48913841\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"EM USO\"}', '{\"id_categoria\":\"1\",\"id_operadora\":\"2\",\"pin_puk1\":\"8134-09183490\",\"pin_puk2\":\"4897-48913841\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-06-21 18:31:58'),
-(19, 'linhas', 1, 1, '{\"id_linha\":\"1\",\"numero_linha\":\"(11)98764-3567\",\"codigo_chip\":\"234567124909876\",\"id_categoria\":\"2\",\"id_operadora\":\"1\",\"nome_categoria\":\"CATEGORIA II\",\"nome_operadora\":\"CLARO\",\"pin_puk1\":\"4567-65432567\",\"pin_puk2\":\"2345-67876543\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"id_categoria\":\"2\",\"id_operadora\":\"2\",\"pin_puk1\":\"4567-65432567\",\"pin_puk2\":\"2345-67876543\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-06-21 18:32:10'),
-(20, 'linhas', 1, 1, '{\"id_linha\":\"1\",\"numero_linha\":\"(11)98764-3567\",\"codigo_chip\":\"234567124909876\",\"id_categoria\":\"2\",\"id_operadora\":\"2\",\"nome_categoria\":\"CATEGORIA II\",\"nome_operadora\":\"VIVO\",\"pin_puk1\":\"4567-65432567\",\"pin_puk2\":\"2345-67876543\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"id_categoria\":\"2\",\"id_operadora\":\"1\",\"pin_puk1\":\"4567-65432567\",\"pin_puk2\":\"2345-67876543\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-06-21 18:32:19'),
-(21, 'distribuicoes', 1, 32, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\"}', '2021-06-21 18:52:05'),
-(22, 'distribuicoes', 1, 19, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\"}', '2021-06-21 18:54:58'),
-(23, 'distribuicoes', 1, 11, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\"}', '2021-06-21 18:56:45'),
-(24, 'distribuicoes', 1, 13, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\"}', '2021-06-21 18:56:50'),
-(25, 'distribuicoes', 1, 14, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\"}', '2021-06-21 18:56:56'),
-(26, 'distribuicoes', 1, 17, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\"}', '2021-06-21 18:57:01'),
-(27, 'distribuicoes', 1, 21, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\"}', '2021-06-21 18:57:08'),
-(28, 'distribuicoes', 1, 34, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\"}', '2021-06-21 18:57:14'),
-(29, 'distribuicoes', 1, 12, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\"}', '2021-06-22 08:48:35'),
-(30, 'distribuicoes', 1, 22, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\"}', '2021-06-22 08:49:01'),
-(31, 'distribuicoes', 1, 31, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\"}', '2021-06-22 08:49:06'),
-(32, 'distribuicoes', 1, 35, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\"}', '2021-06-22 08:49:18'),
-(33, 'distribuicoes', 1, 30, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\"}', '2021-06-22 08:54:13'),
-(34, 'distribuicoes', 1, 33, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\"}', '2021-06-22 08:54:18'),
-(35, 'distribuicoes', 1, 15, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\"}', '2021-06-22 08:54:37'),
-(36, 'distribuicoes', 1, 16, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\"}', '2021-06-22 08:54:42'),
-(37, 'distribuicoes', 1, 1, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\"}', '2021-06-22 09:34:38'),
-(38, 'distribuicoes', 1, 2, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\"}', '2021-06-22 09:34:59'),
-(39, 'distribuicoes', 1, 3, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\"}', '2021-06-22 09:35:31'),
-(40, 'distribuicoes', 1, 4, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\"}', '2021-06-22 09:35:49'),
-(41, 'distribuicoes', 1, 36, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\"}', '2021-06-24 10:39:50'),
-(42, 'aparelhos', 1, 22, '{\"id_aparelho\":\"22\",\"imei1\":\"345212345123478\",\"imei2\":\"\",\"nome_modelo\":\"NOKIA 208\",\"nome_marca\":\"NOKIA\",\"id_status_condicao_aparelho\":\"1\",\"nota_fiscal\":\"2345\",\"data_nota\":\"2021-05-05\",\"valor\":\"789,00\",\"valor_depreciado\":\"789.00\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"id_status_condicao_aparelho\":\"4\",\"nota_fiscal\":\"2345\",\"data_nota\":\"2021-05-05\",\"valor\":\"789.00\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-06-24 10:40:13'),
-(43, 'aparelhos', 1, 1, '{\"id_aparelho\":\"1\",\"imei1\":\"674345678123456\",\"imei2\":\"\",\"nome_modelo\":\" GALAXY FIT \",\"nome_marca\":\"MOTOROLA\",\"id_status_condicao_aparelho\":\"1\",\"nota_fiscal\":\"3457\",\"data_nota\":\"2020-01-29\",\"valor\":\"900,00\",\"valor_depreciado\":\"900.00\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"id_status_condicao_aparelho\":\"4\",\"nota_fiscal\":\"3457\",\"data_nota\":\"2020-01-29\",\"valor\":\"900.00\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-14 11:10:55'),
-(44, 'aparelhos', 1, 2, '{\"id_aparelho\":\"2\",\"imei1\":\"985643237658345\",\"imei2\":\"\",\"nome_modelo\":\" GALAXY FAME\",\"nome_marca\":\"APPLE\",\"id_status_condicao_aparelho\":\"1\",\"nota_fiscal\":\"6785\",\"data_nota\":\"2020-01-29\",\"valor\":\"352,00\",\"valor_depreciado\":\"352.00\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"id_status_condicao_aparelho\":\"4\",\"nota_fiscal\":\"6785\",\"data_nota\":\"2020-01-29\",\"valor\":\"352.00\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-14 11:11:12'),
-(45, 'aparelhos', 1, 2, '{\"id_aparelho\":\"2\",\"imei1\":\"985643237658345\",\"imei2\":\"\",\"nome_modelo\":\" GALAXY FAME\",\"nome_marca\":\"APPLE\",\"id_status_condicao_aparelho\":\"4\",\"nota_fiscal\":\"6785\",\"data_nota\":\"2020-01-29\",\"valor\":\"352,00\",\"valor_depreciado\":\"352.00\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"INDISPONIVEL\"}', '{\"id_status_condicao_aparelho\":\"2\",\"nota_fiscal\":\"6785\",\"data_nota\":\"2020-01-29\",\"valor\":\"352.00\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-14 11:11:21'),
-(46, 'aparelhos', 1, 2, '{\"id_aparelho\":\"2\",\"imei1\":\"985643237658345\",\"imei2\":\"\",\"nome_modelo\":\" GALAXY FAME\",\"nome_marca\":\"APPLE\",\"id_status_condicao_aparelho\":\"2\",\"nota_fiscal\":\"6785\",\"data_nota\":\"2020-01-29\",\"valor\":\"352,00\",\"valor_depreciado\":\"352.00\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"id_status_condicao_aparelho\":\"3\",\"nota_fiscal\":\"6785\",\"data_nota\":\"2020-01-29\",\"valor\":\"352.00\",\"status\":\"0\",\"id_usuario_at\":\"1\"}', '2021-07-14 11:11:36'),
-(47, 'aparelhos', 1, 2, '{\"id_aparelho\":\"2\",\"imei1\":\"985643237658345\",\"imei2\":\"\",\"nome_modelo\":\" GALAXY FAME\",\"nome_marca\":\"APPLE\",\"id_status_condicao_aparelho\":\"3\",\"nota_fiscal\":\"6785\",\"data_nota\":\"2020-01-29\",\"valor\":\"352,00\",\"valor_depreciado\":\"352.00\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"0\",\"status_disponibilidade\":\"INDISPONIVEL\"}', '{\"id_status_condicao_aparelho\":\"4\",\"nota_fiscal\":\"6785\",\"data_nota\":\"2020-01-29\",\"valor\":\"352.00\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-14 11:11:43'),
-(48, 'aparelhos', 1, 2, '{\"id_aparelho\":\"2\",\"imei1\":\"985643237658345\",\"imei2\":\"\",\"nome_modelo\":\" GALAXY FAME\",\"nome_marca\":\"APPLE\",\"id_status_condicao_aparelho\":\"4\",\"nota_fiscal\":\"6785\",\"data_nota\":\"2020-01-29\",\"valor\":\"352,00\",\"valor_depreciado\":\"352.00\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"INDISPONIVEL\"}', '{\"id_status_condicao_aparelho\":\"4\",\"nota_fiscal\":\"6785\",\"data_nota\":\"2020-01-29\",\"valor\":\"352.00\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-14 11:11:51'),
-(49, 'aparelhos', 1, 3, '{\"id_aparelho\":\"3\",\"imei1\":\"987453452167845\",\"imei2\":\"\",\"nome_modelo\":\" GALAXY J1 - MINI\",\"nome_marca\":\"NOKIA\",\"id_status_condicao_aparelho\":\"1\",\"nota_fiscal\":\"4567\",\"data_nota\":\"2019-01-05\",\"valor\":\"600,00\",\"valor_depreciado\":\"480.00\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"id_status_condicao_aparelho\":\"4\",\"nota_fiscal\":\"4567\",\"data_nota\":\"2019-01-05\",\"valor\":\"600.00\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-14 11:20:00'),
-(50, 'aparelhos', 1, 3, '{\"id_aparelho\":\"3\",\"imei1\":\"987453452167845\",\"imei2\":\"\",\"nome_modelo\":\" GALAXY J1 - MINI\",\"nome_marca\":\"NOKIA\",\"id_status_condicao_aparelho\":\"4\",\"nota_fiscal\":\"4567\",\"data_nota\":\"2019-01-05\",\"valor\":\"600,00\",\"valor_depreciado\":\"480.00\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"INDISPONIVEL\"}', '{\"id_status_condicao_aparelho\":\"2\",\"nota_fiscal\":\"4567\",\"data_nota\":\"2019-01-05\",\"valor\":\"600.00\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-14 11:20:07'),
-(51, 'aparelhos', 1, 3, '{\"id_aparelho\":\"3\",\"imei1\":\"987453452167845\",\"imei2\":\"\",\"nome_modelo\":\" GALAXY J1 - MINI\",\"nome_marca\":\"NOKIA\",\"id_status_condicao_aparelho\":\"2\",\"nota_fiscal\":\"4567\",\"data_nota\":\"2019-01-05\",\"valor\":\"600,00\",\"valor_depreciado\":\"480.00\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"id_status_condicao_aparelho\":\"4\",\"nota_fiscal\":\"4567\",\"data_nota\":\"2019-01-05\",\"valor\":\"600.00\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-14 11:20:15'),
-(52, 'distribuicoes', 1, 37, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\",\"id_motivo_devolucao\":null,\"motivo_devolucao\":null}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\",\"id_motivo_devolucao\":2,\"motivo_devolucao\":\"TROCA DEFEITO\"}', '2021-07-14 14:22:11'),
-(53, 'distribuicoes', 1, 18, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\",\"id_motivo_devolucao\":null,\"motivo_devolucao\":null}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\",\"id_motivo_devolucao\":3,\"motivo_devolucao\":\"TROCA TECNOLOGIA\"}', '2021-07-14 14:22:50'),
-(54, 'distribuicoes', 1, 20, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\",\"id_motivo_devolucao\":null,\"motivo_devolucao\":null}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\",\"id_motivo_devolucao\":1,\"motivo_devolucao\":\"DESLIGAMENTO\"}', '2021-07-14 14:24:22'),
-(55, 'distribuicoes', 1, 38, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\",\"id_motivo_devolucao\":null,\"motivo_devolucao\":null}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\",\"id_motivo_devolucao\":2,\"motivo_devolucao\":\"TROCA DEFEITO\"}', '2021-07-14 14:24:51'),
-(56, 'distribuicoes', 1, 39, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\",\"id_motivo_devolucao\":null,\"motivo_devolucao\":null}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\",\"id_motivo_devolucao\":3,\"motivo_devolucao\":\"TROCA TECNOLOGIA\"}', '2021-07-14 14:25:04'),
-(57, 'distribuicoes', 1, 40, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\",\"id_motivo_devolucao\":null,\"motivo_devolucao\":null}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\",\"id_motivo_devolucao\":4,\"motivo_devolucao\":\"TROCA FURTO\\/ROUBO\"}', '2021-07-14 14:25:18'),
-(58, 'linhas', 1, 1, '{\"id_linha\":\"1\",\"numero_linha\":\"(11)98764-3567\",\"codigo_chip\":\"234567124909876\",\"id_categoria\":\"2\",\"id_operadora\":\"1\",\"nome_categoria\":\"CATEGORIA II\",\"nome_operadora\":\"CLARO\",\"pin_puk1\":\"4567-65432567\",\"pin_puk2\":\"2345-67876543\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"codigo_chip\":\"23456712490987767656\",\"id_categoria\":\"2\",\"id_operadora\":\"1\",\"pin_puk1\":\"4567-65432567\",\"pin_puk2\":\"2345-67876543\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-20 15:55:07'),
-(59, 'linhas', 1, 1, '{\"id_linha\":\"1\",\"numero_linha\":\"(11)98764-3567\",\"codigo_chip\":\"23456712490987767656\",\"id_categoria\":\"2\",\"id_operadora\":\"1\",\"nome_categoria\":\"CATEGORIA II\",\"nome_operadora\":\"CLARO\",\"pin_puk1\":\"4567-65432567\",\"pin_puk2\":\"2345-67876543\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"codigo_chip\":\"23456712490987767657\",\"id_categoria\":\"2\",\"id_operadora\":\"1\",\"pin_puk1\":\"4567-65432567\",\"pin_puk2\":\"2345-67876543\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-20 15:55:21'),
-(60, 'linhas', 1, 2, '{\"id_linha\":\"2\",\"numero_linha\":\"(11)98738-6826\",\"codigo_chip\":\"981234567876543\",\"id_categoria\":\"1\",\"id_operadora\":\"1\",\"nome_categoria\":\"CATEGORIA I\",\"nome_operadora\":\"CLARO\",\"pin_puk1\":\"4676-54321567\",\"pin_puk2\":\"2347-87643213\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"codigo_chip\":\"98123456787654312345\",\"id_categoria\":\"1\",\"id_operadora\":\"1\",\"pin_puk1\":\"4676-54321567\",\"pin_puk2\":\"2347-87643213\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-20 15:55:44'),
-(61, 'linhas', 1, 3, '{\"id_linha\":\"3\",\"numero_linha\":\"(11)97898-7654\",\"codigo_chip\":\"987653212348876\",\"id_categoria\":\"2\",\"id_operadora\":\"1\",\"nome_categoria\":\"CATEGORIA II\",\"nome_operadora\":\"CLARO\",\"pin_puk1\":\"8761-11236874\",\"pin_puk2\":\"2683-73829536\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"codigo_chip\":\"98765321234887612345\",\"id_categoria\":\"2\",\"id_operadora\":\"1\",\"pin_puk1\":\"8761-11236874\",\"pin_puk2\":\"2683-73829536\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-20 15:55:52'),
-(62, 'linhas', 1, 4, '{\"id_linha\":\"4\",\"numero_linha\":\"(11)97363-7372\",\"codigo_chip\":\"876544191827181\",\"id_categoria\":\"3\",\"id_operadora\":\"1\",\"nome_categoria\":\"CATEGORIA III\",\"nome_operadora\":\"CLARO\",\"pin_puk1\":\"8322-14426585\",\"pin_puk2\":\"1235-43524634\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"codigo_chip\":\"87654419182718112345\",\"id_categoria\":\"3\",\"id_operadora\":\"1\",\"pin_puk1\":\"8322-14426585\",\"pin_puk2\":\"1235-43524634\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-20 15:55:59'),
-(63, 'linhas', 1, 5, '{\"id_linha\":\"5\",\"numero_linha\":\"(11)97637-9567\",\"codigo_chip\":\"297812367827849\",\"id_categoria\":\"1\",\"id_operadora\":\"1\",\"nome_categoria\":\"CATEGORIA I\",\"nome_operadora\":\"CLARO\",\"pin_puk1\":\"3524-63463467\",\"pin_puk2\":\"8328-48917234\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"codigo_chip\":\"29781236782784912345\",\"id_categoria\":\"1\",\"id_operadora\":\"1\",\"pin_puk1\":\"3524-63463467\",\"pin_puk2\":\"8328-48917234\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-20 15:56:06'),
-(64, 'linhas', 1, 5, '{\"id_linha\":\"5\",\"numero_linha\":\"(11)97637-9567\",\"codigo_chip\":\"29781236782784912345\",\"id_categoria\":\"1\",\"id_operadora\":\"1\",\"nome_categoria\":\"CATEGORIA I\",\"nome_operadora\":\"CLARO\",\"pin_puk1\":\"3524-63463467\",\"pin_puk2\":\"8328-48917234\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"codigo_chip\":\"12345678901234567890\",\"id_categoria\":\"1\",\"id_operadora\":\"1\",\"pin_puk1\":\"3524-63463467\",\"pin_puk2\":\"8328-48917234\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-20 15:56:47'),
-(65, 'linhas', 1, 6, '{\"id_linha\":\"6\",\"numero_linha\":\"(11)98657-6794\",\"codigo_chip\":\"197654323456789\",\"id_categoria\":\"3\",\"id_operadora\":\"2\",\"nome_categoria\":\"CATEGORIA III\",\"nome_operadora\":\"VIVO\",\"pin_puk1\":\"3435-76543214\",\"pin_puk2\":\"5321-32874713\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"codigo_chip\":\"19765432345678912345\",\"id_categoria\":\"3\",\"id_operadora\":\"2\",\"pin_puk1\":\"3435-76543214\",\"pin_puk2\":\"5321-32874713\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-20 15:57:11'),
-(66, 'linhas', 1, 7, '{\"id_linha\":\"7\",\"numero_linha\":\"(11)97357-3538\",\"codigo_chip\":\"874834781363489\",\"id_categoria\":\"1\",\"id_operadora\":\"1\",\"nome_categoria\":\"CATEGORIA I\",\"nome_operadora\":\"CLARO\",\"pin_puk1\":\"3478-92483749\",\"pin_puk2\":\"3467-34687894\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"codigo_chip\":\"87483478136348912345\",\"id_categoria\":\"1\",\"id_operadora\":\"1\",\"pin_puk1\":\"3478-92483749\",\"pin_puk2\":\"3467-34687894\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-20 15:57:22'),
-(67, 'linhas', 1, 8, '{\"id_linha\":\"8\",\"numero_linha\":\"(11)96378-2424\",\"codigo_chip\":\"347892754893294\",\"id_categoria\":\"1\",\"id_operadora\":\"2\",\"nome_categoria\":\"CATEGORIA I\",\"nome_operadora\":\"VIVO\",\"pin_puk1\":\"8774-67827389\",\"pin_puk2\":\"6346-16832718\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"codigo_chip\":\"34789275489329412345\",\"id_categoria\":\"1\",\"id_operadora\":\"2\",\"pin_puk1\":\"8774-67827389\",\"pin_puk2\":\"6346-16832718\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-20 15:57:30'),
-(68, 'linhas', 1, 9, '{\"id_linha\":\"9\",\"numero_linha\":\"(11)97678-3274\",\"codigo_chip\":\"328478192734981\",\"id_categoria\":\"1\",\"id_operadora\":\"1\",\"nome_categoria\":\"CATEGORIA I\",\"nome_operadora\":\"CLARO\",\"pin_puk1\":\"3248-72894890\",\"pin_puk2\":\"7489-13849014\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"0\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"codigo_chip\":\"32847819273498112345\",\"id_categoria\":\"1\",\"id_operadora\":\"1\",\"pin_puk1\":\"3248-72894890\",\"pin_puk2\":\"7489-13849014\",\"status\":\"0\",\"id_usuario_at\":\"1\"}', '2021-07-20 15:57:38'),
-(69, 'linhas', 1, 10, '{\"id_linha\":\"10\",\"numero_linha\":\"(11)98873-9841\",\"codigo_chip\":\"438712384982904\",\"id_categoria\":\"2\",\"id_operadora\":\"1\",\"nome_categoria\":\"CATEGORIA II\",\"nome_operadora\":\"CLARO\",\"pin_puk1\":\"4871-82934190\",\"pin_puk2\":\"3449-81993401\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"codigo_chip\":\"43871238498290412345\",\"id_categoria\":\"2\",\"id_operadora\":\"1\",\"pin_puk1\":\"4871-82934190\",\"pin_puk2\":\"3449-81993401\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-20 15:57:46'),
-(70, 'linhas', 1, 31, '{\"id_linha\":\"31\",\"numero_linha\":\"(11)98234-7832\",\"codigo_chip\":\"938472354263452\",\"id_categoria\":\"1\",\"id_operadora\":\"1\",\"nome_categoria\":\"CATEGORIA I\",\"nome_operadora\":\"CLARO\",\"pin_puk1\":\"4913-28409132\",\"pin_puk2\":\"8932-47891723\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"codigo_chip\":\"93847235426345234521\",\"id_categoria\":\"1\",\"id_operadora\":\"1\",\"pin_puk1\":\"4913-28409132\",\"pin_puk2\":\"8932-47891723\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-20 16:01:07'),
-(71, 'linhas', 1, 1, '{\"id_linha\":\"1\",\"numero_linha\":\"(11)98764-3567\",\"codigo_chip\":\"23456712490987767657\",\"id_categoria\":\"2\",\"id_operadora\":\"1\",\"nome_categoria\":\"CATEGORIA II\",\"nome_operadora\":\"CLARO\",\"pin_puk1\":\"4567-65432567\",\"pin_puk2\":\"2345-67876543\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"codigo_chip\":\"23456712490987767656\",\"id_categoria\":\"2\",\"id_operadora\":\"1\",\"pin_puk1\":\"4567-65432567\",\"pin_puk2\":\"2345-67876543\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-21 14:09:54'),
-(72, 'linhas', 1, 1, '{\"id_linha\":\"1\",\"numero_linha\":\"(11)98764-3567\",\"codigo_chip\":\"23456712490987767656\",\"id_categoria\":\"2\",\"id_operadora\":\"1\",\"nome_categoria\":\"CATEGORIA II\",\"nome_operadora\":\"CLARO\",\"pin_puk1\":\"4567-65432567\",\"pin_puk2\":\"2345-67876543\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"codigo_chip\":\"23456712490987767657\",\"id_categoria\":\"2\",\"id_operadora\":\"1\",\"pin_puk1\":\"4567-65432567\",\"pin_puk2\":\"2345-67876543\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-21 14:10:08'),
-(73, 'linhas', 1, 1, '{\"id_linha\":\"1\",\"numero_linha\":\"(11)98764-3567\",\"codigo_chip\":\"23456712490987767657\",\"id_categoria\":\"2\",\"id_operadora\":\"1\",\"nome_categoria\":\"CATEGORIA II\",\"nome_operadora\":\"CLARO\",\"pin_puk1\":\"4567-65432567\",\"pin_puk2\":\"2345-67876543\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"codigo_chip\":\"23456712490987767658\",\"id_categoria\":\"2\",\"id_operadora\":\"1\",\"pin_puk1\":\"4567-65432567\",\"pin_puk2\":\"2345-67876543\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-21 14:10:17'),
-(74, 'linhas', 1, 1, '{\"id_linha\":\"1\",\"numero_linha\":\"(11)98764-3567\",\"codigo_chip\":\"23456712490987767658\",\"id_categoria\":\"2\",\"id_operadora\":\"1\",\"nome_categoria\":\"CATEGORIA II\",\"nome_operadora\":\"CLARO\",\"pin_puk1\":\"4567-65432567\",\"pin_puk2\":\"2345-67876543\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"codigo_chip\":\"12345612341234567819\",\"id_categoria\":\"1\",\"id_operadora\":\"1\",\"pin_puk1\":\"4567-65432567\",\"pin_puk2\":\"2345-67876543\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-21 14:11:49'),
-(75, 'linhas', 1, 1, '{\"id_linha\":\"1\",\"numero_linha\":\"(11)98764-3567\",\"codigo_chip\":\"12345612341234567819\",\"id_categoria\":\"1\",\"id_operadora\":\"1\",\"nome_categoria\":\"CATEGORIA I\",\"nome_operadora\":\"CLARO\",\"pin_puk1\":\"4567-65432567\",\"pin_puk2\":\"2345-67876543\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"codigo_chip\":\"12345612341234533333\",\"id_categoria\":\"2\",\"id_operadora\":\"1\",\"pin_puk1\":\"4567-65432567\",\"pin_puk2\":\"2345-67876543\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-21 14:12:43'),
-(76, 'linhas', 1, 1, '{\"id_linha\":\"1\",\"numero_linha\":\"(11)98764-3567\",\"codigo_chip\":\"12345612341234533333\",\"id_categoria\":\"2\",\"id_operadora\":\"1\",\"nome_categoria\":\"CATEGORIA II\",\"nome_operadora\":\"CLARO\",\"pin_puk1\":\"4567-65432567\",\"pin_puk2\":\"2345-67876543\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"codigo_chip\":\"12345612341234544444\",\"id_categoria\":\"2\",\"id_operadora\":\"1\",\"pin_puk1\":\"4567-65432567\",\"pin_puk2\":\"2345-67876543\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-21 14:13:37'),
-(77, 'linhas', 1, 1, '{\"id_linha\":\"1\",\"numero_linha\":\"(11)98764-3567\",\"codigo_chip\":\"12345612341234544444\",\"id_categoria\":\"2\",\"id_operadora\":\"1\",\"nome_categoria\":\"CATEGORIA II\",\"nome_operadora\":\"CLARO\",\"pin_puk1\":\"4567-65432567\",\"pin_puk2\":\"2345-67876543\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"codigo_chip\":\"12345612341234555555\",\"id_categoria\":\"1\",\"id_operadora\":\"1\",\"pin_puk1\":\"4567-65432567\",\"pin_puk2\":\"2345-67876543\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-21 14:14:21'),
-(78, 'linhas', 1, 1, '{\"id_linha\":\"1\",\"numero_linha\":\"(11)98764-3567\",\"codigo_chip\":\"12345612341234555555\",\"id_categoria\":\"1\",\"id_operadora\":\"1\",\"nome_categoria\":\"CATEGORIA I\",\"nome_operadora\":\"CLARO\",\"pin_puk1\":\"4567-65432567\",\"pin_puk2\":\"2345-67876543\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"codigo_chip\":\"12345612341234666666\",\"id_categoria\":\"6\",\"id_operadora\":\"1\",\"pin_puk1\":\"4567-65432567\",\"pin_puk2\":\"2345-67876543\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-21 14:14:42'),
-(79, 'linhas', 1, 1, '{\"id_linha\":\"1\",\"numero_linha\":\"(11)98764-3567\",\"codigo_chip\":\"12345612341234666666\",\"id_categoria\":\"6\",\"id_operadora\":\"1\",\"nome_categoria\":\"BLOQUEIO\",\"nome_operadora\":\"CLARO\",\"pin_puk1\":\"4567-65432567\",\"pin_puk2\":\"2345-67876543\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"codigo_chip\":\"12345612341234666666\",\"id_categoria\":\"1\",\"id_operadora\":\"1\",\"pin_puk1\":\"4567-65432567\",\"pin_puk2\":\"2345-67876543\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-21 14:19:38'),
-(80, 'linhas', 1, 2, '{\"id_linha\":\"2\",\"numero_linha\":\"(11)98738-6826\",\"codigo_chip\":\"98123456787654312345\",\"id_categoria\":\"1\",\"id_operadora\":\"1\",\"nome_categoria\":\"CATEGORIA I\",\"nome_operadora\":\"CLARO\",\"pin_puk1\":\"4676-54321567\",\"pin_puk2\":\"2347-87643213\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"codigo_chip\":\"12345612341234666666\",\"id_categoria\":\"1\",\"id_operadora\":\"1\",\"pin_puk1\":\"4676-54321567\",\"pin_puk2\":\"2347-87643213\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-21 14:19:54'),
-(81, 'linhas', 1, 2, '{\"id_linha\":\"2\",\"numero_linha\":\"(11)98738-6826\",\"codigo_chip\":\"98123456787654312345\",\"id_categoria\":\"1\",\"id_operadora\":\"1\",\"nome_categoria\":\"CATEGORIA I\",\"nome_operadora\":\"CLARO\",\"pin_puk1\":\"4676-54321567\",\"pin_puk2\":\"2347-87643213\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"codigo_chip\":\"12345612341234666666\",\"id_categoria\":\"1\",\"id_operadora\":\"1\",\"pin_puk1\":\"4676-54321567\",\"pin_puk2\":\"2347-87643213\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-21 14:19:59'),
-(82, 'linhas', 1, 2, '{\"id_linha\":\"2\",\"numero_linha\":\"(11)98738-6826\",\"codigo_chip\":\"98123456787654312345\",\"id_categoria\":\"1\",\"id_operadora\":\"1\",\"nome_categoria\":\"CATEGORIA I\",\"nome_operadora\":\"CLARO\",\"pin_puk1\":\"4676-54321567\",\"pin_puk2\":\"2347-87643213\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"codigo_chip\":\"12345612341234666666\",\"id_categoria\":\"1\",\"id_operadora\":\"1\",\"pin_puk1\":\"4676-54321567\",\"pin_puk2\":\"2347-87643213\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-21 14:20:05'),
-(83, 'linhas', 1, 2, '{\"id_linha\":\"2\",\"numero_linha\":\"(11)98738-6826\",\"codigo_chip\":\"98123456787654312345\",\"id_categoria\":\"1\",\"id_operadora\":\"1\",\"nome_categoria\":\"CATEGORIA I\",\"nome_operadora\":\"CLARO\",\"pin_puk1\":\"4676-54321567\",\"pin_puk2\":\"2347-87643213\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"codigo_chip\":\"12345612341234666612\",\"id_categoria\":\"1\",\"id_operadora\":\"1\",\"pin_puk1\":\"4676-54321567\",\"pin_puk2\":\"2347-87643213\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-21 14:22:51'),
-(84, 'linhas', 1, 2, '{\"id_linha\":\"2\",\"numero_linha\":\"(11)98738-6826\",\"codigo_chip\":\"12345612341234666612\",\"id_categoria\":\"1\",\"id_operadora\":\"1\",\"nome_categoria\":\"CATEGORIA I\",\"nome_operadora\":\"CLARO\",\"pin_puk1\":\"4676-54321567\",\"pin_puk2\":\"2347-87643213\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"codigo_chip\":\"12345612341234666612\",\"id_categoria\":\"2\",\"id_operadora\":\"1\",\"pin_puk1\":\"4676-54321567\",\"pin_puk2\":\"2347-87643213\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-21 14:23:03'),
-(85, 'linhas', 1, 3, '{\"id_linha\":\"3\",\"numero_linha\":\"(11)97898-7654\",\"codigo_chip\":\"98765321234887612345\",\"id_categoria\":\"2\",\"id_operadora\":\"1\",\"nome_categoria\":\"CATEGORIA II\",\"nome_operadora\":\"CLARO\",\"pin_puk1\":\"8761-11236874\",\"pin_puk2\":\"2683-73829536\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"codigo_chip\":\"98765321234887612345\",\"id_categoria\":\"3\",\"id_operadora\":\"1\",\"pin_puk1\":\"8761-11236874\",\"pin_puk2\":\"2683-73829536\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-21 14:23:10'),
-(86, 'linhas', 1, 4, '{\"id_linha\":\"4\",\"numero_linha\":\"(11)97363-7372\",\"codigo_chip\":\"87654419182718112345\",\"id_categoria\":\"3\",\"id_operadora\":\"1\",\"nome_categoria\":\"CATEGORIA III\",\"nome_operadora\":\"CLARO\",\"pin_puk1\":\"8322-14426585\",\"pin_puk2\":\"1235-43524634\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"codigo_chip\":\"87654419182718112345\",\"id_categoria\":\"4\",\"id_operadora\":\"1\",\"pin_puk1\":\"8322-14426585\",\"pin_puk2\":\"1235-43524634\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-21 14:23:20'),
-(87, 'linhas', 1, 5, '{\"id_linha\":\"5\",\"numero_linha\":\"(11)97637-9567\",\"codigo_chip\":\"12345678901234567890\",\"id_categoria\":\"1\",\"id_operadora\":\"1\",\"nome_categoria\":\"CATEGORIA I\",\"nome_operadora\":\"CLARO\",\"pin_puk1\":\"3524-63463467\",\"pin_puk2\":\"8328-48917234\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"codigo_chip\":\"12345678901234567890\",\"id_categoria\":\"5\",\"id_operadora\":\"1\",\"pin_puk1\":\"3524-63463467\",\"pin_puk2\":\"8328-48917234\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-21 14:23:27'),
-(88, 'linhas', 1, 6, '{\"id_linha\":\"6\",\"numero_linha\":\"(11)98657-6794\",\"codigo_chip\":\"19765432345678912345\",\"id_categoria\":\"3\",\"id_operadora\":\"2\",\"nome_categoria\":\"CATEGORIA III\",\"nome_operadora\":\"VIVO\",\"pin_puk1\":\"3435-76543214\",\"pin_puk2\":\"5321-32874713\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"codigo_chip\":\"19765432345678912345\",\"id_categoria\":\"6\",\"id_operadora\":\"2\",\"pin_puk1\":\"3435-76543214\",\"pin_puk2\":\"5321-32874713\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-21 14:23:33'),
-(89, 'linhas', 1, 7, '{\"id_linha\":\"7\",\"numero_linha\":\"(11)97357-3538\",\"codigo_chip\":\"87483478136348912345\",\"id_categoria\":\"1\",\"id_operadora\":\"1\",\"nome_categoria\":\"CATEGORIA I\",\"nome_operadora\":\"CLARO\",\"pin_puk1\":\"3478-92483749\",\"pin_puk2\":\"3467-34687894\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"codigo_chip\":\"87483478136348912345\",\"id_categoria\":\"7\",\"id_operadora\":\"1\",\"pin_puk1\":\"3478-92483749\",\"pin_puk2\":\"3467-34687894\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-21 14:26:34'),
-(90, 'aparelhos', 1, 1, '{\"id_aparelho\":\"1\",\"imei1\":\"674345678123456\",\"imei2\":\"\",\"nome_modelo\":\" GALAXY FIT \",\"nome_marca\":\"MOTOROLA\",\"id_status_condicao_aparelho\":\"4\",\"nota_fiscal\":\"3457\",\"data_nota\":\"2020-01-29\",\"valor\":\"900,00\",\"valor_depreciado\":\"900.00\",\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"INDISPONIVEL\"}', '{\"id_status_condicao_aparelho\":\"4\",\"nota_fiscal\":\"\",\"data_nota\":\"2020-01-29\",\"valor\":\"900.00\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-07-21 14:28:25'),
-(91, 'aparelhos', 1, 1, '{\"id_motivo_inativacao\":null,\"motivo_inativacao\":null}', '{\"id_motivo_inativacao\":2,\"motivo_devolucao\":\"DESCARTE\"}', '2021-07-27 16:03:07'),
-(92, 'aparelhos', 1, 2, '{\"id_motivo_inativacao\":null,\"motivo_inativacao\":null}', '{\"id_motivo_inativacao\":1,\"motivo_devolucao\":\"OBSOLETO\"}', '2021-07-27 16:03:22');
+(1, 'aparelhos', 1, 1, '{\"id_status_condicao_aparelho\":\"1\",\"status\":1,\"id_motivo_inativacao\":null,\"motivo_inativacao\":null}', '{\"id_status_condicao_aparelho\":\"1\",\"status\":0,\"id_motivo_inativacao\":2,\"motivo_inativacao\":\"DESCARTE\"}', '2021-08-04 09:53:52'),
+(2, 'aparelhos', 1, 2, '{\"id_status_condicao_aparelho\":\"1\",\"status\":1,\"id_motivo_inativacao\":null,\"motivo_inativacao\":null}', '{\"id_status_condicao_aparelho\":\"1\",\"status\":0,\"id_motivo_inativacao\":1,\"motivo_inativacao\":\"OBSOLETO\"}', '2021-08-04 09:55:21'),
+(3, 'aparelhos', 1, 3, '{\"id_status_condicao_aparelho\":\"1\",\"status\":1,\"id_motivo_inativacao\":null,\"motivo_inativacao\":null}', '{\"id_status_condicao_aparelho\":\"1\",\"status\":0,\"id_motivo_inativacao\":3,\"motivo_inativacao\":\"PERDA\"}', '2021-08-04 09:55:41'),
+(4, 'aparelhos', 1, 4, '{\"id_status_condicao_aparelho\":\"1\",\"status\":1,\"id_motivo_inativacao\":null,\"motivo_inativacao\":null}', '{\"id_status_condicao_aparelho\":\"1\",\"status\":0,\"id_motivo_inativacao\":4,\"motivo_inativacao\":\"FURTO\\/ROUBO\"}', '2021-08-04 09:55:57'),
+(5, 'aparelhos', 1, 5, '{\"id_status_condicao_aparelho\":\"2\",\"status\":1,\"id_motivo_inativacao\":null,\"motivo_inativacao\":null}', '{\"id_status_condicao_aparelho\":\"2\",\"status\":0,\"id_motivo_inativacao\":5,\"motivo_inativacao\":\"DEFEITO\"}', '2021-08-04 09:56:32'),
+(6, 'distribuicoes', 1, 1, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\",\"id_motivo_devolucao\":null,\"motivo_devolucao\":null}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\",\"id_motivo_devolucao\":1,\"motivo_devolucao\":\"DESLIGAMENTO\"}', '2021-08-04 10:43:38'),
+(7, 'aparelhos', 1, 7, '{\"id_aparelho\":\"7\",\"imei1\":\"934891328491232\",\"imei2\":\"359094013295491\",\"nome_modelo\":\" GALAXY J4\",\"nome_marca\":\"SAMSUNG\",\"id_status_condicao_aparelho\":\"1\",\"id_status_disponibilidade\":\"1\",\"nota_fiscal\":\"84903289\",\"data_nota\":\"2021-07-01\",\"valor\":\"900,00\",\"valor_depreciado\":null,\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_condicao_aparelho\":\"4\",\"nota_fiscal\":\"84903289\",\"data_nota\":\"2021-07-01\",\"valor\":\"900.00\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-08-04 10:50:22'),
+(8, 'aparelhos', 1, 6, '{\"id_aparelho\":\"6\",\"imei1\":\"237481732841832\",\"imei2\":\"818493124901923\",\"nome_modelo\":\"SONY XPERIA E5\",\"nome_marca\":\"SONY\",\"id_status_condicao_aparelho\":\"1\",\"id_status_disponibilidade\":\"2\",\"nota_fiscal\":\"23478\",\"data_nota\":\"2021-07-07\",\"valor\":\"800,00\",\"valor_depreciado\":null,\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"id_status_condicao_aparelho\":\"2\",\"nota_fiscal\":\"23478\",\"data_nota\":\"2021-07-07\",\"valor\":\"800.00\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-08-04 10:50:33'),
+(9, 'aparelhos', 1, 7, '{\"id_aparelho\":\"7\",\"imei1\":\"934891328491232\",\"imei2\":\"359094013295491\",\"nome_modelo\":\" GALAXY J4\",\"nome_marca\":\"SAMSUNG\",\"id_status_condicao_aparelho\":\"4\",\"id_status_disponibilidade\":\"1\",\"nota_fiscal\":\"84903289\",\"data_nota\":\"2021-07-01\",\"valor\":\"900,00\",\"valor_depreciado\":null,\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"INDISPONIVEL\"}', '{\"id_status_condicao_aparelho\":\"2\",\"nota_fiscal\":\"84903289\",\"data_nota\":\"2021-07-01\",\"valor\":\"900.00\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-08-04 10:50:44'),
+(10, 'aparelhos', 1, 7, '{\"id_aparelho\":\"7\",\"imei1\":\"934891328491232\",\"imei2\":\"359094013295491\",\"nome_modelo\":\" GALAXY J4\",\"nome_marca\":\"SAMSUNG\",\"id_status_condicao_aparelho\":\"2\",\"id_status_disponibilidade\":\"1\",\"nota_fiscal\":\"84903289\",\"data_nota\":\"2021-07-01\",\"valor\":\"900,00\",\"valor_depreciado\":null,\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_condicao_aparelho\":\"4\",\"nota_fiscal\":\"84903289\",\"data_nota\":\"2021-07-01\",\"valor\":\"900.00\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-08-04 10:51:07'),
+(11, 'aparelhos', 1, 8, '{\"id_aparelho\":\"8\",\"imei1\":\"731248813294819\",\"imei2\":\"883490812948190\",\"nome_modelo\":\"LG K9TV\",\"nome_marca\":\"LG\",\"id_status_condicao_aparelho\":\"1\",\"id_status_disponibilidade\":\"1\",\"nota_fiscal\":\"424321\",\"data_nota\":\"2021-08-18\",\"valor\":\"500,00\",\"valor_depreciado\":null,\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_condicao_aparelho\":\"4\",\"nota_fiscal\":\"424321\",\"data_nota\":\"2021-08-18\",\"valor\":\"500.00\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-08-04 10:58:20'),
+(12, 'aparelhos', 1, 9, '{\"id_aparelho\":\"9\",\"imei1\":\"283940218341902\",\"imei2\":\"382914093129419\",\"nome_modelo\":\"IPHONE 4S\",\"nome_marca\":\"APPLE\",\"id_status_condicao_aparelho\":\"1\",\"id_status_disponibilidade\":\"1\",\"nota_fiscal\":\"238472\",\"data_nota\":\"2021-07-01\",\"valor\":\"700,00\",\"valor_depreciado\":null,\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_condicao_aparelho\":\"3\",\"nota_fiscal\":\"238472\",\"data_nota\":\"2021-07-01\",\"valor\":\"700.00\",\"status\":\"0\",\"id_usuario_at\":\"1\"}', '2021-08-04 10:58:36'),
+(13, 'aparelhos', 1, 15, '{\"id_aparelho\":\"15\",\"imei1\":\"848903284923149\",\"imei2\":\"294013294092304\",\"nome_modelo\":\" GALAXY GRAND NEO\",\"nome_marca\":\"SAMSUNG\",\"id_status_condicao_aparelho\":\"1\",\"id_status_disponibilidade\":\"2\",\"nota_fiscal\":\"294092\",\"data_nota\":\"2021-07-07\",\"valor\":\"900,00\",\"valor_depreciado\":null,\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"id_status_condicao_aparelho\":\"4\",\"nota_fiscal\":\"294092\",\"data_nota\":\"2021-07-07\",\"valor\":\"900.00\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-08-04 13:33:08'),
+(14, 'aparelhos', 1, 15, '{\"id_aparelho\":\"15\",\"imei1\":\"848903284923149\",\"imei2\":\"294013294092304\",\"nome_modelo\":\" GALAXY GRAND NEO\",\"nome_marca\":\"SAMSUNG\",\"id_status_condicao_aparelho\":\"4\",\"id_status_disponibilidade\":\"2\",\"nota_fiscal\":\"294092\",\"data_nota\":\"2021-07-07\",\"valor\":\"900,00\",\"valor_depreciado\":null,\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"INDISPONIVEL\"}', '{\"id_status_condicao_aparelho\":\"2\",\"nota_fiscal\":\"294092\",\"data_nota\":\"2021-07-07\",\"valor\":\"900.00\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-08-04 13:33:19'),
+(15, 'aparelhos', 1, 15, '{\"id_aparelho\":\"15\",\"imei1\":\"848903284923149\",\"imei2\":\"294013294092304\",\"nome_modelo\":\" GALAXY GRAND NEO\",\"nome_marca\":\"SAMSUNG\",\"id_status_condicao_aparelho\":\"2\",\"id_status_disponibilidade\":\"2\",\"nota_fiscal\":\"294092\",\"data_nota\":\"2021-07-07\",\"valor\":\"900,00\",\"valor_depreciado\":null,\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"id_status_condicao_aparelho\":\"4\",\"nota_fiscal\":\"294092\",\"data_nota\":\"2021-07-07\",\"valor\":\"900.00\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-08-04 13:33:30'),
+(16, 'aparelhos', 1, 12, '{\"id_status_condicao_aparelho\":\"2\",\"status\":1,\"id_motivo_inativacao\":null,\"motivo_inativacao\":null}', '{\"id_status_condicao_aparelho\":\"2\",\"status\":0,\"id_motivo_inativacao\":4,\"motivo_inativacao\":\"ROUBO\"}', '2021-08-04 15:36:07'),
+(17, 'aparelhos', 1, 13, '{\"id_status_condicao_aparelho\":\"2\",\"status\":1,\"id_motivo_inativacao\":null,\"motivo_inativacao\":null}', '{\"id_status_condicao_aparelho\":\"2\",\"status\":0,\"id_motivo_inativacao\":5,\"motivo_inativacao\":\"FURTO\"}', '2021-08-04 15:36:42'),
+(18, 'distribuicoes', 1, 2, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\",\"id_motivo_devolucao\":null,\"motivo_devolucao\":null}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\",\"id_motivo_devolucao\":4,\"motivo_devolucao\":\"ROUBO\"}', '2021-08-04 15:39:56'),
+(19, 'distribuicoes', 1, 3, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\",\"id_motivo_devolucao\":null,\"motivo_devolucao\":null}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\",\"id_motivo_devolucao\":6,\"motivo_devolucao\":\"PERDA\"}', '2021-08-04 15:40:06'),
+(20, 'aparelhos', 1, 11, '{\"id_aparelho\":\"11\",\"imei1\":\"839018902384901\",\"imei2\":\"419413294091230\",\"nome_modelo\":\" GALAXY J4+\",\"nome_marca\":\"SAMSUNG\",\"id_status_condicao_aparelho\":\"2\",\"id_status_disponibilidade\":\"1\",\"nota_fiscal\":\"294932\",\"data_nota\":\"2021-08-18\",\"valor\":\"600,00\",\"valor_depreciado\":null,\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_condicao_aparelho\":\"4\",\"nota_fiscal\":\"294932\",\"data_nota\":\"2021-08-18\",\"valor\":\"600.00\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-08-04 18:41:29'),
+(21, 'aparelhos', 1, 10, '{\"id_aparelho\":\"10\",\"imei1\":\"834913289048132\",\"imei2\":\"834279183490128\",\"nome_modelo\":\" GALAXY TAB A6\",\"nome_marca\":\"SAMSUNG\",\"id_status_condicao_aparelho\":\"2\",\"id_status_disponibilidade\":\"1\",\"nota_fiscal\":\"392841\",\"data_nota\":\"2021-06-30\",\"valor\":\"700,00\",\"valor_depreciado\":null,\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_condicao_aparelho\":\"3\",\"nota_fiscal\":\"392841\",\"data_nota\":\"2021-06-30\",\"valor\":\"700.00\",\"status\":\"0\",\"id_usuario_at\":\"1\"}', '2021-08-04 18:42:06');
 
 -- --------------------------------------------------------
 
@@ -6665,8 +6523,36 @@ INSERT INTO `motivos_devolucoes` (`id`, `motivo`, `data_registro`, `data_at`, `i
 (1, 'DESLIGAMENTO', '2021-07-23 16:35:00', NULL, 1, NULL),
 (2, 'TROCA DEFEITO', '2021-07-23 16:35:17', NULL, 1, NULL),
 (3, 'TROCA TECNOLOGIA', '2021-07-23 16:35:29', NULL, 1, NULL),
-(4, 'TROCA FURTO/ROUBO', '2021-07-23 16:35:40', NULL, 1, NULL),
-(5, 'PERDA', '2021-07-23 16:35:48', NULL, 1, NULL);
+(4, 'ROUBO', '2021-07-23 16:35:40', '2021-08-04 15:28:28', 1, NULL),
+(5, 'FURTO', '2021-07-23 16:35:48', '2021-08-04 15:28:34', 1, NULL),
+(6, 'PERDA', '2021-08-04 15:28:45', NULL, 1, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `motivo_inativacoes`
+--
+
+CREATE TABLE `motivo_inativacoes` (
+  `id` int(11) NOT NULL,
+  `motivo` varchar(100) NOT NULL,
+  `data_registro` datetime NOT NULL DEFAULT current_timestamp(),
+  `data_at` datetime DEFAULT NULL ON UPDATE current_timestamp(),
+  `id_usuario_registro` int(11) NOT NULL,
+  `id_usario_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `motivo_inativacoes`
+--
+
+INSERT INTO `motivo_inativacoes` (`id`, `motivo`, `data_registro`, `data_at`, `id_usuario_registro`, `id_usario_at`) VALUES
+(1, 'OBSOLETO', '2021-07-28 13:52:07', NULL, 1, NULL),
+(2, 'DESCARTE', '2021-07-28 13:52:18', NULL, 1, NULL),
+(3, 'PERDA', '2021-07-28 13:52:27', NULL, 1, NULL),
+(4, 'ROUBO', '2021-07-28 13:52:36', '2021-08-04 15:31:39', 1, NULL),
+(5, 'FURTO', '2021-07-28 13:52:47', '2021-08-04 15:31:44', 1, NULL),
+(6, 'DEFEITO', '2021-08-04 15:31:52', NULL, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -6741,7 +6627,8 @@ CREATE TABLE `status_disponibilidades` (
 
 INSERT INTO `status_disponibilidades` (`id`, `nome`, `status`, `data_registro`, `data_at`, `id_usuario_registro`, `id_usuario_at`) VALUES
 (1, 'EM USO', 1, '2021-05-07 23:03:59', '2021-05-07 23:03:28', 1, 0),
-(2, 'DISPONÍVEL', 1, '2021-05-07 23:03:59', '2021-05-07 23:03:28', 1, 0);
+(2, 'DISPONÍVEL', 1, '2021-05-07 23:03:59', '2021-05-07 23:03:28', 1, 0),
+(3, 'INDISPONÍVEL', 1, '2021-07-27 18:57:57', NULL, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -6786,7 +6673,8 @@ ALTER TABLE `aparelhos`
   ADD KEY `FK_aparelhos_status_condicoes_aparelhos` (`id_status_condicao_aparelho`),
   ADD KEY `FK_aparelhos_status_disponibilidades` (`id_status_disponibilidade`),
   ADD KEY `FK_aparelhos_usuarios` (`id_usuario_registro`),
-  ADD KEY `FK_aparelhos_usuarios_2` (`id_usuario_at`);
+  ADD KEY `FK_aparelhos_usuarios_2` (`id_usuario_at`),
+  ADD KEY `FK_aparelhos_motivo_inativacoes` (`id_motivo_inativacao`);
 
 --
 -- Índices para tabela `categorias`
@@ -6875,6 +6763,12 @@ ALTER TABLE `motivos_devolucoes`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices para tabela `motivo_inativacoes`
+--
+ALTER TABLE `motivo_inativacoes`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `operadoras`
 --
 ALTER TABLE `operadoras`
@@ -6912,7 +6806,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `aparelhos`
 --
 ALTER TABLE `aparelhos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de tabela `categorias`
@@ -6924,19 +6818,19 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de tabela `distribuicoes`
 --
 ALTER TABLE `distribuicoes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de tabela `linhas`
 --
 ALTER TABLE `linhas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de tabela `logs_alteracoes`
 --
 ALTER TABLE `logs_alteracoes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de tabela `marcas`
@@ -6954,7 +6848,13 @@ ALTER TABLE `modelos`
 -- AUTO_INCREMENT de tabela `motivos_devolucoes`
 --
 ALTER TABLE `motivos_devolucoes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de tabela `motivo_inativacoes`
+--
+ALTER TABLE `motivo_inativacoes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `operadoras`
@@ -6972,23 +6872,13 @@ ALTER TABLE `status_condicoes_aparelhos`
 -- AUTO_INCREMENT de tabela `status_disponibilidades`
 --
 ALTER TABLE `status_disponibilidades`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- Restrições para despejos de tabelas
---
-
---
--- Limitadores para a tabela `modelos`
---
-ALTER TABLE `modelos`
-  ADD CONSTRAINT `FK_modelos_marcas` FOREIGN KEY (`id_marca`) REFERENCES `marcas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
