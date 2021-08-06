@@ -101,6 +101,7 @@ class Aparelhos_model extends CI_Model
                     md.nome AS nome_modelo,
                     mc.nome AS nome_marca,
                     cd.nome AS nome_cidade,
+                    cd.id AS id_cidade,
                     ap.id_status_condicao_aparelho,
                     ap.id_status_disponibilidade,
                     ap.nota_fiscal,

@@ -369,7 +369,7 @@ tabelaAparelhos.on('click', '.visualizar', function (event) {
             $('#editaImei2').val(response.aparelho.imei2)
             $('#editaModelo').val(response.aparelho.nome_modelo)
             $('#editaMarca').val(response.aparelho.nome_marca)
-            $('#editaCidade').val(response.aparelho.nome_cidade).multiselect('refresh')
+            $('#editaCidade').val(response.aparelho.id_cidade).multiselect('refresh')
             $('#editaStatusCondicaoAparelho').val(response.aparelho.id_status_condicao_aparelho).multiselect('refresh')
             $('#editaNotaFiscal').val(response.aparelho.nota_fiscal)
             $('#editaDataNotaFiscal').val(response.aparelho.data_nota)
@@ -455,11 +455,11 @@ $('#btnEditarAparelho').click(function (event) {
         type: "Post",
         data: {
             idAparelho: $('#editaIdAparelho').val(),
+            idCidade: $('#editaCidade').val(),
             idStatusCondicaoAparelho: $('#editaStatusCondicaoAparelho').val(),
             notaFiscal: $('#editaNotaFiscal').val(),
             dataNotaFiscal: $('#editaDataNotaFiscal').val(),
             valorNotaFiscal: formataDecimal($('#editaValorNotaFiscal').val()),
-            status: $('#editaStatus').val()
         }
     }).done(function (response) {
         if (!response.status) {

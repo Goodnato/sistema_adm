@@ -127,10 +127,10 @@ class Aparelhos extends CI_Controller
     public function editarAparelho()
     {
         $this->form_validation->set_rules("idStatusCondicaoAparelho", "<b>Condição aparelho</b>", "trim|required|integer|combines[status_condicoes_aparelhos.id]");
+        $this->form_validation->set_rules("idCidade", "<b>Cidade</b>", "trim|required|integer|combines[cidades.id]");
         $this->form_validation->set_rules("notaFiscal", "<b>Nota fiscal</b>", "trim|integer|max_length[50]");
         $this->form_validation->set_rules("dataNotaFiscal", "<b>Data nota fiscal</b>", "trim|valid_date[Y-m-d]");
         $this->form_validation->set_rules("valorNotaFiscal", "<b>Valor nota fiscal</b>", "trim|decimal");
-        $this->form_validation->set_rules("status", "<b>Status</b>", "trim|required|in_list[0,1]");
 
         if (!$this->form_validation->run()) {
             echo json_encode([
@@ -160,9 +160,9 @@ class Aparelhos extends CI_Controller
         $novosDadosAparelho = [
             'id_status_condicao_aparelho' => $this->input->post('idStatusCondicaoAparelho'),
             'nota_fiscal' => $this->input->post('notaFiscal'),
+            'id_cidade' => $this->input->post('idCidade'),
             'data_nota' => $this->input->post('dataNotaFiscal'),
             'valor' => $this->input->post('valorNotaFiscal'),
-            'status' => $this->input->post('status'),
             'id_usuario_at' => $this->session->dadosUsuario['id']
         ];
 
