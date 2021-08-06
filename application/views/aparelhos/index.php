@@ -9,6 +9,10 @@
                 </div>
                 <div class="row">
                     <div class="col">
+                        <label for="pesquisaImei" class="form-label">IMEI</label>
+                        <input type="number" name="imei" class="form-control form-control-sm" id="pesquisaImei" placeholder="DIGITE AQUI">
+                    </div>
+                    <div class="col">
                         <label for="pesquisaMarca" class="form-label">Marca</label>
                         <select name="idMarca[]" id="pesquisaMarca" multiple="multiple">
                             <?php foreach ($listaMarcas as $marca) { ?>
@@ -26,11 +30,15 @@
                     </div>
                 </div>
                 <div class="row mt-2">
-                    <div class="col">
-                        <label for="pesquisaImei" class="form-label">IMEI</label>
-                        <input type="number" name="imei" class="form-control form-control-sm" id="pesquisaImei" placeholder="DIGITE AQUI">
+                    <div class="col-6">
+                        <label for="pesquisaCidades" class="form-label">Cidade</label>
+                        <select name="idStatusCondicaoAparelho[]" id="pesquisaCidades" multiple="multiple">
+                            <?php foreach ($listaTodasCidades as $cidade) { ?>
+                                <option value="<?= $cidade['id'] ?>"><?= $cidade['nome'] ?></option>
+                            <?php } ?>
+                        </select>
                     </div>
-                    <div class="col">
+                    <div class="col-6">
                         <label for="pesquisaCadastradoPor" class="form-label">Cadastrado por</label>
                         <select name="idUsuarioRegistro[]" id="pesquisaCadastradoPor" multiple="multiple">
                             <?php foreach ($listaUsuariosCadastroAparelho as $cadastradoPor) { ?>
@@ -86,7 +94,7 @@
                         <th scope="col">Imei</th>
                         <th scope="col">Marca</th>
                         <th scope="col">Modelo</th>
-                        <th scope="col">Condição</th>
+                        <th scope="col">Cidade</th>
                         <th scope="col">Valor</th>
                         <th scope="col">Disponibilidade</th>
                         <th scope="col">Ação</th>
@@ -147,6 +155,15 @@
                                 </div>
                                 <div class="row mt-2">
                                     <div class="col-6">
+                                        <label for="cadastroCidade" class="form-label">Cidade*</label>
+                                        <select class="form-control form-control-sm" id="cadastroCidade">
+                                            <option value>SELECIONE</option>
+                                            <?php foreach ($listaTodasCidades as $cidade) { ?>
+                                                <option value="<?= $cidade['id'] ?>"><?= $cidade['nome'] ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-6">
                                         <label for="cadastroStatusCondicaoAparelho" class="form-label">Condição aparelho*</label>
                                         <select class="form-control form-control-sm" id="cadastroStatusCondicaoAparelho">
                                             <?php foreach ($listaStatusCondicoes as $status) { ?>
@@ -154,17 +171,17 @@
                                             <?php } ?>
                                         </select>
                                     </div>
-                                    <div class="col-6">
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-4">
                                         <label for="cadastroNotaFiscal" class="form-label">Nota fiscal</label>
                                         <input type="number" class="form-control form-control-sm" id="cadastroNotaFiscal" placeholder="DIGITE AQUI">
                                     </div>
-                                </div>
-                                <div class="row mt-2">
-                                    <div class="col-6">
+                                    <div class="col-4">
                                         <label for="cadastroDataNotaFiscal" class="form-label">Data nota fiscal</label>
                                         <input type="date" class="form-control form-control-sm" id="cadastroDataNotaFiscal">
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-4">
                                         <label for="cadastroValorNotaFiscal" class="form-label">Valor nota fiscal R$</label>
                                         <input type="text" class="form-control form-control-sm" id="cadastroValorNotaFiscal" placeholder="0,00">
                                     </div>
@@ -227,29 +244,34 @@
                                         </select>
                                     </div>
                                     <div class="col">
-                                        <label for="editaNotaFiscal" class="form-label">Nota fiscal</label>
-                                        <input type="number" class="form-control form-control-sm" id="editaNotaFiscal" placeholder="DIGITE AQUI">
+                                        <label for="editaCidade" class="form-label">Cidade*</label>
+                                        <select class="form-control form-control-sm" id="editaCidade">
+                                            <?php foreach ($listaTodasCidades as $cidade) { ?>
+                                                <option value="<?= $cidade['id'] ?>"><?= $cidade['nome'] ?></option>
+                                            <?php } ?>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="row mt-2">
+                                    <div class="col">
+                                        <label for="editaNotaFiscal" class="form-label">Nota fiscal</label>
+                                        <input type="number" class="form-control form-control-sm" id="editaNotaFiscal" placeholder="DIGITE AQUI">
+                                    </div>
                                     <div class="col">
                                         <label for="editaDataNotaFiscal" class="form-label">Data nota fiscal</label>
                                         <input type="date" class="form-control form-control-sm" id="editaDataNotaFiscal">
                                     </div>
+                                </div>
+                                <div class="row mt-2">
                                     <div class="col">
                                         <label for="editaValorNotaFiscal" class="form-label">Valor nota fiscal R$</label>
                                         <input type="text" class="form-control form-control-sm" id="editaValorNotaFiscal" placeholder="0,00">
                                     </div>
-                                </div>
-                                <div class="row mt-2">
                                     <div class="col">
                                         <label for="editaValorDepreciado" class="form-label">Valor depreciado R$</label>
                                         <input type="text" class="form-control form-control-sm" id="editaValorDepreciado" disabled>
                                     </div>
-                                    <div class="col">
-                                        <label for="editaCadastradoPor" class="form-label">Cadastrado por</label>
-                                        <input type="text" class="form-control form-control-sm" id="editaCadastradoPor" disabled>
-                                    </div>
+                                    
                                 </div>
                                 <div class="row mt-2">
                                     <div class="col-6">
@@ -257,12 +279,8 @@
                                         <input type="text" class="form-control form-control-sm" id="editaValorDisponibilidade" disabled>
                                     </div>
                                     <div class="col-6">
-                                        <label for="editaStatus" class="form-label">Status</label><br>
-                                        <select class="form-control form-control-sm" id="editaStatus" disabled>
-                                            <?php foreach (ARRAY_STATUS as $idStatus => $status) { ?>
-                                                <option value="<?= $idStatus ?>"><?= $status ?></option>
-                                            <?php } ?>
-                                        </select>
+                                        <label for="editaCadastradoPor" class="form-label">Cadastrado por</label>
+                                        <input type="text" class="form-control form-control-sm" id="editaCadastradoPor" disabled>
                                     </div>
                                 </div>
                             </form>

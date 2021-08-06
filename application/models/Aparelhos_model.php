@@ -34,6 +34,7 @@ class Aparelhos_model extends CI_Model
                     ap.imei1 AS imei1,
                     mc.nome AS nome_marca,
                     md.nome AS nome_modelo,
+                    cd.nome AS cidade,
                     sc.nome AS status_condicao,
                     ap.id_usuario_registro AS usuario_registro,
                     CASE ap.id_status_condicao_aparelho
@@ -46,6 +47,7 @@ class Aparelhos_model extends CI_Model
                     {$this->tabela} ap
                 INNER JOIN marcas mc ON mc.id = ap.id_marca
                 INNER JOIN modelos md ON md.id = ap.id_modelo
+                INNER JOIN cidades cd ON cd.id = ap.id_cidade
                 INNER JOIN status_condicoes_aparelhos sc ON sc.id = ap.id_status_condicao_aparelho
                 INNER JOIN status_disponibilidades sd ON sd.id = ap.id_status_disponibilidade
                 WHERE
@@ -78,6 +80,7 @@ class Aparelhos_model extends CI_Model
                     {$this->tabela} ap
                 INNER JOIN marcas mc ON mc.id = ap.id_marca
                 INNER JOIN modelos md ON md.id = ap.id_modelo
+                INNER JOIN cidades cd ON cd.id = ap.id_cidade
                 INNER JOIN status_condicoes_aparelhos sc ON sc.id = ap.id_status_condicao_aparelho
                 INNER JOIN status_disponibilidades sd ON sd.id = ap.id_status_disponibilidade
                 WHERE
@@ -97,6 +100,7 @@ class Aparelhos_model extends CI_Model
                     ap.imei2 AS imei2,
                     md.nome AS nome_modelo,
                     mc.nome AS nome_marca,
+                    cd.nome AS nome_cidade,
                     ap.id_status_condicao_aparelho,
                     ap.id_status_disponibilidade,
                     ap.nota_fiscal,
@@ -114,6 +118,7 @@ class Aparelhos_model extends CI_Model
                     {$this->tabela} ap
                 INNER JOIN marcas mc ON mc.id = ap.id_marca
                 INNER JOIN modelos md ON md.id = ap.id_modelo
+                INNER JOIN cidades cd ON cd.id = ap.id_cidade
                 INNER JOIN usuarios us ON us.id = ap.id_usuario_registro
                 INNER JOIN status_disponibilidades sd ON sd.id = ap.id_status_disponibilidade
                 WHERE

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 04-Ago-2021 às 23:45
+-- Tempo de geração: 06-Ago-2021 às 22:03
 -- Versão do servidor: 10.4.19-MariaDB
 -- versão do PHP: 7.4.20
 
@@ -33,6 +33,7 @@ CREATE TABLE `aparelhos` (
   `id_marca` int(11) NOT NULL,
   `imei1` varchar(200) NOT NULL,
   `imei2` varchar(200) DEFAULT NULL,
+  `id_cidade` varchar(200) NOT NULL,
   `id_status_condicao_aparelho` int(11) NOT NULL,
   `id_status_disponibilidade` int(11) NOT NULL DEFAULT 2,
   `id_motivo_inativacao` int(11) DEFAULT NULL,
@@ -51,22 +52,13 @@ CREATE TABLE `aparelhos` (
 -- Extraindo dados da tabela `aparelhos`
 --
 
-INSERT INTO `aparelhos` (`id`, `id_modelo`, `id_marca`, `imei1`, `imei2`, `id_status_condicao_aparelho`, `id_status_disponibilidade`, `id_motivo_inativacao`, `status`, `nota_fiscal`, `data_nota`, `valor`, `valor_depreciado`, `data_registro`, `data_at`, `id_usuario_registro`, `id_usuario_at`) VALUES
-(1, 7, 6, '243124132413241', '321413241234231', 1, 3, 2, 0, '234901', '2021-08-05', 800.00, NULL, '2021-08-04 08:54:55', '2021-08-04 09:53:52', 1, NULL),
-(2, 25, 2, '274891349018390', '434149013294139', 1, 3, 1, 0, '2840', '2021-07-08', 900.00, NULL, '2021-08-04 08:55:51', '2021-08-04 09:55:21', 1, NULL),
-(3, 49, 5, '374138491839048', '489382401920491', 1, 3, 3, 0, '74823', '2021-06-30', 780.00, NULL, '2021-08-04 08:56:43', '2021-08-04 09:55:41', 1, NULL),
-(4, 31, 3, '874981328904812', '237481823948193', 1, 3, 4, 0, '9824', '2021-07-07', 680.00, NULL, '2021-08-04 08:57:48', '2021-08-04 09:55:57', 1, NULL),
-(5, 60, 6, '827948932849193', '990213849123904', 2, 3, 5, 0, '903849', '2021-07-07', 780.00, NULL, '2021-08-04 08:58:53', '2021-08-04 09:56:32', 1, NULL),
-(6, 64, 7, '237481732841832', '818493124901923', 2, 2, NULL, 1, '23478', '2021-07-07', 800.00, NULL, '2021-08-04 08:59:33', '2021-08-04 10:50:33', 1, 1),
-(7, 7, 6, '934891328491232', '359094013295491', 4, 2, NULL, 1, '84903289', '2021-07-01', 900.00, NULL, '2021-08-04 09:00:08', '2021-08-04 15:39:56', 1, 1),
-(8, 36, 3, '731248813294819', '883490812948190', 4, 2, NULL, 1, '424321', '2021-08-18', 500.00, NULL, '2021-08-04 09:04:02', '2021-08-04 15:40:05', 1, 1),
-(9, 24, 2, '283940218341902', '382914093129419', 3, 1, NULL, 0, '238472', '2021-07-01', 700.00, NULL, '2021-08-04 09:32:07', '2021-08-04 10:58:36', 1, 1),
-(10, 18, 6, '834913289048132', '834279183490128', 3, 1, NULL, 0, '392841', '2021-06-30', 700.00, NULL, '2021-08-04 09:32:39', '2021-08-04 18:42:06', 1, 1),
-(11, 8, 6, '839018902384901', '419413294091230', 4, 1, NULL, 1, '294932', '2021-08-18', 600.00, NULL, '2021-08-04 09:57:35', '2021-08-04 18:41:29', 1, 1),
-(12, 52, 5, '349128412309488', '218390489132849', 2, 3, 4, 0, '29039', '2021-08-25', 400.00, NULL, '2021-08-04 09:58:07', '2021-08-04 15:36:07', 1, NULL),
-(13, 29, 2, '189483290481932', '819483290849013', 2, 3, 5, 0, '2949239', '2021-07-08', 650.00, NULL, '2021-08-04 10:00:28', '2021-08-04 15:36:42', 1, NULL),
-(14, 25, 2, '184983948932184', '283492949349240', 2, 2, NULL, 1, '294923', '2021-06-30', 550.00, NULL, '2021-08-04 10:00:57', NULL, 1, NULL),
-(15, 3, 6, '848903284923149', '294013294092304', 4, 2, NULL, 1, '294092', '2021-07-07', 900.00, NULL, '2021-08-04 10:01:32', '2021-08-04 13:33:30', 1, 1);
+INSERT INTO `aparelhos` (`id`, `id_modelo`, `id_marca`, `imei1`, `imei2`, `id_cidade`, `id_status_condicao_aparelho`, `id_status_disponibilidade`, `id_motivo_inativacao`, `status`, `nota_fiscal`, `data_nota`, `valor`, `valor_depreciado`, `data_registro`, `data_at`, `id_usuario_registro`, `id_usuario_at`) VALUES
+(1, 13, 6, '392841932849013', '324821304913294', '1', 1, 3, 2, 0, '2234', '2021-08-01', 500.00, NULL, '2021-08-06 14:34:54', '2021-08-06 15:24:16', 1, NULL),
+(2, 8, 6, '238482139489123', '', '14', 1, 2, NULL, 1, '4293849021', '2021-08-03', 700.00, NULL, '2021-08-06 14:37:52', NULL, 1, NULL),
+(3, 16, 6, '328194302940329', '932841938490132', '1', 1, 2, NULL, 1, '42342', '2021-08-01', 700.00, NULL, '2021-08-06 15:46:18', NULL, 1, NULL),
+(4, 21, 4, '932849239483290', '923842919401329', '1', 1, 2, NULL, 1, '428492', '2021-08-01', 550.00, NULL, '2021-08-06 15:46:49', NULL, 1, NULL),
+(5, 8, 6, '914891328491293', '394013240132777', '9', 1, 2, NULL, 1, '2394892', '2021-08-02', 700.00, NULL, '2021-08-06 16:16:54', NULL, 1, NULL),
+(6, 7, 6, '984932941329049', '849038490183491', '8', 2, 2, NULL, 1, '32432', '2021-08-18', 800.00, NULL, '2021-08-06 16:52:17', NULL, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -189,6 +181,42 @@ CREATE TABLE `centro_custo_import` (
   `id` varchar(100) NOT NULL,
   `area` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `cidades`
+--
+
+CREATE TABLE `cidades` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(200) NOT NULL,
+  `status` int(11) NOT NULL,
+  `data_registro` datetime NOT NULL DEFAULT current_timestamp(),
+  `data_at` datetime DEFAULT NULL ON UPDATE current_timestamp(),
+  `id_usuario_registro` int(11) NOT NULL,
+  `id_usuario_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `cidades`
+--
+
+INSERT INTO `cidades` (`id`, `nome`, `status`, `data_registro`, `data_at`, `id_usuario_registro`, `id_usuario_at`) VALUES
+(1, 'SAO PAULO', 1, '2021-08-06 11:04:03', '2021-08-06 14:36:46', 1, NULL),
+(2, 'SAO CAETANO', 1, '2021-08-06 11:04:28', '2021-08-06 14:36:48', 1, NULL),
+(3, 'SANTO ANDRE', 1, '2021-08-06 11:04:38', '2021-08-06 14:36:49', 1, NULL),
+(4, 'SAO BERNARDO', 1, '2021-08-06 11:04:47', '2021-08-06 14:36:50', 1, NULL),
+(5, 'SALTO', 1, '2021-08-06 11:04:53', '2021-08-06 14:36:52', 1, NULL),
+(6, 'BARUERI', 1, '2021-08-06 11:05:02', '2021-08-06 14:36:54', 1, NULL),
+(7, 'OSASCO', 1, '2021-08-06 11:05:27', '2021-08-06 14:36:55', 1, NULL),
+(8, 'MOGI DAS CRUZES', 1, '2021-08-06 11:05:35', '2021-08-06 14:36:55', 1, NULL),
+(9, 'GUARULHOS', 1, '2021-08-06 11:05:54', '2021-08-06 14:36:56', 1, NULL),
+(10, 'ITU', 1, '2021-08-06 11:06:02', '2021-08-06 14:36:57', 1, NULL),
+(11, 'BRAGANCA PAULISTA', 1, '2021-08-06 11:06:16', '2021-08-06 14:36:58', 1, NULL),
+(12, 'ATIBAIA', 1, '2021-08-06 11:06:23', '2021-08-06 14:36:59', 1, NULL),
+(13, 'SUZANO', 1, '2021-08-06 11:06:31', '2021-08-06 14:37:00', 1, NULL),
+(14, 'JUNDIAI', 1, '2021-08-06 11:06:37', '2021-08-06 14:37:01', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -6286,20 +6314,6 @@ CREATE TABLE `distribuicoes` (
   `id_usuario_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Extraindo dados da tabela `distribuicoes`
---
-
-INSERT INTO `distribuicoes` (`id`, `id_aparelho`, `id_linha`, `id_colaborador`, `id_status_disponibilidade`, `id_motivo_devolucao`, `data_registro`, `data_at`, `id_usuario_registro`, `id_usuario_at`) VALUES
-(1, 6, 1, 143858, 2, 1, '2021-08-04 10:02:39', '2021-08-04 10:43:38', 1, NULL),
-(2, 7, 2, 930355, 2, 4, '2021-08-04 10:03:26', '2021-08-04 15:39:56', 1, NULL),
-(3, 8, 3, 9323591, 2, 6, '2021-08-04 10:09:57', '2021-08-04 15:40:05', 1, NULL),
-(4, 9, NULL, 930692, 1, NULL, '2021-08-04 10:31:15', NULL, 1, NULL),
-(5, 10, NULL, 906965, 1, NULL, '2021-08-04 10:31:47', NULL, 1, NULL),
-(6, NULL, 4, 135663, 1, NULL, '2021-08-04 10:32:15', NULL, 1, NULL),
-(7, NULL, 5, 9696671, 1, NULL, '2021-08-04 10:32:47', NULL, 1, NULL),
-(8, 11, 6, 179421, 1, NULL, '2021-08-04 11:03:28', NULL, 1, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -6322,24 +6336,6 @@ CREATE TABLE `linhas` (
   `id_usuario_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Extraindo dados da tabela `linhas`
---
-
-INSERT INTO `linhas` (`id`, `numero_linha`, `codigo_chip`, `pin_puk1`, `pin_puk2`, `id_operadora`, `id_categoria`, `id_status_disponibilidade`, `status`, `data_registro`, `data_at`, `id_usuario_registro`, `id_usuario_at`) VALUES
-(1, '(11)98928-4903', '39084190328490123849', '9384-91324019', '9132-48491329', 1, 2, 2, 1, '2021-08-04 09:33:14', '2021-08-04 10:43:38', 1, NULL),
-(2, '(11)32843-2184', '99324893124919230491', '2384-91328498', '9821-09384091', 1, 2, 2, 1, '2021-08-04 09:37:25', '2021-08-04 15:39:56', 1, NULL),
-(3, '(11)98239-1493', '92834193204913294143', '9281-49328948', '0392-40293409', 1, 5, 2, 1, '2021-08-04 09:38:33', '2021-08-04 15:40:05', 1, NULL),
-(4, '(11)97827-4832', '29489384903124919349', '2814-93892493', '8123-49132942', 1, 3, 1, 1, '2021-08-04 09:38:53', '2021-08-04 10:32:15', 1, NULL),
-(5, '(11)94013-2490', '98349312849128394813', '2184-93128948', '9148-34012394', 1, 2, 1, 1, '2021-08-04 09:39:18', '2021-08-04 10:32:47', 1, NULL),
-(6, '(11)98431-9023', '94132490821394890132', '2148-29348901', '9238-41932849', 1, 3, 1, 1, '2021-08-04 09:39:49', '2021-08-04 11:03:28', 1, NULL),
-(7, '(11)98238-4831', '28938491238491328948', '1283-09481329', '3849-02138498', 1, 4, 2, 1, '2021-08-04 09:40:15', NULL, 1, NULL),
-(8, '(11)97824-9389', '39418901328491832948', '7743-82194890', '8324-81932849', 1, 5, 2, 1, '2021-08-04 09:40:43', NULL, 1, NULL),
-(9, '(11)98237-4832', '89348912834901823948', '4938-14039204', '2910-43913294', 1, 2, 2, 1, '2021-08-04 09:41:06', NULL, 1, NULL),
-(10, '(11)89283-9483', '28419032849132849081', '4182-39408193', '0928-49281394', 1, 4, 2, 1, '2021-08-04 09:43:18', NULL, 1, NULL),
-(11, '(11)98784-2903', '84091328491329401920', '', '', 1, 2, 2, 1, '2021-08-04 18:36:38', NULL, 1, NULL),
-(12, '(21)18829-0493', '84094913295413249312', '', '', 1, 3, 2, 1, '2021-08-04 18:40:47', NULL, 1, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -6361,27 +6357,7 @@ CREATE TABLE `logs_alteracoes` (
 --
 
 INSERT INTO `logs_alteracoes` (`id`, `tabela`, `id_usuario`, `identificador`, `valor_antigo`, `valor_novo`, `data_registro`) VALUES
-(1, 'aparelhos', 1, 1, '{\"id_status_condicao_aparelho\":\"1\",\"status\":1,\"id_motivo_inativacao\":null,\"motivo_inativacao\":null}', '{\"id_status_condicao_aparelho\":\"1\",\"status\":0,\"id_motivo_inativacao\":2,\"motivo_inativacao\":\"DESCARTE\"}', '2021-08-04 09:53:52'),
-(2, 'aparelhos', 1, 2, '{\"id_status_condicao_aparelho\":\"1\",\"status\":1,\"id_motivo_inativacao\":null,\"motivo_inativacao\":null}', '{\"id_status_condicao_aparelho\":\"1\",\"status\":0,\"id_motivo_inativacao\":1,\"motivo_inativacao\":\"OBSOLETO\"}', '2021-08-04 09:55:21'),
-(3, 'aparelhos', 1, 3, '{\"id_status_condicao_aparelho\":\"1\",\"status\":1,\"id_motivo_inativacao\":null,\"motivo_inativacao\":null}', '{\"id_status_condicao_aparelho\":\"1\",\"status\":0,\"id_motivo_inativacao\":3,\"motivo_inativacao\":\"PERDA\"}', '2021-08-04 09:55:41'),
-(4, 'aparelhos', 1, 4, '{\"id_status_condicao_aparelho\":\"1\",\"status\":1,\"id_motivo_inativacao\":null,\"motivo_inativacao\":null}', '{\"id_status_condicao_aparelho\":\"1\",\"status\":0,\"id_motivo_inativacao\":4,\"motivo_inativacao\":\"FURTO\\/ROUBO\"}', '2021-08-04 09:55:57'),
-(5, 'aparelhos', 1, 5, '{\"id_status_condicao_aparelho\":\"2\",\"status\":1,\"id_motivo_inativacao\":null,\"motivo_inativacao\":null}', '{\"id_status_condicao_aparelho\":\"2\",\"status\":0,\"id_motivo_inativacao\":5,\"motivo_inativacao\":\"DEFEITO\"}', '2021-08-04 09:56:32'),
-(6, 'distribuicoes', 1, 1, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\",\"id_motivo_devolucao\":null,\"motivo_devolucao\":null}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\",\"id_motivo_devolucao\":1,\"motivo_devolucao\":\"DESLIGAMENTO\"}', '2021-08-04 10:43:38'),
-(7, 'aparelhos', 1, 7, '{\"id_aparelho\":\"7\",\"imei1\":\"934891328491232\",\"imei2\":\"359094013295491\",\"nome_modelo\":\" GALAXY J4\",\"nome_marca\":\"SAMSUNG\",\"id_status_condicao_aparelho\":\"1\",\"id_status_disponibilidade\":\"1\",\"nota_fiscal\":\"84903289\",\"data_nota\":\"2021-07-01\",\"valor\":\"900,00\",\"valor_depreciado\":null,\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_condicao_aparelho\":\"4\",\"nota_fiscal\":\"84903289\",\"data_nota\":\"2021-07-01\",\"valor\":\"900.00\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-08-04 10:50:22'),
-(8, 'aparelhos', 1, 6, '{\"id_aparelho\":\"6\",\"imei1\":\"237481732841832\",\"imei2\":\"818493124901923\",\"nome_modelo\":\"SONY XPERIA E5\",\"nome_marca\":\"SONY\",\"id_status_condicao_aparelho\":\"1\",\"id_status_disponibilidade\":\"2\",\"nota_fiscal\":\"23478\",\"data_nota\":\"2021-07-07\",\"valor\":\"800,00\",\"valor_depreciado\":null,\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"id_status_condicao_aparelho\":\"2\",\"nota_fiscal\":\"23478\",\"data_nota\":\"2021-07-07\",\"valor\":\"800.00\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-08-04 10:50:33'),
-(9, 'aparelhos', 1, 7, '{\"id_aparelho\":\"7\",\"imei1\":\"934891328491232\",\"imei2\":\"359094013295491\",\"nome_modelo\":\" GALAXY J4\",\"nome_marca\":\"SAMSUNG\",\"id_status_condicao_aparelho\":\"4\",\"id_status_disponibilidade\":\"1\",\"nota_fiscal\":\"84903289\",\"data_nota\":\"2021-07-01\",\"valor\":\"900,00\",\"valor_depreciado\":null,\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"INDISPONIVEL\"}', '{\"id_status_condicao_aparelho\":\"2\",\"nota_fiscal\":\"84903289\",\"data_nota\":\"2021-07-01\",\"valor\":\"900.00\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-08-04 10:50:44'),
-(10, 'aparelhos', 1, 7, '{\"id_aparelho\":\"7\",\"imei1\":\"934891328491232\",\"imei2\":\"359094013295491\",\"nome_modelo\":\" GALAXY J4\",\"nome_marca\":\"SAMSUNG\",\"id_status_condicao_aparelho\":\"2\",\"id_status_disponibilidade\":\"1\",\"nota_fiscal\":\"84903289\",\"data_nota\":\"2021-07-01\",\"valor\":\"900,00\",\"valor_depreciado\":null,\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_condicao_aparelho\":\"4\",\"nota_fiscal\":\"84903289\",\"data_nota\":\"2021-07-01\",\"valor\":\"900.00\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-08-04 10:51:07'),
-(11, 'aparelhos', 1, 8, '{\"id_aparelho\":\"8\",\"imei1\":\"731248813294819\",\"imei2\":\"883490812948190\",\"nome_modelo\":\"LG K9TV\",\"nome_marca\":\"LG\",\"id_status_condicao_aparelho\":\"1\",\"id_status_disponibilidade\":\"1\",\"nota_fiscal\":\"424321\",\"data_nota\":\"2021-08-18\",\"valor\":\"500,00\",\"valor_depreciado\":null,\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_condicao_aparelho\":\"4\",\"nota_fiscal\":\"424321\",\"data_nota\":\"2021-08-18\",\"valor\":\"500.00\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-08-04 10:58:20'),
-(12, 'aparelhos', 1, 9, '{\"id_aparelho\":\"9\",\"imei1\":\"283940218341902\",\"imei2\":\"382914093129419\",\"nome_modelo\":\"IPHONE 4S\",\"nome_marca\":\"APPLE\",\"id_status_condicao_aparelho\":\"1\",\"id_status_disponibilidade\":\"1\",\"nota_fiscal\":\"238472\",\"data_nota\":\"2021-07-01\",\"valor\":\"700,00\",\"valor_depreciado\":null,\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_condicao_aparelho\":\"3\",\"nota_fiscal\":\"238472\",\"data_nota\":\"2021-07-01\",\"valor\":\"700.00\",\"status\":\"0\",\"id_usuario_at\":\"1\"}', '2021-08-04 10:58:36'),
-(13, 'aparelhos', 1, 15, '{\"id_aparelho\":\"15\",\"imei1\":\"848903284923149\",\"imei2\":\"294013294092304\",\"nome_modelo\":\" GALAXY GRAND NEO\",\"nome_marca\":\"SAMSUNG\",\"id_status_condicao_aparelho\":\"1\",\"id_status_disponibilidade\":\"2\",\"nota_fiscal\":\"294092\",\"data_nota\":\"2021-07-07\",\"valor\":\"900,00\",\"valor_depreciado\":null,\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"id_status_condicao_aparelho\":\"4\",\"nota_fiscal\":\"294092\",\"data_nota\":\"2021-07-07\",\"valor\":\"900.00\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-08-04 13:33:08'),
-(14, 'aparelhos', 1, 15, '{\"id_aparelho\":\"15\",\"imei1\":\"848903284923149\",\"imei2\":\"294013294092304\",\"nome_modelo\":\" GALAXY GRAND NEO\",\"nome_marca\":\"SAMSUNG\",\"id_status_condicao_aparelho\":\"4\",\"id_status_disponibilidade\":\"2\",\"nota_fiscal\":\"294092\",\"data_nota\":\"2021-07-07\",\"valor\":\"900,00\",\"valor_depreciado\":null,\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"INDISPONIVEL\"}', '{\"id_status_condicao_aparelho\":\"2\",\"nota_fiscal\":\"294092\",\"data_nota\":\"2021-07-07\",\"valor\":\"900.00\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-08-04 13:33:19'),
-(15, 'aparelhos', 1, 15, '{\"id_aparelho\":\"15\",\"imei1\":\"848903284923149\",\"imei2\":\"294013294092304\",\"nome_modelo\":\" GALAXY GRAND NEO\",\"nome_marca\":\"SAMSUNG\",\"id_status_condicao_aparelho\":\"2\",\"id_status_disponibilidade\":\"2\",\"nota_fiscal\":\"294092\",\"data_nota\":\"2021-07-07\",\"valor\":\"900,00\",\"valor_depreciado\":null,\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"DISPON\\u00cdVEL\"}', '{\"id_status_condicao_aparelho\":\"4\",\"nota_fiscal\":\"294092\",\"data_nota\":\"2021-07-07\",\"valor\":\"900.00\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-08-04 13:33:30'),
-(16, 'aparelhos', 1, 12, '{\"id_status_condicao_aparelho\":\"2\",\"status\":1,\"id_motivo_inativacao\":null,\"motivo_inativacao\":null}', '{\"id_status_condicao_aparelho\":\"2\",\"status\":0,\"id_motivo_inativacao\":4,\"motivo_inativacao\":\"ROUBO\"}', '2021-08-04 15:36:07'),
-(17, 'aparelhos', 1, 13, '{\"id_status_condicao_aparelho\":\"2\",\"status\":1,\"id_motivo_inativacao\":null,\"motivo_inativacao\":null}', '{\"id_status_condicao_aparelho\":\"2\",\"status\":0,\"id_motivo_inativacao\":5,\"motivo_inativacao\":\"FURTO\"}', '2021-08-04 15:36:42'),
-(18, 'distribuicoes', 1, 2, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\",\"id_motivo_devolucao\":null,\"motivo_devolucao\":null}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\",\"id_motivo_devolucao\":4,\"motivo_devolucao\":\"ROUBO\"}', '2021-08-04 15:39:56'),
-(19, 'distribuicoes', 1, 3, '{\"id_status_disponibilidade\":1,\"status_disponibilidade\":\"EM USO\",\"id_motivo_devolucao\":null,\"motivo_devolucao\":null}', '{\"id_status_disponibilidade\":2,\"status_disponibilidade\":\"DEVOLVIDO\",\"id_motivo_devolucao\":6,\"motivo_devolucao\":\"PERDA\"}', '2021-08-04 15:40:06'),
-(20, 'aparelhos', 1, 11, '{\"id_aparelho\":\"11\",\"imei1\":\"839018902384901\",\"imei2\":\"419413294091230\",\"nome_modelo\":\" GALAXY J4+\",\"nome_marca\":\"SAMSUNG\",\"id_status_condicao_aparelho\":\"2\",\"id_status_disponibilidade\":\"1\",\"nota_fiscal\":\"294932\",\"data_nota\":\"2021-08-18\",\"valor\":\"600,00\",\"valor_depreciado\":null,\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_condicao_aparelho\":\"4\",\"nota_fiscal\":\"294932\",\"data_nota\":\"2021-08-18\",\"valor\":\"600.00\",\"status\":\"1\",\"id_usuario_at\":\"1\"}', '2021-08-04 18:41:29'),
-(21, 'aparelhos', 1, 10, '{\"id_aparelho\":\"10\",\"imei1\":\"834913289048132\",\"imei2\":\"834279183490128\",\"nome_modelo\":\" GALAXY TAB A6\",\"nome_marca\":\"SAMSUNG\",\"id_status_condicao_aparelho\":\"2\",\"id_status_disponibilidade\":\"1\",\"nota_fiscal\":\"392841\",\"data_nota\":\"2021-06-30\",\"valor\":\"700,00\",\"valor_depreciado\":null,\"nome_usuario_registro\":\"CLEYTON CARVALHO\",\"status\":\"1\",\"status_disponibilidade\":\"EM USO\"}', '{\"id_status_condicao_aparelho\":\"3\",\"nota_fiscal\":\"392841\",\"data_nota\":\"2021-06-30\",\"valor\":\"700.00\",\"status\":\"0\",\"id_usuario_at\":\"1\"}', '2021-08-04 18:42:06');
+(1, 'aparelhos', 1, 1, '{\"id_status_condicao_aparelho\":\"1\",\"status\":1,\"id_motivo_inativacao\":null,\"motivo_inativacao\":null}', '{\"id_status_condicao_aparelho\":\"1\",\"status\":0,\"id_motivo_inativacao\":2,\"motivo_inativacao\":\"DESCARTE\"}', '2021-08-06 15:24:16');
 
 -- --------------------------------------------------------
 
@@ -6602,7 +6578,7 @@ CREATE TABLE `status_condicoes_aparelhos` (
 INSERT INTO `status_condicoes_aparelhos` (`id`, `nome`, `status`, `data_registro`, `data_at`, `id_usuario_registro`, `id_usuario_at`) VALUES
 (1, 'NOVO', 1, '2021-05-07 23:04:43', '2021-05-07 23:04:06', 1, 0),
 (2, 'USADO', 1, '2021-05-07 23:04:43', '2021-05-07 23:04:06', 1, 0),
-(3, 'DESCARTADO', 1, '2021-05-07 23:04:43', '2021-05-07 23:04:06', 1, 0),
+(3, 'DESCARTADO', 0, '2021-05-07 23:04:43', '2021-08-05 14:09:59', 1, 0),
 (4, 'MANUTENÇÃO', 1, '2021-05-07 23:04:43', '2021-05-20 16:46:13', 1, 0);
 
 -- --------------------------------------------------------
@@ -6646,6 +6622,7 @@ CREATE TABLE `usuarios` (
   `nivel_acesso` varchar(100) NOT NULL,
   `telas_autorizadas` varchar(100) NOT NULL,
   `somente_leitura` int(11) NOT NULL,
+  `primeiro_acesso` tinyint(4) NOT NULL DEFAULT 1,
   `data_criado` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -6653,10 +6630,11 @@ CREATE TABLE `usuarios` (
 -- Extraindo dados da tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nome`, `login`, `senha`, `email`, `hierarquia`, `nivel_acesso`, `telas_autorizadas`, `somente_leitura`, `data_criado`) VALUES
-(1, 'CLEYTON CARVALHO', 'N6169286', '12345', 'cleyton@gmail.com', 'Administrador', '', '1|2|3', 0, '2021-05-07 23:03:17'),
-(2, 'LEITURA', 'LEITURA', '12345', '', 'Usuário', '', '1|2|3', 1, '2021-05-28 17:41:05'),
-(3, 'SISTEMA', 'SISTEMA', '12345', '', 'Usuário', '', '', 0, '2021-06-14 14:41:31');
+INSERT INTO `usuarios` (`id`, `nome`, `login`, `senha`, `email`, `hierarquia`, `nivel_acesso`, `telas_autorizadas`, `somente_leitura`, `primeiro_acesso`, `data_criado`) VALUES
+(1, 'CLEYTON CARVALHO', 'N6169286', '12345', 'cleyton@gmail.com', 'Administrador', '', '', 0, 0, '2021-05-07 23:03:17'),
+(2, 'LEITURA', 'LEITURA', '12345', '', 'Usuário', '', '1|2', 1, 1, '2021-05-28 17:41:05'),
+(3, 'SISTEMA', 'SISTEMA', '12345', '', 'Usuário', '', '', 0, 1, '2021-06-14 14:41:31'),
+(4, 'TESTE', 'teste', '12345', '', 'Usuário', '', '', 0, 1, '2021-08-05 13:51:33');
 
 --
 -- Índices para tabelas despejadas
@@ -6694,6 +6672,12 @@ ALTER TABLE `centro_custo`
 -- Índices para tabela `centro_custo_import`
 --
 ALTER TABLE `centro_custo_import`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices para tabela `cidades`
+--
+ALTER TABLE `cidades`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -6806,7 +6790,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `aparelhos`
 --
 ALTER TABLE `aparelhos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `categorias`
@@ -6815,22 +6799,28 @@ ALTER TABLE `categorias`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT de tabela `cidades`
+--
+ALTER TABLE `cidades`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
 -- AUTO_INCREMENT de tabela `distribuicoes`
 --
 ALTER TABLE `distribuicoes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `linhas`
 --
 ALTER TABLE `linhas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `logs_alteracoes`
 --
 ALTER TABLE `logs_alteracoes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `marcas`
@@ -6878,7 +6868,7 @@ ALTER TABLE `status_disponibilidades`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

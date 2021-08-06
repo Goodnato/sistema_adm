@@ -8,7 +8,8 @@ class Status_condicoes_aparelhos_model extends CI_Model
 
     public function consultaTodosStatus()
     {
-    	$sql = "SELECT id, nome FROM {$this->tabela}"; 
+    	$sql = "SELECT id, nome FROM {$this->tabela}
+        WHERE status = 1"; 
 
     	$query = $this->db->query($sql);
     	

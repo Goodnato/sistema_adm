@@ -10,6 +10,7 @@ const tabelaAparelhos = $("#tabelaAparelhos").DataTable({
             d.idModelo = $("#pesquisaModelo").val()
             d.imei = $("#pesquisaImei").val()
             d.idUsuarioRegistro = $("#pesquisaCadastradoPor").val()
+            d.idCidade = $("#pesquisaCidades").val()
             d.idStatusCondicaoAparelho = $("#pesquisaStatusCondicoes").val()
             d.idDisponibilidade = $("#pesquisaDisponibilidade").val()
             d.status = $("#pesquisaStatus").val()
@@ -20,7 +21,7 @@ const tabelaAparelhos = $("#tabelaAparelhos").DataTable({
         { data: "imei1" },
         { data: "nome_marca" },
         { data: "nome_modelo" },
-        { data: "status_condicao" },
+        { data: "cidade" },
         {
             data: "valor",
             render: function (data, type, row, meta) {
@@ -100,6 +101,17 @@ $('#pesquisaStatusCondicoes').multiselect({
 });
 $('#pesquisaStatusCondicoes').multiselect('selectAll', false);
 
+$('#pesquisaCidades').multiselect({
+    buttonWidth: '100%',
+    includeSelectAllOption: true,
+    selectAllText: 'TODOS',
+    nonSelectedText: 'SELECIONE UMA OPÇÃO',
+    allSelectedText: 'TODOS',
+    nSelectedText: 'SELECIONADO(S)',
+    buttonClass: 'form-control form-control-sm'
+});
+$('#pesquisaCidades').multiselect('selectAll', false);
+
 $("#editaStatusCondicaoAparelho").multiselect({
     buttonWidth: '100%',
     selectAllText: 'TODOS',
@@ -108,6 +120,26 @@ $("#editaStatusCondicaoAparelho").multiselect({
     nSelectedText: 'SELECIONADO(S)',
     buttonClass: 'form-control form-control-sm'
 });
+
+$("#editaStatusCondicaoAparelho").multiselect({
+    buttonWidth: '100%',
+    selectAllText: 'TODOS',
+    nonSelectedText: 'SELECIONE UMA OPÇÃO',
+    allSelectedText: 'TODOS',
+    nSelectedText: 'SELECIONADO(S)',
+    buttonClass: 'form-control form-control-sm'
+});
+
+
+$("#editaCidade").multiselect({
+    buttonWidth: '100%',
+    selectAllText: 'TODOS',
+    nonSelectedText: 'SELECIONE UMA OPÇÃO',
+    allSelectedText: 'TODOS',
+    nSelectedText: 'SELECIONADO(S)',
+    buttonClass: 'form-control form-control-sm'
+});
+
 
 $('#pesquisaDisponibilidade').multiselect({
     buttonWidth: '100%',
@@ -119,6 +151,17 @@ $('#pesquisaDisponibilidade').multiselect({
     buttonClass: 'form-control form-control-sm'
 });
 $('#pesquisaDisponibilidade').multiselect('selectAll', false);
+
+$('#pesquisaCidades').multiselect({
+    buttonWidth: '100%',
+    enableFiltering: true,
+    filterPlaceholder: 'Procurar',
+    selectAllText: 'TODOS',
+    nonSelectedText: 'SELECIONE UMA OPÇÃO',
+    allSelectedText: 'TODOS',
+    nSelectedText: 'SELECIONADO(S)',
+    buttonClass: 'form-control form-control-sm'
+});
 
 $('#pesquisaStatus').multiselect({
     buttonWidth: '100%',
@@ -140,6 +183,17 @@ $('#editaStatus').multiselect({
 })
 
 $('#cadastroModelo').multiselect({
+    buttonWidth: '100%',
+    enableFiltering: true,
+    filterPlaceholder: 'Procurar',
+    selectAllText: 'TODOS',
+    nonSelectedText: 'SELECIONE UMA OPÇÃO',
+    allSelectedText: 'TODOS',
+    nSelectedText: 'SELECIONADO(S)',
+    buttonClass: 'form-control form-control-sm'
+});
+
+$('#cadastroCidade').multiselect({
     buttonWidth: '100%',
     enableFiltering: true,
     filterPlaceholder: 'Procurar',
@@ -230,6 +284,7 @@ $('#btnSalvarAparelho').click(function (event) {
                 imei: $('#cadastroImei').val(),
                 imei2: $('#cadastroImei2').val(),
                 idModelo: $('#cadastroModelo').val(),
+                idCidade: $('#cadastroCidade').val(),
                 idStatusCondicaoAparelho: $('#cadastroStatusCondicaoAparelho').val(),
                 notaFiscal: $('#cadastroNotaFiscal').val(),
                 dataNotaFiscal: $('#cadastroDataNotaFiscal').val(),
@@ -314,6 +369,7 @@ tabelaAparelhos.on('click', '.visualizar', function (event) {
             $('#editaImei2').val(response.aparelho.imei2)
             $('#editaModelo').val(response.aparelho.nome_modelo)
             $('#editaMarca').val(response.aparelho.nome_marca)
+            $('#editaCidade').val(response.aparelho.nome_cidade).multiselect('refresh')
             $('#editaStatusCondicaoAparelho').val(response.aparelho.id_status_condicao_aparelho).multiselect('refresh')
             $('#editaNotaFiscal').val(response.aparelho.nota_fiscal)
             $('#editaDataNotaFiscal').val(response.aparelho.data_nota)

@@ -27,6 +27,7 @@ class Aparelhos extends CI_Controller
         $this->load->model('Status_condicoes_aparelhos_model');
         $this->load->model('Status_disponibilidades_model');
         $this->load->model('Logs_alteracoes_model');
+        $this->load->model('Cidades_model');
     }
 
     public function index()
@@ -50,6 +51,7 @@ class Aparelhos extends CI_Controller
             'listaModelosAtivos' => $this->Modelos_model->consultaTodosModelosPorStatus(STATUS_ATIVO),
             'listaStatusCondicoes' => $this->Status_condicoes_aparelhos_model->consultaTodosStatus(),
             'listaStatusDisponibilidades' => $this->Status_disponibilidades_model->consultaTodosStatus(),
+            'listaTodasCidades' => $this->Cidades_model->consultaTodasCidades(),
             'listaUsuariosCadastroAparelho' => $this->Aparelhos_model->consultaTodosUsuariosCadastroAparelho()
         ];
 
@@ -89,6 +91,7 @@ class Aparelhos extends CI_Controller
         $this->form_validation->set_rules("imei", "<b>Imei</b>", "trim|required|greater_than[0]|is_unique[aparelhos.imei1]|exact_length[15]");
         $this->form_validation->set_rules("imei2", "<b>Imei 2</b>", "trim|greater_than[0]|is_unique[aparelhos.imei2]|exact_length[15]");
         $this->form_validation->set_rules("idModelo", "<b>Modelo</b>", "trim|required|integer|combines[modelos.id]");
+        $this->form_validation->set_rules("idCidade", "<b>Cidade</b>", "trim|required|integer|combines[cidades.id]");
         $this->form_validation->set_rules("idStatusCondicaoAparelho", "<b>Condição aparelho</b>", "trim|required|integer|combines[status_condicoes_aparelhos.id]");
         $this->form_validation->set_rules("notaFiscal", "<b>Nota fiscal</b>", "trim|integer|max_length[50]");
         $this->form_validation->set_rules("dataNotaFiscal", "<b>Data nota fiscal</b>", "trim|valid_date[Y-m-d]");
@@ -108,6 +111,7 @@ class Aparelhos extends CI_Controller
             'id_marca' => $this->Modelos_model->consultaMarcaPorModeloPorStatus($this->input->post('idModelo'))['id'],
             'imei1' => $this->input->post('imei'),
             'imei2' => $this->input->post('imei2'),
+            'id_cidade' => $this->input->post('idCidade'),
             'id_status_condicao_aparelho' => $this->input->post('idStatusCondicaoAparelho'),
             'nota_fiscal' => $this->input->post('notaFiscal'),
             'data_nota' => $this->input->post('dataNotaFiscal'),
@@ -233,6 +237,7 @@ class Aparelhos extends CI_Controller
                 md.nome LIKE '%" . $procurarValor . "%' OR 
                 ap.imei1 LIKE '%" . $procurarValor . "%' OR 
                 sc.nome LIKE '%" . $procurarValor . "%' OR
+                cd.nome LIKE '%" . $procurarValor . "%' OR
                 sd.nome LIKE '%" . $procurarValor . "%' 
             )";
         }
@@ -258,6 +263,10 @@ class Aparelhos extends CI_Controller
 
         if (is_array($this->input->post('idUsuarioRegistro')) && count($this->input->post('idUsuarioRegistro')) > 0) {
             $filtrosSql .= "AND ap.id_usuario_registro IN(" . implode(", ", $this->input->post('idUsuarioRegistro')) . ") ";
+        }
+
+        if (is_array($this->input->post('idCidade')) && count($this->input->post('idCidade')) > 0) {
+            $filtrosSql .= "AND cd.id IN(" . implode(", ", $this->input->post('idCidade')) . ") ";
         }
 
         if (is_array($this->input->post('idStatusCondicaoAparelho')) && count($this->input->post('idStatusCondicaoAparelho')) > 0) {
@@ -349,7 +358,7 @@ class Aparelhos extends CI_Controller
         if($dadosAparelho['id_status_disponibilidade'] == DISTRIBUICAO_EM_USO){
             echo json_encode([
                 'status' => false,
-                'mensagem'=> "Aparelho não pode ser ativado, pois está com o status EM USO"
+                'mensagem'=> "Aparelho não pode ser inativado, pois está com o status EM USO"
             ]);
 
             return false;
