@@ -28,16 +28,16 @@
                         </select>
                     </div>
                     <div class="col-6">
-                        <label for="pesquisaCadastradoPor" class="form-label">Cadastrado por</label><br>
-                        <select id="pesquisaCadastradoPor" multiple="multiple">
-                            <?php foreach ($listaUsuariosCadastroLinha as $cadastradoPor) { ?>
-                                <option value="<?= $cadastradoPor['id'] ?>"><?= $cadastradoPor['nome'] ?></option>
+                        <label for="pesquisaCidade" class="form-label">Cidade</label>
+                        <select id="pesquisaCidade" multiple="multiple">
+                            <?php foreach ($listaTodasCidades as $cidade) { ?>
+                                <option value="<?= $cidade['id'] ?>"><?= $cidade['nome'] ?></option>
                             <?php } ?>
                         </select>
                     </div>
                 </div>
                 <div class="row mt-2">
-                    <div class="col-6">
+                    <div class="col-3">
                         <label for="pesquisaDisponibilidade" class="form-label">Disponibilidade</label><br>
                         <select id="pesquisaDisponibilidade" multiple="multiple">
                             <?php foreach ($listaStatusDisponibilidades as $status) { ?>
@@ -45,11 +45,19 @@
                             <?php } ?>
                         </select>
                     </div>
-                    <div class="col-6">
+                    <div class="col-3">
                         <label for="pesquisaStatusLinha" class="form-label">Status</label><br>
                         <select id="pesquisaStatusLinha" multiple="multiple">
                             <?php foreach (ARRAY_STATUS as $idStatus => $status) { ?>
                                 <option value="<?= $idStatus ?>"><?= $status ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                    <div class="col-6">
+                        <label for="pesquisaCadastradoPor" class="form-label">Cadastrado por</label><br>
+                        <select id="pesquisaCadastradoPor" multiple="multiple">
+                            <?php foreach ($listaUsuariosCadastroLinha as $cadastradoPor) { ?>
+                                <option value="<?= $cadastradoPor['id'] ?>"><?= $cadastradoPor['nome'] ?></option>
                             <?php } ?>
                         </select>
                     </div>
@@ -78,6 +86,7 @@
                         <th scope="col">Número da Linha</th>
                         <th scope="col">Código do Chip</th>
                         <th scope="col">Categoria</th>
+                        <th scope="col">Cidade</th>
                         <th scope="col">Disponibilidade</th>
                         <th scope="col">Ação</th>
                     </tr>
@@ -132,6 +141,18 @@
                                         </select>
                                     </div>
                                     <div class="col-6">
+                                        <label for="cadastroCidade" class="form-label">Cidade*</label>
+                                        <select class="form-control form-control-sm" id="cadastroCidade">
+                                            <option value>SELECIONE</option>
+                                            <?php foreach ($listaTodasCidades as $cidade) { ?>
+                                                <option value="<?= $cidade['id'] ?>"><?= $cidade['nome'] ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-2">
+                                    <div class="col-4">
                                         <label for="cadastroOperadora" class="form-label">Operadoras*</label>
                                         <select class="form-control form-control-sm" id="cadastroOperadora">
                                             <option value>SELECIONE</option>
@@ -140,14 +161,11 @@
                                             <?php } ?>
                                         </select>
                                     </div>
-                                </div>
-
-                                <div class="row mt-2">
-                                    <div class="col-6">
+                                    <div class="col-4">
                                         <label for="cadastroPinPuk1" class="form-label">PIN-PUK1</label>
                                         <input type="text" class="form-control form-control-sm" id="cadastroPinPuk1" placeholder="DIGITE AQUI">
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-4">
                                         <label for="cadastroPinPuk2" class="form-label">PIN-PUK2</label>
                                         <input type="text" class="form-control form-control-sm" id="cadastroPinPuk2" placeholder="DIGITE AQUI">
                                     </div>
@@ -208,6 +226,16 @@
                                         </select>
                                     </div>
                                     <div class="col">
+                                        <label for="editaCidade" class="form-label">Cidade*</label>
+                                        <select class="form-control form-control-sm" id="editaCidade">
+                                            <?php foreach ($listaTodasCidades as $cidade) { ?>
+                                                <option value="<?= $cidade['id'] ?>"><?= $cidade['nome'] ?></option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-4">
                                         <label for="editaOperadora" class="form-label">Operadora*</label>
                                         <select class="form-control form-control-sm" id="editaOperadora">
                                             <?php foreach ($listaOperadorasAtivas as $operadoras) { ?>
@@ -215,29 +243,25 @@
                                             <?php } ?>
                                         </select>
                                     </div>
-                                </div>
-                                <div class="row mt-2">
-                                    <div class="col">
+                                    <div class="col-4">
                                         <label for="editaPinPuk1" class="form-label">Pin-Puk 1</label>
                                         <input type="text" name="pin_puk1" class="form-control form-control-sm" id="editaPinPuk1">
                                     </div>
-                                    <div class="col">
+                                    <div class="col-4">
                                         <label for="editaPinPuk2" class="form-label">Pin-Puk 2</label>
                                         <input type="text" name="pin_puk2" class="form-control form-control-sm" id="editaPinPuk2">
                                     </div>
                                 </div>
                                 <div class="row mt-2">
-                                    <div class="col">
+                                    <div class="col-4">
                                         <label for="editaCadastradoPor" class="form-label">Cadastrado por</label>
                                         <input type="text" class="form-control form-control-sm" id="editaCadastradoPor" disabled>
                                     </div>
-                                    <div class="col">
+                                    <div class="col-4">
                                         <label for="editaValorDisponibilidade" class="form-label">Disponibilidade</label>
                                         <input type="text" class="form-control form-control-sm" id="editaValorDisponibilidade" disabled>
                                     </div>
-                                </div>
-                                <div class="row mt-2">
-                                    <div class="col-6">
+                                    <div class="col-4">
                                         <label for="editaStatus" class="form-label">Status</label><br>
                                         <select class="form-control form-control-sm" id="editaStatus">
                                             <?php foreach (ARRAY_STATUS as $idStatus => $status) { ?>

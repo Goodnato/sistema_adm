@@ -34,6 +34,7 @@ class Linhas_model extends CI_Model
                     li.numero_linha AS numero_linha,
                     li.codigo_chip AS codigo_chip,
                     cg.nome AS nome_categoria,
+                    cd.nome AS nome_cidade,
                     li.id_usuario_registro AS usuario_registro,
                     li.id_status_disponibilidade AS status_disponibilidade,
                     sd.nome AS nome_disponibilidade,
@@ -41,6 +42,7 @@ class Linhas_model extends CI_Model
                 FROM
                     {$this->tabela} li
                 INNER JOIN categorias cg ON cg.id = li.id_categoria
+                INNER JOIN cidades cd ON cd.id = li.id_cidade
                 INNER JOIN operadoras op ON op.id = li.id_operadora
                 INNER JOIN status_disponibilidades sd ON sd.id = li.id_status_disponibilidade
                 WHERE
@@ -60,6 +62,7 @@ class Linhas_model extends CI_Model
                 FROM
                     {$this->tabela} li
                 INNER JOIN categorias cg ON cg.id = li.id_categoria
+                INNER JOIN cidades cd ON cd.id = li.id_cidade
                 INNER JOIN operadoras op ON op.id = li.id_operadora
                 INNER JOIN usuarios us ON us.id = li.id_usuario_registro
                 INNER JOIN status_disponibilidades sd ON sd.id = li.id_status_disponibilidade
@@ -92,9 +95,11 @@ class Linhas_model extends CI_Model
                     li.numero_linha,
                     li.codigo_chip,
                     li.id_categoria,
+                    li.id_cidade,
                     li.id_operadora,
                     cg.nome AS nome_categoria,
                     op.nome AS nome_operadora,
+                    cd.nome AS nome_cidade,
                     li.pin_puk1,
                     li.pin_puk2,    
                     us.nome AS nome_usuario_registro,
@@ -103,6 +108,7 @@ class Linhas_model extends CI_Model
                 FROM
                     {$this->tabela} li
                 INNER JOIN categorias cg ON cg.id = li.id_categoria
+                INNER JOIN cidades cd ON cd.id = li.id_cidade
                 INNER JOIN operadoras op ON op.id = li.id_operadora
                 INNER JOIN usuarios us ON us.id = li.id_usuario_registro
                 INNER JOIN status_disponibilidades sd ON sd.id = li.id_status_disponibilidade

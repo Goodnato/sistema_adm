@@ -26,6 +26,7 @@ class Linhas extends CI_Controller
         $this->load->model('Status_condicoes_aparelhos_model');
         $this->load->model('Status_disponibilidades_model');
         $this->load->model('Logs_alteracoes_model');
+        $this->load->model('Cidades_model');
     }
 
     public function index()
@@ -49,6 +50,7 @@ class Linhas extends CI_Controller
             'listaOperadorasAtivas' => $this->Operadoras_model->consultaTodasOperadorasPorStatus(STATUS_ATIVO),
             'listaStatusCondicoes' => $this->Status_condicoes_aparelhos_model->consultaTodosStatus(),
             'listaStatusDisponibilidades' => $this->Status_disponibilidades_model->consultaTodosStatus(),
+            'listaTodasCidades' => $this->Cidades_model->consultaTodasCidades(),
             'listaUsuariosCadastroLinha' => $this->Linhas_model->consultaTodosUsuariosCadastroLinha()
         ];
 
@@ -60,6 +62,7 @@ class Linhas extends CI_Controller
         $this->form_validation->set_rules("numeroLinha", "<b>Número da Linha</b>", "trim|required|is_unique[linhas.numero_linha]|exact_length[14]");
         $this->form_validation->set_rules("codigoChip", "<b>Código do Chip</b>", "trim|required|integer|is_unique[linhas.codigo_chip]|exact_length[20]");
         $this->form_validation->set_rules("idCategoria", "<b>Categoria</b>", "trim|required|integer|combines[categorias.id]");
+        $this->form_validation->set_rules("idCidade", "<b>Cidade/b>", "trim|required|integer|combines[cidades.id]");
         $this->form_validation->set_rules("idOperadora", "<b>Operadora</b>", "trim|required|integer|combines[operadoras.id]");
         $this->form_validation->set_rules("pinPuk1", "<b>Pin-Puk1</b>", "trim|max_length[13]");
         $this->form_validation->set_rules("pinPuk2", "<b>Pin-Puk2</b>", "max_length[13]");
@@ -77,6 +80,7 @@ class Linhas extends CI_Controller
             'numero_linha' => $this->input->post('numeroLinha'),
             'codigo_chip' => $this->input->post('codigoChip'),
             'id_categoria' => $this->input->post('idCategoria'),
+            'id_cidade' => $this->input->post('idCidade'),
             'id_operadora' => $this->input->post('idOperadora'),
             'pin_puk1' => $this->input->post('pinPuk1'),
             'pin_puk2' => $this->input->post('pinPuk2'),
@@ -92,6 +96,7 @@ class Linhas extends CI_Controller
     {   //var_dump($_POST);exit;
         $this->form_validation->set_rules("codigoChip", "<b>Código do Chip</b>", "trim|required|integer|exact_length[20]");
         $this->form_validation->set_rules("idCategoria", "<b>Categoria</b>", "trim|required|integer|combines[categorias.id]");
+        $this->form_validation->set_rules("idCidade", "<b>Cidade</b>", "trim|required|integer|combines[cidades.id]");
         $this->form_validation->set_rules("idOperadora", "<b>Operadora</b>", "trim|required|integer|combines[operadoras.id]");
         $this->form_validation->set_rules("pinPuk1", "<b>Pin-Puk1</b>", "trim|max_length[13]");
         $this->form_validation->set_rules("pinPuk2", "<b>Pin-Puk2</b>", "max_length[13]");
@@ -110,6 +115,7 @@ class Linhas extends CI_Controller
         $dadosLinha = [
             'codigo_chip' => $this->input->post('codigoChip'),
             'id_categoria' => $this->input->post('idCategoria'),
+            'id_cidade' => $this->input->post('idCidade'),
             'id_operadora' => $this->input->post('idOperadora'),
             'pin_puk1' => $this->input->post('pinPuk1'),
             'pin_puk2' => $this->input->post('pinPuk2'),
@@ -168,6 +174,7 @@ class Linhas extends CI_Controller
             $procurarSql = " AND (
                 li.numero_linha LIKE '%" . $procurarValor . "%' OR 
                 li.codigo_chip LIKE '%" . $procurarValor . "%' OR 
+                cd.nome LIKE '%" . $procurarValor . "%' OR 
                 cg.nome LIKE '%" . $procurarValor . "%'
             )";
         }
@@ -189,6 +196,10 @@ class Linhas extends CI_Controller
 
         if (is_array($this->input->post('idCategoria')) && count($this->input->post('idCategoria')) > 0) {
             $filtrosSql .= "AND cg.id IN(" . implode(", ", $this->input->post('idCategoria')) . ") ";
+        }
+
+        if (is_array($this->input->post('idCidade')) && count($this->input->post('idCidade')) > 0) {
+            $filtrosSql .= "AND cd.id IN(" . implode(", ", $this->input->post('idCidade')) . ") ";
         }
 
         if (is_array($this->input->post('idUsuarioRegistro')) && count($this->input->post('idUsuarioRegistro')) > 0) {

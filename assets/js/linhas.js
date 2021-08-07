@@ -9,6 +9,7 @@ const tabelaLinhas = $("#tabelaLinhas").DataTable({
             d.numeroLinha = $("#pesquisaNumero").val()
             d.codigoChip = $("#pesquisaCodigoChip").val()
             d.idCategoria = $("#pesquisaCategoria").val()
+            d.idCidade = $("#pesquisaCidade").val()
             d.idUsuarioRegistro = $("#pesquisaCadastradoPor").val()
             d.idDisponibilidade = $("#pesquisaDisponibilidade").val()
             d.status = $("#pesquisaStatusLinha").val()
@@ -19,6 +20,7 @@ const tabelaLinhas = $("#tabelaLinhas").DataTable({
         { "data": "numero_linha" },
         { "data": "codigo_chip" },
         { "data": "nome_categoria" },
+        { "data": "nome_cidade" },
         { "data": "nome_disponibilidade" },
         {
             data: "acao",
@@ -31,11 +33,11 @@ const tabelaLinhas = $("#tabelaLinhas").DataTable({
 
     columnDefs: [
         {
-            targets: [5],
+            targets: [6],
             orderable: false
         },
         {
-            targets: [5],
+            targets: [6],
             className: "text-center",
         }
     ],
@@ -56,6 +58,17 @@ $('#pesquisaCategoria').multiselect({
     buttonClass: 'form-control form-control-sm'
 });
 $('#pesquisaCategoria').multiselect('selectAll', false);
+
+$('#pesquisaCidade').multiselect({
+    buttonWidth: '100%',
+    includeSelectAllOption: true,
+    selectAllText: 'TODOS',
+    nonSelectedText: 'SELECIONE UMA OPÇÃO',
+    allSelectedText: 'TODOS',
+    nSelectedText: 'SELECIONADO(S)',
+    buttonClass: 'form-control form-control-sm'
+});
+$('#pesquisaCidade').multiselect('selectAll', false);
 
 $('#pesquisaCadastradoPor').multiselect({
     buttonWidth: '100%',
@@ -90,8 +103,18 @@ $('#pesquisaStatusLinha').multiselect({
 });
 $('#pesquisaStatusLinha').multiselect('selectAll', false);
 
-//javascript do multiselect, definição de padrões e traduções tela cadastro
+
 $('#cadastroCategoria').multiselect({
+    buttonWidth: '100%',
+    includeSelectAllOption: true,
+    selectAllText: 'TODOS',
+    nonSelectedText: 'SELECIONE UMA OPÇÃO',
+    allSelectedText: 'TODOS',
+    nSelectedText: 'SELECIONADO(S)',
+    buttonClass: 'form-control form-control-sm'
+});
+
+$('#cadastroCidade').multiselect({
     buttonWidth: '100%',
     includeSelectAllOption: true,
     selectAllText: 'TODOS',
@@ -114,6 +137,16 @@ $('#cadastroOperadora').multiselect({
 
 
 $('#editaCategoria').multiselect({
+    buttonWidth: '100%',
+    includeSelectAllOption: true,
+    selectAllText: 'TODOS',
+    nonSelectedText: 'SELECIONE UMA OPÇÃO',
+    allSelectedText: 'TODOS',
+    nSelectedText: 'SELECIONADO(S)',
+    buttonClass: 'form-control form-control-sm'
+});
+
+$('#editaCidade').multiselect({
     buttonWidth: '100%',
     includeSelectAllOption: true,
     selectAllText: 'TODOS',
@@ -173,6 +206,7 @@ $('#btnSalvarLinha').click(function (event) {
                 numeroLinha: $('#cadastroNumero').val(),
                 codigoChip: $('#cadastroCodigoChip').val(),
                 idCategoria: $('#cadastroCategoria').val(),
+                idCidade: $('#cadastroCidade').val(),
                 idOperadora: $('#cadastroOperadora').val(),
                 pinPuk1: $('#cadastroPinPuk1').val(),
                 pinPuk2: $('#cadastroPinPuk2').val(),
@@ -245,6 +279,7 @@ tabelaLinhas.on('click', '.visualizar', function (event) {
             $('#editaNumeroLinha').val(response.linha.numero_linha)
             $('#editaCodigoChip').val(response.linha.codigo_chip)
             $('#editaCategoria').val(response.linha.id_categoria).multiselect('refresh')
+            $('#editaCidade').val(response.linha.id_cidade).multiselect('refresh')
             $('#editaOperadora').val(response.linha.id_operadora).multiselect('refresh')
             $('#editaPinPuk1').val(response.linha.pin_puk1)
             $('#editaPinPuk2').val(response.linha.pin_puk2)
@@ -279,6 +314,7 @@ $('#btnEditarLinha').click(function (event) {
             idLinha: $('#editaIdLinha').val(),
             codigoChip: $('#editaCodigoChip').val(),
             idCategoria: $('#editaCategoria').val(),
+            idCidade: $('#editaCidade').val(),
             idOperadora: $('#editaOperadora').val(),
             pinPuk1: $('#editaPinPuk1').val(),
             pinPuk2: $('#editaPinPuk2').val(),
