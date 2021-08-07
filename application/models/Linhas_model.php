@@ -37,8 +37,8 @@ class Linhas_model extends CI_Model
                     cd.nome AS nome_cidade,
                     li.id_usuario_registro AS usuario_registro,
                     li.id_status_disponibilidade AS status_disponibilidade,
-                    sd.nome AS nome_disponibilidade,
-                    IF(li.status = " . STATUS_ATIVO . " , 'ATIVO', 'INATIVO') AS status
+                    IF(li.status = " . STATUS_ATIVO . " , 'ATIVO', 'INATIVO') AS status,
+                    IF(li.status = " . STATUS_INATIVO . " , 'INDISPONIVEL', sd.nome) AS nome_disponibilidade
                 FROM
                     {$this->tabela} li
                 INNER JOIN categorias cg ON cg.id = li.id_categoria
@@ -104,7 +104,7 @@ class Linhas_model extends CI_Model
                     li.pin_puk2,    
                     us.nome AS nome_usuario_registro,
                     li.status,
-                    sd.nome AS status_disponibilidade
+                    IF(li.status = " . STATUS_INATIVO . " , 'INDISPONIVEL', sd.nome) AS status_disponibilidade
                 FROM
                     {$this->tabela} li
                 INNER JOIN categorias cg ON cg.id = li.id_categoria

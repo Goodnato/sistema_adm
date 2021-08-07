@@ -33,8 +33,8 @@
                     <div class="col-4">
                         <label for="pesquisaCidade" class="form-label">Cidade</label>
                         <select id="pesquisaCidade" multiple="multiple">
-                            <?php foreach ($listaCidadesCadastradas as $cidade) { ?>
-                                <option value="<?= $cidade['cidade'] ?>"><?= $cidade['cidade'] ?></option>
+                            <?php foreach ($listaTodasCidades as $cidade) { ?>
+                                <option value="<?= $cidade['id'] ?>"><?= $cidade['nome'] ?></option>
                             <?php } ?>
                         </select>
                     </div>
@@ -60,7 +60,7 @@
                 <div class="row mt-2">
                     <div class="col-12">
                         <button class="btn btn-primary" id="btnPesquisarFiltros"><i class="fas fa-search"></i> Pesquisar</button>
-                        <button class="btn btn-warning"><i class="fas fa-file-excel"></i> Excel</button>
+                        <!--<button class="btn btn-warning"><i class="fas fa-file-excel"></i> Excel</button>-->
                         <?php if (!$this->session->dadosUsuario['somente_leitura']) { ?>
                             <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#modalNovaDistribuicao"><i class="fas fa-plus-square"></i> Nova distribuição</button>
                         <?php } ?>
@@ -204,6 +204,10 @@
                                         <label for="editaModelo" class="form-label">Modelo</label>
                                         <input type="text" class="form-control form-control-sm" id="editaModelo" disabled>
                                     </div>
+                                    <div class="col">
+                                        <label for="editaCidadeA" class="form-label">Cidade - Aparelho</label>
+                                        <input type="text" class="form-control form-control-sm" id="editaCidadeA" disabled>
+                                    </div>
                                 </div>
                                 <div class="row mt-2">
                                     <div class="col">
@@ -221,8 +225,8 @@
                                         <input type="text" class="form-control form-control-sm" id="editaCentroCusto" disabled>
                                     </div>
                                     <div class="col">
-                                        <label for="editaCidade" class="form-label">Cidade</label>
-                                        <input type="text" class="form-control form-control-sm" id="editaCidade" disabled>
+                                        <label for="editaGestor" class="form-label">Gestor</label>
+                                        <input type="text" class="form-control form-control-sm" id="editaGestor" disabled>
                                     </div>
                                 </div>
                             </form>

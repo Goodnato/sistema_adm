@@ -296,10 +296,11 @@ tabelaDistribuicao.on('click', '.visualizar', function (event) {
             $('#nomeColaborador').val(response.distribuicao.nome_colaborador)
             $('#editaImei').val(response.distribuicao.imei)
             $('#editaModelo').val(response.distribuicao.nome_modelo)
+            $('#editaCidadeA').val(response.distribuicao.nome_cidade_ap)
             $('#editaNumeroLinha').val(response.distribuicao.numero_linha)
             $('#editaCategoria').val(response.distribuicao.categoria)
             $('#editaCentroCusto').val(response.distribuicao.centro_custo)
-            $('#editaCidade').val(response.distribuicao.cidade)
+            $('#editaGestor').val(response.distribuicao.gestor)
 
             let tabelaLogDistribuicao = $("#logDistribuicao");
             tabelaLogDistribuicao.empty()

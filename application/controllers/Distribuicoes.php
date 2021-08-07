@@ -26,6 +26,7 @@ class Distribuicoes extends CI_Controller
         $this->load->model('Colaboradores_model');
         $this->load->model('Status_disponibilidades_model');
         $this->load->model('Logs_alteracoes_model');
+        $this->load->model('Cidades_model');
     }
 
     public function index()
@@ -46,6 +47,7 @@ class Distribuicoes extends CI_Controller
             'listaColaboradoresCadastrados' => $this->Distribuicoes_model->consultaTodosColaboradoresCadastradosDistribuicao(),
             'listaCidadesCadastradas' => $this->Distribuicoes_model->consultaTodasCidadesCadastradosDistribuicao(),
             'listaAreasCadastradas' => $this->Distribuicoes_model->consultaTodasAreasCadastradasDistribuicao(),
+            'listaTodasCidades' => $this->Cidades_model->consultaTodasCidades(),
             'listaStatusDisponibilidades' => $this->Status_disponibilidades_model->consultaTodosStatus()
         ];
 
@@ -400,7 +402,7 @@ class Distribuicoes extends CI_Controller
                 ap.imei1 LIKE '%" . $procurarValor . "%' OR 
                 li.numero_linha LIKE '%" . $procurarValor . "%' OR 
                 co.nome LIKE '%" . $procurarValor . "%' OR
-                co.cidade LIKE '%" . $procurarValor . "%' OR
+                cd.nome  LIKE '%" . $procurarValor . "%' OR
                 sd.nome LIKE '%" . $procurarValor . "%' 
             )";
         }
@@ -428,11 +430,8 @@ class Distribuicoes extends CI_Controller
             $filtrosSql .= "AND co.id = '" . $this->input->post('matricula') . "'";
         }
 
-        if (is_array($this->input->post('cidade')) && count($this->input->post('cidade')) > 0) {
-            $cidades = array_map(function ($cidade) {
-                return "'$cidade'";
-            }, $this->input->post('cidade'));
-            $filtrosSql .= "AND co.cidade IN(" . implode(", ", $cidades) . ") ";
+        if (is_array($this->input->post('idCidade')) && count($this->input->post('idCidade')) > 0) {
+            $filtrosSql .= "AND cd.id IN(" . implode(", ", $this->input->post('idCidade')) . ") ";
         }
 
         if (is_array($this->input->post('area')) && count($this->input->post('area')) > 0) {

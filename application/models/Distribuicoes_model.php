@@ -53,7 +53,7 @@ class Distribuicoes_model extends CI_Model
                     ap.imei1 AS imei,
                     CONCAT(co.nome, ' (', co.id, ')') AS nome_colaborador,
                     CONCAT(cc.id, ' (', cc.area, ')') AS centro_custo,
-                    co.cidade AS cidade,
+                    cd.nome AS cidade,
                     IF(dt.id_status_disponibilidade = " . DISTRIBUICAO_DISPONIVEL . " , 'DEVOLVIDO', sd.nome) AS status_disponibilidade
                 FROM
                     {$this->tabela} dt
@@ -61,6 +61,7 @@ class Distribuicoes_model extends CI_Model
                 LEFT JOIN modelos md ON md.id = ap.id_modelo
                 LEFT JOIN linhas li ON li.id = dt.id_linha
                 INNER JOIN colaboradores co ON co.id = dt.id_colaborador
+                INNER JOIN cidades cd ON cd.id = ap.id_cidade
                 LEFT JOIN centro_custo cc ON cc.id = co.id_centro_custo
                 INNER JOIN status_disponibilidades sd ON sd.id = dt.id_status_disponibilidade
                 WHERE
@@ -94,6 +95,7 @@ class Distribuicoes_model extends CI_Model
                 LEFT JOIN aparelhos ap ON ap.id = dt.id_aparelho
                 LEFT JOIN linhas li ON li.id = dt.id_linha
                 INNER JOIN colaboradores co ON co.id = dt.id_colaborador
+                INNER JOIN cidades cd ON cd.id = ap.id_cidade
                 INNER JOIN centro_custo cc ON cc.id = co.id_centro_custo
                 INNER JOIN status_disponibilidades sd ON sd.id = dt.id_status_disponibilidade
                 WHERE
@@ -116,11 +118,12 @@ class Distribuicoes_model extends CI_Model
                     ap.imei1 AS imei,
                     ap.id AS id_aparelho,
                     md.nome AS nome_modelo,
+                    cd.nome AS nome_cidade_ap,
                     li.numero_linha,
                     li.id AS id_linha,
                     cg.nome AS categoria,
                     CONCAT(cc.id, ' (', cc.area, ')') AS centro_custo,
-                    co.cidade AS cidade,
+                    co.gestor AS gestor,
                     u.nome AS nome_usuario,
                     DATE_FORMAT(dt.data_registro, '%d/%m/%Y') AS data_registro,
 					mvd.motivo,
@@ -131,6 +134,7 @@ class Distribuicoes_model extends CI_Model
                 LEFT JOIN modelos md ON md.id = ap.id_modelo
                 LEFT JOIN linhas li ON li.id = dt.id_linha
                 INNER JOIN colaboradores co ON co.id = dt.id_colaborador
+                INNER JOIN cidades cd ON cd.id = ap.id_cidade
                 LEFT JOIN categorias cg ON cg.id = li.id_categoria
                 LEFT JOIN centro_custo cc ON cc.id = co.id_centro_custo
                 INNER JOIN usuarios u ON u.id = dt.id_usuario_registro

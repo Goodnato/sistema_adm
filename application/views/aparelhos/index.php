@@ -76,7 +76,7 @@
                 <div class="row mt-2">
                     <div class="col-12">
                         <button class="btn btn-primary" id="btnPesquisarFiltros"><i class="fas fa-search"></i> Pesquisar</button>
-                        <button type="submit" class="btn btn-warning"><i class="fas fa-file-excel"></i> Excel</button>
+                        <!--<button type="submit" class="btn btn-warning"><i class="fas fa-file-excel"></i> Excel</button>-->
                         <?php if (!$this->session->dadosUsuario['somente_leitura']) { ?>
                             <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#modalNovoAparelho"><i class="fas fa-plus-square"></i> Novo aparelho</button>
                         <?php } ?>
