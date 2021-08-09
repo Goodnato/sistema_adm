@@ -12,7 +12,7 @@ const tabelaDistribuicao = $("#tabelaDistribuicao").DataTable({
             d.numeroLinha = $("#pesquisaNumero").val()
             d.idColaborador = $("#pesquisaColaborador").val()
             d.matricula = $("#pesquisaMatricula").val()
-            d.cidade = $("#pesquisaCidade").val()
+            d.idCidade = $("#pesquisaCidade").val()
             d.area = $("#pesquisaArea").val()
             d.idDisponibilidade = $("#pesquisaDisponibilidade").val()
         }
@@ -299,6 +299,7 @@ tabelaDistribuicao.on('click', '.visualizar', function (event) {
             $('#editaCidadeA').val(response.distribuicao.nome_cidade_ap)
             $('#editaNumeroLinha').val(response.distribuicao.numero_linha)
             $('#editaCategoria').val(response.distribuicao.categoria)
+            $('#editaCidadeL').val(response.distribuicao.nome_cidade_li)
             $('#editaCentroCusto').val(response.distribuicao.centro_custo)
             $('#editaGestor').val(response.distribuicao.gestor)
 

@@ -218,6 +218,10 @@
                                         <label for="editaCategoria" class="form-label">Categoria</label>
                                         <input type="text" class="form-control form-control-sm" id="editaCategoria" disabled>
                                     </div>
+                                    <div class="col">
+                                        <label for="editaCidadeL" class="form-label">Cidade - Linha</label>
+                                        <input type="text" class="form-control form-control-sm" id="editaCidadeL" disabled>
+                                    </div>
                                 </div>
                                 <div class="row mt-2">
                                     <div class="col">
